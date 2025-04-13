@@ -1,6 +1,7 @@
 ﻿using SynCheckWeigherLoggerApp.DashboardViews;
 using SynCheckWeigherLoggerApp.SettingsViews;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.UI.UcUI;
 using System;
@@ -93,7 +94,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex);
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
       
     }
@@ -101,6 +102,28 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void SettingUC_OnSendChooseLineWeight(InforLine inforLine)
     {
       FormMain.Instance.OpenPageWeight(inforLine);
+      AppCore.Ins.eStatusModeWeight = eNum.eUI.eStatusModeWeight.WeightForLine;
+      AppCore.Ins.inforLineOperation = inforLine;
     }
+
+
+
+    public void FindAndUpdateTypeTare(InforLine inforLine)
+    {
+      foreach (var control in flowLayoutPanelLine.Controls)
+      {
+        if (control is UcOverViewMachine)
+        {
+          UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
+          if (parametterSimpleUc.Tag == inforLine)
+          {
+            ((UcOverViewMachine)control).SetInforTare();
+          }
+        }
+      }
+    }
+
+
+
   }
 }

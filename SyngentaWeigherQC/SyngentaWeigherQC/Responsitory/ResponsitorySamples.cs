@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         return false;
       }
     }
@@ -54,7 +55,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         return null;
       }
     }
@@ -68,7 +69,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         return null;
       }
     }
@@ -83,7 +84,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         return null;
       }
     }

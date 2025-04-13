@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
 using System;
@@ -88,7 +89,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       this.ucTemplateExcel1.SetResultFinal(isPass);
     }
 
-    public void SetDataTable(List<Datalog> datalogs, List<Sample> samples)
+    public void SetDataTable(List<DatalogWeight> datalogs, List<Sample> samples)
     {
       if (this.InvokeRequired)
       {
@@ -106,8 +107,8 @@ namespace SyngentaWeigherQC.UI.UcUI
         if (datalogs == null) return;
         if (datalogs.Count() <= 0) return;
 
-        Datalog datalogLast = datalogs.LastOrDefault();
-        int idProduct = datalogLast.ProductId;
+        DatalogWeight datalogLast = datalogs.LastOrDefault();
+        int idProduct = 0;
         Production productions = AppCore.Ins._listAllProductsContainIsDelete.Where(x => x.Id == idProduct).FirstOrDefault();
 
 
@@ -116,7 +117,7 @@ namespace SyngentaWeigherQC.UI.UcUI
 
         foreach (var item in listDatalogsByShift)
         {
-          List<Datalog> listDatalogByShift = item.ToList();
+          List<DatalogWeight> listDatalogByShift = item.ToList();
           List<int> listIdDatalog = listDatalogByShift.Select(x=>x.Id).ToList();
 
           List<Sample> samplesByShift = GetDataSampleByListIdDatalog(samples, listIdDatalog);
@@ -307,7 +308,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 

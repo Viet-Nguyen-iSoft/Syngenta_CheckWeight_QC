@@ -25,7 +25,7 @@ namespace SyngentaWeigherQC.Control
     public static string ConfigDbPath { get; set; } = $"./configDb.sqlite";
 
     //public static 
-    public static async Task<int> Init()
+    public static async Task<bool> Init()
     {
       // Tạo DB Config
       using (var db = new ConfigDBContext())
@@ -121,15 +121,14 @@ namespace SyngentaWeigherQC.Control
           }
           await db.SaveChangesAsync();
           db.Database.CommitTransaction();
+
+          return true;
         }
         catch (Exception ex)
         {
           db.Database.RollbackTransaction();
-          AppCore.Ins.LogErrorToFileLog(ex.Message + "&&" + ex.StackTrace);
-          return 0;
+          throw ex;
         }
-
-        return 1;
       }
     }
     public Task<bool> Add<T>(DbContext db, IEnumerable<T> objects) where T : class

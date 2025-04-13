@@ -1,5 +1,6 @@
 ﻿using Aspose.Cells;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -120,7 +121,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex);
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -196,7 +197,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("File excel load thất bại !" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
       }
     }
@@ -265,7 +266,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("File excel load thất bại !" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
         return null;
       }
@@ -285,7 +286,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
       return ret;
     }

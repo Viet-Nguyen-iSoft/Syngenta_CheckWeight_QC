@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace SyngentaWeigherQC.Control
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.Message + "&&" + ex.StackTrace);
+        throw ex;
       }
     }
 
@@ -133,7 +134,7 @@ namespace SyngentaWeigherQC.Control
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        throw ex;
       }
 
     }
@@ -163,19 +164,19 @@ namespace SyngentaWeigherQC.Control
       throw new NotImplementedException();
     }
 
-    public virtual Task<bool> UpdateDatalog(Datalog datalog)
+    public virtual Task<bool> UpdateDatalog(DatalogWeight datalog)
     {
       throw new NotImplementedException();
     }
 
     //LoadAllDatalogsByGroupId
-    public virtual Task<List<Datalog>> LoadAllDatalogsByGroupId(int groupId)
+    public virtual Task<List<DatalogWeight>> LoadAllDatalogsByGroupId(int groupId)
     {
       throw new NotImplementedException();
     }
 
     //LoadAllDatalogsByProductIdId
-    public virtual Task<List<Datalog>> LoadAllDatalogsByProductId(int groupId)
+    public virtual Task<List<DatalogWeight>> LoadAllDatalogsByProductId(int groupId)
     {
       throw new NotImplementedException();
     }
@@ -220,7 +221,7 @@ namespace SyngentaWeigherQC.Control
       throw new NotImplementedException();
     }
 
-    public virtual Task<List<Datalog>> LoadDatalogsByShiftId(int shiftId)
+    public virtual Task<List<DatalogWeight>> LoadDatalogsByShiftId(int shiftId)
     {
       throw new NotImplementedException();
     }
@@ -232,7 +233,7 @@ namespace SyngentaWeigherQC.Control
 
 
 
-    public virtual Task<List<Datalog>> GetDatalogReport()
+    public virtual Task<List<DatalogWeight>> GetDatalogReport()
     {
       throw new NotImplementedException();
     }

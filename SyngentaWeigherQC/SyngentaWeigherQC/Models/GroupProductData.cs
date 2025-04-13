@@ -10,7 +10,7 @@ namespace SyngentaWeigherQC.Models
   {
     public int ProductId { get; set; }
     public string NameProduct { get; set; }
-    public List<Datalog> Datalogs { get; set; }
+    public List<DatalogWeight> Datalogs { get; set; }
     public List<Sample> Samples { get; set; }
     public int NumberSample { get; set; }
     public int NumberSampleValueLower { get; set; }

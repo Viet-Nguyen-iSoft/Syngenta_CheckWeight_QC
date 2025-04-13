@@ -15,7 +15,7 @@ namespace SyngentaWeigherQC.Responsitory
     {
 
     }
-    public async Task<List<InforLine>> GetAsync()
+    public async Task<List<InforLine>> GetList()
     {
       return await this.Context.Set<InforLine>()
         .Include(x=>x.Productions).Where(x=>x.IsDelete==false)

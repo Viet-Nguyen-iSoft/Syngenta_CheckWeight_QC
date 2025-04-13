@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.VariantTypes;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -125,7 +126,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
     private void btnExportWeek_Click(object sender, EventArgs e)
@@ -140,7 +141,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 

@@ -9,7 +9,7 @@ namespace SyngentaWeigherQC.Models
   public class DataDateGroupByProduct
   {
     public int ProductId { get; set; }
-    public List<Datalog> Datalogs { get; set; }
+    public List<DatalogWeight> Datalogs { get; set; }
     public List<Sample> Samples { get; set; }
   }
 }

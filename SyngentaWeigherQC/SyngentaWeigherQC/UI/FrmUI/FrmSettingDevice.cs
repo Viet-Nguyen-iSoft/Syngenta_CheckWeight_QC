@@ -1,5 +1,6 @@
 ﻿using SerialPortLib;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -98,7 +99,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -123,7 +124,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Save thất bại.", eMsgType.Warning);
       }
       

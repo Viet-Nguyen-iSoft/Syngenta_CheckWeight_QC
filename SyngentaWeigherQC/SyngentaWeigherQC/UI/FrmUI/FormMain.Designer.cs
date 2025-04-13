@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
       this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -49,6 +50,8 @@
       this.btnReport = new CustomControls.RJControls.RJButton();
       this.btnSynthetic = new CustomControls.RJControls.RJButton();
       this.btnHome = new CustomControls.RJControls.RJButton();
+      this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
+      this.timer1 = new System.Windows.Forms.Timer(this.components);
       this.tableLayoutPanel5.SuspendLayout();
       this.tableLayoutPanel7.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
@@ -395,6 +398,17 @@
       this.btnHome.UseVisualStyleBackColor = false;
       this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
       // 
+      // elipseControl1
+      // 
+      this.elipseControl1.CornerRadius = 15;
+      this.elipseControl1.TargetControl = this.pictureBox1;
+      // 
+      // timer1
+      // 
+      this.timer1.Enabled = true;
+      this.timer1.Interval = 1000;
+      this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,5 +454,7 @@
     private System.Windows.Forms.Panel panel10;
     private CustomControls.RJControls.RJButton btnHome;
     private System.Windows.Forms.PictureBox pictureBox1;
+    private ItemControls.ElipseControl elipseControl1;
+    private System.Windows.Forms.Timer timer1;
   }
 }

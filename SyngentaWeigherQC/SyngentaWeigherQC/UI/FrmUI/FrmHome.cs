@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using SynCheckWeigherLoggerApp.DashboardViews;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.eUI;
 using Color = System.Drawing.Color;
@@ -16,9 +18,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmHome : Form
   {
-    public delegate void SendChangeModeUseApp(eModeUseApp eModeUseApp);
-    public event SendChangeModeUseApp OnSendChangeModeUseApp;
-
     public FrmHome()
     {
       InitializeComponent();
@@ -26,22 +25,21 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     public FrmHome(InforLine inforLine) : this()
     {
+      _inforLine = inforLine;
     }
-
-    private static InforLine _inforLine;
 
     #region Singleton pattern
     private static FrmHome _Instance = null;
     public static FrmHome Instance(InforLine inforLine)
     {
-      _inforLine = inforLine;
       if (_Instance == null || _Instance.IsDisposed)
       {
         _Instance = new FrmHome(inforLine);
       }
       else
       {
-        _Instance.SetInforProduct();
+        _inforLine = inforLine;
+        _Instance.SetInforLine();
       }
       return _Instance;
     }
@@ -50,16 +48,39 @@ namespace SyngentaWeigherQC.UI.FrmUI
     #endregion
 
 
+    private static InforLine _inforLine;
+    private List<ShiftLeader> _ShiftLeaders = new List<ShiftLeader>();
+    private List<ShiftType> _ShiftTypes = new List<ShiftType>();
+
     private Production _ProductCurrent = new Production();
-    private void SetInforProduct()
+    private ShiftLeader _ShiftLeaderCurrent = new ShiftLeader();
+    private ShiftType _ShiftTypeCurrent = new ShiftType();
+    
+    private void SetInforLine()
     {
       this.lbLineName.Text = _inforLine.Name;
 
+      this._ShiftLeaders = AppCore.Ins._listShiftLeader;
+      this._ShiftTypes = AppCore.Ins._listShiftType;
+
+      SetProduction();
+
+      SetShiftLeader();
+
+      SetShiftType();
+
+      panelWeigher1.SetInforTare(_ProductCurrent, _inforLine.eModeTare, DateTime.Now);
+
+      //Kiểm tra có yêu cầu Tare
+      this.lbRequestTare.Visible = _inforLine.RequestTare;
+    }
+
+    private void SetProduction()
+    {
       //Check Chọn Product
       var listProducts = _inforLine.Productions.ToList();
       ListProduction = listProducts;
 
-      //Check Last Product 
       _ProductCurrent = listProducts?.FirstOrDefault(x => x.IsEnable);
       if (_ProductCurrent != null)
       {
@@ -70,9 +91,53 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         this.cbProductions.SelectedIndex = -1;
       }
+    }
 
-      //Kiểm tra có yêu cầu Tare
-      this.lbRequestTare.Visible = _inforLine.RequestTare;
+    public void SetShiftLeader()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetShiftLeader();
+        }));
+        return;
+      }
+
+      ShiftLeader = this._ShiftLeaders;
+
+      _ShiftLeaderCurrent = this._ShiftLeaders?.FirstOrDefault(x => x.Id == _inforLine.ShiftLeaderId);
+      if (_ShiftLeaderCurrent != null)
+      {
+        this.cbShiftLeader.SelectedItem = _ShiftLeaderCurrent;
+      }
+      else
+      {
+        this.cbShiftLeader.SelectedIndex = -1;
+      }
+    }
+
+    public void SetShiftType()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetShiftType();
+        }));
+        return;
+      }
+      ShiftType = this._ShiftTypes;
+
+      _ShiftTypeCurrent = this._ShiftTypes?.FirstOrDefault(x => x.Id == _inforLine.ShiftTypesId);
+      if (_ShiftTypeCurrent != null)
+      {
+        this.cbShiftTypes.SelectedItem = _ShiftTypeCurrent;
+      }
+      else
+      {
+        this.cbShiftTypes.SelectedIndex = -1;
+      }
     }
 
     public void SetInforProduct(Production production)
@@ -100,6 +165,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
+    #region Custom Get Set Data
     public List<Production> ListProduction
     {
       set
@@ -108,24 +174,28 @@ namespace SyngentaWeigherQC.UI.FrmUI
         this.cbProductions.DisplayMember = "Name";
       }
     }
+    public List<ShiftType> ShiftType
+    {
+      set
+      {
+        this.cbShiftTypes.DataSource = value;
+        this.cbShiftTypes.DisplayMember = "Name";
+      }
+    }
 
-
-
-
-
-
-
-
-
+    public List<ShiftLeader> ShiftLeader
+    {
+      set
+      {
+        this.cbShiftLeader.DataSource = value;
+        this.cbShiftLeader.DisplayMember = "UserName";
+      }
+    }
+    #endregion
 
 
     private void FrmHome_Load(object sender, EventArgs e)
     {
-      SetInforProduct();
-
-
-
-      return;
       this.uCinforDataShift.SetTitle = "Ca";
       this.uCinforDataStd.SetTitle = "STDEV";
       this.uCinforDataAverage.SetTitle = "TB(Ca)";
@@ -137,13 +207,18 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.uCinforDataRate.SetTitle = "Tỉ lệ lỗi (%)";
       this.uCinforDataLoss.SetTitle = "Hao hụt (%)";
 
+
+      SetInforLine();
+
+      return;
+     
+
       numberGetRaw = Properties.Settings.Default.numberRaw;
 
       AppCore.Ins.OnSendUpdateDataDone += Ins_OnSendUpdateDataDone;
       AppCore.Ins.OnSendDataRealTimeWeigherHome += Ins_OnSendDataRealTimeWeigherHome;
       FrmMain.Instance.OnSendChooseProduct += Instance_OnSendChooseProduct;
       FrmSettingGeneral.Instance.OnSendSettingNumberRaw += Instance_OnSendSettingNumberRaw;
-      FrmSettingGeneral.Instance.OnSendModeOnOffApp += Instance_OnSendModeOnOffApp;
       Ins_OnSendUpdateDataDone();
 
       this.dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
@@ -159,24 +234,30 @@ namespace SyngentaWeigherQC.UI.FrmUI
         //this.panelInforTare.Visible = false;
         this.tableLayoutPanelCal.Visible = true;
       }
-
-      AppCore.Ins.OnSendRequestOffApp += Ins_OnSendRequestOffApp;
     }
-
-
 
     private void btnTare_Click(object sender, EventArgs e)
     {
-      FrmTare frmTare = new FrmTare();
+      AppCore.Ins.eStatusModeWeight = eStatusModeWeight.TareForLine;
+
+      FrmTare frmTare = new FrmTare(_inforLine);
+      frmTare.OnSendChangeTypeTare += FrmTare_OnSendChangeTypeTare;
+      frmTare.OnSendCloseFrmTare += FrmTare_OnSendCloseFrmTare;
       frmTare.ShowDialog();
     }
 
+    private void FrmTare_OnSendCloseFrmTare()
+    {
+      AppCore.Ins.eStatusModeWeight = eStatusModeWeight.WeightForLine;
+    }
 
+    private async void FrmTare_OnSendChangeTypeTare()
+    {
+      await AppCore.Ins.Update(_inforLine);
+      panelWeigher1.SetInforTare(_ProductCurrent, _inforLine.eModeTare, DateTime.Now);
 
-
-
-
-
+      FrmOverView.Instance.FindAndUpdateTypeTare(_inforLine);
+    }
 
     private int numberGetRaw = 10;
 
@@ -210,35 +291,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-    public void Instance_OnSendModeOnOffApp(bool isOn)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          Ins_OnSendRequestOffApp();
-        }));
-        return;
-      }
-
-      this.lbInforTime.Visible = isOn;
-      this.btnActive.Visible = isOn;
-    }
-
-    private void Ins_OnSendRequestOffApp()
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          Ins_OnSendRequestOffApp();
-        }));
-        return;
-      }
-
-      this.btnActive.PerformClick();
-    }
-
+  
+   
     private void Instance_OnSendSettingNumberRaw(int numberRaw)
     {
       numberGetRaw = numberRaw;
@@ -333,171 +387,171 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
 
     private List<Sample> listSamples = new List<Sample>();
-    private List<Datalog> listDatalogs = new List<Datalog>();
+    private List<DatalogWeight> listDatalogs = new List<DatalogWeight>();
     private bool isStartApp = true;
     private List<Sample> listSamplesCurentDB = new List<Sample>();
     public int numberChangeDataSampleForShift = 0;
     private async void Ins_OnSendUpdateDataDone()
     {
-      try
-      {
-        //Load Datalog theo Group Id hiện tại
-        DateTime dt_fileDB = AppCore.Ins.GetDataTimeFileDB(DateTime.Now);
-        int groupId = AppCore.Ins.groupId_DB;
+      //try
+      //{
+      //  //Load Datalog theo Group Id hiện tại
+      //  DateTime dt_fileDB = AppCore.Ins.GetDataTimeFileDB(DateTime.Now);
+      //  int groupId = AppCore.Ins.groupId_DB;
 
-        //Load Datalog && Sample
-        listDatalogs = await AppCore.Ins.LoadAllDatalogs(dt_fileDB);
-        listSamples = await AppCore.Ins.LoadAllSamples(dt_fileDB);
+      //  //Load Datalog && Sample
+      //  listDatalogs = await AppCore.Ins.LoadAllDatalogs(dt_fileDB);
+      //  listSamples = await AppCore.Ins.LoadAllSamples(dt_fileDB);
 
-        //Lits data hiển thị Table
-        List<Datalog> listDatalogsDashBoard = new List<Datalog>();
-        List<Datalog> listDatalogsDashBoard_V2 = new List<Datalog>();
-        List<Sample> listSamplesDashBoard = new List<Sample>();
-
-
-        //Lấy loại ca đang chọn
-        Models.ShiftType shiftType = AppCore.Ins._shiftTypeCurrent;
-        List<StatisticalData> listStatisticalData = new List<StatisticalData>();
-
-        if (listDatalogs == null) return;
-
-        if (listDatalogs.Count > 0)
-        {
-          //Tính toán theo từng ca
-          var datalogsGroupByShift = listDatalogs.GroupBy(p => new { p.ShiftId, p.ProductId });
-
-          foreach (var datalog in datalogsGroupByShift)
-          {
-            listDatalogsDashBoard = datalog.ToList();
-            List<int> listValueId = listDatalogsDashBoard?.Select(d => d.Id).ToList();
-            listSamplesDashBoard = AppCore.Ins.GetDataSampleByListIdDatalog(listSamples, listValueId);
-
-            if (listDatalogsDashBoard?.Count > 0 && listSamplesDashBoard?.Count > 0)
-            {
-              if (!isStartApp)
-              {
-                if (listDatalogsDashBoard.FirstOrDefault().ShiftId == AppCore.Ins._shiftIdCurrent)
-                {
-                  StatisticalData statisticalData = DataProcessing(listDatalogsDashBoard, listSamplesDashBoard);
-                  if (statisticalData != null)
-                    listStatisticalData.Add(statisticalData);
-                }
-              }
-              else
-              {
-                StatisticalData statisticalData = DataProcessing(listDatalogsDashBoard, listSamplesDashBoard);
-                if (statisticalData != null)
-                  listStatisticalData.Add(statisticalData);
-              }
-
-            }
-
-            if (listDatalogsDashBoard.FirstOrDefault().ShiftId == AppCore.Ins._shiftIdCurrent)
-            {
-              listDatalogsDashBoard_V2 = listDatalogsDashBoard;
-              listSamplesCurentDB = listSamplesDashBoard;
-            }
-          }
-
-          //Check Case đặc biệt
-          if (AppCore.Ins._currentProduct == null)
-          {
-            SetDataTable(null, null, null);
-            SetChartLine(null);
-            SetChartHistogram(null, null);
-            return;
-          }
-
-          if (listDatalogsDashBoard.FirstOrDefault().ProductId != AppCore.Ins._currentProduct.Id)
-          {
-            SetDataTable(null, null, null);
-            SetChartLine(null);
-            SetChartHistogram(null, null);
-            return;
-          }
-
-          if (isStartApp)
-          {
-            numberChangeDataSampleForShift = GetNumberChangeSample(listDatalogsDashBoard_V2, listSamplesCurentDB);
-          }
-
-          //Show DashBoard
-          //SetDataTable(listDatalogsDashBoard, listSamplesDashBoard, AppCore.Ins._currentProduct);
-          //20/05/2024
-          SetDataTable(listDatalogsDashBoard_V2, listSamplesCurentDB, AppCore.Ins._currentProduct);
-          //return;
-          //Chart Line
-          ChartLineData chartLineData = ProcessingDataChartLine(listDatalogsDashBoard, listSamplesDashBoard, AppCore.Ins._currentProduct);
-          SetChartLine(chartLineData);
-
-          //Chart Histogram
-          SetChartHistogram(listSamplesDashBoard, AppCore.Ins._currentProduct);
+      //  //Lits data hiển thị Table
+      //  List<DatalogWeight> listDatalogsDashBoard = new List<DatalogWeight>();
+      //  List<DatalogWeight> listDatalogsDashBoard_V2 = new List<DatalogWeight>();
+      //  List<Sample> listSamplesDashBoard = new List<Sample>();
 
 
+      //  //Lấy loại ca đang chọn
+      //  Models.ShiftType shiftType = AppCore.Ins._shiftTypeCurrent;
+      //  List<StatisticalData> listStatisticalData = new List<StatisticalData>();
+
+      //  if (listDatalogs == null) return;
+
+      //  if (listDatalogs.Count > 0)
+      //  {
+      //    //Tính toán theo từng ca
+      //    var datalogsGroupByShift = listDatalogs.GroupBy(p => new { p.ShiftId, p.ProductId });
+
+      //    foreach (var datalog in datalogsGroupByShift)
+      //    {
+      //      listDatalogsDashBoard = datalog.ToList();
+      //      List<int> listValueId = listDatalogsDashBoard?.Select(d => d.Id).ToList();
+      //      listSamplesDashBoard = AppCore.Ins.GetDataSampleByListIdDatalog(listSamples, listValueId);
+
+      //      if (listDatalogsDashBoard?.Count > 0 && listSamplesDashBoard?.Count > 0)
+      //      {
+      //        if (!isStartApp)
+      //        {
+      //          if (listDatalogsDashBoard.FirstOrDefault().ShiftId == AppCore.Ins._shiftIdCurrent)
+      //          {
+      //            StatisticalData statisticalData = DataProcessing(listDatalogsDashBoard, listSamplesDashBoard);
+      //            if (statisticalData != null)
+      //              listStatisticalData.Add(statisticalData);
+      //          }
+      //        }
+      //        else
+      //        {
+      //          StatisticalData statisticalData = DataProcessing(listDatalogsDashBoard, listSamplesDashBoard);
+      //          if (statisticalData != null)
+      //            listStatisticalData.Add(statisticalData);
+      //        }
+
+      //      }
+
+      //      if (listDatalogsDashBoard.FirstOrDefault().ShiftId == AppCore.Ins._shiftIdCurrent)
+      //      {
+      //        listDatalogsDashBoard_V2 = listDatalogsDashBoard;
+      //        listSamplesCurentDB = listSamplesDashBoard;
+      //      }
+      //    }
+
+      //    //Check Case đặc biệt
+      //    if (AppCore.Ins._currentProduct == null)
+      //    {
+      //      SetDataTable(null, null, null);
+      //      SetChartLine(null);
+      //      SetChartHistogram(null, null);
+      //      return;
+      //    }
+
+      //    if (listDatalogsDashBoard.FirstOrDefault().ProductId != AppCore.Ins._currentProduct.Id)
+      //    {
+      //      SetDataTable(null, null, null);
+      //      SetChartLine(null);
+      //      SetChartHistogram(null, null);
+      //      return;
+      //    }
+
+      //    if (isStartApp)
+      //    {
+      //      numberChangeDataSampleForShift = GetNumberChangeSample(listDatalogsDashBoard_V2, listSamplesCurentDB);
+      //    }
+
+      //    //Show DashBoard
+      //    //SetDataTable(listDatalogsDashBoard, listSamplesDashBoard, AppCore.Ins._currentProduct);
+      //    //20/05/2024
+      //    SetDataTable(listDatalogsDashBoard_V2, listSamplesCurentDB, AppCore.Ins._currentProduct);
+      //    //return;
+      //    //Chart Line
+      //    ChartLineData chartLineData = ProcessingDataChartLine(listDatalogsDashBoard, listSamplesDashBoard, AppCore.Ins._currentProduct);
+      //    SetChartLine(chartLineData);
+
+      //    //Chart Histogram
+      //    SetChartHistogram(listSamplesDashBoard, AppCore.Ins._currentProduct);
 
 
-          //Tính toán tổng kết mỗi shift
-          if (AppCore.Ins._shiftIdCurrent != -1 && listStatisticalData?.Count > 0)
-          {
-            if (!isStartApp)
-            {
-              StatisticalData statisticalData = listStatisticalData.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
 
-              if (AppCore.Ins._shiftIdCurrent == 1 || AppCore.Ins._shiftIdCurrent == 4 || AppCore.Ins._shiftIdCurrent == 6)
-              {
-                var data = listStatisticalData?.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
-                UpdateSynthetic(data, 0);
-              }
-              else if (AppCore.Ins._shiftIdCurrent == 2 || AppCore.Ins._shiftIdCurrent == 5)
-              {
-                var data = listStatisticalData?.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
-                UpdateSynthetic(data, 1);
-              }
-              else if (AppCore.Ins._shiftIdCurrent == 3)
-              {
-                var data = listStatisticalData?.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
-                UpdateSynthetic(data, 2);
-              }
-            }
-            else
-            {
-              StatisticalData statisticalDataIndex0 = null;
-              StatisticalData statisticalDataIndex1 = null;
-              StatisticalData statisticalDataIndex2 = null;
 
-              if (shiftType.Code == 0)
-              {
-                statisticalDataIndex0 = listStatisticalData?.Where(x => x.Shift == 1).LastOrDefault();
-                statisticalDataIndex1 = listStatisticalData?.Where(x => x.Shift == 2).LastOrDefault();
-                statisticalDataIndex2 = listStatisticalData?.Where(x => x.Shift == 3).LastOrDefault();
-              }
-              else if (shiftType.Code == 1)
-              {
-                statisticalDataIndex0 = listStatisticalData?.Where(x => x.Shift == 4).LastOrDefault();
-                statisticalDataIndex1 = listStatisticalData?.Where(x => x.Shift == 5).LastOrDefault();
-              }
-              else if (shiftType.Code == 2)
-              {
-                statisticalDataIndex0 = listStatisticalData?.Where(x => x.Shift == 6).LastOrDefault();
-              }
+      //    //Tính toán tổng kết mỗi shift
+      //    if (AppCore.Ins._shiftIdCurrent != -1 && listStatisticalData?.Count > 0)
+      //    {
+      //      if (!isStartApp)
+      //      {
+      //        StatisticalData statisticalData = listStatisticalData.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
 
-              UpdateSynthetic(statisticalDataIndex0, 0);
-              UpdateSynthetic(statisticalDataIndex1, 1);
-              UpdateSynthetic(statisticalDataIndex2, 2);
-            }
-          }
+      //        if (AppCore.Ins._shiftIdCurrent == 1 || AppCore.Ins._shiftIdCurrent == 4 || AppCore.Ins._shiftIdCurrent == 6)
+      //        {
+      //          var data = listStatisticalData?.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
+      //          UpdateSynthetic(data, 0);
+      //        }
+      //        else if (AppCore.Ins._shiftIdCurrent == 2 || AppCore.Ins._shiftIdCurrent == 5)
+      //        {
+      //          var data = listStatisticalData?.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
+      //          UpdateSynthetic(data, 1);
+      //        }
+      //        else if (AppCore.Ins._shiftIdCurrent == 3)
+      //        {
+      //          var data = listStatisticalData?.Where(x => x.Shift == AppCore.Ins._shiftIdCurrent).LastOrDefault();
+      //          UpdateSynthetic(data, 2);
+      //        }
+      //      }
+      //      else
+      //      {
+      //        StatisticalData statisticalDataIndex0 = null;
+      //        StatisticalData statisticalDataIndex1 = null;
+      //        StatisticalData statisticalDataIndex2 = null;
 
-          isStartApp = false;
-        }
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog("Ins_OnSendUpdateDataDone>>" + ex.Message + "&&" + ex.StackTrace);
-      }
+      //        if (shiftType.Code == 0)
+      //        {
+      //          statisticalDataIndex0 = listStatisticalData?.Where(x => x.Shift == 1).LastOrDefault();
+      //          statisticalDataIndex1 = listStatisticalData?.Where(x => x.Shift == 2).LastOrDefault();
+      //          statisticalDataIndex2 = listStatisticalData?.Where(x => x.Shift == 3).LastOrDefault();
+      //        }
+      //        else if (shiftType.Code == 1)
+      //        {
+      //          statisticalDataIndex0 = listStatisticalData?.Where(x => x.Shift == 4).LastOrDefault();
+      //          statisticalDataIndex1 = listStatisticalData?.Where(x => x.Shift == 5).LastOrDefault();
+      //        }
+      //        else if (shiftType.Code == 2)
+      //        {
+      //          statisticalDataIndex0 = listStatisticalData?.Where(x => x.Shift == 6).LastOrDefault();
+      //        }
+
+      //        UpdateSynthetic(statisticalDataIndex0, 0);
+      //        UpdateSynthetic(statisticalDataIndex1, 1);
+      //        UpdateSynthetic(statisticalDataIndex2, 2);
+      //      }
+      //    }
+
+      //    isStartApp = false;
+      //  }
+      //}
+      //catch (Exception ex)
+      //{
+      //  eLoggerHelper.LogErrorToFileLog(ex);
+      //}
     }
 
 
-    private ChartLineData ProcessingDataChartLine(List<Datalog> datalogs, List<Sample> samples, Models.Production productions)
+    private ChartLineData ProcessingDataChartLine(List<DatalogWeight> datalogs, List<Sample> samples, Models.Production productions)
     {
       if (datalogs == null) return null;
       if (datalogs.Count <= 0) return null;
@@ -505,7 +559,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       List<double> averageRaw = new List<double>();
       double averageTotal = Math.Round(samples.Average(x => x.Value), 2);
       //datalogs.Reverse();
-      foreach (Datalog datalog in datalogs)
+      foreach (DatalogWeight datalog in datalogs)
       {
         double average = 0;
         var ave = samples.Where(x => x.DatalogId == datalog.Id).ToList();
@@ -531,56 +585,57 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
 
 
-    private StatisticalData DataProcessing(List<Datalog> datalogs, List<Sample> samples)
+    private StatisticalData DataProcessing(List<DatalogWeight> datalogs, List<Sample> samples)
     {
-      try
-      {
-        Datalog datalogFirst = datalogs.FirstOrDefault();
-        List<double> valueSamples = samples.Select(x => x.Value).ToList();
-        Models.Production productions = AppCore.Ins._listProductsWithStation?.Where(x => x.Id == datalogFirst.ProductId).FirstOrDefault();
-        if (productions == null)
-        {
-          return null;
-        }
-        var numbersOver = (samples != null) ? samples?.Where(x => x.isHasValue == true && x.isEnable == true && x.Value > productions.UpperLimitFinal).Count() : 0;
-        var numbersLower = (samples != null) ? samples?.Where(x => x.isHasValue == true && x.isEnable == true && x.Value < productions.LowerLimitFinal).Count() : 0;
+      return null;
+      ////try
+      ////{
+      ////  DatalogWeight datalogFirst = datalogs.FirstOrDefault();
+      ////  List<double> valueSamples = samples.Select(x => x.Value).ToList();
+      ////  Models.Production productions = AppCore.Ins._listProductsWithStation?.Where(x => x.Id == datalogFirst.ProductId).FirstOrDefault();
+      ////  if (productions == null)
+      ////  {
+      ////    return null;
+      ////  }
+      ////  var numbersOver = (samples != null) ? samples?.Where(x => x.isHasValue == true && x.isEnable == true && x.Value > productions.UpperLimitFinal).Count() : 0;
+      ////  var numbersLower = (samples != null) ? samples?.Where(x => x.isHasValue == true && x.isEnable == true && x.Value < productions.LowerLimitFinal).Count() : 0;
 
-        double stdev = AppCore.Ins.Stdev(valueSamples);
-        double average = Math.Round(valueSamples.Average(), 2);
-        double target = productions.StandardFinal;
+      ////  double stdev = AppCore.Ins.Stdev(valueSamples);
+      ////  double average = Math.Round(valueSamples.Average(), 2);
+      ////  double target = productions.StandardFinal;
 
-        string result = (average >= target) ? "ĐẠT" : "KHÔNG ĐẠT";
+      ////  string result = (average >= target) ? "ĐẠT" : "KHÔNG ĐẠT";
 
-        int totalSamples = samples.Count();
-        int numberSamplesOver = (int)samples?.Where(x => x.Value > productions.UpperLimitFinal).Count();
-        int numberSamplesLower = (int)samples?.Where(x => x.Value < productions.LowerLimitFinal).Count();
+      ////  int totalSamples = samples.Count();
+      ////  int numberSamplesOver = (int)samples?.Where(x => x.Value > productions.UpperLimitFinal).Count();
+      ////  int numberSamplesLower = (int)samples?.Where(x => x.Value < productions.LowerLimitFinal).Count();
 
-        double rateError = (totalSamples != 0) ? ((double)((numberSamplesOver + numberSamplesLower) * 100) / (double)(totalSamples)) : 0;
-        rateError = Math.Round(rateError, 2);
+      ////  double rateError = (totalSamples != 0) ? ((double)((numberSamplesOver + numberSamplesLower) * 100) / (double)(totalSamples)) : 0;
+      ////  rateError = Math.Round(rateError, 2);
 
-        double rateLoss = (average > target) ? Math.Round((((average - target) * 100) / target), 2) : 0;
+      ////  double rateLoss = (average > target) ? Math.Round((((average - target) * 100) / target), 2) : 0;
 
-        StatisticalData statisticalData = new StatisticalData()
-        {
-          Shift = datalogFirst.ShiftId,
-          Stdev = stdev,
-          Average = average,
-          Target = productions.StandardFinal,
-          Result = result,
-          TotalSample = valueSamples.Count(),
-          NumberSampleOver = numberSamplesOver,
-          NumberSampleLower = numberSamplesLower,
-          RateError = rateError,
-          RateLoss = rateLoss,
-        };
+      ////  StatisticalData statisticalData = new StatisticalData()
+      ////  {
+      ////    Shift = datalogFirst.ShiftId,
+      ////    Stdev = stdev,
+      ////    Average = average,
+      ////    Target = productions.StandardFinal,
+      ////    Result = result,
+      ////    TotalSample = valueSamples.Count(),
+      ////    NumberSampleOver = numberSamplesOver,
+      ////    NumberSampleLower = numberSamplesLower,
+      ////    RateError = rateError,
+      ////    RateLoss = rateLoss,
+      ////  };
 
-        return statisticalData;
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return null;
-      }
+      ////  return statisticalData;
+      ////}
+      ////catch (Exception ex)
+      ////{
+      ////  eLoggerHelper.LogErrorToFileLog(ex);
+      ////  return null;
+      ////}
 
     }
 
@@ -607,7 +662,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         int productId = AppCore.Ins._currentProduct.Id;
         //Load Datalog
-        List<Datalog> datalogs = await AppCore.Ins.LoadAllDatalogsByProductId(productId, dt_fileDB);
+        List<DatalogWeight> datalogs = await AppCore.Ins.LoadAllDatalogsByProductId(productId, dt_fileDB);
 
 
         //CHia theo ca
@@ -619,7 +674,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
           var dataByShift = datalogs.GroupBy(x => x.ShiftId);
           foreach (var datalogChid in dataByShift)
           {
-            List<Datalog> datalogsUpdate = datalogChid.ToList();
+            List<DatalogWeight> datalogsUpdate = datalogChid.ToList();
 
             if (datalogsUpdate.Count() <= 0) return;
 
@@ -641,7 +696,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       ucChartHistogram.SetDataChart(samples, productions);
     }
 
-    private void SetDataTable(List<Datalog> datalogs, List<Sample> samples, Models.Production productions)
+    private void SetDataTable(List<DatalogWeight> datalogs, List<Sample> samples, Models.Production productions)
     {
       if (this.InvokeRequired)
       {
@@ -839,11 +894,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
-    private int GetNumberChangeSample(List<Datalog> datalogs, List<Sample> samples)
+    private int GetNumberChangeSample(List<DatalogWeight> datalogs, List<Sample> samples)
     {
       try
       {
@@ -858,7 +913,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         return 0;
       }
     }
@@ -907,7 +962,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
 
     }
@@ -948,27 +1003,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
-    private void btnActive_Click(object sender, EventArgs e)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          btnActive_Click(sender, e);
-        }));
-        return;
-      }
-
-      if (AppCore.Ins._modeUseApp == eModeUseApp.ON)
-      {
-        OnSendChangeModeUseApp?.Invoke(eModeUseApp.OFF);
-      }
-      else
-      {
-        OnSendChangeModeUseApp?.Invoke(eModeUseApp.ON);
-      }
-
-    }
 
     public void ClearHome()
     {
@@ -1045,48 +1079,5 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     }
 
-
-    public void ShowTimeOutUI(int value)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          ShowTimeOutUI(value);
-        }));
-        return;
-      }
-
-      this.lbInforTime.ForeColor = (value <= 10 && value >= 0) ? Color.Tomato : Color.White;
-      this.lbInforTime.Text = (value >= 0) ? $"Thời gian còn lại: {value} s" : "";
-    }
-
-    public void StatusBtnActive(bool isON)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          StatusBtnActive(isON);
-        }));
-        return;
-      }
-
-      if (!isON)
-      {
-        this.btnActive.BackColor = Color.SlateGray;
-        this.btnActive.Text = "MỞ PHẦN MỀM";
-      }
-      else
-      {
-        this.btnActive.BackColor = Color.DeepSkyBlue;
-        this.btnActive.Text = "TẮT PHẦN MỀM";
-      }
-
-      this.lbInforTime.Visible = isON;
-      this.btnActive.Visible = isON;
-    }
-
-    
   }
 }

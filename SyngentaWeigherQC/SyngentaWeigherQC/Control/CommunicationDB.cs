@@ -21,7 +21,7 @@ namespace SyngentaWeigherQC.Control
       using (var context = new ConfigDBContext())
       {
         var repo = new ResponsitoryInforLines(context);
-        return await repo.GetAsync();
+        return await repo.GetList();
       }
     }
 

@@ -35,7 +35,7 @@ namespace SyngentaWeigherQC.Models
 
 
     public string DailyDbPath = Application.StartupPath;
-    public DbSet<Datalog> Datalogs { get; set; }
+    public DbSet<DatalogWeight> Datalogs { get; set; }
     public DbSet<Sample> Samples { get; set; }
     public DbSet<Tare> Tares { get; set; }
 

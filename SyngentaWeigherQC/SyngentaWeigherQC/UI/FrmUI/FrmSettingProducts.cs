@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Irony.Parsing;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.UI.FrmAddProduct;
 using System;
@@ -148,7 +149,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("File excel load thất bại !" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
       }
       finally
@@ -272,8 +273,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex);
-        
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -446,7 +446,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("File excel load thất bại !" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
       }
     }
@@ -477,7 +477,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.Message + "&" + ex.StackTrace);
+        eLoggerHelper.LogErrorToFileLog(ex);
         return false;
       }
       
@@ -610,7 +610,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("File excel load thất bại !" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
         return null;
       }
@@ -627,7 +627,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
       return ret;
     }
@@ -647,7 +647,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
       return ret;
     }
@@ -676,7 +676,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex) 
       {
-        AppCore.Ins.LogErrorToFileLog(ex.Message + "&&" + ex.StackTrace);
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
       return Math.Round(value, 3);
     }

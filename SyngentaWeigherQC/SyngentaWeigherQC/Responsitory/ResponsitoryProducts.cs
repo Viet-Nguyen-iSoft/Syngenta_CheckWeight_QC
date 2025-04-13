@@ -47,9 +47,8 @@ namespace SyngentaWeigherQC.Responsitory
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.Message + "&" + ex.StackTrace);
         Context.Database.RollbackTransaction();
-        return false;
+        throw ex;
       }
     }
 
@@ -67,8 +66,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return false;
+        throw ex;
       }
     }
 
@@ -76,16 +74,13 @@ namespace SyngentaWeigherQC.Responsitory
 
     public override async Task<List<Production>> LoadAllProducts()
     {
-      List<Production> datas = new List<Production>();
       try
       {
-        datas = await this.Context.Set<Production>().Where(s => s.IsDelete == false).ToListAsync();
-        return datas;
+        return await this.Context.Set<Production>().Where(s => s.IsDelete == false).ToListAsync();
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return datas;
+        throw ex;
       }
     }
 

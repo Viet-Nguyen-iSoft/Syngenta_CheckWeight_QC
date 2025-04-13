@@ -1,4 +1,5 @@
 ﻿using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.UI.FrmUI;
 using System;
@@ -161,7 +162,7 @@ namespace SyngentaWeigherQC.UI.FrmAddProduct
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("Update sản phẩm thủ công" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         MessageBox.Show("Lỗi: " + ex.ToString());
       }
     }
@@ -222,7 +223,7 @@ namespace SyngentaWeigherQC.UI.FrmAddProduct
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("Thêm sản phẩm thủ công" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
         MessageBox.Show("Lỗi: " + ex.ToString());
       }
     }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using SynCheckWeigherLoggerApp.SettingsViews;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.UI.FrmAddProduct;
 using SyngentaWeigherQC.UI.FrmUI;
@@ -205,27 +206,6 @@ namespace SyngentaWeigherQC
       //cntCheckTimeOut = (timerCheckTimeOut > 0) ? timerCheckTimeOut * 60 : 300;//ĐỔi ra s. Mặc định 5 phút
     }
 
-    private void _timeCalTimeOut_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-    {
-      _timeCalTimeOut.Stop();
-      try
-      {
-        if (cntCheckTimeOut>=0)
-        {
-          cntCheckTimeOut--;
-          //FrmHome.Instance.ShowTimeOutUI(cntCheckTimeOut);
-        }  
-        else
-        {
-          AppCore.Ins.SendTimeout();
-        }  
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-      }
-      finally { _timeCalTimeOut.Start(); }
-    }
 
 
     private void Ins_OnSendChangeLine(List<Production> productions)
@@ -338,7 +318,7 @@ namespace SyngentaWeigherQC
         }
         catch (Exception ex)
         {
-          AppCore.Ins.LogErrorToFileLog(ex.ToString());
+          eLoggerHelper.LogErrorToFileLog(ex);
         }
       }
       else
@@ -377,7 +357,7 @@ namespace SyngentaWeigherQC
     {
       if (AppCore.Ins.CheckRole(ePermit.role_ChangeProduct) || AppCore.Ins._roleCurrent.Name == "iSOFT")
       {
-        FrmInformation frmInformation = new FrmInformation(cbProductions.SelectedItem.ToString());
+        FrmConfirmChangeProduct frmInformation = new FrmConfirmChangeProduct(cbProductions.SelectedItem.ToString());
         frmInformation.OnSendOKClicked += FrmInformation_OnSendOKClicked;
         frmInformation.ShowDialog();
       }
@@ -513,11 +493,11 @@ namespace SyngentaWeigherQC
         {
           RefeshTimeOut();
           eModeTare eModeTare = AppCore.Ins._modeTare;
-          FrmTare frmTare = new FrmTare(AppCore.Ins._currentProduct, eModeTare);
-          frmTare.OnSendCloseFrmTare += FrmTare_OnSendCloseFrmTare;
-          AppCore.Ins._eWeigherMode = eWeigherMode.Tare;
-          AppCore.Ins._eWeigherModeLast = eWeigherMode.Tare;
-          frmTare.ShowDialog();
+          //FrmTare frmTare = new FrmTare(AppCore.Ins._currentProduct, eModeTare);
+          //frmTare.OnSendCloseFrmTare += FrmTare_OnSendCloseFrmTare;
+          //AppCore.Ins._eWeigherMode = eWeigherMode.Tare;
+          //AppCore.Ins._eWeigherModeLast = eWeigherMode.Tare;
+          //frmTare.ShowDialog();
         } 
       }  
      
@@ -543,7 +523,7 @@ namespace SyngentaWeigherQC
 
     private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
     {
-      AppCore.Ins.DeInitCommunication();
+      
     }
 
     private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)

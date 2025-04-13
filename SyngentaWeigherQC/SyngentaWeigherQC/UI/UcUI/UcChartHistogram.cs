@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -122,7 +123,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog("Chart Histogram: " + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
 
     }

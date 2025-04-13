@@ -95,11 +95,13 @@
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.lbStatusWeight = new System.Windows.Forms.Label();
       this.lbTitle = new System.Windows.Forms.Label();
+      this.picIconWeight = new System.Windows.Forms.PictureBox();
       this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.elipseControl2 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.elipseControl3 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.elipseControl4 = new SyngentaWeigherQC.ItemControls.ElipseControl();
-      this.picIconWeight = new System.Windows.Forms.PictureBox();
+      this.label2 = new System.Windows.Forms.Label();
+      this.lbTypeTare = new System.Windows.Forms.Label();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel6.SuspendLayout();
@@ -333,6 +335,8 @@
       this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
       this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+      this.tableLayoutPanel8.Controls.Add(this.lbTypeTare, 5, 0);
+      this.tableLayoutPanel8.Controls.Add(this.label2, 4, 0);
       this.tableLayoutPanel8.Controls.Add(this.lbPacksize, 1, 0);
       this.tableLayoutPanel8.Controls.Add(this.label3, 2, 0);
       this.tableLayoutPanel8.Controls.Add(this.lbDensity, 3, 0);
@@ -1222,7 +1226,7 @@
       this.tableLayoutPanel3.ColumnCount = 3;
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
       this.tableLayoutPanel3.Controls.Add(this.lbStatusWeight, 1, 0);
       this.tableLayoutPanel3.Controls.Add(this.lbTitle, 0, 0);
       this.tableLayoutPanel3.Controls.Add(this.picIconWeight, 2, 0);
@@ -1242,7 +1246,7 @@
       this.lbStatusWeight.AutoSize = true;
       this.lbStatusWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbStatusWeight.ForeColor = System.Drawing.Color.Tomato;
-      this.lbStatusWeight.Location = new System.Drawing.Point(469, 0);
+      this.lbStatusWeight.Location = new System.Drawing.Point(468, 0);
       this.lbStatusWeight.Name = "lbStatusWeight";
       this.lbStatusWeight.Size = new System.Drawing.Size(304, 50);
       this.lbStatusWeight.TabIndex = 1;
@@ -1259,10 +1263,24 @@
       this.lbTitle.ForeColor = System.Drawing.Color.White;
       this.lbTitle.Location = new System.Drawing.Point(3, 0);
       this.lbTitle.Name = "lbTitle";
-      this.lbTitle.Size = new System.Drawing.Size(460, 50);
+      this.lbTitle.Size = new System.Drawing.Size(459, 50);
       this.lbTitle.TabIndex = 0;
       this.lbTitle.Text = "Name";
       this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // picIconWeight
+      // 
+      this.picIconWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.picIconWeight.Image = ((System.Drawing.Image)(resources.GetObject("picIconWeight.Image")));
+      this.picIconWeight.Location = new System.Drawing.Point(778, 3);
+      this.picIconWeight.Name = "picIconWeight";
+      this.picIconWeight.Size = new System.Drawing.Size(46, 44);
+      this.picIconWeight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.picIconWeight.TabIndex = 2;
+      this.picIconWeight.TabStop = false;
+      this.picIconWeight.Click += new System.EventHandler(this.picIconWeight_Click);
       // 
       // elipseControl1
       // 
@@ -1284,19 +1302,39 @@
       this.elipseControl4.CornerRadius = 20;
       this.elipseControl4.TargetControl = this.chartPie;
       // 
-      // picIconWeight
+      // label2
       // 
-      this.picIconWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.picIconWeight.Image = ((System.Drawing.Image)(resources.GetObject("picIconWeight.Image")));
-      this.picIconWeight.Location = new System.Drawing.Point(779, 3);
-      this.picIconWeight.Name = "picIconWeight";
-      this.picIconWeight.Size = new System.Drawing.Size(45, 44);
-      this.picIconWeight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-      this.picIconWeight.TabIndex = 2;
-      this.picIconWeight.TabStop = false;
-      this.picIconWeight.Click += new System.EventHandler(this.picIconWeight_Click);
+      this.label2.AutoSize = true;
+      this.label2.BackColor = System.Drawing.Color.Transparent;
+      this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label2.ForeColor = System.Drawing.Color.White;
+      this.label2.Location = new System.Drawing.Point(553, 0);
+      this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(124, 45);
+      this.label2.TabIndex = 22;
+      this.label2.Text = "Kiểu tare:";
+      this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // lbTypeTare
+      // 
+      this.lbTypeTare.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lbTypeTare.AutoSize = true;
+      this.lbTypeTare.BackColor = System.Drawing.Color.Transparent;
+      this.lbTypeTare.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbTypeTare.ForeColor = System.Drawing.Color.White;
+      this.lbTypeTare.Location = new System.Drawing.Point(677, 0);
+      this.lbTypeTare.Margin = new System.Windows.Forms.Padding(0);
+      this.lbTypeTare.Name = "lbTypeTare";
+      this.lbTypeTare.Size = new System.Drawing.Size(150, 45);
+      this.lbTypeTare.TabIndex = 23;
+      this.lbTypeTare.Text = "Không nhãn";
+      this.lbTypeTare.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // UcOverViewMachine
       // 
@@ -1396,5 +1434,7 @@
     private ItemControls.ElipseControl elipseControl3;
     private ItemControls.ElipseControl elipseControl4;
     private System.Windows.Forms.PictureBox picIconWeight;
+    private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.Label lbTypeTare;
   }
 }

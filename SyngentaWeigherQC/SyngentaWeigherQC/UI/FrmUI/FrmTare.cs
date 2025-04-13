@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+﻿using Irony.Parsing;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Newtonsoft.Json.Linq;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.Control.AppCore;
 using static SyngentaWeigherQC.eNum.eUI;
+using Production = SyngentaWeigherQC.Models.Production;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -22,89 +25,117 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public delegate void SendCloseFrmTare();
     public event SendCloseFrmTare OnSendCloseFrmTare;
 
+    public delegate void SendChangeTypeTare();
+    public event SendChangeTypeTare OnSendChangeTypeTare;
+
+    private InforLine _inforLine { get; set; }
+    private Production _production {  get; set; }
+
+    private List<Tare> listTare = new List<Tare>();
+
     public FrmTare()
     {
       InitializeComponent();
     }
 
-    private Production _production = new Production();
-    private double minTare = 0;
-    private double maxTare = 0;
-    private double average = 0;
-    private double stdev = 0;
-    private List<Tare> listTare = new List<Tare>();
-    private DateTime dt_fileDB;
-    public FrmTare(Production production, eModeTare eModeTare)
+    
+    public FrmTare(InforLine inforLine) : this()
     {
-      InitializeComponent();
-
-      _production = production;
-      StartFormModeTare(eModeTare);
-      SetColorBtnModeTare(eModeTare);
-      SetDataInforTare(_production, eModeTare);
+      this._inforLine = inforLine;
+      this._production = inforLine.Productions.FirstOrDefault(x => x.IsEnable == true && x.IsDelete == false);
     }
 
+    
     private void FrmTare_Load(object sender, EventArgs e)
+    {
+      this.productionDataInforPacksize.SetTitle = "Packsize";
+      this.productionDataInforTarget.SetTitle = "Tare chuẩn (g)";
+      this.productionDataInforUpper.SetTitle = "Tare cận trên (g)";
+      this.productionDataInforLower.SetTitle = "Tare cận dưới (g)";
+
+      SetInforProduct();
+
+      //Loại Tare
+      SetColorBtnModeTare(_inforLine.eModeTare);
+      this.btnTareNoLabel.Click += BtTareNoLabel_Click;
+      this.btnTareWithLabel.Click += BtTareWithLabel_Click;
+
+      AppCore.Ins.OnSendValueWeight += Ins_OnSendValueWeight;
+    }
+
+    private void FrmTare_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      OnSendCloseFrmTare?.Invoke();
+    }
+    private void FrmTare_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      AppCore.Ins.OnSendValueWeight -= Ins_OnSendValueWeight;
+    }
+
+    private void Ins_OnSendValueWeight(double value, eStatusModeWeight eStatusModeWeight)
+    {
+      if (eStatusModeWeight == eStatusModeWeight.TareForLine)
+      {
+        SetDataWeigherRealTime(value);
+      }
+    }
+
+    private void SetInforProduct()
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          FrmTare_Load(sender, e);
+          SetInforProduct();
         }));
         return;
       }
-      dt_fileDB = AppCore.Ins.GetDataTimeFileDB(DateTime.Now);
-      this.dtpDateHistoricalTare.Value = dt_fileDB;
 
-      this.btnTareNoLabel.Click += BtTareNoLabel_Click;
-      this.btnTareWithLabel.Click += BtTareWithLabel_Click;
-
-      this.productionDataInforNumberSample.SetTitle = "Số mẫu (Số vòi)";
-      this.productionDataInforTarget.SetTitle = "Tare chuẩn (g)";
-      this.productionDataInforUpper.SetTitle = "Tare cận trên (g)";
-      this.productionDataInforLower.SetTitle = "Tare cận dưới (g)";
       this.lblProductionName.Text = _production?.Name ?? string.Empty;
+      this.productionDataInforPacksize.SetValue = _production?.PackSize.ToString() ?? string.Empty;
 
-      AppCore.Ins.OnSendDataRealTimeWeigherTare += Ins_OnSendDataWeigherTare;
-
-      this.btLoadHistoricalTare.PerformClick();
+      if (this._inforLine.eModeTare == eModeTare.TareNoLabel)
+      {
+        this.productionDataInforTarget.SetValue = _production.Tare_no_label_standard.ToString();
+        this.productionDataInforUpper.SetValue = _production.Tare_no_label_upperlimit.ToString();
+        this.productionDataInforLower.SetValue = _production.Tare_no_label_lowerlimit.ToString();
+      }
+      else 
+      {
+        this.productionDataInforTarget.SetValue = _production.Tare_with_label_standard.ToString();
+        this.productionDataInforUpper.SetValue = _production.Tare_with_label_upperlimit.ToString();
+        this.productionDataInforLower.SetValue = _production.Tare_with_label_lowerlimit.ToString();
+      }
     }
 
     private void BtTareWithLabel_Click(object sender, EventArgs e)
     {
-      //FrmConfirm frmConfirm = new FrmConfirm("Vui lòng xác nhận thay đổi kiểu Tare sản phẩm", eModeTare.TareWithLabel);
-      //frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
-      //frmConfirm.ShowDialog();
+      if (_inforLine.eModeTare==eModeTare.TareNoLabel)
+      {
+        FrmConfirm frmConfirm = new FrmConfirm("Vui lòng xác nhận thay đổi \r\nTare có nhãn ?", eMsgType.Question);
+        frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+        frmConfirm.ShowDialog();
+      }  
     }
 
     private void BtTareNoLabel_Click(object sender, EventArgs e)
     {
-      //FrmConfirm frmConfirm = new FrmConfirm("Vui lòng xác nhận thay đổi kiểu Tare sản phẩm", eModeTare.TareNoLabel);
-      //frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
-      //frmConfirm.ShowDialog();
+      if (_inforLine.eModeTare == eModeTare.TareWithLabel)
+      {
+        FrmConfirm frmConfirm = new FrmConfirm("Vui lòng xác nhận thay đổi \r\nTare không nhãn ?", eMsgType.Question);
+        frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+        frmConfirm.ShowDialog();
+      }
     }
 
-    private void StartFormModeTare(eModeTare eModeTare)
+    private void FrmConfirm_OnSendOKClicked()
     {
-      if (eModeTare==eModeTare.TareWithLabel) 
-        this.btnTareWithLabel.PerformClick();
-      else 
-        this.btnTareNoLabel.PerformClick();
-    }
+      _inforLine.eModeTare = _inforLine.eModeTare == eModeTare.TareWithLabel ?
+                                                     eModeTare.TareNoLabel :
+                                                     eModeTare.TareWithLabel;
+      SetColorBtnModeTare(_inforLine.eModeTare);
 
-
-
-    private void FrmConfirm_OnSendOKClicked(object sender, eModeTare eModeTare)
-    {
-      AppCore.Ins._modeTare = eModeTare;
-      SetColorBtnModeTare(eModeTare);
-
-      AppCore.Ins._inforValueSettingStation.ModeTare = (int)eModeTare;
-      //await AppCore.Ins.UpdateInforShift(AppCore.Ins._inforValueSettingStation);
-
-      SetDataInforTare(_production, eModeTare);
-      ClearDataTare();
+      OnSendChangeTypeTare?.Invoke();
     }
 
     private void SetColorBtnModeTare(eModeTare eModeTare)
@@ -120,6 +151,28 @@ namespace SyngentaWeigherQC.UI.FrmUI
         this.btnTareWithLabel.BackColor = Color.Silver;
       }
     }
+
+
+
+
+    private double minTare = 0;
+    private double maxTare = 0;
+    private double average = 0;
+    private double stdev = 0;
+    
+    private DateTime dt_fileDB;
+
+
+    
+
+   
+
+    
+
+
+ 
+
+   
 
     private void ClearDataTare()
     {
@@ -153,35 +206,35 @@ namespace SyngentaWeigherQC.UI.FrmUI
         }));
         return;
       }
-      listTare = AppCore.Ins._listTares;
-      //SetDgv(listTare);
+      //listTare = AppCore.Ins._listTares;
+      ////SetDgv(listTare);
 
-      average = (listTare != null && listTare.Count > 0) ? Math.Round(listTare[0].ValueAvg, 3) : 0;
-      stdev = (listTare != null && listTare.Count > 0) ? listTare[0].Stdev : 0;
+      //average = (listTare != null && listTare.Count > 0) ? Math.Round(listTare[0].ValueAvg, 3) : 0;
+      //stdev = (listTare != null && listTare.Count > 0) ? listTare[0].Stdev : 0;
 
-      this.lblAvg.Text = average.ToString() + " g";
-      this.lblStb.Text = stdev.ToString();
+      //this.lblAvg.Text = average.ToString() + " g";
+      //this.lblStb.Text = stdev.ToString();
     }
 
 
     
     private void CalValueAvgStdTare(List<Tare> listTares)
     {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          CalValueAvgStdTare(listTares);
-        }));
-        return;
-      }
+      //if (this.InvokeRequired)
+      //{
+      //  this.Invoke(new Action(() =>
+      //  {
+      //    CalValueAvgStdTare(listTares);
+      //  }));
+      //  return;
+      //}
 
-      if (listTares.Count>0)
-      {
-        List<Double> listValueTare = listTares?.Select(x => x.Value).ToList();
-        average = Math.Round(listValueTare.Average(), 3);
-        stdev = AppCore.Ins.Stdev(listValueTare);
-      }  
+      //if (listTares.Count>0)
+      //{
+      //  List<Double> listValueTare = listTares?.Select(x => x.Value).ToList();
+      //  average = Math.Round(listValueTare.Average(), 3);
+      //  stdev = AppCore.Ins.Stdev(listValueTare);
+      //}  
     }
 
     private List<Double> listValue = new List<double>();
@@ -216,11 +269,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
           this.lblPasFail.Text = "GIÁ TRỊ NGOÀI PHẠM VI SO SÁNH";
           this.lblPasFail.BackColor = Color.Red;
         }  
-        
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -257,10 +309,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-    private void FrmTare_FormClosed(object sender, FormClosedEventArgs e)
-    {
-      OnSendCloseFrmTare?.Invoke();
-    }
+    
 
     private void btCancel_Click_1(object sender, EventArgs e)
     {
@@ -297,11 +346,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       
     }
 
-    private async void FrmConfirm_OnSendOKClicked1(object sender)
-    {
-      await AppCore.Ins.ConfirmTareDone(listTare);
-      timer1.Start();
-    }
+ 
 
     private void timer1_Tick(object sender, EventArgs e)
     {
@@ -322,46 +367,46 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       try
       {
-        listTare.Reverse();
-        if (listTare.Count>0)
-        {
-          dataGridView1.Rows.Clear();
-          int stt = listTare.Count();
-          foreach (var datalog in listTare)
-          {
-            int row = dataGridView1.Rows.Add();
-            dataGridView1.Rows[row].Cells["Col1"].Value = stt--;
-            dataGridView1.Rows[row].Cells["Col2"].Value = datalog.CreatedAt;
-            dataGridView1.Rows[row].Cells["Col3"].Value = datalog.Value;
+        //listTare.Reverse();
+        //if (listTare.Count>0)
+        //{
+        //  dataGridView1.Rows.Clear();
+        //  int stt = listTare.Count();
+        //  foreach (var datalog in listTare)
+        //  {
+        //    int row = dataGridView1.Rows.Add();
+        //    dataGridView1.Rows[row].Cells["Col1"].Value = stt--;
+        //    dataGridView1.Rows[row].Cells["Col2"].Value = datalog.CreatedAt;
+        //    dataGridView1.Rows[row].Cells["Col3"].Value = datalog.Value;
 
-            if (minTare==maxTare)//Dạng Gói
-            {
-              //dataGridView1.Rows[row].Cells["Col3"].Style.BackColor = Color.White;
-              //dataGridView1.Rows[row].Cells["Col3"].Style.ForeColor = Color.Black;
-            }  
-            else
-            {
-              if (datalog.Value > maxTare)
-              {
-                dataGridView1.Rows[row].Cells["Col3"].Style.BackColor = Color.DarkOrange;
-                dataGridView1.Rows[row].Cells["Col3"].Style.ForeColor = Color.White;
-              }
-              else if (datalog.Value < minTare)
-              {
-                dataGridView1.Rows[row].Cells["Col3"].Style.BackColor = Color.Red;
-                dataGridView1.Rows[row].Cells["Col3"].Style.ForeColor = Color.White;
-              }
-            }  
+        //    if (minTare==maxTare)//Dạng Gói
+        //    {
+        //      //dataGridView1.Rows[row].Cells["Col3"].Style.BackColor = Color.White;
+        //      //dataGridView1.Rows[row].Cells["Col3"].Style.ForeColor = Color.Black;
+        //    }  
+        //    else
+        //    {
+        //      if (datalog.Value > maxTare)
+        //      {
+        //        dataGridView1.Rows[row].Cells["Col3"].Style.BackColor = Color.DarkOrange;
+        //        dataGridView1.Rows[row].Cells["Col3"].Style.ForeColor = Color.White;
+        //      }
+        //      else if (datalog.Value < minTare)
+        //      {
+        //        dataGridView1.Rows[row].Cells["Col3"].Style.BackColor = Color.Red;
+        //        dataGridView1.Rows[row].Cells["Col3"].Style.ForeColor = Color.White;
+        //      }
+        //    }  
             
-          }
-        }
+        //  }
+        //}
 
-        this.lblAvg.Text = averageValue.ToString() + " g";
-        this.lblStb.Text = stdevValue.ToString();
+        //this.lblAvg.Text = averageValue.ToString() + " g";
+        //this.lblStb.Text = stdevValue.ToString();
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -425,40 +470,40 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void GetDataToList(double value)
     {
-      // List lại 
-      listValue.Add(value);
-      average = Math.Round(listValue.Average(), 3);
-      stdev = (listValue.Count > 1) ? AppCore.Ins.Stdev(listValue) : 0;
+      ////// List lại 
+      ////listValue.Add(value);
+      ////average = Math.Round(listValue.Average(), 3);
+      ////stdev = (listValue.Count > 1) ? AppCore.Ins.Stdev(listValue) : 0;
 
-      Tare tareSave = new Tare()
-      {
-        StationId = (AppCore.Ins._stationCurrent != null) ? AppCore.Ins._stationCurrent.Id : -1,
-        GroupId = AppCore.Ins._groupIdCurrentTare +1,
-        ProductId = (AppCore.Ins._currentProduct != null) ? AppCore.Ins._currentProduct.Id : -1,
-        ShiftId = 1,
-        Value = value,
-        ValueUpper_nolabel = (_production != null) ? _production.Tare_no_label_upperlimit : 0,
-        ValueStandard_nolabel = (_production != null) ? _production.Tare_no_label_standard : 0,
-        ValueLower_nolabel = (_production != null) ? _production.Tare_no_label_lowerlimit : 0,
-        ValueUpper_withlabel = (_production != null) ? _production.Tare_with_label_upperlimit : 0,
-        ValueStandard_withlabel = (_production != null) ? _production.Tare_with_label_standard : 0,
-        ValueLower_withlabel = (_production != null) ? _production.Tare_with_label_lowerlimit : 0,
-        ValueAvg = average,
-        Stdev = stdev,
-        isWithLabel = (int)AppCore.Ins._modeTare,
-        CreatedAt = DateTime.Now,
-        UpdatedAt = DateTime.Now,
-      };
+      ////Tare tareSave = new Tare()
+      ////{
+      ////  StationId = (AppCore.Ins._stationCurrent != null) ? AppCore.Ins._stationCurrent.Id : -1,
+      ////  GroupId = AppCore.Ins._groupIdCurrentTare +1,
+      ////  ProductId = (AppCore.Ins._currentProduct != null) ? AppCore.Ins._currentProduct.Id : -1,
+      ////  ShiftId = 1,
+      ////  Value = value,
+      ////  ValueUpper_nolabel = (_production != null) ? _production.Tare_no_label_upperlimit : 0,
+      ////  ValueStandard_nolabel = (_production != null) ? _production.Tare_no_label_standard : 0,
+      ////  ValueLower_nolabel = (_production != null) ? _production.Tare_no_label_lowerlimit : 0,
+      ////  ValueUpper_withlabel = (_production != null) ? _production.Tare_with_label_upperlimit : 0,
+      ////  ValueStandard_withlabel = (_production != null) ? _production.Tare_with_label_standard : 0,
+      ////  ValueLower_withlabel = (_production != null) ? _production.Tare_with_label_lowerlimit : 0,
+      ////  ValueAvg = average,
+      ////  Stdev = stdev,
+      ////  isWithLabel = (int)AppCore.Ins._modeTare,
+      ////  CreatedAt = DateTime.Now,
+      ////  UpdatedAt = DateTime.Now,
+      ////};
 
-      listTare.Add(tareSave);
-      foreach (var item in listTare)
-      {
-        item.ValueAvg = average;
-        item.Stdev = stdev;
-        item.UpdatedAt = DateTime.Now;
-      }
+      ////listTare.Add(tareSave);
+      ////foreach (var item in listTare)
+      ////{
+      ////  item.ValueAvg = average;
+      ////  item.Stdev = stdev;
+      ////  item.UpdatedAt = DateTime.Now;
+      ////}
 
-      SetDataUI(listTare, average, stdev);
+      ////SetDataUI(listTare, average, stdev);
     }
 
     private async void btLoadHistoricalTare_Click(object sender, EventArgs e)
@@ -472,28 +517,28 @@ namespace SyngentaWeigherQC.UI.FrmUI
         return;
       }
 
-      dataGridView2.Rows.Clear();
+      //dataGridView2.Rows.Clear();
 
-      string pathDB = Application.StartupPath + $"\\Database\\{dtpDateHistoricalTare.Value.ToString("yyyyMMdd")}_data_log.sqlite";
-      if (File.Exists(pathDB))
-      {
-        List<Tare> historicalTare = await AppCore.Ins.LoadAllTare(dtpDateHistoricalTare.Value);
-        if (historicalTare.Count > 0)
-        {
-          Dictionary<int, List<Tare>> groupSamples = historicalTare
-              .GroupBy(sample => sample.GroupId)
-              .ToDictionary(group => group.Key, group => group.ToList());
+      //string pathDB = Application.StartupPath + $"\\Database\\{dtpDateHistoricalTare.Value.ToString("yyyyMMdd")}_data_log.sqlite";
+      //if (File.Exists(pathDB))
+      //{
+      //  List<Tare> historicalTare = await AppCore.Ins.LoadAllTare(dtpDateHistoricalTare.Value);
+      //  if (historicalTare.Count > 0)
+      //  {
+      //    Dictionary<int, List<Tare>> groupSamples = historicalTare
+      //        .GroupBy(sample => sample.GroupId)
+      //        .ToDictionary(group => group.Key, group => group.ToList());
 
-          int stt = 1;
-          foreach (var taregroup in groupSamples)
-          {
-            int row = dataGridView2.Rows.Add();
-            dataGridView2.Rows[row].Cells["C1"].Value = stt++;
-            dataGridView2.Rows[row].Cells["C2"].Value = taregroup.Value[0].CreatedAt;
-            dataGridView2.Rows[row].Cells["C3"].Value = taregroup.Value[0].ValueAvg;
-          }
-        }
-      }  
+      //    int stt = 1;
+      //    foreach (var taregroup in groupSamples)
+      //    {
+      //      int row = dataGridView2.Rows.Add();
+      //      dataGridView2.Rows[row].Cells["C1"].Value = stt++;
+      //      dataGridView2.Rows[row].Cells["C2"].Value = taregroup.Value[0].CreatedAt;
+      //      dataGridView2.Rows[row].Cells["C3"].Value = taregroup.Value[0].ValueAvg;
+      //    }
+      //  }
+      //}  
       
     }
 
@@ -509,10 +554,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-    private void FrmTare_FormClosing(object sender, FormClosingEventArgs e)
-    {
-      AppCore.Ins._eWeigherMode = eWeigherMode.Normal;
-    }
+    
 
 
   }

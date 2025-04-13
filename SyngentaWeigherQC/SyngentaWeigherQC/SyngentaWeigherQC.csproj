@@ -286,6 +286,9 @@
     <Compile Include="Control\AppCoreUI.cs" />
     <Compile Include="Control\CommunicationDB.cs" />
     <Compile Include="Control\DataBase.cs" />
+    <Compile Include="Helper\eLoggerHelper.cs" />
+    <Compile Include="Helper\eNumHelper.cs" />
+    <Compile Include="Helper\eWeightHelper.cs" />
     <Compile Include="ItemControls\ElipseControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -322,7 +325,7 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Datalog.cs" />
+    <Compile Include="Models\DatalogWeight.cs" />
     <Compile Include="Models\DbStore.cs" />
     <Compile Include="Models\HistoricalChangeMasterData.cs" />
     <Compile Include="Models\Production.cs" />
@@ -456,11 +459,11 @@
     <Compile Include="UI\FrmUI\FrmExportPdfManual.Designer.cs">
       <DependentUpon>FrmExportPdfManual.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmInformation.cs">
+    <Compile Include="UI\FrmUI\FrmConfirmChangeProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmInformation.Designer.cs">
-      <DependentUpon>FrmInformation.cs</DependentUpon>
+    <Compile Include="UI\FrmUI\FrmConfirmChangeProduct.Designer.cs">
+      <DependentUpon>FrmConfirmChangeProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmUI\FrmLoading.cs">
       <SubType>Form</SubType>
@@ -754,8 +757,8 @@
     <EmbeddedResource Include="UI\FrmUI\FrmExportPdfManual.resx">
       <DependentUpon>FrmExportPdfManual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmInformation.resx">
-      <DependentUpon>FrmInformation.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmUI\FrmConfirmChangeProduct.resx">
+      <DependentUpon>FrmConfirmChangeProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmLoading.resx">
       <DependentUpon>FrmLoading.cs</DependentUpon>

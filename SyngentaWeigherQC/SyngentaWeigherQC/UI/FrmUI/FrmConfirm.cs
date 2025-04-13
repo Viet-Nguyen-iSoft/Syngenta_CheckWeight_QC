@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using static SyngentaWeigherQC.eNum.eUI;
 
 namespace SyngentaWeigherQC.UI.FrmUI
@@ -21,9 +24,22 @@ namespace SyngentaWeigherQC.UI.FrmUI
       InitializeComponent();
     }
 
-    public FrmConfirm(string content, eModeTare eModeTare):this()
+    public FrmConfirm(string content):this()
     {
       this.lbInformation.Text = content;
+    }
+
+    public FrmConfirm(string content, eMsgType nameImage) : this()
+    {
+      try
+      {
+        this.lbInformation.Text = content;
+        this.picIcon.Image = new Bitmap(Application.StartupPath + $"\\Image\\{nameImage}.png");
+      }
+      catch (Exception ex)
+      {
+        eLoggerHelper.LogErrorToFileLog(ex);
+      }
     }
 
     private void btnCancel_Click(object sender, EventArgs e)

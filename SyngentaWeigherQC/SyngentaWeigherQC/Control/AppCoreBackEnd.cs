@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using SerialPortLib;
 using SyngentaWeigherQC.Communication;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Logs;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
@@ -26,6 +27,7 @@ namespace SyngentaWeigherQC.Control
 {
   public partial class AppCore
   {
+    #region 
     private static AppCore _ins = new AppCore();
     public static AppCore Ins
     {
@@ -43,9 +45,18 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-
+    #endregion
 
     //Sự kiện
+    #region Event
+    public delegate void SendValueWeight(double value, eStatusModeWeight eStatusModeWeight);
+    public event SendValueWeight OnSendValueWeight;
+
+
+    #endregion
+
+
+
     public delegate void SendSendUpdateProducts(object sender);
     public event SendSendUpdateProducts OnSendSendUpdateProducts;
 
@@ -76,15 +87,24 @@ namespace SyngentaWeigherQC.Control
     public System.Timers.Timer _timerSendRequestWeigher = new System.Timers.Timer();
 
 
+
+    public eStatusModeWeight eStatusModeWeight = eStatusModeWeight.OverView;
+    public InforLine inforLineOperation;
+
+
     public eWeigherMode _eWeigherMode = eWeigherMode.Normal;
     public eWeigherMode _eWeigherModeLast = eWeigherMode.Normal;
     public string[] _listPortPC = new string[100];
 
 
+
     //public string ip_tcp_mettler = "192.168.2.100"; //Sachet //"147.167.40.239";
 
-    public string ip_tcp_mettler = "147.167.40.239"; //GN
-    public int port_tcp_mettler = 2305; //2305;
+    //public string ip_tcp_mettler = "147.167.40.239"; //GN
+    //public int port_tcp_mettler = 2305; //2305;
+
+    public string ip_tcp_mettler = "127.0.0.1"; //GN
+    public int port_tcp_mettler = 8080; //2305;
 
     private eModeCommunication eModeCommunication = eModeCommunication.TcpClient;
 
@@ -99,8 +119,7 @@ namespace SyngentaWeigherQC.Control
 
       if (eModeCommunication == eModeCommunication.Serial)
       {
-        InitSerialPort();
-        //InitSerialPortV2();
+
       }
       else if (eModeCommunication == eModeCommunication.TcpClient)
       {
@@ -113,21 +132,12 @@ namespace SyngentaWeigherQC.Control
 
       CreateFolderReport();
 
-      LogErrorToFileLog("Start App");
+      eLoggerHelper.LogErrorToFileLog("Start App");
 
       StartShowUI();
     }
 
-    #region Log Exception
-    public void LogErrorToFileLog(Exception ex)
-    {
-      new LogHelper().LogErrorToFileLog(ex);
-    }
-    public void LogErrorToFileLog(string content)
-    {
-      new LogHelper().LogErrorToFileLog(content);
-    }
-    #endregion
+    
 
     public Image ByteArrayToImage(byte[] byteArray)
     {
@@ -176,7 +186,7 @@ namespace SyngentaWeigherQC.Control
         //Shift leader list
         _listShiftLeader = await LoadAllShiftLeader();
 
-        
+
 
         //Role
         _listRoles = await LoadRoles();
@@ -185,121 +195,13 @@ namespace SyngentaWeigherQC.Control
         //Load Shift
         _listShift = await LoadShifts();
 
-        ////Product
-        //_listAllProductsContainIsDelete = await LoadAllProducts();
 
-        //_listAllProductsBelongLine = _listAllProductsContainIsDelete?
-        //            .Where(a => _listInforLine.Any(b => b.IsEnable && b.Code == a.LineCode))
-        //            .Where(x=>x.IsDelete==false)
-        //            .ToList();
-        return;
-
-        _shiftTypeCurrent = _listShiftType?.Where(x => x.isEnable == true).FirstOrDefault();
-
-        
-
-        //Load Role
-
-        
-
-        //Get Shift
+        //Get Shift Currrent
         _shiftIdCurrent = _shiftIdLast = GetShiftCode();
-
-        // Load Line Info
-
-        _stationCurrent = _listInforLine?.Where(x => x.IsEnable == true).FirstOrDefault();
-
-
-        //Tạo folder chưa report tự động
-        //CreateFolderReportAuto(_stationCurrent.PathReportLocal);
-        //CreateFolderReportAuto(_stationCurrent.PathReportOneDrive);
-
-        //Load Infor Value Setting Line
-        _inforValueSettingStation = await LoadValueSetting();
-
-        //Load User
-
-        //_listUsers = _listUsers?.Where(x => x.IsDelete == false).ToList();
-        //_listUserCurrent = _listUsers?.Where(x => x.IsEnable == true && x.IsDelete == false).FirstOrDefault();
-
-        //Load Product
-        LoadProduct().Wait();
-
-        //Load all Sample và Datalog
-        DateTime dt_fileDB = GetDataTimeFileDB(DateTime.Now);
-        _listDatalogs = await LoadAllDatalogs(dt_fileDB);
-        _listDataSamples = await LoadAllSamples(dt_fileDB);
-
-        if (_listDataSamples != null && _listDatalogs != null)
-        {
-          if (_listDataSamples.Count() > 0)
-          {
-            Datalog datalogLastOrDefault = _listDatalogs.LastOrDefault();
-            groupId_DB = datalogLastOrDefault.GroupId;
-
-            //Get list datalog
-            _listDatalogs = _listDatalogs?.Where(x => x.GroupId == groupId_DB).ToList();
-            _datalogsRowNew = _listDatalogs?.LastOrDefault();
-            stt_Datalog_DB = _datalogsRowNew.No;
-
-            //Load all sample sản phẩm hiện tại
-            List<int> listGroupId = _listDatalogs?.Select(x => x.Id).ToList();
-            _listDataSamples = await LoadAllSamplesByDatalogId(listGroupId, dt_fileDB);
-
-            //Lấy block sample hiện tại
-            _listSamplesCurrent = _listDataSamples?.Where(x => x.DatalogId == _datalogsRowNew.Id).ToList();
-            datalogId_Sample_DB = _listSamplesCurrent.Select(x => x.DatalogId).FirstOrDefault();
-
-            //Check qua ca
-            if (_datalogsRowNew.ShiftId != _shiftIdCurrent)
-            {
-              CloseListSample();
-              ++groupId_DB;
-            }
-          }
-        }
-
-        //Load Mode Tare 
-        _modeTare = (_inforValueSettingStation.ModeTare == 1) ? eModeTare.TareWithLabel : eModeTare.TareNoLabel;
-        _readyReceidDataWeigher = (_inforValueSettingStation.IsChangeProductNoTare == false) ?
-                                  eReadyReceidWeigher.Yes :
-                                  eReadyReceidWeigher.No;
-
-        //Load list tare
-        _listTares = await LoadAllTare(dt_fileDB);
-
-        if (_listTares != null)
-        {
-          if (_listTares.Count > 0)
-          {
-            _groupIdCurrentTare = _listTares.Max(x => x.GroupId);
-            _listTares = _listTares?.Where(x => x.GroupId == _groupIdCurrentTare).ToList();
-          }
-        }
-
-        //Update lên Home
-        if (_listTares != null)
-          LoadInforTareHome();
-
-        if (_listTares == null)
-        {
-          if (_listTares.Count <= 0)
-          {
-            _readyReceidDataTare = eReadyReceidDataTare.No;
-          }
-          else
-          {
-            _readyReceidDataTare = eReadyReceidDataTare.Yes;
-          }
-        }
-        else
-        {
-          _readyReceidDataTare = eReadyReceidDataTare.No;
-        }
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -349,7 +251,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex.ToString());
       }
 
     }
@@ -368,182 +270,6 @@ namespace SyngentaWeigherQC.Control
       string computerName = Environment.MachineName;
       _isPermitDev = (computerName == "DESKTOP-VIPBB6Q");
     }
-
-    #region //Thư viện 1
-    //Thư viện dọc COM
-    private DataBits databits;
-    private Parity parity;
-    private StopBits stopBits;
-
-    public SerialPortInput serialWeigher = new SerialPortLib.SerialPortInput();
-    public async void InitSerialPort()
-    {
-      //try
-      //{
-      //  //Load Setting Weigher Connect
-      //  _serialControllers = await LoadSerialControlSetting();
-      //  if (_serialControllers != null)
-      //  {
-      //    string com = _serialControllers.COM;
-      //    int baudrate = _serialControllers.Baud;
-      //    databits = (DataBits)Enum.ToObject(typeof(DataBits), _serialControllers.Databits);
-      //    parity = (Parity)Enum.ToObject(typeof(Parity), _serialControllers.Parity);
-      //    stopBits = (StopBits)Enum.ToObject(typeof(StopBits), _serialControllers.Stopbits);
-
-      //    //databits = DataBits.Eight;
-      //    //parity = Parity.Odd;
-      //    //stopBits = StopBits.One;
-
-      //    serialWeigher.MessageReceived += Serial_MessageReceived;
-      //    //serialWeigher.ConnectionStatusChanged += Serial_ConnectionStatusChanged;
-      //    serialWeigher.SetPort(com, baudrate, dataBits: databits, parity: parity, stopBits: stopBits);
-      //    serialWeigher.Connect();
-
-      //    if (_stationCurrent != null)
-      //    {
-      //      if (serialWeigher.IsConnected && _stationCurrent.IsEnableRequestWeigher)
-      //      {
-      //        _timerSendRequestWeigher.Elapsed += _timerSendRequestWeigher_Elapsed;
-      //        _timerSendRequestWeigher.Interval = _stationCurrent.TimeSendRequestWeigher;
-      //        _timerSendRequestWeigher.Start();
-      //      }
-      //    }
-
-      //  }
-      //}
-      //catch (Exception ex)
-      //{
-      //  LogErrorToFileLog("Kết nối Serial: " + ex.ToString());
-      //}
-    }
-
-    private void Instance_OnSendTestSendSerial(string Str)
-    {
-      if (serialWeigher.IsConnected)
-      {
-        string data_send = $"{Str}\r\n";
-        byte[] bytes = Encoding.ASCII.GetBytes(data_send);
-        serialWeigher.SendMessage(bytes);
-      }
-    }
-
-
-
-    private DateTime lastTimeReceided = DateTime.Now;
-    private void Serial_MessageReceived(object sender, MessageReceivedEventArgs args)
-    {
-      TimeSpan tp = DateTime.Now.Subtract(lastTimeReceided);
-      if (tp.TotalMilliseconds > 50)
-      {
-        //Ver1
-        byte[] buffer = args.Data;
-        string dataWeigher = ConvertRawDataFromWeigher(buffer, buffer.Length);
-
-        if (dataWeigher.Trim() == "" || buffer.Length < 16) return;
-
-        //FIlter Do buffer ko resset
-        dataWeigher = FilterBuffer(dataWeigher);
-
-        _current_weigher_value = CvtStrToDouble(dataWeigher);
-
-        ReceivedData(_current_weigher_value);
-
-        lastTimeReceided = DateTime.Now;
-      }
-    }
-
-    #endregion
-
-
-    #region //Thư viện 2
-    public SerialPort serialPort = new SerialPort("COM1", 9600);
-    public void InitSerialPortV2()
-    {
-      try
-      {
-        string com = _serialControllers.COM;
-        int baudrate = _serialControllers.Baud;
-        DataBits databits = (DataBits)Enum.ToObject(typeof(DataBits), _serialControllers.Databits + 5);
-        Parity parity = (Parity)Enum.ToObject(typeof(Parity), _serialControllers.Parity);
-        StopBits stopBits = (StopBits)Enum.ToObject(typeof(StopBits), _serialControllers.Stopbits);
-
-        serialPort = new SerialPort(com, baudrate, Parity.Odd, 7, StopBits.One);
-        //serialPort.DataReceived += SerialPort_DataReceived;
-        serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPort_DataReceived);
-        serialPort.Open();
-      }
-      catch (Exception ex)
-      {
-        LogErrorToFileLog("Kết nối Serial: " + ex.ToString());
-      }
-    }
-
-    private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-    {
-      //if (serialPort.IsOpen)
-      //{
-      //  TimeSpan tp = DateTime.Now.Subtract(_lastupdated);
-      //  if (tp.TotalMilliseconds>100)
-      //  {
-      //    SerialPort sp = (SerialPort)sender;
-      //    if (sp != null)
-      //    {
-      //      byte[] buffer = new byte[sp.BytesToRead];
-
-      //      if (buffer.Length >= 10)
-      //      {
-      //        sp.Read(buffer, 0, buffer.Length);
-      //        string dataWeigher = ConvertRawDataFromWeigher(buffer, buffer.Length);
-
-      //        if (dataWeigher.Trim()!="" && dataWeigher.Trim() != "+" && dataWeigher.Trim() != "-" && dataWeigher.Trim() != ".")
-      //        {
-      //          //dataWeigher = "+31.53+31.53+31.53+3----dhh1511.53";
-      //          //case 31.51+0
-      //          //"+31.46+3"
-      //          //"+31.51+31"
-
-      //          //Check kí tự cuối
-      //          bool c = char.IsDigit(dataWeigher[dataWeigher.Length - 1]);
-      //          if (!c)
-      //          {
-      //            dataWeigher = dataWeigher.Substring(0, dataWeigher.Length - 2);
-      //          }
-
-      //          dataWeigher = FilterBuffer(dataWeigher);
-
-      //          if (dataWeigher!="")
-      //          {
-      //            _current_weigher_value = CvtStrToDouble(dataWeigher);
-
-      //            if (_current_weigher_value == -1 || _current_weigher_value<10)
-      //            {
-      //              string dataWeigherTest = ConvertRawDataFromWeigher(buffer, buffer.Length);
-
-      //              bool cc = char.IsDigit(dataWeigherTest[dataWeigherTest.Length - 1]);
-      //              if (!cc)
-      //              {
-      //                dataWeigherTest = dataWeigherTest.Substring(0, dataWeigherTest.Length - 2);
-      //              }
-      //              dataWeigherTest = FilterBuffer(dataWeigherTest);
-      //            }
-
-      //            if (_current_weigher_value >= 0)
-      //            {
-      //              FilterDataWeigher(_current_weigher_value);
-      //            }
-
-      //            DisplayValueWeigher(_current_weigher_value);
-      //          }   
-      //        }  
-      //      }
-      //    }
-
-      //    _lastupdated = DateTime.Now;
-      //  }   
-      //}
-    }
-
-    #endregion
 
 
     #region // Cân Tcp
@@ -572,7 +298,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
       }
     }
 
@@ -596,8 +322,11 @@ namespace SyngentaWeigherQC.Control
           }
           else
           {
-            var result = ParseDataWeight(dataWeigher);
-            ReceivedData(result.Weight);
+            //Đã có data
+            var result = eWeightHelper.ParseDataWeight(dataWeigher);
+            //ReceivedData(result.Weight);
+
+            OnSendValueWeight?.Invoke(result.Weight, eStatusModeWeight);
           }
         }
       }
@@ -619,52 +348,38 @@ namespace SyngentaWeigherQC.Control
 
     }
 
-    private static (string Name, double Weight) ParseDataWeight(string input)
-    {
-      input = input.Trim('\u0002', '\u0003');
-
-      var match = Regex.Match(input, @"(\d+\.\d+)g");
-
-      if (match.Success)
-      {
-        string name = match.Groups[1].Value.Trim();
-
-        double weight = 0;
-        double.TryParse(name, out weight);
-
-        return (name, weight);
-      }
-
-      throw new ArgumentException("Format Data Weight Fail");
-    }
-
-
-
-    #endregion
-
-    private void _timerSendRequestWeigher_Elapsed(object sender, ElapsedEventArgs e)
+    private void FilterDataWeigherTcp(double current_weigher_value)
     {
       try
       {
-        _timerSendRequestWeigher.Stop();
+        if (_currentProduct == null) return;
 
-        //string data_send = "ESC P" + "\r\n";
-        //byte[] byteArray = Encoding.UTF8.GetBytes(data_send);
+        //Save DB
+        if (_eWeigherMode == eWeigherMode.Normal && _readyReceidDataWeigher == eReadyReceidWeigher.Yes)
+        {
+          //SaveDataWeigher(current_weigher_value);
+        }
+        else if (_eWeigherMode == eWeigherMode.SampleRework)
+        {
+          OnSendDataReWeigher?.Invoke(current_weigher_value);
+        }
+        else if (_eWeigherMode == eWeigherMode.Tare)
+        {
+          //SaveDataTareWeigher(valueFilter);
+        }
 
-        string data_send = "ESC P" + "\r\n";
-        //byte[] byteArray = Encoding.UTF8.GetBytes(data_send);
-        byte[] bytes = Encoding.ASCII.GetBytes(data_send);
-        serialWeigher.SendMessage(bytes);
+
+        FrmMain.Instance.RefeshTimeOut();
       }
       catch (Exception ex)
       {
-        LogErrorToFileLog("Send Request Weigher: " + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog("FilterDataWeigher>> " + ex.Message + "&&" + ex.StackTrace);
       }
-      finally
-      {
-        _timerSendRequestWeigher.Start();
-      }
+
     }
+    #endregion
+
+  
 
 
 
@@ -675,9 +390,9 @@ namespace SyngentaWeigherQC.Control
       {
         if (eModeCommunication == eModeCommunication.Serial)
         {
-          _listPortPC = SerialPort.GetPortNames();
-          bool isConnectSerrial = (_listPortPC.Contains(_serialControllers.COM));
-          //FrmHome.Instance.ConnectSerialWeigher(isConnectSerrial);
+          //_listPortPC = SerialPort.GetPortNames();
+          //bool isConnectSerrial = (_listPortPC.Contains(_serialControllers.COM));
+          ////FrmHome.Instance.ConnectSerialWeigher(isConnectSerrial);
         }
         else if (eModeCommunication == eModeCommunication.TcpClient)
         {
@@ -711,13 +426,13 @@ namespace SyngentaWeigherQC.Control
           }
           catch (Exception ex)
           {
-            LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
+            eLoggerHelper.LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
           }
         }
       }
       catch (Exception ex)
       {
-        LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex.ToString());
       }
       finally
       {
@@ -735,7 +450,7 @@ namespace SyngentaWeigherQC.Control
 
       if (eModeCommunication == eModeCommunication.Serial)
       {
-        FilterDataWeigher(dataWeigherReceid);
+        //FilterDataWeigher(dataWeigherReceid);
       }
       else
       {
@@ -817,29 +532,7 @@ namespace SyngentaWeigherQC.Control
       return subString;
     }
 
-    public void DeInitCommunication()
-    {
-      try
-      {
-        lock (serialWeigher)
-        {
-          if (eModeCommunication == eModeCommunication.Serial)
-          {
-            if (serialWeigher.IsConnected)
-              serialWeigher.Disconnect();
-          }
-          else if (eModeCommunication == eModeCommunication.TcpClient)
-          {
-            //if (commonTCPClient.Connected)
-            //  commonTCPClient.Disconnect();
-          }
-        }
-      }
-      catch (Exception ex)
-      {
-        LogErrorToFileLog("Kết nối Serial: " + ex.ToString());
-      }
-    }
+    
 
 
     public void InitDB()
@@ -850,7 +543,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog($"Lỗi khi khởi tạo chương trình, vui lòng khởi động lại!" + ex.ToString());
+        eLoggerHelper.LogErrorToFileLog($"Lỗi khi khởi tạo chương trình, vui lòng khởi động lại!" + ex.ToString());
         System.Windows.Forms.MessageBox.Show($"Lỗi khi khởi tạo chương trình, vui lòng khởi động lại!", "Lỗi");
         Environment.Exit(2);
       }
@@ -859,10 +552,10 @@ namespace SyngentaWeigherQC.Control
 
 
     //DB Data
-    
+
     public SerialControllers _serialControllers { get; set; } = new SerialControllers();
 
-    
+
     public List<Production> _listAllProductsContainIsDelete { get; set; } = new List<Production>();
     public List<HistoricalChangeMasterData> _listChangeProductsLogging { get; set; } = new List<HistoricalChangeMasterData>();
 
@@ -877,8 +570,8 @@ namespace SyngentaWeigherQC.Control
     public List<Sample> _listSamplesCurrent { get; set; } = new List<Sample>();
     public List<Sample> _listDataSamples { get; set; } = new List<Sample>();
 
-    public List<Datalog> _listDatalogs { get; set; } = new List<Datalog>();
-    public Datalog _datalogsRowNew { get; set; } = new Datalog();
+    public List<DatalogWeight> _listDatalogs { get; set; } = new List<DatalogWeight>();
+    public DatalogWeight _datalogsRowNew { get; set; } = new DatalogWeight();
     public int groupId_DB { get; set; } = 1;
     public int stt_Datalog_DB { get; set; } = 0;
     public int datalogId_Sample_DB { get; set; } = 0;
@@ -1001,170 +694,16 @@ namespace SyngentaWeigherQC.Control
 
 
 
-    //Processing Data
-    private double[] listDataWeighers = new double[1000];
-    private int cnt = 0;
-    private void FilterDataWeigher(double current_weigher_value)
-    {
-      try
-      {
-        if (_currentProduct == null) return;
+   
 
-        if (current_weigher_value > _currentProduct.LowerLimitFinal / 2 && current_weigher_value < _currentProduct.UpperLimitFinal * 2)
-        {
-          listDataWeighers[cnt] = current_weigher_value;
-          cnt++;
-          if (cnt >= 1000) cnt = 0;
-        }
-        else if (current_weigher_value <= 0.1)
-        {
-          // Sử dụng Dictionary để đếm tần suất xuất hiện của từng giá trị
-          Dictionary<double, int> frequencyCounter = listDataWeighers.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
-
-          //foreach (double value in listDataWeighers)
-          //{
-          //  if (frequencyCounter.ContainsKey(value))
-          //  {
-          //    frequencyCounter[value]++;
-          //  }
-          //  else
-          //  {
-          //    frequencyCounter.Add(value, 1);
-          //  }
-          //}
-
-          double valueFilter = 0;
-          if (frequencyCounter.Count > 0)
-          {
-            valueFilter = frequencyCounter.Where(x => x.Key > 0.1).OrderByDescending(x => x.Value).First().Key;
-          }
-
-          //Save DB
-          if (_eWeigherMode == eWeigherMode.Normal && _readyReceidDataWeigher == eReadyReceidWeigher.Yes)
-          {
-            SaveDataWeigher(valueFilter);
-          }
-          else if (_eWeigherMode == eWeigherMode.SampleRework)
-          {
-            OnSendDataReWeigher?.Invoke(valueFilter);
-          }
-          else if (_eWeigherMode == eWeigherMode.Tare)
-          {
-            //SaveDataTareWeigher(valueFilter);
-          }
-
-          cnt = 0;
-          listDataWeighers = new double[1000];
-          FrmMain.Instance.RefeshTimeOut();
-        }
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog("FilterDataWeigher>> " + ex.Message + "&&" + ex.StackTrace);
-      }
-
-    }
-
-    private void FilterDataWeigherTcp(double current_weigher_value)
-    {
-      try
-      {
-        if (_currentProduct == null) return;
-
-        //Save DB
-        if (_eWeigherMode == eWeigherMode.Normal && _readyReceidDataWeigher == eReadyReceidWeigher.Yes)
-        {
-          SaveDataWeigher(current_weigher_value);
-        }
-        else if (_eWeigherMode == eWeigherMode.SampleRework)
-        {
-          OnSendDataReWeigher?.Invoke(current_weigher_value);
-        }
-        else if (_eWeigherMode == eWeigherMode.Tare)
-        {
-          //SaveDataTareWeigher(valueFilter);
-        }
+    
 
 
-        FrmMain.Instance.RefeshTimeOut();
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog("FilterDataWeigher>> " + ex.Message + "&&" + ex.StackTrace);
-      }
-
-    }
+    public DatalogWeight datalogCurrent = new DatalogWeight();
 
 
-    public Datalog datalogCurrent = new Datalog();
 
-    private async void SaveDataWeigher(double value)
-    {
-      try
-      {
-        DateTime dt_fileDB = GetDataTimeFileDB(DateTime.Now);
-
-        Sample sampleUpdate = _listSamplesCurrent?.Where(x => x.isHasValue == false && x.isEnable).FirstOrDefault();
-
-        if (sampleUpdate != null)
-        {
-          sampleUpdate.Value = value;
-          sampleUpdate.PreviouValue = value;
-          sampleUpdate.isHasValue = true;
-          sampleUpdate.UpdatedAt = DateTime.Now;
-
-          //Update lại db
-          await Update(sampleUpdate, dt_fileDB);
-          OnSendUpdateDataDone?.Invoke();
-        }
-        else
-        {
-          ++stt_Datalog_DB;
-          ++datalogId_Sample_DB;
-          await CreateBlockSampleData();
-          await CreateDatalog();
-          SaveDataWeigher(value);
-        }
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-      }
-    }
-
-
-    public async Task ConfirmTareDone(List<Tare> dataTares)
-    {
-      //Save DB
-      await AddRangeTare(dataTares);
-
-      //Update DB Config
-      if (_modeTare == eModeTare.TareWithLabel)
-      {
-        _inforValueSettingStation.Min = dataTares[0].ValueLower_withlabel;
-        _inforValueSettingStation.Target = dataTares[0].ValueStandard_withlabel;
-        _inforValueSettingStation.Max = dataTares[0].ValueUpper_withlabel;
-      }
-      else
-      {
-        _inforValueSettingStation.Min = dataTares[0].ValueLower_nolabel;
-        _inforValueSettingStation.Target = dataTares[0].ValueStandard_nolabel;
-        _inforValueSettingStation.Max = dataTares[0].ValueUpper_nolabel;
-      }
-
-      _inforValueSettingStation.IsChangeProductNoTare = false;
-      _inforValueSettingStation.ModeTare = (int)_modeTare;
-      _inforValueSettingStation.ValueAvgTare = dataTares[0].ValueAvg;
-      _inforValueSettingStation.UpdatedAt = DateTime.Now;
-      await UpdateValueSetting(_inforValueSettingStation);
-
-      //Update Home
-      LoadInforTareHome();
-      //FrmHome.Instance.ChangeProduct(false);
-      FrmMain.Instance.UpdateInforModeTare(_inforValueSettingStation.ModeTare);
-      _groupIdCurrentTare++;
-    }
-
+   
     private void LoadInforTareHome()
     {
       if (_inforValueSettingStation.ValueAvgTare != 0)
@@ -1194,37 +733,7 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    private async Task CreateDatalog()
-    {
-      try
-      {
-        //Load all Sample và Datalog
-        DateTime dt_fileDB = GetDataTimeFileDB(DateTime.Now);
-
-        var user = _listShiftLeader?.Where(x => x.IsEnable == true).FirstOrDefault();
-        int userId = (user != null) ? user.Id : -1;
-        Datalog datalog = new Datalog()
-        {
-          StationId = (_stationCurrent != null) ? _stationCurrent.Id : -1,
-          GroupId = groupId_DB,
-          ShiftId = _shiftIdCurrent,
-          No = stt_Datalog_DB,
-          TareValue = _inforValueSettingStation.ValueAvgTare,
-          IsTareWithLabel = (eModeTare)Enum.ToObject(typeof(eModeTare), _inforValueSettingStation.ModeTare),
-          UserId = userId,
-          ProductId = _currentProduct.Id,
-          CreatedAt = DateTime.Now,
-          UpdatedAt = DateTime.Now,
-        };
-
-        await AddDatalog(datalog, dt_fileDB);
-        datalogCurrent = datalog;
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-      }
-    }
+    
 
     private async Task CreateBlockSampleData()
     {
@@ -1293,7 +802,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex.ToString());
       }
     }
 
@@ -1347,9 +856,6 @@ namespace SyngentaWeigherQC.Control
     {
       try
       {
-        FrmMain.Instance.OnSendChooseProduct += Instance_OnSendChooseProduct;
-        FrmSettingDevice.Instance.OnSendTestSendSerial += Instance_OnSendTestSendSerial;
-
         _timerRealTimeShift.Interval = 1000;
         _timerRealTimeShift.Elapsed += _timerRealTimeShift_Elapsed;
         _timerRealTimeShift.Start();
@@ -1364,7 +870,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex.ToString());
       }
 
     }
@@ -1381,21 +887,10 @@ namespace SyngentaWeigherQC.Control
         string nameShift = (_shiftIdCurrent != -1) ? _listShift?.Where(x => x.CodeShift == _shiftIdCurrent).Select(x => x.Name).FirstOrDefault() : "";
         FrmMain.Instance.UpdateShiftUI(nameShift);
 
-        //Check Qua ca
-        if (_shiftIdCurrent != _shiftIdLast && _shiftIdCurrent != -1)
-        {
-          CloseListSample();
-          stt_Datalog_DB = 0;
-          ++groupId_DB;
-
-          _shiftIdLast = _shiftIdCurrent;
-
-          //FrmHome.Instance.numberChangeDataSampleForShift = 0;
-        }
       }
       catch (Exception ex)
       {
-        LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex.ToString());
       }
       finally { _timerRealTimeShift.Start(); }
     }
@@ -1445,7 +940,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        LogErrorToFileLog(ex.ToString());
+        eLoggerHelper.LogErrorToFileLog(ex.ToString());
       }
       finally { _timerRealTimeCheckChangeDay.Start(); }
     }
@@ -1468,11 +963,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-      }
-      finally
-      {
-
+        eLoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -1489,33 +980,6 @@ namespace SyngentaWeigherQC.Control
       OnSendChangeLine?.Invoke(_listProductsWithStation);
     }
 
-
-    private void Instance_OnSendChooseProduct(Production production)
-    {
-      CloseListSample();
-      stt_Datalog_DB = 0;
-      groupId_DB++;
-    }
-
-    private async void CloseListSample()
-    {
-      //Bật cờ các sample chưa fill data
-      if (_listSamplesCurrent.Count > 0)
-      {
-        for (int i = 0; i < _listSamplesCurrent.Count; i++)
-        {
-          if (!_listSamplesCurrent[i].isHasValue)
-            _listSamplesCurrent[i].isEnable = false;
-        }
-      }
-
-      await UpdateRangeSample(_listSamplesCurrent);
-    }
-
-    public void SendTimeout()
-    {
-      OnSendRequestOffApp?.Invoke();
-    }
 
 
     public bool CheckRole(ePermit permit)
@@ -1539,7 +1003,7 @@ namespace SyngentaWeigherQC.Control
 
 
     //DB
-    
+
 
     public async Task AddProduct(Production productions)
     {
@@ -1598,7 +1062,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-   
+
     public async Task UpdateStation(List<InforLine> stations)
     {
       using (var context = new ConfigDBContext())
@@ -1618,7 +1082,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-   
+
 
     public async Task<SerialControllers> LoadSerialControlSetting()
     {
@@ -1829,17 +1293,17 @@ namespace SyngentaWeigherQC.Control
 
 
     //Datalog
-    public async Task<List<Datalog>> LoadAllDatalogs(DateTime dt)
+    public async Task<List<DatalogWeight>> LoadAllDatalogs(DateTime dt)
     {
       using (var context = new ConfigDBContext())
       {
-        var repo = new GenericRepository<Datalog, ConfigDBContext>(context);
+        var repo = new GenericRepository<DatalogWeight, ConfigDBContext>(context);
         return await repo.GetAllAsync();
       }
     }
 
 
-    public async Task<List<Datalog>> LoadAllDatalogsByProductId(int productId, DateTime dt)
+    public async Task<List<DatalogWeight>> LoadAllDatalogsByProductId(int productId, DateTime dt)
     {
       using (var context = new ConfigDBContext())
       {
@@ -1848,11 +1312,11 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public async Task AddDatalog(Datalog datalog, DateTime dt)
+    public async Task AddDatalog(DatalogWeight datalog, DateTime dt)
     {
       using (var context = new ConfigDBContext())
       {
-        var repo = new GenericRepository<Datalog, ConfigDBContext>(context);
+        var repo = new GenericRepository<DatalogWeight, ConfigDBContext>(context);
         await repo.Add(datalog);
       }
     }
@@ -1919,7 +1383,7 @@ namespace SyngentaWeigherQC.Control
 
 
     //Excel Report
-    public async Task<List<Datalog>> GetDatalogReport(DateTime dt)
+    public async Task<List<DatalogWeight>> GetDatalogReport(DateTime dt)
     {
       using (var context = new ConfigDBContext())
       {

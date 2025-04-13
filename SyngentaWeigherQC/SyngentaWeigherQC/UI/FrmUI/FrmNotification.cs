@@ -23,26 +23,26 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     public void ShowMessage(string information, eMsgType nameImage)
     {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          ShowMessage(information, nameImage);
-        }));
-        return;
-      }
-      try
-      {
-        lbInformation.Text = information;
-        this.picIcon.Image = new Bitmap(Application.StartupPath + $"\\Image\\{nameImage}.png");
-        timer1.Enabled = true;
-        this.ShowDialog();
-      }
-      catch (Exception ex)
-      {
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        Console.WriteLine(ex.Message);
-      }
+      //if (this.InvokeRequired)
+      //{
+      //  this.Invoke(new Action(() =>
+      //  {
+      //    ShowMessage(information, nameImage);
+      //  }));
+      //  return;
+      //}
+      //try
+      //{
+      //  lbInformation.Text = information;
+      //  this.picIcon.Image = new Bitmap(Application.StartupPath + $"\\Image\\{nameImage}.png");
+      //  timer1.Enabled = true;
+      //  this.ShowDialog();
+      //}
+      //catch (Exception ex)
+      //{
+      //  AppCore.Ins.LogErrorToFileLog(ex.ToString());
+      //  Console.WriteLine(ex.Message);
+      //}
     }
 
     private void timer1_Tick(object sender, EventArgs e)

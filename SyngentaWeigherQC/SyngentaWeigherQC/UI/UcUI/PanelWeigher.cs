@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;
 using Irony.Parsing;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.eUI;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+using Production = SyngentaWeigherQC.Models.Production;
 
 namespace SyngentaWeigherQC.UI.UcUI
 {
@@ -43,7 +46,36 @@ namespace SyngentaWeigherQC.UI.UcUI
       this.ucProductionDataInforMax.SetValue = Upper.ToString();
       this.ucProductionDataInforMin.SetValue = Lower.ToString();
     }
+    public void SetInforTare(Production production, eModeTare eModeTare, DateTime dateTime)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetInforTare(production, eModeTare, dateTime);
+        }));
+        return;
+      }
 
+      this.btTareWithLabel.Text = "Kiểu Tare: " + eNumHelper.GetDescription(eModeTare);
+      this.lblTareLastUpdated.Text = $"Last updated: {dateTime.ToString("yyyy/MM/dd HH:mm:ss")}";
+
+      if (eModeTare == eModeTare.TareWithLabel)
+      {
+        this.lblTareUpperLimit.Text = $" : {production.Tare_with_label_upperlimit}";
+        this.lblTareLowerLimit.Text = $" : {production.Tare_with_label_lowerlimit}";
+        this.lblTareStandard.Text = $" : {production.Tare_with_label_standard}";
+        
+      }
+      else
+      {
+        this.lblTareUpperLimit.Text = $" : {production.Tare_no_label_upperlimit}";
+        this.lblTareLowerLimit.Text = $" : {production.Tare_no_label_lowerlimit}";
+        this.lblTareStandard.Text = $" : {production.Tare_no_label_standard}";
+      }  
+
+    
+    }
     public void SetValueWeigherRealTime(double value, eValuate eValuate)
     {
       if (this.InvokeRequired)

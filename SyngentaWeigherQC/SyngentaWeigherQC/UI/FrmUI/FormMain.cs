@@ -1,4 +1,5 @@
 ﻿using SynCheckWeigherLoggerApp.SettingsViews;
+using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -123,6 +124,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnHome_Click(object sender, EventArgs e)
     {
+      AppCore.Ins.eStatusModeWeight = eNum.eUI.eStatusModeWeight.OverView;
+      AppCore.Ins.inforLineOperation = null;
       ChangePage(AppModulSupport.OverView);
     }
 
@@ -146,6 +149,40 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       _InforLine = inforLine;
       ChangePage(AppModulSupport.Home);
+    }
+
+    private void timer1_Tick(object sender, EventArgs e)
+    {
+      Test();
+    }
+
+
+    private void Test()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          Test();
+        }));
+        return;
+      }
+
+      string content = "";
+      if (AppCore.Ins.inforLineOperation==null)
+      {
+        content += "OverView";
+      }
+      else
+      {
+        content += AppCore.Ins.inforLineOperation.Name;
+      }
+
+      label4.Text = content + "--" + AppCore.Ins.eStatusModeWeight.ToString();
+  
+
+
+
     }
   }
 }

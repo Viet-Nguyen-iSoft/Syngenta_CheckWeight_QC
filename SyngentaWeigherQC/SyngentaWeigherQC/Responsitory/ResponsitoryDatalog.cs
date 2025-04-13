@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace SyngentaWeigherQC.Responsitory
 {
-  public class ResponsitoryDatalog : GenericRepository<Datalog, ConfigDBContext>
+  public class ResponsitoryDatalog : GenericRepository<DatalogWeight, ConfigDBContext>
   {
     public ResponsitoryDatalog(DbContext context) : base(context)
     {
 
     }
 
-    public override async Task<bool> UpdateDatalog(Datalog datalog)
+    public override async Task<bool> UpdateDatalog(DatalogWeight datalog)
     {
       Context.Database.BeginTransaction();
       try
       {
-        this.Context.Set<Datalog>().Update(datalog);
+        this.Context.Set<DatalogWeight>().Update(datalog);
         await this.Context.SaveChangesAsync();
         Context.Database.CommitTransaction();
         return true;
@@ -29,83 +29,10 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return false;
+        throw ex;
       }
     }
 
-    public override async Task<List<Datalog>> LoadAllDatalogsByGroupId(int groupId)
-    {
-      Context.Database.BeginTransaction();
-      try
-      {
-        List<Datalog> data =await this.Context.Set<Datalog>().Where(x=>x.GroupId == groupId).ToListAsync();
-        await this.Context.SaveChangesAsync();
-        Context.Database.CommitTransaction();
-        return data;
-      }
-      catch (Exception ex)
-      {
-        Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return null;
-      }
-    }
-
-    public override async Task<List<Datalog>> LoadAllDatalogsByProductId(int productId)
-    {
-      Context.Database.BeginTransaction();
-      try
-      {
-        List<Datalog> data = await this.Context.Set<Datalog>().Where(x => x.ProductId == productId).ToListAsync();
-        await this.Context.SaveChangesAsync();
-        Context.Database.CommitTransaction();
-        return data;
-      }
-      catch (Exception ex)
-      {
-        Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return null;
-      }
-    }
-
-    public override async Task<bool> CheckGroupIdDatalog(int groupId)
-    {
-      Context.Database.BeginTransaction();
-      try
-      {
-        Datalog data = this.Context.Set<Datalog>().Where(x => x.GroupId == groupId).FirstOrDefault();
-        await this.Context.SaveChangesAsync();
-        Context.Database.CommitTransaction();
-        return (data != null);
-      }
-      catch (Exception ex)
-      {
-        Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return false;
-      }
-    }
-
-
-    public override async Task<List<Datalog>> LoadDatalogsByShiftId(int shiftId)
-    {
-      Context.Database.BeginTransaction();
-      try
-      {
-        List<Datalog> data = await this.Context.Set<Datalog>().Where(x => x.ShiftId == shiftId).ToListAsync();
-        await this.Context.SaveChangesAsync();
-        Context.Database.CommitTransaction();
-        return data;
-      }
-      catch (Exception ex)
-      {
-        Context.Database.RollbackTransaction();
-        AppCore.Ins.LogErrorToFileLog(ex.ToString());
-        return null;
-      }
-    }
 
 
 

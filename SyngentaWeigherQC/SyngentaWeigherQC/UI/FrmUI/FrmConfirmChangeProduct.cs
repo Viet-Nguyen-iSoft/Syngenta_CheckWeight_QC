@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
-  public partial class FrmInformation : Form
+  public partial class FrmConfirmChangeProduct : Form
   {
     public delegate void SendSendOKClicked(object sender);
     public event SendSendOKClicked OnSendOKClicked;
@@ -20,17 +20,17 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public delegate void SendCancelClicked(object sender);
     public event SendCancelClicked OnSendCancelClicked;
 
-    public FrmInformation()
+    public FrmConfirmChangeProduct()
     {
       InitializeComponent();
     }
 
-    public FrmInformation(string content):this()
+    public FrmConfirmChangeProduct(string content):this()
     {
       this.Tag = content;
       this.lbInformation.Text = content;
     }
-    public FrmInformation(Production product) : this()
+    public FrmConfirmChangeProduct(Production product) : this()
     {
       this.Tag = product;
       this.lbInformation.Text = product.Name;

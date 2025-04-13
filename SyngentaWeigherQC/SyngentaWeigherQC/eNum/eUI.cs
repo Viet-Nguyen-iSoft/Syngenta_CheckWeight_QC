@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,9 +125,17 @@ namespace SyngentaWeigherQC.eNum
 
     public enum eModeTare
     {
+      [Description("Không nhãn")]
       TareNoLabel,
+      [Description("Có nhãn")]
       TareWithLabel,
-      TareSachet,
+    }
+
+    public enum eStatusModeWeight
+    {
+      OverView,
+      WeightForLine,
+      TareForLine,
     }
 
     public enum ePermit

@@ -1,5 +1,7 @@
 ﻿using Irony.Parsing;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.UI.FrmUI;
 using System;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.eUI;
 using static SyngentaWeigherQC.UI.UcUI.UcOverViewMachine;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Production = SyngentaWeigherQC.Models.Production;
 
 
@@ -46,6 +49,9 @@ namespace SyngentaWeigherQC.UI.UcUI
 
       //Ten line
       Title = this._Line.Name;
+
+      //Loại Tare
+      TypeTare = this._Line.eModeTare;
 
       //Check Chọn Product
       var listProducts = this._Line.Productions.ToList();
@@ -152,11 +158,46 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
     }
 
+    public void SetInforTare()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetInforTare();
+        }));
+        return;
+      }
+
+      this.lbTypeTare.Text = eNumHelper.GetDescription(this._Line.eModeTare);
+
+      if (this._Line.eModeTare == eModeTare.TareWithLabel)
+      {
+        this.lbTareUpper.Text = $"{_ProductCurrent.Tare_with_label_upperlimit}";
+        this.lbTareTarget.Text = $"{_ProductCurrent.Tare_with_label_standard}";
+        this.lbTareLower.Text = $"{_ProductCurrent.Tare_with_label_lowerlimit}";
+      }
+      else
+      {
+        this.lbTareUpper.Text = $"{_ProductCurrent.Tare_no_label_upperlimit}";
+        this.lbTareTarget.Text = $"{_ProductCurrent.Tare_no_label_standard}";
+        this.lbTareLower.Text = $"{_ProductCurrent.Tare_no_label_lowerlimit}";
+      }
+    }
+
     public string Title
     {
       set
       {
         this.lbTitle.Text = value;
+      }
+    }
+
+    public eModeTare TypeTare
+    {
+      set
+      {
+        this.lbTypeTare.Text = eNumHelper.GetDescription(value); ;
       }
     }
 
@@ -215,7 +256,7 @@ namespace SyngentaWeigherQC.UI.UcUI
 
         if (productChoose != null)
         {
-          FrmInformation frmInformation = new FrmInformation(productChoose);
+          FrmConfirmChangeProduct frmInformation = new FrmConfirmChangeProduct(productChoose);
           frmInformation.OnSendOKClicked += FrmInformation_OnSendOKClicked;
           frmInformation.OnSendCancelClicked += FrmInformation_OnSendCancelClicked;
           frmInformation.ShowDialog();
@@ -227,7 +268,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex);
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi sản phẩm thất bại !", eMsgType.Error);
       }
       finally
@@ -260,7 +301,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex);
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi sản phẩm thất bại !", eMsgType.Error);
       }
     }
@@ -281,7 +322,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex);
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi trưởng ca thất bại !", eMsgType.Error);
       }
     }
@@ -300,7 +341,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        AppCore.Ins.LogErrorToFileLog(ex);
+        eLoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi loại ca thất bại !", eMsgType.Error);
       }
     }

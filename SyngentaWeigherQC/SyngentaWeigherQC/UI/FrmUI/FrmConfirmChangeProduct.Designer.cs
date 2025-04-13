@@ -1,6 +1,6 @@
 ﻿namespace SyngentaWeigherQC.UI.FrmUI
 {
-  partial class FrmInformation
+  partial class FrmConfirmChangeProduct
   {
     /// <summary>
     /// Required designer variable.
@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInformation));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfirmChangeProduct));
       this.label2 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
