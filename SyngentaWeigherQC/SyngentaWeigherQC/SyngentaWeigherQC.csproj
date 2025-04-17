@@ -285,7 +285,9 @@
     <Compile Include="Control\AppCoreBackEnd.cs" />
     <Compile Include="Control\AppCoreUI.cs" />
     <Compile Include="Control\CommunicationDB.cs" />
+    <Compile Include="Control\CommunicationTcp.cs" />
     <Compile Include="Control\DataBase.cs" />
+    <Compile Include="DTO\TableDatalogDTO.cs" />
     <Compile Include="Helper\eLoggerHelper.cs" />
     <Compile Include="Helper\eNumHelper.cs" />
     <Compile Include="Helper\eWeightHelper.cs" />
@@ -302,20 +304,20 @@
       <DependentUpon>RJTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Logs\LogHelper.cs" />
-    <Compile Include="Models\ChartLineData.cs" />
-    <Compile Include="Models\Consumption.cs" />
+    <Compile Include="Models\NewFolder1\ChartLineData.cs" />
+    <Compile Include="Models\NewFolder1\Consumption.cs" />
     <Compile Include="DTO\DataDateGroupByProduct.cs" />
     <Compile Include="DTO\DataChartReport.cs" />
     <Compile Include="DTO\DatalogDgv.cs" />
     <Compile Include="Models\DatalogTare.cs" />
-    <Compile Include="Models\DataReportByDate.cs" />
-    <Compile Include="Models\ExcelClassInforProduct.cs" />
-    <Compile Include="Models\ExportManual.cs" />
-    <Compile Include="Models\GroupProductData.cs" />
-    <Compile Include="Models\InforValueSettingStation.cs" />
-    <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\NewFolder1\DataReportByDate.cs" />
+    <Compile Include="Models\NewFolder1\ExcelClassInforProduct.cs" />
+    <Compile Include="Models\NewFolder1\ExportManual.cs" />
+    <Compile Include="Models\NewFolder1\GroupProductData.cs" />
+    <Compile Include="Models\NewFolder1\InforValueSettingStation.cs" />
+    <Compile Include="Models\NewFolder1\Report.cs" />
     <Compile Include="DTO\SampleByProductId.cs" />
-    <Compile Include="Models\Time.cs" />
+    <Compile Include="Models\NewFolder1\Time.cs" />
     <Compile Include="Responsitory\GenericRepository.cs" />
     <Compile Include="eNum\eUI.cs" />
     <Compile Include="FrmMain.cs">
@@ -326,20 +328,20 @@
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\DatalogWeight.cs" />
-    <Compile Include="Models\DbStore.cs" />
-    <Compile Include="Models\HistoricalChangeMasterData.cs" />
+    <Compile Include="Control\DbStore.cs" />
+    <Compile Include="Models\NewFolder1\HistoricalChangeMasterData.cs" />
     <Compile Include="Models\Production.cs" />
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\Sample.cs" />
-    <Compile Include="Models\SerialControllers.cs" />
+    <Compile Include="Models\NewFolder1\Roles.cs" />
+    <Compile Include="Models\NewFolder1\Sample.cs" />
+    <Compile Include="Models\NewFolder1\SerialControllers.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\ShiftType.cs" />
     <Compile Include="Models\InforLine.cs" />
-    <Compile Include="Models\Tare.cs" />
+    <Compile Include="Models\NewFolder1\Tare.cs" />
     <Compile Include="Models\ShiftLeader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Responsitory\ResponsitoryDatalog.cs" />
+    <Compile Include="Responsitory\ResponsitoryDatalogWeight.cs" />
     <Compile Include="Responsitory\ResponsitoryHistoricalChangeMasterData.cs" />
     <Compile Include="Responsitory\ResponsitoryInfoValueSettingStation.cs" />
     <Compile Include="Responsitory\ResponsitoryProducts.cs" />
@@ -349,8 +351,8 @@
     <Compile Include="Responsitory\ResponsitoryShifts.cs" />
     <Compile Include="Responsitory\ResponsitoryShiftTypes.cs" />
     <Compile Include="Responsitory\ResponsitoryInforLines.cs" />
-    <Compile Include="Models\ResponsitoryUser.cs" />
-    <Compile Include="Models\StatisticalData.cs" />
+    <Compile Include="Models\NewFolder1\ResponsitoryUser.cs" />
+    <Compile Include="Models\NewFolder1\StatisticalData.cs" />
     <Compile Include="UI\Filter\FrmFilterDate.cs">
       <SubType>Form</SubType>
     </Compile>

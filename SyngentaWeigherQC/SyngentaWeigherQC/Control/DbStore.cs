@@ -22,27 +22,36 @@ namespace SyngentaWeigherQC.Models
 
   public class ConfigDBContext : CommonDBContext
   {
-    public DbSet<HistoricalChangeMasterData> ProductionChangedLoggings { get; set; }
+    public string DBPath = Application.StartupPath;
+
+    //Danh Sách Bảng DB
+    public DbSet<DatalogWeight> DatalogWeights { get; set; }
+    public DbSet<DatalogTare> DatalogTares { get; set; }
     public DbSet<Production> Productions { get; set; }
-    public DbSet<ShiftLeader> Users { get; set; }
-    public DbSet<Roles> Roles { get; set; }
-    public DbSet<SerialControllers> SerialControllers { get; set; }
+    public DbSet<ShiftLeader> ShiftLeaders { get; set; }
     public DbSet<Shift> Shifts { get; set; }
     public DbSet<ShiftType> ShiftTypes { get; set; }
     public DbSet<InforLine> InforLines { get; set; }
-    public DbSet<InforValueSettingStation> InforValueSettingStations { get; set; }
+    public DbSet<HistoricalChangeMasterData> ProductionChangedLoggings { get; set; }
 
 
 
-    public string DailyDbPath = Application.StartupPath;
-    public DbSet<DatalogWeight> Datalogs { get; set; }
-    public DbSet<Sample> Samples { get; set; }
-    public DbSet<Tare> Tares { get; set; }
 
-    public string ConfigDBPath = Application.StartupPath;
+
+
+    //public DbSet<Roles> Roles { get; set; }
+    //public DbSet<SerialControllers> SerialControllers { get; set; }
+    //public DbSet<InforValueSettingStation> InforValueSettingStations { get; set; }
+
+
+
+    
+    
+
+    
     public ConfigDBContext()
     {
-      ConfigDBPath += $"\\ConfigDB.sqlite";
+      DBPath += $"\\ConfigDB.sqlite";
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -62,7 +71,7 @@ namespace SyngentaWeigherQC.Models
       {
         if (!optionsBuilder.IsConfigured)
         {
-          optionsBuilder.UseSqlite($"Data Source={DailyDbPath}");
+          optionsBuilder.UseSqlite($"Data Source={DBPath}");
         }
       }
     }

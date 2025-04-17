@@ -20,6 +20,9 @@ namespace SyngentaWeigherQC.Responsitory
       return await this.Context.Set<InforLine>()
         .Include(x=>x.Productions).Where(x=>x.IsDelete==false)
         .Include(x=>x.ShiftLeader).Where(x=>x.IsDelete==false)
+        .Include(x => x.ShiftTypes)
+        .Include(x => x.DatalogWeights)
+        .Include(x => x.DatalogTares)
         .ToListAsync();
     }
 

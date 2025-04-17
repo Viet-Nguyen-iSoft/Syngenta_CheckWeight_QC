@@ -1,17 +1,14 @@
-﻿using Irony.Parsing;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.UI.FrmUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.eUI;
-using static SyngentaWeigherQC.UI.UcUI.UcOverViewMachine;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Production = SyngentaWeigherQC.Models.Production;
 
 
@@ -37,32 +34,32 @@ namespace SyngentaWeigherQC.UI.UcUI
       InitializeComponent();
     }
 
-    private InforLine _Line;
-    private Production _ProductCurrent = new Production();
+    private InforLine _inforLine;
+
     private ShiftLeader _ShiftLeaderCurrent = new ShiftLeader();
     private ShiftType _ShiftTypeCurrent = new ShiftType();
     private List<ShiftLeader> _ShiftLeaders = new List<ShiftLeader>();
     private List<ShiftType> _ShiftTypes = new List<ShiftType>();
     public UcOverViewMachine(InforLine line) : this()
     {
-      _Line = line;
+      _inforLine = line;
 
       //Ten line
-      Title = this._Line.Name;
+      Title = this._inforLine.Name;
 
       //Loại Tare
-      TypeTare = this._Line.eModeTare;
+      TypeTare = this._inforLine.eModeTare;
 
       //Check Chọn Product
-      var listProducts = this._Line.Productions.ToList();
+      var listProducts = this._inforLine.Productions.ToList();
       ListProduction = listProducts;
 
       //Check Last Product 
-      _ProductCurrent = listProducts?.FirstOrDefault(x => x.IsEnable);
-      if (_ProductCurrent != null)
+      _inforLine.ProductionCurrent = listProducts?.FirstOrDefault(x => x.IsEnable);
+      if (_inforLine.ProductionCurrent != null)
       {
-        this.cbProductions.SelectedItem = _ProductCurrent;
-        SetInforProduct(_ProductCurrent);
+        this.cbProductions.SelectedItem = _inforLine.ProductionCurrent;
+        SetInforProduct(_inforLine.ProductionCurrent);
       }
       else
       {
@@ -72,7 +69,7 @@ namespace SyngentaWeigherQC.UI.UcUI
 
     private void picIconWeight_Click(object sender, EventArgs e)
     {
-      OnSendChooseLineWeight?.Invoke(this._Line);
+      OnSendChooseLineWeight?.Invoke(this._inforLine);
     }
 
     public void SetShiftLeader()
@@ -86,7 +83,7 @@ namespace SyngentaWeigherQC.UI.UcUI
         return;
       }
 
-      _ShiftLeaderCurrent = this._ShiftLeaders?.FirstOrDefault(x => x.Id == this._Line.ShiftLeaderId);
+      _ShiftLeaderCurrent = this._ShiftLeaders?.FirstOrDefault(x => x.Id == this._inforLine.ShiftLeaderId);
       if (_ShiftLeaderCurrent != null)
       {
         this.cbShiftLeader.SelectedItem = _ShiftLeaderCurrent;
@@ -108,7 +105,7 @@ namespace SyngentaWeigherQC.UI.UcUI
         return;
       }
 
-      _ShiftTypeCurrent = this._ShiftTypes?.FirstOrDefault(x => x.Id == this._Line.ShiftTypesId);
+      _ShiftTypeCurrent = this._ShiftTypes?.FirstOrDefault(x => x.Id == this._inforLine.ShiftTypesId);
       if (_ShiftTypeCurrent != null)
       {
         this.cbShiftTypes.SelectedItem = _ShiftTypeCurrent;
@@ -138,13 +135,13 @@ namespace SyngentaWeigherQC.UI.UcUI
       this.lbTarget.Text = $"{production.StandardFinal}";
       this.lbLower.Text = $"{production.LowerLimitFinal}";
 
-      if (this._Line.eModeTare == eModeTare.TareWithLabel)
+      if (this._inforLine.eModeTare == eModeTare.TareWithLabel)
       {
         this.lbTareUpper.Text = $"{production.Tare_with_label_upperlimit}";
         this.lbTareTarget.Text = $"{production.Tare_with_label_standard}";
         this.lbTareLower.Text = $"{production.Tare_with_label_lowerlimit}";
       }
-      else if (this._Line.eModeTare == eModeTare.TareWithLabel)
+      else if (this._inforLine.eModeTare == eModeTare.TareWithLabel)
       {
         this.lbTareUpper.Text = $"{production.Tare_no_label_upperlimit}";
         this.lbTareTarget.Text = $"{production.Tare_no_label_standard}";
@@ -169,20 +166,59 @@ namespace SyngentaWeigherQC.UI.UcUI
         return;
       }
 
-      this.lbTypeTare.Text = eNumHelper.GetDescription(this._Line.eModeTare);
+      this.lbTypeTare.Text = eNumHelper.GetDescription(this._inforLine.eModeTare);
 
-      if (this._Line.eModeTare == eModeTare.TareWithLabel)
+      if (_inforLine.ProductionCurrent != null)
       {
-        this.lbTareUpper.Text = $"{_ProductCurrent.Tare_with_label_upperlimit}";
-        this.lbTareTarget.Text = $"{_ProductCurrent.Tare_with_label_standard}";
-        this.lbTareLower.Text = $"{_ProductCurrent.Tare_with_label_lowerlimit}";
+        if (this._inforLine.eModeTare == eModeTare.TareWithLabel)
+        {
+          this.lbTareUpper.Text = $"{_inforLine.ProductionCurrent.Tare_with_label_upperlimit}";
+          this.lbTareTarget.Text = $"{_inforLine.ProductionCurrent.Tare_with_label_standard}";
+          this.lbTareLower.Text = $"{_inforLine.ProductionCurrent.Tare_with_label_lowerlimit}";
+        }
+        else
+        {
+          this.lbTareUpper.Text = $"{_inforLine.ProductionCurrent.Tare_no_label_upperlimit}";
+          this.lbTareTarget.Text = $"{_inforLine.ProductionCurrent.Tare_no_label_standard}";
+          this.lbTareLower.Text = $"{_inforLine.ProductionCurrent.Tare_no_label_lowerlimit}";
+        }
       }
       else
       {
-        this.lbTareUpper.Text = $"{_ProductCurrent.Tare_no_label_upperlimit}";
-        this.lbTareTarget.Text = $"{_ProductCurrent.Tare_no_label_standard}";
-        this.lbTareLower.Text = $"{_ProductCurrent.Tare_no_label_lowerlimit}";
+        this.lbTareUpper.Text = $"---";
+        this.lbTareTarget.Text = $"---";
+        this.lbTareLower.Text = $"---";
       }
+
+    }
+
+    public void SetStatusConnectWeight(eStatusConnectWeight eStatusConnectWeight)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetStatusConnectWeight(eStatusConnectWeight);
+        }));
+        return;
+      }
+
+      this.lbStatusWeight.Text = eNumHelper.GetDescription(eStatusConnectWeight);
+
+      if (eStatusConnectWeight == eStatusConnectWeight.Connected)
+      {
+        this.lbStatusWeight.ForeColor = Color.FromArgb(0, 192, 0);
+      }
+      else if (eStatusConnectWeight == eStatusConnectWeight.Disconnnect)
+      {
+        this.lbStatusWeight.ForeColor = Color.Tomato;
+      }
+      else
+      {
+        this.lbStatusWeight.ForeColor = Color.Silver;
+      }
+
+      this._inforLine.eStatusConnectWeight = eStatusConnectWeight;
     }
 
     public string Title
@@ -190,6 +226,14 @@ namespace SyngentaWeigherQC.UI.UcUI
       set
       {
         this.lbTitle.Text = value;
+      }
+    }
+
+    public DatalogTare UpdateTareCurrent
+    {
+      set
+      {
+        this._inforLine.DatalogTareCurrent = value;
       }
     }
 
@@ -279,7 +323,7 @@ namespace SyngentaWeigherQC.UI.UcUI
 
     private void FrmInformation_OnSendCancelClicked(object sender)
     {
-      cbProductions.SelectedItem = _ProductCurrent;
+      cbProductions.SelectedItem = _inforLine.ProductionCurrent;
     }
 
     private async void FrmInformation_OnSendOKClicked(object sender)
@@ -288,16 +332,21 @@ namespace SyngentaWeigherQC.UI.UcUI
       {
         var productChoose = sender as Production;
 
-        this._Line.Productions.ToList().ForEach(x => x.IsEnable = false);
-        this._Line.Productions.Where(x => x.Id == productChoose.Id).ToList().ForEach(x => x.IsEnable = true);
-        this._Line.RequestTare = true;
-        await AppCore.Ins.UpdateRange(this._Line.Productions.ToList());
+        this._inforLine.Productions.ToList().ForEach(x => x.IsEnable = false);
+        this._inforLine.Productions.Where(x => x.Id == productChoose.Id).ToList().ForEach(x => x.IsEnable = true);
+        this._inforLine.RequestTare = true;
+        await AppCore.Ins.UpdateRange(this._inforLine.Productions.ToList());
+
+        //Cập nhật Line
+        this._inforLine.RequestTare = true;
+        await AppCore.Ins.Update(this._inforLine);
+
         await AppCore.Ins.ReloadInforLine();
 
-        _ProductCurrent = productChoose;
+        _inforLine.ProductionCurrent = productChoose;
 
-        SetInforProduct(_ProductCurrent);
-        OnSendChangeProduct?.Invoke(this._Line);
+        SetInforProduct(_inforLine.ProductionCurrent);
+        OnSendChangeProduct?.Invoke(this._inforLine);
       }
       catch (Exception ex)
       {
@@ -314,8 +363,8 @@ namespace SyngentaWeigherQC.UI.UcUI
         var data_choose = cbShiftLeader.SelectedItem as ShiftLeader;
         if (data_choose != null)
         {
-          this._Line.ShiftLeader = data_choose;
-          await AppCore.Ins.Update(this._Line);
+          this._inforLine.ShiftLeader = data_choose;
+          await AppCore.Ins.Update(this._inforLine);
 
           OnSendChangeShiftLeader?.Invoke(data_choose);
         }
@@ -333,8 +382,8 @@ namespace SyngentaWeigherQC.UI.UcUI
         var data_choose = cbShiftTypes.SelectedItem as ShiftType;
         if (data_choose != null)
         {
-          this._Line.ShiftTypes = data_choose;
-          await AppCore.Ins.Update(this._Line);
+          this._inforLine.ShiftTypes = data_choose;
+          await AppCore.Ins.Update(this._inforLine);
 
           OnSendChangeShiftType?.Invoke(data_choose);
         }
@@ -346,6 +395,6 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
     }
 
-   
+
   }
 }

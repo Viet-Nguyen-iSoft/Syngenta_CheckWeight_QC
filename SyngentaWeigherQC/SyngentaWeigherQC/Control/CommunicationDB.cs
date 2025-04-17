@@ -60,5 +60,71 @@ namespace SyngentaWeigherQC.Control
         await repo.AddRange(productions);
       }
     }
+
+    public async Task<DatalogTare> Add(DatalogTare datalogTare)
+    {
+      try
+      {
+        using (var context = new ConfigDBContext())
+        {
+          var repo = new GenericRepository<DatalogTare, ConfigDBContext>(context);
+          return await repo.Add(datalogTare);
+        }
+      }
+      catch (Exception ex)
+      {
+        throw ex;
+      }
+      
+    }
+
+
+    public async Task<DatalogWeight> Add(DatalogWeight datalogWeight)
+    {
+      try
+      {
+        using (var context = new ConfigDBContext())
+        {
+          var repo = new GenericRepository<DatalogWeight, ConfigDBContext>(context);
+          return await repo.Add(datalogWeight);
+        }
+      }
+      catch (Exception ex)
+      {
+        throw ex;
+      }
+      
+    }
+
+
+    public async Task<List<ShiftLeader>> LoadAllShiftLeader()
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
+        return await repo.GetAllAsync();
+      }
+    }
+
+    public async Task<List<DatalogWeight>> LoadAllDatalogWeight()
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryDatalogWeight(context);
+        return await repo.GetList();
+      }
+    }
+
+
+    public async Task<List<Production>> LoadAllProducts()
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryProducts(context);
+        return await repo.GetAllAsync();
+      }
+    }
+
+
   }
 }

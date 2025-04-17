@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,9 @@ namespace SyngentaWeigherQC.Models
     public int Hours { get; set; }
     public int CodeShift { get; set; }
     public int ShiftTypeId { get; set; }
+
+
+    [Browsable(false)]
+    public ICollection<DatalogWeight> DatalogWeights { get; set; }
   }
 }

@@ -21,7 +21,17 @@ namespace SyngentaWeigherQC.Models
     public InforLine InforLine { get; set; }
 
 
+
+    [Browsable(false)]
+    public int? ProductionId { get; set; }
+
+    [Browsable(false)]
+    public Production Production { get; set; }
+
+
+
     [Browsable(false)]
     public ICollection<DatalogWeight> DatalogWeights { get; set; }
+
   }
 }

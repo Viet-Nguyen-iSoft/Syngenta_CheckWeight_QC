@@ -28,7 +28,6 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -81,7 +80,6 @@
       this.btLoadHistoricalTare = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
       this.dtpDateHistoricalTare = new System.Windows.Forms.DateTimePicker();
-      this.timer1 = new System.Windows.Forms.Timer(this.components);
       this.productionDataInforLower = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
       this.productionDataInforUpper = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
       this.productionDataInforPacksize = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
@@ -210,9 +208,11 @@
       dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
       dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+      this.dataGridView1.RowHeadersVisible = false;
       dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
       this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
       this.dataGridView1.RowTemplate.Height = 30;
+      this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dataGridView1.Size = new System.Drawing.Size(603, 429);
       this.dataGridView1.TabIndex = 1;
       // 
@@ -268,7 +268,7 @@
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(78, 39);
       this.label5.TabIndex = 3;
-      this.label5.Text = "stb:";
+      this.label5.Text = "Stdev:";
       this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
       // lblAvg
@@ -756,11 +756,6 @@
       this.dtpDateHistoricalTare.Size = new System.Drawing.Size(341, 29);
       this.dtpDateHistoricalTare.TabIndex = 3;
       // 
-      // timer1
-      // 
-      this.timer1.Interval = 500;
-      this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-      // 
       // productionDataInforLower
       // 
       this.productionDataInforLower.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -893,6 +888,5 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn C1;
     private System.Windows.Forms.DataGridViewTextBoxColumn C2;
     private System.Windows.Forms.DataGridViewTextBoxColumn C3;
-    private System.Windows.Forms.Timer timer1;
   }
 }

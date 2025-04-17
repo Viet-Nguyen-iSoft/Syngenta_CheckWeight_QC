@@ -34,15 +34,17 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    public async Task Add(TEntity datas)
+    public async Task<TEntity> Add(TEntity datas)
     {
       try
       {
         await Context.Database.BeginTransactionAsync();
         await Context.Database.EnsureCreatedAsync();
-        await Context.Set<TEntity>().AddAsync(datas);
+        var rs = await Context.Set<TEntity>().AddAsync(datas);
         await Context.SaveChangesAsync();
         Context.Database.CommitTransaction();
+
+        return rs.Entity;
       }
       catch (Exception ex)
       {

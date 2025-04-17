@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+﻿using Irony.Parsing;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using SynCheckWeigherLoggerApp.DashboardViews;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.DTO;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
@@ -8,11 +10,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.eUI;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Color = System.Drawing.Color;
 using DateTime = System.DateTime;
+using Production = SyngentaWeigherQC.Models.Production;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -23,42 +28,69 @@ namespace SyngentaWeigherQC.UI.FrmUI
       InitializeComponent();
     }
 
+    public InforLine _inforLine;
+
     public FrmHome(InforLine inforLine) : this()
     {
-      _inforLine = inforLine;
+      this._inforLine = inforLine;
     }
 
     #region Singleton pattern
-    private static FrmHome _Instance = null;
-    public static FrmHome Instance(InforLine inforLine)
-    {
-      if (_Instance == null || _Instance.IsDisposed)
-      {
-        _Instance = new FrmHome(inforLine);
-      }
-      else
-      {
-        _inforLine = inforLine;
-        _Instance.SetInforLine();
-      }
-      return _Instance;
-    }
+    //public static FrmHome _Instance = null;
+    //public static FrmHome Instance(InforLine inforLine)
+    //{
+    //  if ((_Instance == null || _Instance.IsDisposed)
+    //  {
+    //    _Instance = new FrmHome(inforLine);
+    //  }
+    //  else
+    //  {
+    //    //_inforLine = inforLine;
+    //    _Instance.SetInforLine();
+    //  }
+    //  return _Instance;
+    //}
 
+
+    private static Dictionary<int , FrmHome> _instances = new Dictionary<int, FrmHome>();
+
+    public static FrmHome GetInstance(InforLine key)
+    {
+      if (!_instances.ContainsKey(key.Id) || _instances[key.Id].IsDisposed)
+      {
+        _instances[key.Id] = new FrmHome(key);
+      }
+      return _instances[key.Id];
+    }
 
     #endregion
 
 
-    private static InforLine _inforLine;
+
     private List<ShiftLeader> _ShiftLeaders = new List<ShiftLeader>();
     private List<ShiftType> _ShiftTypes = new List<ShiftType>();
 
     private Production _ProductCurrent = new Production();
     private ShiftLeader _ShiftLeaderCurrent = new ShiftLeader();
     private ShiftType _ShiftTypeCurrent = new ShiftType();
-    
+
+    public List<DatalogWeight> _listDatalogByLine { get; set; } = new List<DatalogWeight>();
+    public List<TableDatalogDTO> _listDatatableByLine { get; set; } = new List<TableDatalogDTO>();
+
+    private int _indexColData = 0;
+
+    private int _colShift = 0;
+    private int _colNo = 1;
+    private int _colDatetime = 2;
+    private int _colDataWeight = 3; //.....
+    private int _colAvgRaw= 13;
+    private int _colAvgTotal = 14;
+    private int _colEvaluate = 15;
+
+
     private void SetInforLine()
     {
-      this.lbLineName.Text = _inforLine.Name;
+      this.lbLineName.Text = _inforLine?.Name;
 
       this._ShiftLeaders = AppCore.Ins._listShiftLeader;
       this._ShiftTypes = AppCore.Ins._listShiftType;
@@ -69,7 +101,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       SetShiftType();
 
-      panelWeigher1.SetInforTare(_ProductCurrent, _inforLine.eModeTare, DateTime.Now);
+      panelWeigher1.SetInforTare(_ProductCurrent, _inforLine.eModeTare);
+      panelWeigher1.SetValueTare(_inforLine.DatalogTareCurrent);
 
       //Kiểm tra có yêu cầu Tare
       this.lbRequestTare.Visible = _inforLine.RequestTare;
@@ -207,33 +240,198 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.uCinforDataRate.SetTitle = "Tỉ lệ lỗi (%)";
       this.uCinforDataLoss.SetTitle = "Hao hụt (%)";
 
+      _listDatalogByLine = AppCore.Ins._listDatalogWeight?.Where(x=>x.InforLineId==this._inforLine.Id).ToList();
+      _listDatatableByLine = AppCore.Ins.ConvertToDTOList(_listDatalogByLine);
 
+      
       SetInforLine();
+      this.panelWeigher1.SetSatutusConnectSerialWeigher(_inforLine.eStatusConnectWeight);
 
-      return;
-     
+      //Set Tble Data cũ
+      SetDataTable(_listDatatableByLine);
 
-      numberGetRaw = Properties.Settings.Default.numberRaw;
+      AppCore.Ins.OnSendStatusConnectWeight += Ins_OnSendStatusConnectWeight;
+      AppCore.Ins.OnSendValueDatalogWeight += Ins_OnSendValueDatalogWeight;
+      AppCore.Ins.OnSendWarning += Ins_OnSendWarning;
 
-      AppCore.Ins.OnSendUpdateDataDone += Ins_OnSendUpdateDataDone;
-      AppCore.Ins.OnSendDataRealTimeWeigherHome += Ins_OnSendDataRealTimeWeigherHome;
-      FrmMain.Instance.OnSendChooseProduct += Instance_OnSendChooseProduct;
-      FrmSettingGeneral.Instance.OnSendSettingNumberRaw += Instance_OnSendSettingNumberRaw;
-      Ins_OnSendUpdateDataDone();
+    }
 
-      this.dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
-      this.dataGridView1.CellClick += DataGridView1_CellClick;
-
-      if (AppCore.Ins._inforValueSettingStation.IsChangeProductNoTare == true)
+    private void Ins_OnSendValueDatalogWeight(InforLine inforLine, DatalogWeight datalogWeight)
+    {
+      if (inforLine.Id == this._inforLine?.Id)
       {
-        //this.panelInforTare.Visible = true;
-        this.tableLayoutPanelCal.Visible = false;
+        _listDatalogByLine.Add(datalogWeight);
+
+        _listDatatableByLine = AppCore.Ins.ConvertToDTOList(_listDatalogByLine);
+
+
+        eEvaluateStatus eEvaluateStatus = AppCore.Ins.EvaluateRetureStatus(datalogWeight.Value, this._ProductCurrent);
+        panelWeigher1.SetValueWeigherRealTime(datalogWeight.Value, eEvaluateStatus);
+
+        SetDataTable(_listDatatableByLine);
+
+        //var numberColSample = _listDatatableByLine.LastOrDefault().Samples.Count();
+        //if (numberColSample >= AppCore.Ins._numberDataEachRow)
+        //{
+        //  Dictionary<int, double> sample = new Dictionary<int, double>();
+        //  sample.Add(datalogWeight.Id, datalogWeight.Value);
+
+        //  TableDatalogDTO tableDatalogDTO = new TableDatalogDTO()
+        //  {
+        //    Shift = "Shift " + datalogWeight.ShiftId,
+        //    No = _listDatatableByLine.Max(x => x.No) + 1,
+        //    DateTime = datalogWeight.CreatedAt?.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
+        //    Samples = sample,
+        //    AvgRaw = datalogWeight.Value,
+        //    AvgTotal = Math.Round(_listDatalogByLine.Average(x => x.Value), 3),
+        //    eEvaluate = AppCore.Ins.EvaluateData(datalogWeight.Value, this._ProductCurrent)
+        //  };
+
+        //  _listDatatableByLine.Add(tableDatalogDTO);
+        //}
+        //else
+        //{
+        //  _listDatatableByLine.LastOrDefault().Samples.Add(datalogWeight.Id, datalogWeight.Value);
+        //}  
+      }
+    }
+
+    public void SetDataTable(List<TableDatalogDTO> tableDatalogDTOs)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetDataTable(tableDatalogDTOs);
+        }));
+        return;
+      }
+
+      dataGridView1.Rows.Clear();
+      if (tableDatalogDTOs.Count()>0)
+      {
+        foreach (var item in tableDatalogDTOs)
+        {
+          dataGridView1.Rows.Insert(0);
+          _indexColData = item.Samples.Count();
+
+          dataGridView1.Rows[0].Cells[_colShift].Value = item.Shift;
+          dataGridView1.Rows[0].Cells[_colNo].Value = item.No;
+          dataGridView1.Rows[0].Cells[_colDatetime].Value = item.DateTime;
+
+          for (int i = 1; i <= _indexColData; i++)
+          {
+            dataGridView1.Rows[0].Cells[_colDataWeight - 1 + i].Value = item.Samples.ElementAtOrDefault(i-1).Value;
+            dataGridView1.Rows[0].Cells[_colDataWeight - 1 + i].Tag = item.Samples.ElementAtOrDefault(i - 1).Key;
+
+            var color = AppCore.Ins.EvaluateRetureColor(item.Samples.ElementAtOrDefault(i - 1).Value, this._ProductCurrent);
+            dataGridView1.Rows[0].Cells[_colDataWeight - 1 + i].Style.BackColor = color.Item1;
+            dataGridView1.Rows[0].Cells[_colDataWeight - 1 + i].Style.ForeColor = color.Item2;
+          }
+
+          dataGridView1.Rows[0].Cells[_colAvgRaw].Value = item.AvgRaw;
+          dataGridView1.Rows[0].Cells[_colAvgTotal].Value = item.AvgTotal;
+          dataGridView1.Rows[0].Cells[_colEvaluate].Value = eNumHelper.GetDescription(item.eEvaluate);
+
+          dataGridView1.Rows[0].Cells[_colEvaluate].Style.BackColor = item.eEvaluate==eEvaluate.Pass ? Color.Green : Color.Red;
+          dataGridView1.Rows[0].Cells[_colEvaluate].Style.ForeColor = Color.White;
+        }
+      }
+
+      _indexColData += 1;
+    }
+
+
+    private void Ins_OnSendWarning(InforLine inforLine, string content, eMsgType eMsgType)
+    {
+      if (inforLine.Id == this._inforLine?.Id)
+      {
+        new FrmNotification().ShowMessage(content, eMsgType);
+      }
+    }
+
+
+
+
+
+    private void ProcessingDataWeight(double value)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          ProcessingDataWeight(value);
+        }));
+        return;
+      }
+
+
+
+
+
+
+      if (this._indexColData>AppCore.Ins._numberDataEachRow)
+      {
+        this._indexColData = 1;
+
+        dataGridView1.Rows.Insert(0);
+
+        int row = 0; // dataGridView1.Rows.Add();
+
+        dataGridView1.Rows[row].Cells[_colDataWeight - 1 + this._indexColData].Value = value;
+
+        //int index = 0;
+        //dataGridView1.Rows[row].Cells[index++].Value = 1;
+        //dataGridView1.Rows[row].Cells[index++].Value = numberData++;
+        //dataGridView1.Rows[row].Cells[index++].Value = DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy");
+        //dataGridView1.Rows[row].Cells[index++].Value = value;
+        //dataGridView1.Rows[row].Cells[index++].Value = _ProductCurrent.StandardFinal;
+        ////dataGridView1.Rows[row].Cells[index++].Value = isResult ? "Đạt" : "Không đạt";
+
+        ////Status
+        //if (value < _ProductCurrent.LowerLimitFinal)
+        //{
+        //  dataGridView1.Rows[row].Cells[5].Style.BackColor = Color.Red;
+        //  dataGridView1.Rows[row].Cells[index++].Value = "Fail";
+        //}
+        //else if (value > _ProductCurrent.UpperLimitFinal)
+        //{
+        //  dataGridView1.Rows[row].Cells[5].Style.BackColor = Color.DarkOrange;
+        //  dataGridView1.Rows[row].Cells[index++].Value = "Over";
+        //}
+        //else
+        //{
+        //  dataGridView1.Rows[row].Cells[5].Style.BackColor = Color.DarkGreen;
+        //  dataGridView1.Rows[row].Cells[index++].Value = "Pass";
+        //}
       }
       else
       {
-        //this.panelInforTare.Visible = false;
-        this.tableLayoutPanelCal.Visible = true;
-      }
+        dataGridView1.Rows[0].Cells[_colDataWeight - 1 + this._indexColData].Value = value;
+        this._indexColData++;
+      }  
+
+      
+
+     
+
+      //Đánh giá
+      //bool isResult = (value >= _ProductCurrent.StandardFinal) && (value <= _ProductCurrent.UpperLimitFinal);
+      
+      // = isResult ? Color.Green : Color.Red;
+
+      //dataGridView1.Rows[row].DefaultCellStyle.BackColor = isResult ? Color.LightGreen : Color.LightCoral;
+
+       
+    }
+
+
+
+
+
+    private void Ins_OnSendStatusConnectWeight(eStatusConnectWeight eStatusConnectWeight)
+    {
+      this.panelWeigher1.SetSatutusConnectSerialWeigher(_inforLine.eStatusConnectWeight);
     }
 
     private void btnTare_Click(object sender, EventArgs e)
@@ -243,7 +441,27 @@ namespace SyngentaWeigherQC.UI.FrmUI
       FrmTare frmTare = new FrmTare(_inforLine);
       frmTare.OnSendChangeTypeTare += FrmTare_OnSendChangeTypeTare;
       frmTare.OnSendCloseFrmTare += FrmTare_OnSendCloseFrmTare;
+      frmTare.OnSendConfirmValueTare += FrmTare_OnSendConfirmValueTare;
       frmTare.ShowDialog();
+    }
+
+    private void FrmTare_OnSendConfirmValueTare(DatalogTare datalogTare)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          FrmTare_OnSendConfirmValueTare(datalogTare);
+        }));
+        return;
+      }
+
+      panelWeigher1.SetValueTare(datalogTare);
+      //Kiểm tra có yêu cầu Tare
+      this.lbRequestTare.Visible = _inforLine.RequestTare;
+
+      //Cập nhật Tare ID
+      FrmOverView.Instance.UpdateTareId(_inforLine, datalogTare);
     }
 
     private void FrmTare_OnSendCloseFrmTare()
@@ -254,7 +472,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private async void FrmTare_OnSendChangeTypeTare()
     {
       await AppCore.Ins.Update(_inforLine);
-      panelWeigher1.SetInforTare(_ProductCurrent, _inforLine.eModeTare, DateTime.Now);
+      panelWeigher1.SetInforTare(_ProductCurrent, _inforLine.eModeTare);
 
       FrmOverView.Instance.FindAndUpdateTypeTare(_inforLine);
     }
@@ -291,8 +509,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-  
-   
+
+
     private void Instance_OnSendSettingNumberRaw(int numberRaw)
     {
       numberGetRaw = numberRaw;
@@ -307,19 +525,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
-    public void ConnectSerialWeigher(bool isConnect)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          ConnectSerialWeigher(isConnect);
-        }));
-        return;
-      }
 
-      this.panelWeigher1.SetSatutusConnectSerialWeigher(isConnect);
-    }
 
 
     private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -997,7 +1203,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.panelWeigher1.SetValueTare(avg, standard, upper, lower, isLabel, dateTime);
     }
 
-    private void Ins_OnSendDataRealTimeWeigherHome(double value, eValuate eValuate)
+    private void Ins_OnSendDataRealTimeWeigherHome(double value, eEvaluateStatus eValuate)
     {
       this.panelWeigher1.SetValueWeigherRealTime(value, eValuate);
     }

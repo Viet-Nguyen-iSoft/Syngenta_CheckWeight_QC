@@ -19,5 +19,9 @@ namespace SyngentaWeigherQC.Models
 
     [Browsable(false)]
     public ICollection<InforLine> InforLines { get; set; }
+
+
+    [Browsable(false)]
+    public ICollection<DatalogWeight> DatalogWeights { get; set; }
   }
 }

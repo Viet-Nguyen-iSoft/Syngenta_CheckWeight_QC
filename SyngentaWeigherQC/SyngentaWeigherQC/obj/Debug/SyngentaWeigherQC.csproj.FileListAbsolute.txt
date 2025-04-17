@@ -1319,6 +1319,7 @@ C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\Syngenta
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmDecentralization.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmExcelExport.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmExportPdfManual.resources
+C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmConfirmChangeProduct.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmLoading.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmLogIn.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmNotification.resources
@@ -1361,4 +1362,3 @@ C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\Syngenta
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\Syngenta.8286281A.Up2Date
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.exe
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.pdb
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmConfirmChangeProduct.resources

@@ -115,13 +115,7 @@ namespace SyngentaWeigherQC.eNum
       HanhChinh,
     }
 
-    public enum eValuate
-    {
-      UNKNOWN,
-      FAIL,
-      PASS,
-      OVER
-    }
+    
 
     public enum eModeTare
     {
@@ -131,11 +125,35 @@ namespace SyngentaWeigherQC.eNum
       TareWithLabel,
     }
 
+    public enum eEvaluate
+    {
+      [Description("Không đạt")]
+      Fail,
+      [Description("Đạt")]
+      Pass,
+    }
+    public enum eEvaluateStatus
+    {
+      UNKNOWN,
+      FAIL,
+      PASS,
+      OVER
+    }
     public enum eStatusModeWeight
     {
       OverView,
       WeightForLine,
       TareForLine,
+    }
+
+    public enum eStatusConnectWeight
+    {
+      [Description("Trạng thái: Không xác định")]
+      None,
+      [Description("Trạng thái: Kết nối")]
+      Connected,
+      [Description("Trạng thái: Mất kết nối")]
+      Disconnnect,
     }
 
     public enum ePermit

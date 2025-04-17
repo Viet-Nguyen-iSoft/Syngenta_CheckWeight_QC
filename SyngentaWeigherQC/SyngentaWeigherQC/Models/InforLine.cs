@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,8 @@ namespace SyngentaWeigherQC.Models
 
     public eModeTare eModeTare { get; set; }
     public bool RequestTare { get; set; } = true;
-
-
-
-
-
+    
+    public int LastTareId { get; set; } = 0;
 
 
     [Browsable(false)]
@@ -54,7 +52,11 @@ namespace SyngentaWeigherQC.Models
     public ICollection<Production> Productions { get; set; }
 
 
-
-
+    [NotMapped]
+    public Production ProductionCurrent { get; set; }
+    [NotMapped]
+    public DatalogTare DatalogTareCurrent { get; set; }
+    [NotMapped]
+    public eStatusConnectWeight eStatusConnectWeight { get; set; } = eStatusConnectWeight.Disconnnect;
   }
 }

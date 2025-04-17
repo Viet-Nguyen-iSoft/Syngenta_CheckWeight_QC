@@ -70,5 +70,8 @@ namespace SyngentaWeigherQC.Models
     [Browsable(false)]
     public ICollection<DatalogWeight> DatalogWeights { get; set; }
 
+    [Browsable(false)]
+    public ICollection<DatalogTare> DatalogTares { get; set; }
+
   }
 }

@@ -1,4 +1,5 @@
-﻿using SynCheckWeigherLoggerApp.SettingsViews;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using SynCheckWeigherLoggerApp.SettingsViews;
 using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Models;
 using System;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.eUI;
+using Color = System.Drawing.Color;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -43,7 +45,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private static Color NoSelect = Color.FromArgb(49, 67, 107);
 
     private InforLine _InforLine;
-    public void ChangePage(AppModulSupport button)
+    public void ChangePage(AppModulSupport button, string name = "name")
     {
       this.btnHome.ForeColor = NoSelect;
       this.btnSynthetic.ForeColor = NoSelect;
@@ -57,7 +59,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
           OpenChildForm(AppModulSupport.OverView, FrmOverView.Instance);
           break;
         case AppModulSupport.Home:
-          OpenChildForm(AppModulSupport.Home, FrmHome.Instance(_InforLine));
+          OpenChildForm(AppModulSupport.Home, FrmHome.GetInstance(_InforLine));
           break;
         //case AppModulSupport.MasterData:
         //  this.btnMasterData.ForeColor = Select;
@@ -148,7 +150,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public void OpenPageWeight(InforLine inforLine)
     {
       _InforLine = inforLine;
-      ChangePage(AppModulSupport.Home);
+      ChangePage(AppModulSupport.Home, inforLine.Name);
     }
 
     private void timer1_Tick(object sender, EventArgs e)

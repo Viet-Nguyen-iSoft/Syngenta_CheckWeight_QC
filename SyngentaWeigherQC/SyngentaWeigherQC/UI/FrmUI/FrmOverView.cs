@@ -1,18 +1,13 @@
-﻿using SynCheckWeigherLoggerApp.DashboardViews;
-using SynCheckWeigherLoggerApp.SettingsViews;
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.UI.UcUI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SyngentaWeigherQC.eNum.eUI;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -46,11 +41,18 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       FrmSettingLine.Instance.OnSendChangeLine += Instance_OnSendChangeLine;
       FrmUser.Instance.OnSendChangeLine += Instance_OnSendChangeLineUser;
+      AppCore.Ins.OnSendStatusConnectWeight += Ins_OnSendStatusConnectWeight;
+    }
+
+    private void Ins_OnSendStatusConnectWeight(eStatusConnectWeight eStatusConnectWeight)
+    {
+      UpdateStatusConnectWeight(eStatusConnectWeight);
+      AppCore.Ins.ensureLoadUI = true;
     }
 
     private void Instance_OnSendChangeLineUser()
     {
-      
+
     }
 
     private void Instance_OnSendChangeLine()
@@ -67,12 +69,15 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         if (AppCore.Ins._listInforLine.Count > 0)
         {
-          var lines = AppCore.Ins._listInforLine?.Where(x=>x.IsEnable==true).ToList();
-          var shift_leader = AppCore.Ins._listShiftLeader?.Where(x=>x.IsDelete==false).ToList();
-          
+          var lines = AppCore.Ins._listInforLine?.Where(x => x.IsEnable == true).ToList();
+          var shift_leader = AppCore.Ins._listShiftLeader?.Where(x => x.IsDelete == false).ToList();
+
           foreach (var item in lines)
           {
-            var products = AppCore.Ins._listAllProductsBelongLine?.Where(x => x.LineCode == item.Code).ToList();
+            if (!item.RequestTare)
+            {
+              item.DatalogTareCurrent = item.DatalogTares.Where(x=>x.Id == item.LastTareId).FirstOrDefault();
+            }
 
             UcOverViewMachine settingUC = new UcOverViewMachine(item);
             settingUC.Size = _Size;
@@ -96,7 +101,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         eLoggerHelper.LogErrorToFileLog(ex);
       }
-      
+
     }
 
     private void SettingUC_OnSendChooseLineWeight(InforLine inforLine)
@@ -122,6 +127,36 @@ namespace SyngentaWeigherQC.UI.FrmUI
         }
       }
     }
+
+    public void UpdateStatusConnectWeight(eStatusConnectWeight eStatusConnectWeight)
+    {
+      foreach (var control in flowLayoutPanelLine.Controls)
+      {
+        if (control is UcOverViewMachine)
+        {
+          UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
+          ((UcOverViewMachine)control).SetStatusConnectWeight(eStatusConnectWeight);
+        }
+      }
+    }
+
+    public void UpdateTareId(InforLine inforLine, DatalogTare datalogTare)
+    {
+      foreach (var control in flowLayoutPanelLine.Controls)
+      {
+        if (control is UcOverViewMachine)
+        {
+          UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
+
+          var tag = parametterSimpleUc.Tag as InforLine;
+          if (tag.Id == inforLine.Id)
+          {
+            ((UcOverViewMachine)control).UpdateTareCurrent = datalogTare;
+          }  
+        }
+      }
+    }
+
 
 
 
