@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SyngentaWeigherQC.Helper
 {
-  public class eWeightHelper
+  public class WeightHelper
   {
     public static (string Name, double Weight) ParseDataWeight(string input)
     {

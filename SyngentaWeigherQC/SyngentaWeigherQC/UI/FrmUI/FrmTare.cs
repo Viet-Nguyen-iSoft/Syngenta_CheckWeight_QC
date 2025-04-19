@@ -188,7 +188,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -245,7 +245,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -286,7 +286,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Lỗi xác nhận !", eMsgType.Error);
       }
     }

@@ -1,8 +1,10 @@
 ﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
+using SyngentaWeigherQC.Responsitory;
 using SyngentaWeigherQC.UI.UcUI;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,12 +15,20 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmOverView : Form
   {
-    //public delegate void SendChooseLineWeight(InforLine inforLine);
-    //public event SendChooseLineWeight OnSendChooseLineWeight;
+    public delegate void SendChooseProduct(InforLine inforLine);
+    public event SendChooseProduct OnSendChooseProduct;
+
+    public delegate void SendChooseShiftLeader(InforLine inforLine);
+    public event SendChooseShiftLeader OnSendChooseShiftLeader;
 
     public FrmOverView()
     {
       InitializeComponent();
+      this.Shown += FrmOverView_Shown;
+    }
+
+    private void FrmOverView_Shown(object sender, EventArgs e)
+    {
       LoadLine();
     }
 
@@ -40,7 +50,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmOverView_Load(object sender, EventArgs e)
     {
       FrmSettingLine.Instance.OnSendChangeLine += Instance_OnSendChangeLine;
-      FrmUser.Instance.OnSendChangeLine += Instance_OnSendChangeLineUser;
       AppCore.Ins.OnSendStatusConnectWeight += Ins_OnSendStatusConnectWeight;
     }
 
@@ -50,17 +59,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
       AppCore.Ins.ensureLoadUI = true;
     }
 
-    private void Instance_OnSendChangeLineUser()
-    {
-
-    }
-
     private void Instance_OnSendChangeLine()
     {
       LoadLine();
     }
 
-    private Size _Size = new Size(820, 500);
+    private Size _Size = new Size(830, 500);
     private void LoadLine()
     {
       try
@@ -80,28 +84,43 @@ namespace SyngentaWeigherQC.UI.FrmUI
             }
 
             UcOverViewMachine settingUC = new UcOverViewMachine(item);
-            settingUC.Size = _Size;
-            settingUC.Margin = new Padding(4);
+           
+            settingUC.Margin = new Padding(5);
             settingUC.Name = $"Setting{item.Name}";
             settingUC.Tag = item;
-
             settingUC.ShiftType = AppCore.Ins._listShiftType;
             settingUC.ShiftLeader = shift_leader;
+            settingUC.Size = _Size;
 
             settingUC.SetShiftLeader();
             settingUC.SetShiftType();
-            settingUC.InitEvent();
+            settingUC.InitEventChangeInforLine();
+
+            //SetData Sumary
+            var listDatalogByLine = AppCore.Ins._listDatalogWeight?.Where(x => x.InforLineId == item.Id).ToList();
+            settingUC.SetSumary(listDatalogByLine);
 
             settingUC.OnSendChooseLineWeight += SettingUC_OnSendChooseLineWeight;
+            settingUC.OnSendChooseProduct += SettingUC_OnSendChooseProduct;
+            settingUC.OnSendChangeShiftLeader += SettingUC_OnSendChangeShiftLeader;
             flowLayoutPanelLine.Controls.Add(settingUC);
           }
         }
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
+    }
 
+    private void SettingUC_OnSendChangeShiftLeader(InforLine inforLine)
+    {
+      OnSendChooseShiftLeader?.Invoke(inforLine);
+    }
+
+    private void SettingUC_OnSendChooseProduct(InforLine inforLine)
+    {
+      OnSendChooseProduct?.Invoke(inforLine);
     }
 
     private void SettingUC_OnSendChooseLineWeight(InforLine inforLine)
@@ -110,8 +129,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       AppCore.Ins.eStatusModeWeight = eNum.eUI.eStatusModeWeight.WeightForLine;
       AppCore.Ins.inforLineOperation = inforLine;
     }
-
-
 
     public void FindAndUpdateTypeTare(InforLine inforLine)
     {
@@ -157,8 +174,35 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
+    public void FindAndUpdateStatisticalData(InforLine inforLine,List<StatisticalData> statisticalDatas)
+    {
+      foreach (var control in flowLayoutPanelLine.Controls)
+      {
+        if (control is UcOverViewMachine)
+        {
+          UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
+          if (parametterSimpleUc.Tag == inforLine)
+          {
+            ((UcOverViewMachine)control).SetSumary(statisticalDatas);
+          }
+        }
+      }
+    }
 
-
+    public void FindAndUpdateProduct(InforLine inforLine)
+    {
+      foreach (var control in flowLayoutPanelLine.Controls)
+      {
+        if (control is UcOverViewMachine)
+        {
+          UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
+          if (parametterSimpleUc.Tag == inforLine)
+          {
+            ((UcOverViewMachine)control).SetProduct();
+          }
+        }
+      }
+    }
 
   }
 }

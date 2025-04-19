@@ -33,7 +33,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex.ToString());
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
       }
     }
 

@@ -121,7 +121,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
@@ -197,7 +197,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
       }
     }
@@ -266,7 +266,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
         return null;
       }
@@ -286,7 +286,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
       return ret;
     }

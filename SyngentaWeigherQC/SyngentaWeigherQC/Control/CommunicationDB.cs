@@ -51,6 +51,15 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
+    public async Task<bool> Update(DatalogWeight datalogWeight)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<DatalogWeight, ConfigDBContext>(context);
+        return await repo.Update(datalogWeight);
+      }
+    }
+
 
     public async Task AddRangeProducts(List<Production> productions)
     {

@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-      System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-      System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+      System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+      System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+      System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcOverViewMachine));
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,34 +66,26 @@
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
       this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
       this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-      this.label45 = new System.Windows.Forms.Label();
-      this.label44 = new System.Windows.Forms.Label();
-      this.label43 = new System.Windows.Forms.Label();
-      this.label42 = new System.Windows.Forms.Label();
-      this.label37 = new System.Windows.Forms.Label();
-      this.label11 = new System.Windows.Forms.Label();
-      this.label10 = new System.Windows.Forms.Label();
-      this.label9 = new System.Windows.Forms.Label();
-      this.label36 = new System.Windows.Forms.Label();
-      this.label35 = new System.Windows.Forms.Label();
-      this.label34 = new System.Windows.Forms.Label();
-      this.label32 = new System.Windows.Forms.Label();
+      this.lbResult_3 = new System.Windows.Forms.Label();
+      this.lbAverage_3 = new System.Windows.Forms.Label();
+      this.lbResult_2 = new System.Windows.Forms.Label();
+      this.lbAverage_2 = new System.Windows.Forms.Label();
+      this.lbResult_1 = new System.Windows.Forms.Label();
+      this.lbAverage_1 = new System.Windows.Forms.Label();
       this.label31 = new System.Windows.Forms.Label();
-      this.label22 = new System.Windows.Forms.Label();
-      this.label21 = new System.Windows.Forms.Label();
-      this.lbMax = new System.Windows.Forms.Label();
-      this.lbStdev = new System.Windows.Forms.Label();
-      this.label6 = new System.Windows.Forms.Label();
-      this.lbSample = new System.Windows.Forms.Label();
-      this.label4 = new System.Windows.Forms.Label();
-      this.lbMin = new System.Windows.Forms.Label();
+      this.lbTotalSample_3 = new System.Windows.Forms.Label();
+      this.lbTotalSample_2 = new System.Windows.Forms.Label();
+      this.lbShift_3 = new System.Windows.Forms.Label();
+      this.lbStdev_2 = new System.Windows.Forms.Label();
+      this.lbShift_2 = new System.Windows.Forms.Label();
+      this.lbStdev_3 = new System.Windows.Forms.Label();
       this.lbResult = new System.Windows.Forms.Label();
       this.label33 = new System.Windows.Forms.Label();
-      this.label8 = new System.Windows.Forms.Label();
+      this.lbShift_1 = new System.Windows.Forms.Label();
       this.label16 = new System.Windows.Forms.Label();
-      this.lbOW = new System.Windows.Forms.Label();
+      this.lbStdev_1 = new System.Windows.Forms.Label();
       this.label20 = new System.Windows.Forms.Label();
-      this.lbWeightAvg = new System.Windows.Forms.Label();
+      this.lbTotalSample_1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.lbStatusWeight = new System.Windows.Forms.Label();
       this.lbTitle = new System.Windows.Forms.Label();
@@ -697,24 +689,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.chartPie.BorderlineColor = System.Drawing.Color.Transparent;
-      chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      chartArea1.Name = "ChartArea1";
-      this.chartPie.ChartAreas.Add(chartArea1);
-      legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      legend1.ForeColor = System.Drawing.Color.White;
-      legend1.IsTextAutoFit = false;
-      legend1.Name = "Legend1";
-      this.chartPie.Legends.Add(legend1);
+      chartArea3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      chartArea3.Name = "ChartArea1";
+      this.chartPie.ChartAreas.Add(chartArea3);
+      legend3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      legend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      legend3.ForeColor = System.Drawing.Color.White;
+      legend3.IsTextAutoFit = false;
+      legend3.Name = "Legend1";
+      this.chartPie.Legends.Add(legend3);
       this.chartPie.Location = new System.Drawing.Point(527, 0);
       this.chartPie.Margin = new System.Windows.Forms.Padding(0);
       this.chartPie.Name = "chartPie";
-      series1.ChartArea = "ChartArea1";
-      series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-      series1.CustomProperties = "PieStartAngle=270";
-      series1.Legend = "Legend1";
-      series1.Name = "Series1";
-      this.chartPie.Series.Add(series1);
+      series3.ChartArea = "ChartArea1";
+      series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+      series3.CustomProperties = "PieStartAngle=270";
+      series3.Legend = "Legend1";
+      series3.Name = "Series1";
+      this.chartPie.Series.Add(series3);
       this.chartPie.Size = new System.Drawing.Size(300, 228);
       this.chartPie.TabIndex = 2;
       this.chartPie.Text = "chart1";
@@ -725,42 +717,32 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(25)))), ((int)(((byte)(67)))));
-      this.tableLayoutPanel9.ColumnCount = 7;
-      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tableLayoutPanel9.ColumnCount = 5;
       this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-      this.tableLayoutPanel9.Controls.Add(this.label45, 6, 3);
-      this.tableLayoutPanel9.Controls.Add(this.label44, 5, 3);
-      this.tableLayoutPanel9.Controls.Add(this.label43, 4, 3);
-      this.tableLayoutPanel9.Controls.Add(this.label42, 2, 3);
-      this.tableLayoutPanel9.Controls.Add(this.label37, 6, 2);
-      this.tableLayoutPanel9.Controls.Add(this.label11, 5, 2);
-      this.tableLayoutPanel9.Controls.Add(this.label10, 4, 2);
-      this.tableLayoutPanel9.Controls.Add(this.label9, 2, 2);
-      this.tableLayoutPanel9.Controls.Add(this.label36, 6, 1);
-      this.tableLayoutPanel9.Controls.Add(this.label35, 5, 1);
-      this.tableLayoutPanel9.Controls.Add(this.label34, 4, 1);
-      this.tableLayoutPanel9.Controls.Add(this.label32, 2, 1);
-      this.tableLayoutPanel9.Controls.Add(this.label31, 6, 0);
-      this.tableLayoutPanel9.Controls.Add(this.label22, 5, 0);
-      this.tableLayoutPanel9.Controls.Add(this.label21, 4, 0);
-      this.tableLayoutPanel9.Controls.Add(this.lbMax, 3, 3);
-      this.tableLayoutPanel9.Controls.Add(this.lbStdev, 3, 2);
-      this.tableLayoutPanel9.Controls.Add(this.label6, 0, 3);
-      this.tableLayoutPanel9.Controls.Add(this.lbSample, 1, 2);
-      this.tableLayoutPanel9.Controls.Add(this.label4, 0, 2);
-      this.tableLayoutPanel9.Controls.Add(this.lbMin, 1, 3);
+      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.83333F));
+      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.83333F));
+      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.83333F));
+      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.83333F));
+      this.tableLayoutPanel9.Controls.Add(this.lbResult_3, 4, 3);
+      this.tableLayoutPanel9.Controls.Add(this.lbAverage_3, 2, 3);
+      this.tableLayoutPanel9.Controls.Add(this.lbResult_2, 4, 2);
+      this.tableLayoutPanel9.Controls.Add(this.lbAverage_2, 2, 2);
+      this.tableLayoutPanel9.Controls.Add(this.lbResult_1, 4, 1);
+      this.tableLayoutPanel9.Controls.Add(this.lbAverage_1, 2, 1);
+      this.tableLayoutPanel9.Controls.Add(this.label31, 4, 0);
+      this.tableLayoutPanel9.Controls.Add(this.lbTotalSample_3, 3, 3);
+      this.tableLayoutPanel9.Controls.Add(this.lbTotalSample_2, 3, 2);
+      this.tableLayoutPanel9.Controls.Add(this.lbShift_3, 0, 3);
+      this.tableLayoutPanel9.Controls.Add(this.lbStdev_2, 1, 2);
+      this.tableLayoutPanel9.Controls.Add(this.lbShift_2, 0, 2);
+      this.tableLayoutPanel9.Controls.Add(this.lbStdev_3, 1, 3);
       this.tableLayoutPanel9.Controls.Add(this.lbResult, 1, 0);
       this.tableLayoutPanel9.Controls.Add(this.label33, 0, 0);
-      this.tableLayoutPanel9.Controls.Add(this.label8, 0, 1);
+      this.tableLayoutPanel9.Controls.Add(this.lbShift_1, 0, 1);
       this.tableLayoutPanel9.Controls.Add(this.label16, 2, 0);
-      this.tableLayoutPanel9.Controls.Add(this.lbOW, 1, 1);
+      this.tableLayoutPanel9.Controls.Add(this.lbStdev_1, 1, 1);
       this.tableLayoutPanel9.Controls.Add(this.label20, 3, 0);
-      this.tableLayoutPanel9.Controls.Add(this.lbWeightAvg, 3, 1);
+      this.tableLayoutPanel9.Controls.Add(this.lbTotalSample_1, 3, 1);
       this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -772,209 +754,107 @@
       this.tableLayoutPanel9.Size = new System.Drawing.Size(519, 228);
       this.tableLayoutPanel9.TabIndex = 0;
       // 
-      // label45
+      // lbResult_3
       // 
-      this.label45.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbResult_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label45.AutoSize = true;
-      this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label45.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label45.ForeColor = System.Drawing.Color.White;
-      this.label45.Location = new System.Drawing.Point(437, 171);
-      this.label45.Margin = new System.Windows.Forms.Padding(0);
-      this.label45.Name = "label45";
-      this.label45.Size = new System.Drawing.Size(82, 57);
-      this.label45.TabIndex = 44;
-      this.label45.Text = "...";
-      this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbResult_3.AutoSize = true;
+      this.lbResult_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbResult_3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_3.ForeColor = System.Drawing.Color.White;
+      this.lbResult_3.Location = new System.Drawing.Point(410, 171);
+      this.lbResult_3.Margin = new System.Windows.Forms.Padding(0);
+      this.lbResult_3.Name = "lbResult_3";
+      this.lbResult_3.Size = new System.Drawing.Size(109, 57);
+      this.lbResult_3.TabIndex = 44;
+      this.lbResult_3.Text = "...";
+      this.lbResult_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label44
+      // lbAverage_3
       // 
-      this.label44.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbAverage_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label44.AutoSize = true;
-      this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label44.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label44.ForeColor = System.Drawing.Color.White;
-      this.label44.Location = new System.Drawing.Point(356, 171);
-      this.label44.Margin = new System.Windows.Forms.Padding(0);
-      this.label44.Name = "label44";
-      this.label44.Size = new System.Drawing.Size(81, 57);
-      this.label44.TabIndex = 43;
-      this.label44.Text = "00";
-      this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbAverage_3.AutoSize = true;
+      this.lbAverage_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbAverage_3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbAverage_3.ForeColor = System.Drawing.Color.White;
+      this.lbAverage_3.Location = new System.Drawing.Point(194, 171);
+      this.lbAverage_3.Margin = new System.Windows.Forms.Padding(0);
+      this.lbAverage_3.Name = "lbAverage_3";
+      this.lbAverage_3.Size = new System.Drawing.Size(108, 57);
+      this.lbAverage_3.TabIndex = 41;
+      this.lbAverage_3.Text = "---";
+      this.lbAverage_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label43
+      // lbResult_2
       // 
-      this.label43.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbResult_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label43.AutoSize = true;
-      this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label43.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label43.ForeColor = System.Drawing.Color.White;
-      this.label43.Location = new System.Drawing.Point(275, 171);
-      this.label43.Margin = new System.Windows.Forms.Padding(0);
-      this.label43.Name = "label43";
-      this.label43.Size = new System.Drawing.Size(81, 57);
-      this.label43.TabIndex = 42;
-      this.label43.Text = "00";
-      this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbResult_2.AutoSize = true;
+      this.lbResult_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
+      this.lbResult_2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_2.ForeColor = System.Drawing.Color.White;
+      this.lbResult_2.Location = new System.Drawing.Point(410, 114);
+      this.lbResult_2.Margin = new System.Windows.Forms.Padding(0);
+      this.lbResult_2.Name = "lbResult_2";
+      this.lbResult_2.Size = new System.Drawing.Size(109, 57);
+      this.lbResult_2.TabIndex = 36;
+      this.lbResult_2.Text = "...";
+      this.lbResult_2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label42
+      // lbAverage_2
       // 
-      this.label42.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbAverage_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label42.AutoSize = true;
-      this.label42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label42.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label42.ForeColor = System.Drawing.Color.White;
-      this.label42.Location = new System.Drawing.Point(113, 171);
-      this.label42.Margin = new System.Windows.Forms.Padding(0);
-      this.label42.Name = "label42";
-      this.label42.Size = new System.Drawing.Size(81, 57);
-      this.label42.TabIndex = 41;
-      this.label42.Text = "00";
-      this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbAverage_2.AutoSize = true;
+      this.lbAverage_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
+      this.lbAverage_2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbAverage_2.ForeColor = System.Drawing.Color.White;
+      this.lbAverage_2.Location = new System.Drawing.Point(194, 114);
+      this.lbAverage_2.Margin = new System.Windows.Forms.Padding(0);
+      this.lbAverage_2.Name = "lbAverage_2";
+      this.lbAverage_2.Size = new System.Drawing.Size(108, 57);
+      this.lbAverage_2.TabIndex = 33;
+      this.lbAverage_2.Text = "---";
+      this.lbAverage_2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label37
+      // lbResult_1
       // 
-      this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbResult_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label37.AutoSize = true;
-      this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label37.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label37.ForeColor = System.Drawing.Color.White;
-      this.label37.Location = new System.Drawing.Point(437, 114);
-      this.label37.Margin = new System.Windows.Forms.Padding(0);
-      this.label37.Name = "label37";
-      this.label37.Size = new System.Drawing.Size(82, 57);
-      this.label37.TabIndex = 36;
-      this.label37.Text = "...";
-      this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbResult_1.AutoSize = true;
+      this.lbResult_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbResult_1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_1.ForeColor = System.Drawing.Color.White;
+      this.lbResult_1.Location = new System.Drawing.Point(410, 57);
+      this.lbResult_1.Margin = new System.Windows.Forms.Padding(0);
+      this.lbResult_1.Name = "lbResult_1";
+      this.lbResult_1.Size = new System.Drawing.Size(109, 57);
+      this.lbResult_1.TabIndex = 32;
+      this.lbResult_1.Text = "...";
+      this.lbResult_1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label11
+      // lbAverage_1
       // 
-      this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbAverage_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label11.AutoSize = true;
-      this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label11.ForeColor = System.Drawing.Color.White;
-      this.label11.Location = new System.Drawing.Point(356, 114);
-      this.label11.Margin = new System.Windows.Forms.Padding(0);
-      this.label11.Name = "label11";
-      this.label11.Size = new System.Drawing.Size(81, 57);
-      this.label11.TabIndex = 35;
-      this.label11.Text = "00";
-      this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label10
-      // 
-      this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label10.AutoSize = true;
-      this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label10.ForeColor = System.Drawing.Color.White;
-      this.label10.Location = new System.Drawing.Point(275, 114);
-      this.label10.Margin = new System.Windows.Forms.Padding(0);
-      this.label10.Name = "label10";
-      this.label10.Size = new System.Drawing.Size(81, 57);
-      this.label10.TabIndex = 34;
-      this.label10.Text = "00";
-      this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label9
-      // 
-      this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label9.AutoSize = true;
-      this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label9.ForeColor = System.Drawing.Color.White;
-      this.label9.Location = new System.Drawing.Point(113, 114);
-      this.label9.Margin = new System.Windows.Forms.Padding(0);
-      this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(81, 57);
-      this.label9.TabIndex = 33;
-      this.label9.Text = "00";
-      this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label36
-      // 
-      this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label36.AutoSize = true;
-      this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label36.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label36.ForeColor = System.Drawing.Color.White;
-      this.label36.Location = new System.Drawing.Point(437, 57);
-      this.label36.Margin = new System.Windows.Forms.Padding(0);
-      this.label36.Name = "label36";
-      this.label36.Size = new System.Drawing.Size(82, 57);
-      this.label36.TabIndex = 32;
-      this.label36.Text = "...";
-      this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label35
-      // 
-      this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label35.AutoSize = true;
-      this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label35.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label35.ForeColor = System.Drawing.Color.White;
-      this.label35.Location = new System.Drawing.Point(356, 57);
-      this.label35.Margin = new System.Windows.Forms.Padding(0);
-      this.label35.Name = "label35";
-      this.label35.Size = new System.Drawing.Size(81, 57);
-      this.label35.TabIndex = 31;
-      this.label35.Text = "00";
-      this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label34
-      // 
-      this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label34.AutoSize = true;
-      this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label34.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label34.ForeColor = System.Drawing.Color.White;
-      this.label34.Location = new System.Drawing.Point(275, 57);
-      this.label34.Margin = new System.Windows.Forms.Padding(0);
-      this.label34.Name = "label34";
-      this.label34.Size = new System.Drawing.Size(81, 57);
-      this.label34.TabIndex = 30;
-      this.label34.Text = "00";
-      this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label32
-      // 
-      this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label32.AutoSize = true;
-      this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label32.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label32.ForeColor = System.Drawing.Color.White;
-      this.label32.Location = new System.Drawing.Point(113, 57);
-      this.label32.Margin = new System.Windows.Forms.Padding(0);
-      this.label32.Name = "label32";
-      this.label32.Size = new System.Drawing.Size(81, 57);
-      this.label32.TabIndex = 29;
-      this.label32.Text = "00";
-      this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbAverage_1.AutoSize = true;
+      this.lbAverage_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbAverage_1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbAverage_1.ForeColor = System.Drawing.Color.White;
+      this.lbAverage_1.Location = new System.Drawing.Point(194, 57);
+      this.lbAverage_1.Margin = new System.Windows.Forms.Padding(0);
+      this.lbAverage_1.Name = "lbAverage_1";
+      this.lbAverage_1.Size = new System.Drawing.Size(108, 57);
+      this.lbAverage_1.TabIndex = 29;
+      this.lbAverage_1.Text = "---";
+      this.lbAverage_1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label31
       // 
@@ -985,151 +865,117 @@
       this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
       this.label31.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label31.ForeColor = System.Drawing.Color.White;
-      this.label31.Location = new System.Drawing.Point(437, 0);
+      this.label31.Location = new System.Drawing.Point(410, 0);
       this.label31.Margin = new System.Windows.Forms.Padding(0);
       this.label31.Name = "label31";
-      this.label31.Size = new System.Drawing.Size(82, 57);
+      this.label31.Size = new System.Drawing.Size(109, 57);
       this.label31.TabIndex = 28;
       this.label31.Text = "Kết quả";
       this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label22
+      // lbTotalSample_3
       // 
-      this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbTotalSample_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label22.AutoSize = true;
-      this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label22.ForeColor = System.Drawing.Color.White;
-      this.label22.Location = new System.Drawing.Point(356, 0);
-      this.label22.Margin = new System.Windows.Forms.Padding(0);
-      this.label22.Name = "label22";
-      this.label22.Size = new System.Drawing.Size(81, 57);
-      this.label22.TabIndex = 27;
-      this.label22.Text = "Mẫu cao";
-      this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbTotalSample_3.AutoSize = true;
+      this.lbTotalSample_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbTotalSample_3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbTotalSample_3.ForeColor = System.Drawing.Color.White;
+      this.lbTotalSample_3.Location = new System.Drawing.Point(302, 171);
+      this.lbTotalSample_3.Margin = new System.Windows.Forms.Padding(0);
+      this.lbTotalSample_3.Name = "lbTotalSample_3";
+      this.lbTotalSample_3.Size = new System.Drawing.Size(108, 57);
+      this.lbTotalSample_3.TabIndex = 20;
+      this.lbTotalSample_3.Text = "---";
+      this.lbTotalSample_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label21
+      // lbTotalSample_2
       // 
-      this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbTotalSample_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label21.AutoSize = true;
-      this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label21.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label21.ForeColor = System.Drawing.Color.White;
-      this.label21.Location = new System.Drawing.Point(275, 0);
-      this.label21.Margin = new System.Windows.Forms.Padding(0);
-      this.label21.Name = "label21";
-      this.label21.Size = new System.Drawing.Size(81, 57);
-      this.label21.TabIndex = 26;
-      this.label21.Text = "Mẫu thấp";
-      this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbTotalSample_2.AutoSize = true;
+      this.lbTotalSample_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
+      this.lbTotalSample_2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbTotalSample_2.ForeColor = System.Drawing.Color.White;
+      this.lbTotalSample_2.Location = new System.Drawing.Point(302, 114);
+      this.lbTotalSample_2.Margin = new System.Windows.Forms.Padding(0);
+      this.lbTotalSample_2.Name = "lbTotalSample_2";
+      this.lbTotalSample_2.Size = new System.Drawing.Size(108, 57);
+      this.lbTotalSample_2.TabIndex = 21;
+      this.lbTotalSample_2.Text = "---";
+      this.lbTotalSample_2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // lbMax
+      // lbShift_3
       // 
-      this.lbMax.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbShift_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbMax.AutoSize = true;
-      this.lbMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbMax.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbMax.ForeColor = System.Drawing.Color.White;
-      this.lbMax.Location = new System.Drawing.Point(194, 171);
-      this.lbMax.Margin = new System.Windows.Forms.Padding(0);
-      this.lbMax.Name = "lbMax";
-      this.lbMax.Size = new System.Drawing.Size(81, 57);
-      this.lbMax.TabIndex = 20;
-      this.lbMax.Text = "00";
-      this.lbMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbShift_3.AutoSize = true;
+      this.lbShift_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbShift_3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbShift_3.ForeColor = System.Drawing.Color.White;
+      this.lbShift_3.Location = new System.Drawing.Point(0, 171);
+      this.lbShift_3.Margin = new System.Windows.Forms.Padding(0);
+      this.lbShift_3.Name = "lbShift_3";
+      this.lbShift_3.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+      this.lbShift_3.Size = new System.Drawing.Size(86, 57);
+      this.lbShift_3.TabIndex = 13;
+      this.lbShift_3.Text = "3";
+      this.lbShift_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // lbStdev
+      // lbStdev_2
       // 
-      this.lbStdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbStdev_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbStdev.AutoSize = true;
-      this.lbStdev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.lbStdev.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbStdev.ForeColor = System.Drawing.Color.White;
-      this.lbStdev.Location = new System.Drawing.Point(194, 114);
-      this.lbStdev.Margin = new System.Windows.Forms.Padding(0);
-      this.lbStdev.Name = "lbStdev";
-      this.lbStdev.Size = new System.Drawing.Size(81, 57);
-      this.lbStdev.TabIndex = 21;
-      this.lbStdev.Text = "00";
-      this.lbStdev.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbStdev_2.AutoSize = true;
+      this.lbStdev_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
+      this.lbStdev_2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbStdev_2.ForeColor = System.Drawing.Color.White;
+      this.lbStdev_2.Location = new System.Drawing.Point(86, 114);
+      this.lbStdev_2.Margin = new System.Windows.Forms.Padding(0);
+      this.lbStdev_2.Name = "lbStdev_2";
+      this.lbStdev_2.Size = new System.Drawing.Size(108, 57);
+      this.lbStdev_2.TabIndex = 12;
+      this.lbStdev_2.Text = "---";
+      this.lbStdev_2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label6
+      // lbShift_2
       // 
-      this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbShift_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label6.AutoSize = true;
-      this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label6.ForeColor = System.Drawing.Color.White;
-      this.label6.Location = new System.Drawing.Point(0, 171);
-      this.label6.Margin = new System.Windows.Forms.Padding(0);
-      this.label6.Name = "label6";
-      this.label6.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-      this.label6.Size = new System.Drawing.Size(32, 57);
-      this.label6.TabIndex = 13;
-      this.label6.Text = "3";
-      this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbShift_2.AutoSize = true;
+      this.lbShift_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
+      this.lbShift_2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbShift_2.ForeColor = System.Drawing.Color.White;
+      this.lbShift_2.Location = new System.Drawing.Point(0, 114);
+      this.lbShift_2.Margin = new System.Windows.Forms.Padding(0);
+      this.lbShift_2.Name = "lbShift_2";
+      this.lbShift_2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+      this.lbShift_2.Size = new System.Drawing.Size(86, 57);
+      this.lbShift_2.TabIndex = 11;
+      this.lbShift_2.Text = "2";
+      this.lbShift_2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // lbSample
+      // lbStdev_3
       // 
-      this.lbSample.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbStdev_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbSample.AutoSize = true;
-      this.lbSample.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.lbSample.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbSample.ForeColor = System.Drawing.Color.White;
-      this.lbSample.Location = new System.Drawing.Point(32, 114);
-      this.lbSample.Margin = new System.Windows.Forms.Padding(0);
-      this.lbSample.Name = "lbSample";
-      this.lbSample.Size = new System.Drawing.Size(81, 57);
-      this.lbSample.TabIndex = 12;
-      this.lbSample.Text = "00";
-      this.lbSample.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label4
-      // 
-      this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label4.AutoSize = true;
-      this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.ForeColor = System.Drawing.Color.White;
-      this.label4.Location = new System.Drawing.Point(0, 114);
-      this.label4.Margin = new System.Windows.Forms.Padding(0);
-      this.label4.Name = "label4";
-      this.label4.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-      this.label4.Size = new System.Drawing.Size(32, 57);
-      this.label4.TabIndex = 11;
-      this.label4.Text = "2";
-      this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // lbMin
-      // 
-      this.lbMin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbMin.AutoSize = true;
-      this.lbMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbMin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbMin.ForeColor = System.Drawing.Color.White;
-      this.lbMin.Location = new System.Drawing.Point(32, 171);
-      this.lbMin.Margin = new System.Windows.Forms.Padding(0);
-      this.lbMin.Name = "lbMin";
-      this.lbMin.Size = new System.Drawing.Size(81, 57);
-      this.lbMin.TabIndex = 20;
-      this.lbMin.Text = "00";
-      this.lbMin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbStdev_3.AutoSize = true;
+      this.lbStdev_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbStdev_3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbStdev_3.ForeColor = System.Drawing.Color.White;
+      this.lbStdev_3.Location = new System.Drawing.Point(86, 171);
+      this.lbStdev_3.Margin = new System.Windows.Forms.Padding(0);
+      this.lbStdev_3.Name = "lbStdev_3";
+      this.lbStdev_3.Size = new System.Drawing.Size(108, 57);
+      this.lbStdev_3.TabIndex = 20;
+      this.lbStdev_3.Text = "---";
+      this.lbStdev_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // lbResult
       // 
@@ -1140,10 +986,10 @@
       this.lbResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
       this.lbResult.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbResult.ForeColor = System.Drawing.Color.White;
-      this.lbResult.Location = new System.Drawing.Point(32, 0);
+      this.lbResult.Location = new System.Drawing.Point(86, 0);
       this.lbResult.Margin = new System.Windows.Forms.Padding(0);
       this.lbResult.Name = "lbResult";
-      this.lbResult.Size = new System.Drawing.Size(81, 57);
+      this.lbResult.Size = new System.Drawing.Size(108, 57);
       this.lbResult.TabIndex = 19;
       this.lbResult.Text = "Stdev";
       this.lbResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1161,28 +1007,28 @@
       this.label33.Margin = new System.Windows.Forms.Padding(0);
       this.label33.Name = "label33";
       this.label33.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-      this.label33.Size = new System.Drawing.Size(32, 57);
+      this.label33.Size = new System.Drawing.Size(86, 57);
       this.label33.TabIndex = 22;
       this.label33.Text = "Ca";
       this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // label8
+      // lbShift_1
       // 
-      this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbShift_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label8.AutoSize = true;
-      this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label8.ForeColor = System.Drawing.Color.White;
-      this.label8.Location = new System.Drawing.Point(0, 57);
-      this.label8.Margin = new System.Windows.Forms.Padding(0);
-      this.label8.Name = "label8";
-      this.label8.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-      this.label8.Size = new System.Drawing.Size(32, 57);
-      this.label8.TabIndex = 15;
-      this.label8.Text = "1";
-      this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbShift_1.AutoSize = true;
+      this.lbShift_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbShift_1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbShift_1.ForeColor = System.Drawing.Color.White;
+      this.lbShift_1.Location = new System.Drawing.Point(0, 57);
+      this.lbShift_1.Margin = new System.Windows.Forms.Padding(0);
+      this.lbShift_1.Name = "lbShift_1";
+      this.lbShift_1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+      this.lbShift_1.Size = new System.Drawing.Size(86, 57);
+      this.lbShift_1.TabIndex = 15;
+      this.lbShift_1.Text = "1";
+      this.lbShift_1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label16
       // 
@@ -1193,30 +1039,30 @@
       this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
       this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label16.ForeColor = System.Drawing.Color.White;
-      this.label16.Location = new System.Drawing.Point(113, 0);
+      this.label16.Location = new System.Drawing.Point(194, 0);
       this.label16.Margin = new System.Windows.Forms.Padding(0);
       this.label16.Name = "label16";
-      this.label16.Size = new System.Drawing.Size(81, 57);
+      this.label16.Size = new System.Drawing.Size(108, 57);
       this.label16.TabIndex = 20;
       this.label16.Text = "TB Ca";
       this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // lbOW
+      // lbStdev_1
       // 
-      this.lbOW.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbStdev_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbOW.AutoSize = true;
-      this.lbOW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbOW.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbOW.ForeColor = System.Drawing.Color.White;
-      this.lbOW.Location = new System.Drawing.Point(32, 57);
-      this.lbOW.Margin = new System.Windows.Forms.Padding(0);
-      this.lbOW.Name = "lbOW";
-      this.lbOW.Size = new System.Drawing.Size(81, 57);
-      this.lbOW.TabIndex = 24;
-      this.lbOW.Text = "00";
-      this.lbOW.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbStdev_1.AutoSize = true;
+      this.lbStdev_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbStdev_1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbStdev_1.ForeColor = System.Drawing.Color.White;
+      this.lbStdev_1.Location = new System.Drawing.Point(86, 57);
+      this.lbStdev_1.Margin = new System.Windows.Forms.Padding(0);
+      this.lbStdev_1.Name = "lbStdev_1";
+      this.lbStdev_1.Size = new System.Drawing.Size(108, 57);
+      this.lbStdev_1.TabIndex = 24;
+      this.lbStdev_1.Text = "---";
+      this.lbStdev_1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label20
       // 
@@ -1227,30 +1073,30 @@
       this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
       this.label20.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label20.ForeColor = System.Drawing.Color.White;
-      this.label20.Location = new System.Drawing.Point(194, 0);
+      this.label20.Location = new System.Drawing.Point(302, 0);
       this.label20.Margin = new System.Windows.Forms.Padding(0);
       this.label20.Name = "label20";
-      this.label20.Size = new System.Drawing.Size(81, 57);
+      this.label20.Size = new System.Drawing.Size(108, 57);
       this.label20.TabIndex = 20;
       this.label20.Text = "Tổng mẫu";
       this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // lbWeightAvg
+      // lbTotalSample_1
       // 
-      this.lbWeightAvg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbTotalSample_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbWeightAvg.AutoSize = true;
-      this.lbWeightAvg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbWeightAvg.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbWeightAvg.ForeColor = System.Drawing.Color.White;
-      this.lbWeightAvg.Location = new System.Drawing.Point(194, 57);
-      this.lbWeightAvg.Margin = new System.Windows.Forms.Padding(0);
-      this.lbWeightAvg.Name = "lbWeightAvg";
-      this.lbWeightAvg.Size = new System.Drawing.Size(81, 57);
-      this.lbWeightAvg.TabIndex = 25;
-      this.lbWeightAvg.Text = "00";
-      this.lbWeightAvg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.lbTotalSample_1.AutoSize = true;
+      this.lbTotalSample_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.lbTotalSample_1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbTotalSample_1.ForeColor = System.Drawing.Color.White;
+      this.lbTotalSample_1.Location = new System.Drawing.Point(302, 57);
+      this.lbTotalSample_1.Margin = new System.Windows.Forms.Padding(0);
+      this.lbTotalSample_1.Name = "lbTotalSample_1";
+      this.lbTotalSample_1.Size = new System.Drawing.Size(108, 57);
+      this.lbTotalSample_1.TabIndex = 25;
+      this.lbTotalSample_1.Text = "---";
+      this.lbTotalSample_1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // tableLayoutPanel3
       // 
@@ -1373,19 +1219,19 @@
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
     private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-    private System.Windows.Forms.Label lbMax;
-    private System.Windows.Forms.Label lbStdev;
-    private System.Windows.Forms.Label label6;
-    private System.Windows.Forms.Label lbSample;
-    private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.Label lbMin;
+    private System.Windows.Forms.Label lbTotalSample_3;
+    private System.Windows.Forms.Label lbTotalSample_2;
+    private System.Windows.Forms.Label lbShift_3;
+    private System.Windows.Forms.Label lbStdev_2;
+    private System.Windows.Forms.Label lbShift_2;
+    private System.Windows.Forms.Label lbStdev_3;
     private System.Windows.Forms.Label lbResult;
     private System.Windows.Forms.Label label33;
-    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.Label lbShift_1;
     private System.Windows.Forms.Label label16;
-    private System.Windows.Forms.Label lbOW;
+    private System.Windows.Forms.Label lbStdev_1;
     private System.Windows.Forms.Label label20;
-    private System.Windows.Forms.Label lbWeightAvg;
+    private System.Windows.Forms.Label lbTotalSample_1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     private System.Windows.Forms.Label lbStatusWeight;
     private System.Windows.Forms.Label lbTitle;
@@ -1415,21 +1261,13 @@
     private System.Windows.Forms.Label lbTareTarget;
     private System.Windows.Forms.Label label15;
     private System.Windows.Forms.Label lbTareLower;
-    private System.Windows.Forms.Label label45;
-    private System.Windows.Forms.Label label44;
-    private System.Windows.Forms.Label label43;
-    private System.Windows.Forms.Label label42;
-    private System.Windows.Forms.Label label37;
-    private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.Label label10;
-    private System.Windows.Forms.Label label9;
-    private System.Windows.Forms.Label label36;
-    private System.Windows.Forms.Label label35;
-    private System.Windows.Forms.Label label34;
-    private System.Windows.Forms.Label label32;
+    private System.Windows.Forms.Label lbResult_3;
+    private System.Windows.Forms.Label lbAverage_3;
+    private System.Windows.Forms.Label lbResult_2;
+    private System.Windows.Forms.Label lbAverage_2;
+    private System.Windows.Forms.Label lbResult_1;
+    private System.Windows.Forms.Label lbAverage_1;
     private System.Windows.Forms.Label label31;
-    private System.Windows.Forms.Label label22;
-    private System.Windows.Forms.Label label21;
     private ItemControls.ElipseControl elipseControl1;
     private ItemControls.ElipseControl elipseControl2;
     private ItemControls.ElipseControl elipseControl3;

@@ -253,7 +253,7 @@ namespace SyngentaWeigherQC.UI.FrmAddProduct
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         MessageBox.Show("Lỗi: " + ex.ToString());
       }
     }
@@ -312,7 +312,7 @@ namespace SyngentaWeigherQC.UI.FrmAddProduct
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         MessageBox.Show("Lỗi: " + ex.ToString());
       }
     }

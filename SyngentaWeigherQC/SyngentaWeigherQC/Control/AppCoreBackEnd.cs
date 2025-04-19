@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using SyngentaWeigherQC.DTO;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
@@ -53,6 +52,9 @@ namespace SyngentaWeigherQC.Control
     public delegate void SendValueTare(double value);
     public event SendValueTare OnSendValueTare;
 
+    public delegate void SendValueReweight(double value);
+    public event SendValueReweight OnSendValueReweight;
+
     #endregion
 
 
@@ -96,7 +98,7 @@ namespace SyngentaWeigherQC.Control
     public eWeigherMode _eWeigherModeLast = eWeigherMode.Normal;
     public string[] _listPortPC = new string[100];
 
-
+    public Shift _shiftIdCurrent = null;
 
     //public string ip_tcp_mettler = "192.168.2.100"; //Sachet //"147.167.40.239";
 
@@ -134,7 +136,7 @@ namespace SyngentaWeigherQC.Control
 
       CreateFolderReport();
 
-      eLoggerHelper.LogErrorToFileLog("Start App");
+      LoggerHelper.LogErrorToFileLog("Start App");
 
       StartShowUI();
     }
@@ -201,7 +203,7 @@ namespace SyngentaWeigherQC.Control
         //_listRoles = await LoadRoles();
         _roleCurrent = _listRoles?.Where(s => s.Name == "OP").FirstOrDefault();
 
-        
+
 
 
         //Get Shift Currrent
@@ -209,52 +211,11 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
     }
 
-    public List<TableDatalogDTO> ConvertToDTOList(List<DatalogWeight> dataList)
-    {
-      var result = new List<TableDatalogDTO>();
 
-      if (dataList == null || dataList.Count == 0)
-        return result;
-
-      int groupSize = 10;
-      int totalGroups = (int)Math.Ceiling((double)dataList.Count / groupSize);
-
-
-      int productId = (int)dataList.FirstOrDefault().ProductionId;
-      Production production = _listAllProductsBelongLine?.Where(x => x.Id == productId).FirstOrDefault();
-
-      for (int i = 0; i < totalGroups; i++)
-      {
-        var group = dataList
-            .Skip(i * groupSize)
-            .Take(groupSize)
-            .ToList();
-
-        if (group.Count == 0) continue;
-
-        // Tạo Samples dạng Dictionary<Id, Value>
-        var samples = group.ToDictionary(item => item.Id, item => item.Value);
-
-        var dto = new TableDatalogDTO
-        {
-          No = i + 1,
-          Shift = "Shift " + group.First().ShiftId, // hoặc group.First().Production?.Shift?.Name
-          DateTime = group.First().CreatedAt?.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
-          Samples = samples,
-          AvgRaw = Math.Round(group.Average(x => x.Value), 2),
-          AvgTotal = Math.Round(dataList.Average(x => x.Value), 2),
-          eEvaluate = EvaluateData(Math.Round(group.Average(x => x.Value), 2), production)
-        };
-
-        result.Add(dto);
-      }
-
-      return result;
-    }
 
     public eEvaluate EvaluateData(double avgRaw, Production production)
     {
@@ -263,13 +224,17 @@ namespace SyngentaWeigherQC.Control
         eEvaluate.Fail;
     }
 
-    public Tuple< Color, Color> EvaluateRetureColor(double value, Production production)
+    public Tuple<Color, Color> EvaluateRetureColor(DatalogWeight datalogWeight, Production production)
     {
-      if (value > production.UpperLimitFinal)
+      if (datalogWeight.IsChange)
+      {
+        return new Tuple<Color, Color>(Color.Purple, Color.White);
+      }
+      if (datalogWeight.Value > production.UpperLimitFinal)
       {
         return new Tuple<Color, Color>(Color.DarkOrange, Color.White);
       }
-      else if (value < production.LowerLimitFinal)
+      else if (datalogWeight.Value < production.LowerLimitFinal)
       {
         return new Tuple<Color, Color>(Color.Red, Color.White);
       }
@@ -289,33 +254,77 @@ namespace SyngentaWeigherQC.Control
       return eEvaluateStatus.PASS; ;
     }
 
-    public int GetShiftCode()
+
+    public Shift GetShiftCode(InforLine inforLine)
     {
       if (_listShiftType.Count == 0 || _listShift.Count == 0)
       {
-        return -1;
+        return null;
+      }
+      if (inforLine == null)
+      {
+        return null;
+      }
+      if (inforLine.ShiftTypes == null)
+      {
+        return null;
+      }
+      if (inforLine.ShiftTypes?.Code == null)
+      {
+        return null;
       }
 
-      if (inforLineOperation==null)
+      if (inforLine.ShiftTypes.Code > 0)
       {
-        return -1;
+        return GetNameShift(inforLine.ShiftTypes.Code);
       }
-      if (inforLineOperation.ShiftTypes == null)
-      {
-        return -1;
-      }
-      if (inforLineOperation.ShiftTypes?.Code == null)
-      {
-        return -1;
-      }
-
-      if (inforLineOperation.ShiftTypes.Code > 0)
-      {
-        return GetNameShift(inforLineOperation.ShiftTypes.Code);
-      }
-      return -1;
+      return null;
     }
 
+
+    public List<StatisticalData> SumaryDTO(List<DatalogWeight> listDatalogByLine)
+    {
+      List<StatisticalData> statisticalDatas = new List<StatisticalData>();
+      var groupedData = listDatalogByLine
+                        .Where(x => x.Shift != null && x.Production != null)
+                        .GroupBy(x => x.ShiftId)
+                        .Select(shiftGroup => new
+                        {
+                          ShiftId = shiftGroup.Key,
+                          Shift = AppCore.Ins._listShift.FirstOrDefault(x => x.Id == (int)shiftGroup.Key),
+                          Productions = shiftGroup
+                            .GroupBy(x => x.ProductionId)
+                            .Select(prodGroup => new
+                            {
+                              ProductionId = prodGroup.Key,
+                              Production = shiftGroup.FirstOrDefault().Production,
+                              Items = prodGroup.ToList()
+                            }).ToList()
+                        }).ToList();
+
+      foreach (var group in groupedData)
+      {
+        var data = group.Productions.LastOrDefault();
+
+        StatisticalData statisticalData = CvtDatalogWeightToStatisticalData(data.Items, data.Production);
+
+        if (group.Shift.CodeShift == 1 || group.Shift.CodeShift == 4)
+        {
+          statisticalData.Index = 1;
+        }
+        else if (group.Shift.CodeShift == 2 || group.Shift.CodeShift == 5)
+        {
+          statisticalData.Index = 2;
+        }
+        else if (group.Shift.CodeShift == 3)
+        {
+          statisticalData.Index = 3;
+        }
+        statisticalDatas.Add(statisticalData);
+      }
+
+      return statisticalDatas;
+    }
 
 
 
@@ -356,7 +365,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex.ToString());
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
       }
 
     }
@@ -488,7 +497,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog($"Lỗi khi khởi tạo chương trình, vui lòng khởi động lại!" + ex.ToString());
+        LoggerHelper.LogErrorToFileLog($"Lỗi khi khởi tạo chương trình, vui lòng khởi động lại!" + ex.ToString());
         System.Windows.Forms.MessageBox.Show($"Lỗi khi khởi tạo chương trình, vui lòng khởi động lại!", "Lỗi");
         Environment.Exit(2);
       }
@@ -665,14 +674,14 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    public double Stdev(List<double> data)
+    public double Stdev(List<double> data, int number_digits = 2)
     {
       if (data.Count > 0)
       {
         double mean = data.Average();
         double sumOfSquares = data.Sum(x => Math.Pow(x - mean, 2));
         double variance = (data.Count() > 1) ? sumOfSquares / (data.Count() - 1) : 1;
-        return Math.Round(Math.Sqrt(variance), 3);
+        return Math.Round(Math.Sqrt(variance), number_digits);
       }
       return 0;
     }
@@ -747,11 +756,11 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex.ToString());
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
       }
     }
 
-    private int GetNameShift(int codeShiftType)
+    private Shift GetNameShift(int codeShiftType)
     {
       List<Shift> listShift = _listShift?.Where(x => x.ShiftTypeId == codeShiftType).ToList();
       foreach (var item in listShift)
@@ -765,7 +774,7 @@ namespace SyngentaWeigherQC.Control
         {
           if (datatimeCurrent >= startTime && datatimeCurrent <= endTime)
           {
-            return item.CodeShift;
+            return item;
           }
         }
         else
@@ -774,11 +783,11 @@ namespace SyngentaWeigherQC.Control
           TimeSpan startDay = new TimeSpan(0, 0, 0);
           if ((datatimeCurrent >= startTime && datatimeCurrent <= endDay) || (datatimeCurrent >= startDay && datatimeCurrent <= endTime))
           {
-            return item.CodeShift;
+            return item;
           }
         }
       }
-      return -1;
+      return null;
     }
 
 
@@ -799,12 +808,12 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex.ToString());
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
       }
     }
 
 
-    public int _shiftIdCurrent = -1;
+
     private int _shiftIdLast = -1;
     private void _timerRealTimeShift_Elapsed(object sender, ElapsedEventArgs e)
     {
@@ -818,7 +827,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex.ToString());
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
       }
       finally { _timerRealTimeShift.Start(); }
     }
@@ -868,7 +877,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex.ToString());
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
       }
       finally { _timerRealTimeCheckChangeDay.Start(); }
     }
@@ -891,7 +900,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
     }
 

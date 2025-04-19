@@ -144,6 +144,7 @@ namespace SyngentaWeigherQC.eNum
       OverView,
       WeightForLine,
       TareForLine,
+      Reweight,
     }
 
     public enum eStatusConnectWeight

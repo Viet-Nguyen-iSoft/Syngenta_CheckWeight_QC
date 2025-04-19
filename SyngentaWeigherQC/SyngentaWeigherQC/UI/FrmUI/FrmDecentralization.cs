@@ -64,7 +64,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Cài đặt phân quyền thất bại !", eMsgType.Error);
       }
     }

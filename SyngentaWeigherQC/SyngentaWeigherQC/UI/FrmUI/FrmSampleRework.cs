@@ -1,25 +1,14 @@
-﻿
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using static SyngentaWeigherQC.eNum.eUI;
 
 namespace SynCheckWeigherLoggerApp.DashboardViews
 {
   public partial class FrmSampleRework : Form
   {
-    public delegate void SendReWeigherDone(Sample sample);
+    public delegate void SendReWeigherDone(DatalogWeight datalogWeight);
     public event SendReWeigherDone OnSendReWeigherDone;
 
     public FrmSampleRework()
@@ -27,18 +16,16 @@ namespace SynCheckWeigherLoggerApp.DashboardViews
       InitializeComponent();
     }
 
-
-    private Sample _sample = new Sample();
-    public FrmSampleRework(Sample sample)
-    {
-      InitializeComponent();
-      _sample = sample;
-      ShowDisplay(lblOldSampleValue, _sample.Value);
-
-      AppCore.Ins.OnSendDataReWeigher += Ins_OnSendDataReWeigher;
-    }
-
     private System.Timers.Timer timer = new System.Timers.Timer();
+    private DatalogWeight _datalogWeight = new DatalogWeight();
+    public FrmSampleRework(DatalogWeight datalogWeight):this()
+    {
+      _datalogWeight = datalogWeight;
+
+      ShowDisplay(lblOldSampleValue, datalogWeight.ValuePrevious);
+
+      AppCore.Ins.OnSendValueReweight += Ins_OnSendDataReWeigher;
+    }
 
     private void Ins_OnSendDataReWeigher(double value)
     {
@@ -51,27 +38,33 @@ namespace SynCheckWeigherLoggerApp.DashboardViews
       timer.Elapsed += Timer_Elapsed;
       timer.Start();
 
-      _sample.Value = value;
-      _sample.isEdited= true;
-      _sample.UpdatedAt = DateTime.Now;
+      _datalogWeight.Value = value;
+      _datalogWeight.IsChange = true;
+      _datalogWeight.UpdatedAt = DateTime.Now;
     }
 
     private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
       timer.Stop();
+
+      OnSendReWeigherDone?.Invoke(_datalogWeight);
+
       CloseForm();
     }
+
     private void CloseForm()
     {
       if (this.InvokeRequired)
       {
-        this.Invoke(new MethodInvoker(CloseForm));
+        this.Invoke(new Action(() =>
+        {
+          CloseForm();
+        }));
         return;
       }
-      OnSendReWeigherDone?.Invoke(_sample);
+
       this.Close();
     }
-
 
     private void ShowDisplay(Label label, double value)
     {
@@ -84,7 +77,7 @@ namespace SynCheckWeigherLoggerApp.DashboardViews
         return;
       }
 
-      label.Text = value.ToString();
+      label.Text = $"{value} g";
     }
 
     private void ShowStatus()

@@ -145,7 +145,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
 
     
-    private async void DataHome(List<DateTime> listDays)
+    private void DataHome(List<DateTime> listDays)
     {
       if (this.InvokeRequired)
       {

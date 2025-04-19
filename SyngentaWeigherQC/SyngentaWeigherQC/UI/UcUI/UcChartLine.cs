@@ -58,6 +58,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       chart1.Series[4].Points.Clear();
 
       if (chartLineData == null) return;
+      if (chartLineData.AverageRaw == null) return;
       if (chartLineData.AverageRaw.Count == 0) return;
 
       int i = 0;

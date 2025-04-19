@@ -65,9 +65,9 @@ namespace SyngentaWeigherQC.Control
           {
             await db.ShiftTypes.AddRangeAsync(new ShiftType[]
             {
-              new ShiftType(){Code = 3, Name="Hành chính", isEnable=true},
-              new ShiftType(){Code = 2, Name="Giãn ca", isEnable=true},
-              new ShiftType(){Code = 1, Name="3 ca", isEnable=true},
+              new ShiftType(){Id=3,Code = 3, Name="Hành chính", isEnable=true},
+              new ShiftType(){Id=2,Code = 2, Name="Giãn ca", isEnable=true},
+              new ShiftType(){Id=1,Code = 1, Name="3 ca", isEnable=true},
             });
           }
           await db.SaveChangesAsync();
@@ -77,12 +77,12 @@ namespace SyngentaWeigherQC.Control
           {
             await db.Shifts.AddRangeAsync(new Shift[]
             {
-              new Shift(){ Name="Hành chính", Description="Hành chính", StartHour=8, StartMinute=0,StartSecond=0, EndHour=16,EndMinute=0,EndSecond=0, Hours=8,CodeShift=6, ShiftTypeId=3,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
-              new Shift(){ Name="Giãn ca 3", Description="Giãn ca 3", StartHour=18,StartMinute=0,StartSecond=0, EndHour=6,EndMinute=0,EndSecond=0, Hours=12,CodeShift=5, ShiftTypeId=2,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
-              new Shift(){ Name="Giãn ca 1", Description="Giãn ca 1", StartHour=6,StartMinute=0,StartSecond=0, EndHour=18,EndMinute=0,EndSecond=0, Hours=12,CodeShift=4, ShiftTypeId=2,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
-              new Shift(){ Name="Ca 3", Description="Shift 3", StartHour=22,StartMinute=0,StartSecond=0, EndHour=6,EndMinute=0,EndSecond=0, Hours=8,CodeShift=3, ShiftTypeId=1,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
-              new Shift(){ Name="Ca 2", Description="Shift 2", StartHour=14,StartMinute=0,StartSecond=0, EndHour=22,EndMinute=0,EndSecond=0, Hours=8,CodeShift=2, ShiftTypeId=1,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
-              new Shift(){ Name="Ca 1", Description="Shift 1", StartHour=6,StartMinute=0,StartSecond=0, EndHour=14,EndMinute=0,EndSecond=0, Hours=8,CodeShift=1, ShiftTypeId=1,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
+              new Shift(){Id=6, Name="Hành chính", Description="Hành chính", StartHour=8, StartMinute=0,StartSecond=0, EndHour=16,EndMinute=0,EndSecond=0, Hours=8,CodeShift=6, ShiftTypeId=3,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
+              new Shift(){Id=5, Name="Giãn ca 3", Description="Giãn ca 3", StartHour=18,StartMinute=0,StartSecond=0, EndHour=6,EndMinute=0,EndSecond=0, Hours=12,CodeShift=5, ShiftTypeId=2,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
+              new Shift(){Id=4, Name="Giãn ca 1", Description="Giãn ca 1", StartHour=6,StartMinute=0,StartSecond=0, EndHour=18,EndMinute=0,EndSecond=0, Hours=12,CodeShift=4, ShiftTypeId=2,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
+              new Shift(){Id=3, Name="Ca 3", Description="Shift 3", StartHour=22,StartMinute=0,StartSecond=0, EndHour=6,EndMinute=0,EndSecond=0, Hours=8,CodeShift=3, ShiftTypeId=1,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
+              new Shift(){Id=2, Name="Ca 2", Description="Shift 2", StartHour=14,StartMinute=0,StartSecond=0, EndHour=22,EndMinute=0,EndSecond=0, Hours=8,CodeShift=2, ShiftTypeId=1,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
+              new Shift(){Id=1, Name="Ca 1", Description="Shift 1", StartHour=6,StartMinute=0,StartSecond=0, EndHour=14,EndMinute=0,EndSecond=0, Hours=8,CodeShift=1, ShiftTypeId=1,CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
             });
           }
           await db.SaveChangesAsync();

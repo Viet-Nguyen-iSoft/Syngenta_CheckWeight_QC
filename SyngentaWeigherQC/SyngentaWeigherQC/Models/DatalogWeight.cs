@@ -13,7 +13,8 @@ namespace SyngentaWeigherQC.Models
     public double Value { get; set; }
     public double ValuePrevious { get; set; }
 
-
+    [Browsable(false)]
+    public bool IsChange { get; set; } = false;
 
     [Browsable(false)]
     public int? ProductionId { get; set; }

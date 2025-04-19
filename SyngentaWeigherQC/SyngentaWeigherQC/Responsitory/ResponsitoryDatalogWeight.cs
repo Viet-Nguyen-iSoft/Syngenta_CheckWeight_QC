@@ -21,6 +21,7 @@ namespace SyngentaWeigherQC.Responsitory
       return await this.Context.Set<DatalogWeight>()
         .Include(x => x.Production)
         .Include(x => x.InforLine)
+        .Include(x => x.Shift)
         .ToListAsync();
     }
 

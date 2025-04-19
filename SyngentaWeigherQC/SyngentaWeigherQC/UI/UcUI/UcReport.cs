@@ -40,7 +40,7 @@ namespace SyngentaWeigherQC.UI.UcUI
 
     public void StatisticalProductUI(StatisticalData statisticalDatas)
     {
-      this.ucTemplateExcel1.UpdateSynthetic(statisticalDatas, statisticalDatas.Shift);
+      //this.ucTemplateExcel1.UpdateSynthetic(statisticalDatas, statisticalDatas.Shift);
     }
 
     public void StatisticalProductUI(List<StatisticalData> statisticalDatas)
@@ -48,20 +48,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       this.ucTemplateExcel1.UpdateSynthetic(statisticalDatas);
     }
 
-    public void SetChartHistogram(List<Sample> listSample, Production productions)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          SetChartHistogram(listSample, productions);
-        }));
-        return;
-      }
-
-      this.ucChartHistogram1.SetDataChart(listSample, productions);
-    }
-
+   
     public void SetChartLine(ChartLineData chartLineData)
     {
       if (this.InvokeRequired)
@@ -308,7 +295,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
     }
 

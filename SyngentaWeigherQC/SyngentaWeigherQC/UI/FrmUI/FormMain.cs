@@ -24,6 +24,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.WindowState = FormWindowState.Maximized;
       this.StartPosition = FormStartPosition.CenterScreen;
 
+      this.Shown += FormMain_Shown;
+    }
+
+    private void FormMain_Shown(object sender, EventArgs e)
+    {
       this.btnHome.PerformClick();
     }
     #region Singleton parttern
@@ -153,38 +158,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       ChangePage(AppModulSupport.Home, inforLine.Name);
     }
 
-    private void timer1_Tick(object sender, EventArgs e)
-    {
-      Test();
-    }
 
 
-    private void Test()
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          Test();
-        }));
-        return;
-      }
-
-      string content = "";
-      if (AppCore.Ins.inforLineOperation==null)
-      {
-        content += "OverView";
-      }
-      else
-      {
-        content += AppCore.Ins.inforLineOperation.Name;
-      }
-
-      label4.Text = content + "--" + AppCore.Ins.eStatusModeWeight.ToString();
-  
-
-
-
-    }
+    
   }
 }

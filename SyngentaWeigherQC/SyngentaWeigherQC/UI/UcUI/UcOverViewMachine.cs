@@ -1,6 +1,7 @@
 ﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
+using SyngentaWeigherQC.Responsitory;
 using SyngentaWeigherQC.UI.FrmUI;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,7 @@ namespace SyngentaWeigherQC.UI.UcUI
   public partial class UcOverViewMachine : UserControl
   {
     //Sự kiện
-    public delegate void SendChangeProduct(object sender);
-    public event SendChangeProduct OnSendChangeProduct;
-
-    public delegate void SendChangeShiftLeader(object sender);
+    public delegate void SendChangeShiftLeader(InforLine inforLine);
     public event SendChangeShiftLeader OnSendChangeShiftLeader;
 
     public delegate void SendChangeShiftType(object sender);
@@ -28,6 +26,9 @@ namespace SyngentaWeigherQC.UI.UcUI
 
     public delegate void SendChooseLineWeight(InforLine inforLine);
     public event SendChooseLineWeight OnSendChooseLineWeight;
+
+    public delegate void SendChooseProduct(InforLine inforLine);
+    public event SendChooseProduct OnSendChooseProduct;
 
     public UcOverViewMachine()
     {
@@ -40,11 +41,13 @@ namespace SyngentaWeigherQC.UI.UcUI
     private ShiftType _ShiftTypeCurrent = new ShiftType();
     private List<ShiftLeader> _ShiftLeaders = new List<ShiftLeader>();
     private List<ShiftType> _ShiftTypes = new List<ShiftType>();
+
+
     public UcOverViewMachine(InforLine line) : this()
     {
       _inforLine = line;
 
-      //Ten line
+      //Tên line
       Title = this._inforLine.Name;
 
       //Loại Tare
@@ -65,6 +68,15 @@ namespace SyngentaWeigherQC.UI.UcUI
       {
         this.cbProductions.SelectedIndex = -1;
       }
+
+      ChartHelper.SetDataChartPie(chartPie, 0, 0, 0);
+    }
+
+    public void InitEventChangeInforLine()
+    {
+      this.cbProductions.SelectedIndexChanged += cbProductions_SelectedIndexChanged;
+      this.cbShiftLeader.SelectedIndexChanged += cbShiftLeader_SelectedIndexChanged;
+      this.cbShiftTypes.SelectedIndexChanged += cbShiftTypes_SelectedIndexChanged;
     }
 
     private void picIconWeight_Click(object sender, EventArgs e)
@@ -141,17 +153,11 @@ namespace SyngentaWeigherQC.UI.UcUI
         this.lbTareTarget.Text = $"{production.Tare_with_label_standard}";
         this.lbTareLower.Text = $"{production.Tare_with_label_lowerlimit}";
       }
-      else if (this._inforLine.eModeTare == eModeTare.TareWithLabel)
+      else
       {
         this.lbTareUpper.Text = $"{production.Tare_no_label_upperlimit}";
         this.lbTareTarget.Text = $"{production.Tare_no_label_standard}";
         this.lbTareLower.Text = $"{production.Tare_no_label_lowerlimit}";
-      }
-      else
-      {
-        this.lbTareUpper.Text = $"{production.Tare_with_label_upperlimit}";
-        this.lbTareTarget.Text = $"{production.Tare_with_label_standard}";
-        this.lbTareLower.Text = $"{production.Tare_with_label_lowerlimit}";
       }
     }
 
@@ -274,27 +280,11 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
     }
 
-
-    public void InitEvent()
-    {
-      this.cbProductions.SelectedIndexChanged += cbProductions_SelectedIndexChanged;
-      this.cbShiftLeader.SelectedIndexChanged += cbShiftLeader_SelectedIndexChanged;
-      this.cbShiftTypes.SelectedIndexChanged += cbShiftTypes_SelectedIndexChanged;
-    }
-
-    public void DeInitEvent()
-    {
-      this.cbProductions.SelectedIndexChanged -= cbProductions_SelectedIndexChanged;
-      this.cbShiftLeader.SelectedIndexChanged -= cbShiftLeader_SelectedIndexChanged;
-      this.cbShiftTypes.SelectedIndexChanged -= cbShiftTypes_SelectedIndexChanged;
-    }
-
-
     private void cbProductions_SelectedIndexChanged(object sender, EventArgs e)
     {
       try
       {
-        DeInitEvent();
+        this.cbProductions.SelectedIndexChanged -= cbProductions_SelectedIndexChanged;
 
         var productChoose = cbProductions.SelectedItem as Production;
 
@@ -312,12 +302,12 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi sản phẩm thất bại !", eMsgType.Error);
       }
       finally
       {
-        InitEvent();
+        this.cbProductions.SelectedIndexChanged += cbProductions_SelectedIndexChanged;
       }
     }
 
@@ -346,11 +336,13 @@ namespace SyngentaWeigherQC.UI.UcUI
         _inforLine.ProductionCurrent = productChoose;
 
         SetInforProduct(_inforLine.ProductionCurrent);
-        OnSendChangeProduct?.Invoke(this._inforLine);
+
+        //Gửi sự kiện cập nhật
+        OnSendChooseProduct?.Invoke(_inforLine);
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi sản phẩm thất bại !", eMsgType.Error);
       }
     }
@@ -366,12 +358,12 @@ namespace SyngentaWeigherQC.UI.UcUI
           this._inforLine.ShiftLeader = data_choose;
           await AppCore.Ins.Update(this._inforLine);
 
-          OnSendChangeShiftLeader?.Invoke(data_choose);
+          OnSendChangeShiftLeader?.Invoke(this._inforLine);
         }
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi trưởng ca thất bại !", eMsgType.Error);
       }
     }
@@ -390,11 +382,158 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi loại ca thất bại !", eMsgType.Error);
       }
     }
 
+
+    public void SetSumary(List<DatalogWeight> datalogWeights)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetSumary(datalogWeights);
+        }));
+        return;
+      }
+
+      var rs_sumary = AppCore.Ins.SumaryDTO(datalogWeights);
+      foreach (var sumary in rs_sumary)
+      {
+        SetValueSumary(sumary);
+      }
+
+      //Chart
+      int total = rs_sumary.Sum(x => x.TotalSample);
+      int lower = rs_sumary.Sum(x => x.NumberSampleLower);
+      int over = rs_sumary.Sum(x => x.NumberSampleOver);
+      int pass = total - lower - over;
+      ChartHelper.SetDataChartPie(chartPie, pass, lower, over);
+    }
+
+    public void SetSumary(List<StatisticalData> statisticalDatas)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetSumary(statisticalDatas);
+        }));
+        return;
+      }
+
+      foreach (var sumary in statisticalDatas)
+      {
+        SetValueSumary(sumary);
+      }
+
+      //Chart
+      int total = statisticalDatas.Sum(x => x.TotalSample);
+      int lower = statisticalDatas.Sum(x => x.NumberSampleLower);
+      int over = statisticalDatas.Sum(x => x.NumberSampleOver);
+      int pass = total - lower - over;
+      ChartHelper.SetDataChartPie(chartPie, pass, lower, over);
+    }
+
+    private void SetValueSumary(StatisticalData statisticalData)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetValueSumary(statisticalData);
+        }));
+        return;
+      }
+
+
+      if (statisticalData != null)
+      {
+        switch (statisticalData.Index)
+        {
+          case 1:
+            this.lbShift_1.Text = statisticalData.Shift;
+            this.lbStdev_1.Text = statisticalData.Stdev.ToString();
+            this.lbAverage_1.Text = statisticalData.Average.ToString();
+            this.lbTotalSample_1.Text = statisticalData.TotalSample.ToString();
+            this.lbResult_1.Text = eNumHelper.GetDescription(statisticalData.eEvaluate);
+
+            if (statisticalData.eEvaluate == eEvaluate.Pass)
+            {
+              this.lbResult_1.ForeColor = Color.Green;
+            }
+            else
+            {
+              this.lbResult_1.ForeColor = Color.Tomato;
+            }
+            break;
+          case 2:
+            this.lbShift_2.Text = statisticalData.Shift;
+            this.lbStdev_2.Text = statisticalData.Stdev.ToString();
+            this.lbAverage_2.Text = statisticalData.Average.ToString();
+            this.lbTotalSample_2.Text = statisticalData.TotalSample.ToString();
+            this.lbResult_2.Text = eNumHelper.GetDescription(statisticalData.eEvaluate);
+
+            if (statisticalData.eEvaluate == eEvaluate.Pass)
+            {
+              this.lbResult_2.ForeColor = Color.Green;
+            }
+            else
+            {
+              this.lbResult_2.ForeColor = Color.Tomato;
+            }
+            break;
+          case 3:
+            this.lbShift_3.Text = statisticalData.Shift;
+            this.lbStdev_3.Text = statisticalData.Stdev.ToString();
+            this.lbAverage_3.Text = statisticalData.Average.ToString();
+            this.lbTotalSample_3.Text = statisticalData.TotalSample.ToString();
+            this.lbResult_3.Text = eNumHelper.GetDescription(statisticalData.eEvaluate);
+
+            if (statisticalData.eEvaluate == eEvaluate.Pass)
+            {
+              this.lbResult_3.ForeColor = Color.Green;
+            }
+            else
+            {
+              this.lbResult_3.ForeColor = Color.Tomato;
+            }
+            break;
+        }
+      }
+    }
+
+
+    public void SetProduct()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetProduct();
+        }));
+        return;
+      }
+      try
+      {
+        if (_inforLine.ProductionCurrent != null)
+        {
+          this.cbProductions.SelectedIndexChanged -= cbProductions_SelectedIndexChanged;
+          SetInforProduct(_inforLine.ProductionCurrent);
+        }
+      }
+      catch (Exception)
+      {
+
+        throw;
+      }
+      finally
+      {
+        this.cbProductions.SelectedIndexChanged += cbProductions_SelectedIndexChanged;
+      }
+    }
 
   }
 }

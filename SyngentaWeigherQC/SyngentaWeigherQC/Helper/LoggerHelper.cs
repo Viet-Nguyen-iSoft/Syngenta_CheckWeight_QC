@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace SyngentaWeigherQC.Helper
 {
-  public class eLoggerHelper
+  public class LoggerHelper
   {
     public static void LogErrorToFileLog(string content)
     {

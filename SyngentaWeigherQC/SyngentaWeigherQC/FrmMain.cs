@@ -318,7 +318,7 @@ namespace SyngentaWeigherQC
         }
         catch (Exception ex)
         {
-          eLoggerHelper.LogErrorToFileLog(ex);
+          LoggerHelper.LogErrorToFileLog(ex);
         }
       }
       else

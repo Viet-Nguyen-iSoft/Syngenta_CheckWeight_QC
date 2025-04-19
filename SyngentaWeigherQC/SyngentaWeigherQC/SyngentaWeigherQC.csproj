@@ -286,11 +286,13 @@
     <Compile Include="Control\AppCoreUI.cs" />
     <Compile Include="Control\CommunicationDB.cs" />
     <Compile Include="Control\CommunicationTcp.cs" />
+    <Compile Include="Control\ConvertClass.cs" />
     <Compile Include="Control\DataBase.cs" />
     <Compile Include="DTO\TableDatalogDTO.cs" />
-    <Compile Include="Helper\eLoggerHelper.cs" />
+    <Compile Include="Helper\ChartHelper.cs" />
+    <Compile Include="Helper\LoggerHelper.cs" />
     <Compile Include="Helper\eNumHelper.cs" />
-    <Compile Include="Helper\eWeightHelper.cs" />
+    <Compile Include="Helper\WeightHelper.cs" />
     <Compile Include="ItemControls\ElipseControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -352,7 +354,7 @@
     <Compile Include="Responsitory\ResponsitoryShiftTypes.cs" />
     <Compile Include="Responsitory\ResponsitoryInforLines.cs" />
     <Compile Include="Models\NewFolder1\ResponsitoryUser.cs" />
-    <Compile Include="Models\NewFolder1\StatisticalData.cs" />
+    <Compile Include="DTO\StatisticalData.cs" />
     <Compile Include="UI\Filter\FrmFilterDate.cs">
       <SubType>Form</SubType>
     </Compile>

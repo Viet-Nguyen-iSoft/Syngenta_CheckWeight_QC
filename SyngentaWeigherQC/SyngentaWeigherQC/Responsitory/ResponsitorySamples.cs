@@ -31,7 +31,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         return false;
       }
     }
@@ -55,7 +55,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         return null;
       }
     }
@@ -69,7 +69,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         return null;
       }
     }
@@ -84,7 +84,7 @@ namespace SyngentaWeigherQC.Responsitory
       catch (Exception ex)
       {
         Context.Database.RollbackTransaction();
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
         return null;
       }
     }

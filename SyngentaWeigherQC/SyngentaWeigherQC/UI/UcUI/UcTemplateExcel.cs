@@ -96,45 +96,45 @@ namespace SyngentaWeigherQC.UI.UcUI
 
       if (id == 0)
       {
-        this.lblShift1.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name;
+        //this.lblShift1.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name;
         this.lblShift1_Stdev.Text = statisticalData.Stdev.ToString();
         this.lblShift1_TB.Text = statisticalData.Average.ToString();
         this.lblShift1_Standard.Text = statisticalData.Target.ToString();
-        this.lblShift1_PassFail.Text = statisticalData.Result;
+        //this.lblShift1_PassFail.Text = statisticalData.eEvaluate;
         this.lblShift1_TotalSamples.Text = statisticalData.TotalSample.ToString();
         this.lblShift1_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
         this.lblShift1_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
         this.lblShift1_PercentFail.Text = statisticalData.RateError.ToString();
         this.lblShift1_Loss.Text = statisticalData.RateLoss.ToString();
-        this.lblShift1_PassFail.BackColor = (statisticalData.Result == "ĐẠT") ? Color.Green : Color.Red;
+        //this.lblShift1_PassFail.BackColor = (statisticalData.eEvaluate == "ĐẠT") ? Color.Green : Color.Red;
       }
       else if (id == 1)
       {
-        this.lblShift2.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name; ;
+        //this.lblShift2.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name; ;
         this.lblShift2_Stdev.Text = statisticalData.Stdev.ToString();
         this.lblShift2_TB.Text = statisticalData.Average.ToString();
         this.lblShift2_Standard.Text = statisticalData.Target.ToString();
-        this.lblShift2_PassFail.Text = statisticalData.Result;
+        //this.lblShift2_PassFail.Text = statisticalData.eEvaluate;
         this.lblShift2_TotalSamples.Text = statisticalData.TotalSample.ToString();
         this.lblShift2_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
         this.lblShift2_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
         this.lblShift2_PercentFail.Text = statisticalData.RateError.ToString();
         this.lblShift2_Loss.Text = statisticalData.RateLoss.ToString();
-        this.lblShift2_PassFail.BackColor = (statisticalData.Result == "ĐẠT") ? Color.Green : Color.Red;
+        //this.lblShift2_PassFail.BackColor = (statisticalData.eEvaluate == "ĐẠT") ? Color.Green : Color.Red;
       }
       else if (id==2)
       {
-        this.lblShift3.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name;
+        //this.lblShift3.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name;
         this.lblShift3_Stdev.Text = statisticalData.Stdev.ToString();
         this.lblShift3_TB.Text = statisticalData.Average.ToString();
         this.lblShift3_Standard.Text = statisticalData.Target.ToString();
-        this.lblShift3_PassFail.Text = statisticalData.Result;
+        //this.lblShift3_PassFail.Text = statisticalData.eEvaluate;
         this.lblShift3_TotalSamples.Text = statisticalData.TotalSample.ToString();
         this.lblShift3_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
         this.lblShift3_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
         this.lblShift3_PercentFail.Text = statisticalData.RateError.ToString();
         this.lblShift3_Loss.Text = statisticalData.RateLoss.ToString();
-        this.lblShift3_PassFail.BackColor = (statisticalData.Result == "ĐẠT") ? Color.Green : Color.Red;
+        //this.lblShift3_PassFail.BackColor = (statisticalData.eEvaluate == "ĐẠT") ? Color.Green : Color.Red;
       }
     }
 
@@ -153,21 +153,21 @@ namespace SyngentaWeigherQC.UI.UcUI
 
       if (statisticalData.Count<=0) return;
 
-      foreach (var item in statisticalData)
-      {
-        if (item.Shift==1 || item.Shift == 4 || item.Shift == 6)
-        {
-          UpdateSynthetic(item, 0);
-        }
-        else if (item.Shift == 2 || item.Shift == 5)
-        {
-          UpdateSynthetic(item, 1);
-        }
-        else if (item.Shift == 3)
-        {
-          UpdateSynthetic(item, 2);
-        }
-      }
+      //foreach (var item in statisticalData)
+      //{
+      //  if (item.Shift==1 || item.Shift == 4 || item.Shift == 6)
+      //  {
+      //    UpdateSynthetic(item, 0);
+      //  }
+      //  else if (item.Shift == 2 || item.Shift == 5)
+      //  {
+      //    UpdateSynthetic(item, 1);
+      //  }
+      //  else if (item.Shift == 3)
+      //  {
+      //    UpdateSynthetic(item, 2);
+      //  }
+      //}
 
       
     }

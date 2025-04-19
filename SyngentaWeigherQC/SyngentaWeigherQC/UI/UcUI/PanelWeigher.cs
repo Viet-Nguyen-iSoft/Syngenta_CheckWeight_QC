@@ -1,9 +1,11 @@
-﻿using SyngentaWeigherQC.Helper;
+﻿using DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.eUI;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using Production = SyngentaWeigherQC.Models.Production;
 
 namespace SyngentaWeigherQC.UI.UcUI
@@ -20,29 +22,61 @@ namespace SyngentaWeigherQC.UI.UcUI
       this.ucProductionDataInforMin.SetTitle = "Cận dưới";
     }
 
-    public void SetDataInforProduct(double PackSize, double Standard, double Upper, double Lower)
+    public void SetInforProduct(Production production, eModeTare eModeTare)
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          SetDataInforProduct(PackSize, Standard, Upper, Lower);
+          SetInforProduct(production, eModeTare);
         }));
         return;
       }
 
-      this.ucProductionDataInforPacksize.SetValue = PackSize.ToString();
-      this.ucProductionDataInforTarget.SetValue = Standard.ToString();
-      this.ucProductionDataInforMax.SetValue = Upper.ToString();
-      this.ucProductionDataInforMin.SetValue = Lower.ToString();
+      if (production!=null)
+      {
+        //Sản phẩm
+        this.ucProductionDataInforPacksize.SetValue = production.PackSize.ToString();
+        this.ucProductionDataInforTarget.SetValue = production.StandardFinal.ToString();
+        this.ucProductionDataInforMax.SetValue = production.UpperLimitFinal.ToString();
+        this.ucProductionDataInforMin.SetValue = production.LowerLimitFinal.ToString();
+
+        //Tare
+        if(eModeTare == eModeTare.TareWithLabel)
+        {
+          this.lblTareUpperLimit.Text = $" : {production.Tare_with_label_upperlimit}";
+          this.lblTareLowerLimit.Text = $" : {production.Tare_with_label_lowerlimit}";
+          this.lblTareStandard.Text = $" : {production.Tare_with_label_standard}";
+        }
+        else
+        {
+          this.lblTareUpperLimit.Text = $" : {production.Tare_no_label_upperlimit}";
+          this.lblTareLowerLimit.Text = $" : {production.Tare_no_label_lowerlimit}";
+          this.lblTareStandard.Text = $" : {production.Tare_no_label_standard}";
+        }
+      }
+      else
+      {
+        //Sản phẩm
+        this.ucProductionDataInforPacksize.SetValue = "---";
+        this.ucProductionDataInforTarget.SetValue = "---";
+        this.ucProductionDataInforMax.SetValue = "---";
+        this.ucProductionDataInforMin.SetValue = "---";
+
+        //Tare
+        this.lblTareUpperLimit.Text = $"---";
+        this.lblTareLowerLimit.Text = $"---";
+        this.lblTareStandard.Text = $"---";
+      }  
     }
-    public void SetInforTare(Production production, eModeTare eModeTare)
+
+    public void SetInforProduction(Production production, eModeTare eModeTare)
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          SetInforTare(production, eModeTare);
+          SetInforProduction(production, eModeTare);
         }));
         return;
       }
@@ -72,6 +106,8 @@ namespace SyngentaWeigherQC.UI.UcUI
         this.lblTareStandard.Text = $" : ---";
       }
     }
+
+
     public void SetValueWeigherRealTime(double value, eEvaluateStatus eEvaluateStatus)
     {
       if (this.InvokeRequired)
@@ -109,25 +145,6 @@ namespace SyngentaWeigherQC.UI.UcUI
           this.lblPasFail.ForeColor = Color.Black;
           break;
       }
-    }
-
-    public void SetValueTare(double avg, double standard, double upper, double lower, int isLabel, DateTime dateTime)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          SetValueTare(avg, standard, upper, lower, isLabel, dateTime);
-        }));
-        return;
-      }
-
-      this.lblTareAvg.Text = avg.ToString();
-      this.lblTareUpperLimit.Text = $" : {upper}";
-      this.lblTareLowerLimit.Text = $" : {lower}";
-      this.lblTareStandard.Text = $" : {standard}";
-      this.btTareWithLabel.Text = (isLabel == 1) ? "Tare chai có nhãn" : "Tare chai không nhãn";
-      this.lblTareLastUpdated.Text = $"Last updated: {dateTime.ToString("yyyy/MM/dd HH:mm:ss")}";
     }
 
     public void SetValueTare(DatalogTare datalogTare)

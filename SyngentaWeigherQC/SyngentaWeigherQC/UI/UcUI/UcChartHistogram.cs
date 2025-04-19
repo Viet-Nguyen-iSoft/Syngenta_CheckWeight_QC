@@ -29,13 +29,13 @@ namespace SyngentaWeigherQC.UI.UcUI
     }
 
     #region Chart Histogram
-    public void SetDataChart(List<Sample> listSample, Production productions)
+    public void SetDataChart(List<DatalogWeight> datalogWeights, Production productions)
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          SetDataChart(listSample, productions);
+          SetDataChart(datalogWeights, productions);
         }));
         return;
       }
@@ -48,10 +48,10 @@ namespace SyngentaWeigherQC.UI.UcUI
         chart1.Series[3].Points.Clear();
         dataGridView1.Rows.Clear();
 
-        if (listSample == null) return;
-        if (listSample.Count() <= 0) return;
+        if (datalogWeights == null) return;
+        if (datalogWeights.Count() <= 0) return;
 
-        List<double> sampleData = listSample.Where(x=>x.isEnable == true && x.isHasValue == true).Select(x => x.Value).ToList();
+        List<double> sampleData = datalogWeights.Select(x => x.Value).ToList();
 
         double mean = CalMean(sampleData);
         double stdev = CalStdev(sampleData);
@@ -112,18 +112,12 @@ namespace SyngentaWeigherQC.UI.UcUI
         chart1.Series[3].Points.AddXY(productions.UpperLimitFinal, 0);
         chart1.Series[3].Points.AddXY(productions.UpperLimitFinal, arrayFrequency.Max() * 1.1);
 
-        //minValue = Math.Min(minValue, productions.LowerLimitFinal);
-        //maxValue = Math.Max(maxValue, productions.UpperLimitFinal);
-
-        //chart1.ChartAreas[0].AxisX.Minimum = Math.Round(minValue * 0.995, 1);
-        //chart1.ChartAreas[0].AxisX.Maximum = Math.Round(maxValue * 1.005, 1);
-
         chart1.ChartAreas[0].AxisX.Minimum = Math.Round(productions.LowerLimitFinal * 0.995, 1);
         chart1.ChartAreas[0].AxisX.Maximum = Math.Round(productions.UpperLimitFinal * 1.005, 1);
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex);
+        LoggerHelper.LogErrorToFileLog(ex);
       }
 
     }

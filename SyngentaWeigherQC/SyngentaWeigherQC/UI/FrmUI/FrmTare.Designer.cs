@@ -59,6 +59,10 @@
       this.lblWeigherStatus = new System.Windows.Forms.Label();
       this.lblProductionName = new System.Windows.Forms.Label();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+      this.productionDataInforLower = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
+      this.productionDataInforUpper = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
+      this.productionDataInforPacksize = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
+      this.productionDataInforTarget = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -80,10 +84,6 @@
       this.btLoadHistoricalTare = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
       this.dtpDateHistoricalTare = new System.Windows.Forms.DateTimePicker();
-      this.productionDataInforLower = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
-      this.productionDataInforUpper = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
-      this.productionDataInforPacksize = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
-      this.productionDataInforTarget = new SynCheckWeigherLoggerApp.DashboardViews.ProductionDataInfor();
       this.tableLayoutPanel3.SuspendLayout();
       this.groupBox2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -425,6 +425,50 @@
       this.tableLayoutPanel4.Size = new System.Drawing.Size(1230, 100);
       this.tableLayoutPanel4.TabIndex = 7;
       // 
+      // productionDataInforLower
+      // 
+      this.productionDataInforLower.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.productionDataInforLower.BackColor = System.Drawing.Color.Gray;
+      this.productionDataInforLower.Location = new System.Drawing.Point(924, 3);
+      this.productionDataInforLower.Name = "productionDataInforLower";
+      this.productionDataInforLower.Size = new System.Drawing.Size(303, 94);
+      this.productionDataInforLower.TabIndex = 8;
+      // 
+      // productionDataInforUpper
+      // 
+      this.productionDataInforUpper.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.productionDataInforUpper.BackColor = System.Drawing.Color.Gray;
+      this.productionDataInforUpper.Location = new System.Drawing.Point(617, 3);
+      this.productionDataInforUpper.Name = "productionDataInforUpper";
+      this.productionDataInforUpper.Size = new System.Drawing.Size(301, 94);
+      this.productionDataInforUpper.TabIndex = 9;
+      // 
+      // productionDataInforPacksize
+      // 
+      this.productionDataInforPacksize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.productionDataInforPacksize.BackColor = System.Drawing.Color.Gray;
+      this.productionDataInforPacksize.Location = new System.Drawing.Point(3, 3);
+      this.productionDataInforPacksize.Name = "productionDataInforPacksize";
+      this.productionDataInforPacksize.Size = new System.Drawing.Size(301, 94);
+      this.productionDataInforPacksize.TabIndex = 11;
+      // 
+      // productionDataInforTarget
+      // 
+      this.productionDataInforTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.productionDataInforTarget.BackColor = System.Drawing.Color.Gray;
+      this.productionDataInforTarget.Location = new System.Drawing.Point(310, 3);
+      this.productionDataInforTarget.Name = "productionDataInforTarget";
+      this.productionDataInforTarget.Size = new System.Drawing.Size(301, 94);
+      this.productionDataInforTarget.TabIndex = 10;
+      // 
       // tableLayoutPanel1
       // 
       this.tableLayoutPanel1.ColumnCount = 1;
@@ -755,50 +799,6 @@
       this.dtpDateHistoricalTare.Name = "dtpDateHistoricalTare";
       this.dtpDateHistoricalTare.Size = new System.Drawing.Size(341, 29);
       this.dtpDateHistoricalTare.TabIndex = 3;
-      // 
-      // productionDataInforLower
-      // 
-      this.productionDataInforLower.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.productionDataInforLower.BackColor = System.Drawing.Color.Gray;
-      this.productionDataInforLower.Location = new System.Drawing.Point(924, 3);
-      this.productionDataInforLower.Name = "productionDataInforLower";
-      this.productionDataInforLower.Size = new System.Drawing.Size(303, 94);
-      this.productionDataInforLower.TabIndex = 8;
-      // 
-      // productionDataInforUpper
-      // 
-      this.productionDataInforUpper.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.productionDataInforUpper.BackColor = System.Drawing.Color.Gray;
-      this.productionDataInforUpper.Location = new System.Drawing.Point(617, 3);
-      this.productionDataInforUpper.Name = "productionDataInforUpper";
-      this.productionDataInforUpper.Size = new System.Drawing.Size(301, 94);
-      this.productionDataInforUpper.TabIndex = 9;
-      // 
-      // productionDataInforPacksize
-      // 
-      this.productionDataInforPacksize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.productionDataInforPacksize.BackColor = System.Drawing.Color.Gray;
-      this.productionDataInforPacksize.Location = new System.Drawing.Point(3, 3);
-      this.productionDataInforPacksize.Name = "productionDataInforPacksize";
-      this.productionDataInforPacksize.Size = new System.Drawing.Size(301, 94);
-      this.productionDataInforPacksize.TabIndex = 11;
-      // 
-      // productionDataInforTarget
-      // 
-      this.productionDataInforTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.productionDataInforTarget.BackColor = System.Drawing.Color.Gray;
-      this.productionDataInforTarget.Location = new System.Drawing.Point(310, 3);
-      this.productionDataInforTarget.Name = "productionDataInforTarget";
-      this.productionDataInforTarget.Size = new System.Drawing.Size(301, 94);
-      this.productionDataInforTarget.TabIndex = 10;
       // 
       // FrmTare
       // 

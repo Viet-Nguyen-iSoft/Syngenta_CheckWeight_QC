@@ -1,16 +1,12 @@
 ﻿using SyngentaWeigherQC.Communication;
 using SyngentaWeigherQC.Helper;
+using SyngentaWeigherQC.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading.Tasks;
-using static SyngentaWeigherQC.eNum.eUI;
-using System.Windows.Forms;
 using System.Timers;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using SyngentaWeigherQC.Models;
+using System.Windows.Forms;
+using static SyngentaWeigherQC.eNum.eUI;
 
 namespace SyngentaWeigherQC.Control
 {
@@ -26,7 +22,6 @@ namespace SyngentaWeigherQC.Control
 
     #region // Cân Tcp
     private CommonTCPClient commonTCPClient { get; set; }
-
     private bool PingIp
     {
       get
@@ -50,7 +45,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
+        LoggerHelper.LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
       }
       finally
       {
@@ -109,8 +104,8 @@ namespace SyngentaWeigherQC.Control
                     eStatusConnectWeight = commonTCPClient.Connected ? eStatusConnectWeight.Connected : eStatusConnectWeight.Disconnnect;
                   }
                   OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight);
-                }  
-              }  
+                }
+              }
             }
           }
           catch (Exception ex)
@@ -125,13 +120,13 @@ namespace SyngentaWeigherQC.Control
               OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight);
             }
 
-            eLoggerHelper.LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
+            LoggerHelper.LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
           }
         }
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog(ex.ToString());
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
       }
       finally
       {
@@ -149,11 +144,11 @@ namespace SyngentaWeigherQC.Control
         if (eStatusModeWeight == eStatusModeWeight.OverView)
         {
           return;
-        }  
+        }
 
-        _shiftIdCurrent = GetShiftCode();
+        _shiftIdCurrent = GetShiftCode(inforLineOperation);
 
-        if (_shiftIdCurrent==-1)
+        if (_shiftIdCurrent == null)
         {
           OnSendWarning?.Invoke(inforLineOperation, "Vui lòng chọn loại ca !", eMsgType.Warning);
           return;
@@ -165,7 +160,6 @@ namespace SyngentaWeigherQC.Control
           return;
         }
 
-        
         if (e == null) return;
         if (e.Data == null) return;
         byte[] buffer = e.Data.Array;
@@ -183,10 +177,10 @@ namespace SyngentaWeigherQC.Control
           else
           {
             //Đã có data
-            var result = eWeightHelper.ParseDataWeight(dataWeigher);
+            var result = WeightHelper.ParseDataWeight(dataWeigher);
 
 
-            if (eStatusModeWeight==eStatusModeWeight.WeightForLine)
+            if (eStatusModeWeight == eStatusModeWeight.WeightForLine)
             {
               if (inforLineOperation.RequestTare == true)
               {
@@ -197,20 +191,33 @@ namespace SyngentaWeigherQC.Control
               DatalogWeight datalogWeight = new DatalogWeight();
               datalogWeight.Value = result.Weight;
               datalogWeight.ValuePrevious = result.Weight;
-              datalogWeight.ShiftId = _shiftIdCurrent;
+              datalogWeight.ShiftId = _shiftIdCurrent.Id;
 
               datalogWeight.InforLineId = inforLineOperation?.Id;
+
               datalogWeight.ProductionId = inforLineOperation.ProductionCurrent?.Id;
 
               datalogWeight.DatalogTareId = inforLineOperation?.DatalogTareCurrent?.Id;
 
+              datalogWeight.ShiftLeaderId = inforLineOperation?.ShiftLeaderId;
+
               DatalogWeight datalogWeightAdd = await Add(datalogWeight);
 
+              //Gửi đi update Home
+              datalogWeight.InforLine = inforLineOperation;
+              datalogWeight.Production = inforLineOperation.ProductionCurrent;
+              datalogWeight.DatalogTare = inforLineOperation?.DatalogTareCurrent;
+              datalogWeight.ShiftLeader = inforLineOperation?.ShiftLeader;
+              datalogWeight.Shift = _shiftIdCurrent;
               OnSendValueDatalogWeight?.Invoke(inforLineOperation, datalogWeightAdd);
             }
             else if (eStatusModeWeight == eStatusModeWeight.TareForLine)
             {
               OnSendValueTare?.Invoke(result.Weight);
+            }
+            else
+            {
+              OnSendValueReweight?.Invoke(result.Weight);
             }  
           }
         }
@@ -257,7 +264,7 @@ namespace SyngentaWeigherQC.Control
       }
       catch (Exception ex)
       {
-        eLoggerHelper.LogErrorToFileLog("FilterDataWeigher>> " + ex.Message + "&&" + ex.StackTrace);
+        LoggerHelper.LogErrorToFileLog("FilterDataWeigher>> " + ex.Message + "&&" + ex.StackTrace);
       }
 
     }
