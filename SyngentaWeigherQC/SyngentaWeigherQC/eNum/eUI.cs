@@ -132,6 +132,14 @@ namespace SyngentaWeigherQC.eNum
       [Description("Đạt")]
       Pass,
     }
+
+    public enum eSort
+    {
+      [Description("Giảm dần")]
+      OrderBy,
+      [Description("Tăng dần")]
+      OrderByDescending,
+    }
     public enum eEvaluateStatus
     {
       UNKNOWN,

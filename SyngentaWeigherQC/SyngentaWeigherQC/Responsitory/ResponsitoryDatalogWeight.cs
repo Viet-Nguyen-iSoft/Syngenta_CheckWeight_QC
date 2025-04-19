@@ -33,5 +33,63 @@ namespace SyngentaWeigherQC.Responsitory
         .FirstOrDefaultAsync();
     }
 
+    public async Task<List<DatalogWeight>> GetProductByDate(int LineId, DateTime from, DateTime to, int shiftId)
+    {
+      if (LineId==0)
+      {
+        if (shiftId==0)
+        {
+          return await this.Context.Set<DatalogWeight>()
+            .Include(x => x.Production)
+            .Include(x => x.Shift)
+            .Include(x => x.InforLine)
+            .Where(x => x.CreatedAt.Value.Date >= from.Date &&
+                        x.CreatedAt.Value.Date <= to.Date
+                        )
+            .ToListAsync();
+        }
+        else
+        {
+          return await this.Context.Set<DatalogWeight>()
+            .Include(x => x.Production)
+            .Include(x => x.Shift)
+            .Include(x=>x.InforLine)
+            .Where(x => x.CreatedAt.Value.Date >= from.Date &&
+                        x.CreatedAt.Value.Date <= to.Date &&
+                        x.ShiftId == shiftId
+                        )
+            .ToListAsync();
+        }  
+      }
+      else
+      {
+        if (shiftId == 0)
+        {
+          return await this.Context.Set<DatalogWeight>()
+          .Include(x => x.Production)
+          .Include(x => x.Shift)
+          .Include(x=>x.InforLine)
+          .Where(x => x.CreatedAt.Value.Date >= from.Date &&
+                      x.CreatedAt.Value.Date <= to.Date &&
+                      x.InforLineId == LineId
+                      )
+          .ToListAsync();
+        }
+        else
+        {
+          return await this.Context.Set<DatalogWeight>()
+          .Include(x => x.Production)
+          .Include(x => x.Shift)
+          .Include(x => x.InforLine)
+          .Where(x => x.CreatedAt.Value.Date >= from.Date &&
+                      x.CreatedAt.Value.Date <= to.Date &&
+                      x.ShiftId == shiftId && 
+                      x.InforLineId == LineId
+                      )
+          .ToListAsync();
+        }  
+      }  
+    }
+
   }
 }

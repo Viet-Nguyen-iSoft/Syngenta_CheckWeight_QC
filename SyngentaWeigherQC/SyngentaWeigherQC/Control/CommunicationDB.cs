@@ -134,6 +134,15 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
+    public async Task<List<DatalogWeight>> LoadAllDatalogWeight(int LineId, DateTime from, DateTime to, int shiftId)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryDatalogWeight(context);
+        return await repo.GetProductByDate(LineId, from, to, shiftId);
+      }
+    }
+
 
   }
 }

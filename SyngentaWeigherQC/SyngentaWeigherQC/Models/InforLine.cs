@@ -30,15 +30,7 @@ namespace SyngentaWeigherQC.Models
     public int? ShiftTypesId { get; set; }
 
     [Browsable(false)]
-    public ShiftType ShiftTypes { get; set; }
-
-
-
-    [Browsable(false)]
     public int? ShiftLeaderId { get; set; }
-
-    [Browsable(false)]
-    public ShiftLeader ShiftLeader { get; set; }
 
 
 

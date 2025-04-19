@@ -21,7 +21,7 @@ namespace SyngentaWeigherQC.UI.UcUI
     public delegate void SendChangeShiftLeader(InforLine inforLine);
     public event SendChangeShiftLeader OnSendChangeShiftLeader;
 
-    public delegate void SendChangeShiftType(object sender);
+    public delegate void SendChangeShiftType(InforLine inforLine);
     public event SendChangeShiftType OnSendChangeShiftType;
 
     public delegate void SendChooseLineWeight(InforLine inforLine);
@@ -36,12 +36,10 @@ namespace SyngentaWeigherQC.UI.UcUI
     }
 
     private InforLine _inforLine;
-
     private ShiftLeader _ShiftLeaderCurrent = new ShiftLeader();
     private ShiftType _ShiftTypeCurrent = new ShiftType();
     private List<ShiftLeader> _ShiftLeaders = new List<ShiftLeader>();
     private List<ShiftType> _ShiftTypes = new List<ShiftType>();
-
 
     public UcOverViewMachine(InforLine line) : this()
     {
@@ -355,9 +353,8 @@ namespace SyngentaWeigherQC.UI.UcUI
         var data_choose = cbShiftLeader.SelectedItem as ShiftLeader;
         if (data_choose != null)
         {
-          this._inforLine.ShiftLeader = data_choose;
+          this._inforLine.ShiftLeaderId = data_choose.Id;
           await AppCore.Ins.Update(this._inforLine);
-
           OnSendChangeShiftLeader?.Invoke(this._inforLine);
         }
       }
@@ -374,10 +371,9 @@ namespace SyngentaWeigherQC.UI.UcUI
         var data_choose = cbShiftTypes.SelectedItem as ShiftType;
         if (data_choose != null)
         {
-          this._inforLine.ShiftTypes = data_choose;
+          this._inforLine.ShiftTypesId = data_choose.Id;
           await AppCore.Ins.Update(this._inforLine);
-
-          OnSendChangeShiftType?.Invoke(data_choose);
+          OnSendChangeShiftType?.Invoke(this._inforLine);
         }
       }
       catch (Exception ex)
@@ -506,32 +502,73 @@ namespace SyngentaWeigherQC.UI.UcUI
     }
 
 
-    public void SetProduct()
+    public void SelectProduct()
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          SetProduct();
+          SelectProduct();
         }));
         return;
       }
-      try
-      {
-        if (_inforLine.ProductionCurrent != null)
-        {
-          this.cbProductions.SelectedIndexChanged -= cbProductions_SelectedIndexChanged;
-          SetInforProduct(_inforLine.ProductionCurrent);
-        }
-      }
-      catch (Exception)
-      {
 
-        throw;
-      }
-      finally
+      if (_inforLine.ProductionCurrent != null)
       {
+        this.cbProductions.SelectedIndexChanged -= cbProductions_SelectedIndexChanged;
+
+        this.cbProductions.SelectedItem = _inforLine.ProductionCurrent;
+        SetInforProduct(_inforLine.ProductionCurrent);
+
         this.cbProductions.SelectedIndexChanged += cbProductions_SelectedIndexChanged;
+      }
+    }
+
+    public void SelectTypeShift()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SelectTypeShift();
+        }));
+        return;
+      }
+
+      if (_inforLine.ShiftTypesId > 0)
+      {
+        this.cbShiftTypes.SelectedIndexChanged -= cbShiftTypes_SelectedIndexChanged;
+
+        var data = cbShiftTypes.DataSource as List<ShiftType>;
+        var data_rs = data?.FirstOrDefault(x => x.Id == _inforLine.ShiftTypesId);
+
+        this.cbShiftTypes.SelectedItem = data_rs;
+
+        this.cbShiftTypes.SelectedIndexChanged += cbShiftTypes_SelectedIndexChanged;
+      }
+    }
+
+    public void SelectShiftLeader()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SelectShiftLeader();
+        }));
+        return;
+      }
+
+      if (_inforLine.ShiftLeaderId > 0)
+      {
+        this.cbShiftLeader.SelectedIndexChanged -= cbShiftLeader_SelectedIndexChanged;
+
+        var data = cbShiftLeader.DataSource as List<ShiftLeader>;
+        var data_rs = data?.FirstOrDefault(x => x.Id == _inforLine.ShiftLeaderId);
+
+        this.cbShiftLeader.SelectedItem = data_rs;
+
+        this.cbShiftLeader.SelectedIndexChanged += cbShiftLeader_SelectedIndexChanged;
       }
     }
 

@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using SyngentaWeigherQC.DTO;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
@@ -265,18 +266,10 @@ namespace SyngentaWeigherQC.Control
       {
         return null;
       }
-      if (inforLine.ShiftTypes == null)
-      {
-        return null;
-      }
-      if (inforLine.ShiftTypes?.Code == null)
-      {
-        return null;
-      }
 
-      if (inforLine.ShiftTypes.Code > 0)
+      if (inforLine.ShiftTypesId > 0)
       {
-        return GetNameShift(inforLine.ShiftTypes.Code);
+        return GetNameShift((int)inforLine.ShiftTypesId);
       }
       return null;
     }
@@ -297,7 +290,7 @@ namespace SyngentaWeigherQC.Control
                             .Select(prodGroup => new
                             {
                               ProductionId = prodGroup.Key,
-                              Production = shiftGroup.FirstOrDefault().Production,
+                              Production = prodGroup.FirstOrDefault().Production,
                               Items = prodGroup.ToList()
                             }).ToList()
                         }).ToList();
@@ -326,7 +319,39 @@ namespace SyngentaWeigherQC.Control
       return statisticalDatas;
     }
 
+    public List<DataReportExcel> GenerateDataReport(List<DatalogWeight> datalogWeights)
+    {
+      if (datalogWeights == null)
+        return new List<DataReportExcel>();
 
+      var result = datalogWeights
+          .Where(d => d.CreatedAt != null && d.Shift != null && d.Production != null)
+          .GroupBy(d => ((DateTime)d.CreatedAt).Date)
+          .Select(dateGroup => new DataReportExcel
+          {
+            DateTime = dateGroup.Key,
+            DataByDates = dateGroup
+              .GroupBy(d => d.Shift)
+              .Select(shiftGroup => new DataByDate
+              {
+                Shift = shiftGroup.Key,
+                DataByProducts = shiftGroup
+                      .GroupBy(d => d.Production)
+                      .Select(prodGroup => new DataByProduct
+                      {
+                        Production = prodGroup.Key,
+                        DatalogWeights = prodGroup.OrderBy(x => x.Id).ToList()
+                      })
+                      .ToList()
+              })
+              .OrderBy(x => x.Shift.Id)
+              .ToList()
+          })
+          .OrderBy(x => x.DateTime)
+          .ToList();
+
+      return result;
+    }
 
     /// <summary>
     /// ///////////////////////////////////////////////////////

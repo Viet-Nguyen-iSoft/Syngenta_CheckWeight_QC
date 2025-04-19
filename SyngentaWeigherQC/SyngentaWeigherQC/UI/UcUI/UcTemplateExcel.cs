@@ -1,4 +1,5 @@
 ﻿using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SyngentaWeigherQC.eNum.eUI;
 
 namespace SyngentaWeigherQC.UI.UcUI
 {
@@ -18,6 +20,82 @@ namespace SyngentaWeigherQC.UI.UcUI
     public UcTemplateExcel()
     {
       InitializeComponent();
+    }
+
+    public void SetValueSumary(StatisticalData statisticalData)
+    {
+      switch (statisticalData.Index)
+      {
+        case 1:
+          this.lblShift1.Text = statisticalData.Shift;
+          this.lblShift1_Stdev.Text = statisticalData.Stdev.ToString();
+          this.lblShift1_TB.Text = statisticalData.Average.ToString();
+          this.lblShift1_Standard.Text = statisticalData.Target.ToString();
+          this.lblShift1_PassFail.Text = eNumHelper.GetDescription(statisticalData.eEvaluate);
+          this.lblShift1_TotalSamples.Text = statisticalData.TotalSample.ToString(  );
+          this.lblShift1_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
+          this.lblShift1_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString(  );
+          this.lblShift1_PercentFail.Text = statisticalData.RateError.ToString() + "%";
+          this.lblShift1_Loss.Text = statisticalData.RateLoss.ToString() + "%";
+
+          if (statisticalData.eEvaluate == eEvaluate.Pass)
+          {
+            this.lblShift1_PassFail.BackColor=  Color.Green;
+            this.lblShift1_PassFail.ForeColor= Color.White;
+          }
+          else
+          {
+            this.lblShift1_PassFail.BackColor = Color.Red;
+            this.lblShift1_PassFail.ForeColor = Color.White;
+          }
+          break;
+        case 2:
+          this.lblShift2.Text = statisticalData.Shift;
+          this.lblShift2_Stdev.Text = statisticalData.Stdev.ToString();
+          this.lblShift2_TB.Text = statisticalData.Average.ToString();
+          this.lblShift2_Standard.Text = statisticalData.Target.ToString();
+          this.lblShift2_PassFail.Text = eNumHelper.GetDescription(statisticalData.eEvaluate);
+          this.lblShift2_TotalSamples.Text = statisticalData.TotalSample.ToString();
+          this.lblShift2_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
+          this.lblShift2_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
+          this.lblShift2_PercentFail.Text = statisticalData.RateError.ToString() + "%";
+          this.lblShift2_Loss.Text = statisticalData.RateLoss.ToString() + "%";
+
+          if (statisticalData.eEvaluate == eEvaluate.Pass)
+          {
+            this.lblShift2_PassFail.BackColor = Color.Green;
+            this.lblShift2_PassFail.ForeColor = Color.White;
+          }
+          else
+          {
+            this.lblShift2_PassFail.BackColor = Color.Red;
+            this.lblShift2_PassFail.ForeColor = Color.White;
+          }
+          break;
+        case 3:
+          this.lblShift3.Text = statisticalData.Shift;
+          this.lblShift3_Stdev.Text = statisticalData.Stdev.ToString();
+          this.lblShift3_TB.Text = statisticalData.Average.ToString();
+          this.lblShift3_Standard.Text = statisticalData.Target.ToString();
+          this.lblShift3_PassFail.Text = eNumHelper.GetDescription(statisticalData.eEvaluate);
+          this.lblShift3_TotalSamples.Text = statisticalData.TotalSample.ToString();
+          this.lblShift3_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
+          this.lblShift3_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
+          this.lblShift3_PercentFail.Text = statisticalData.RateError.ToString() + "%";
+          this.lblShift3_Loss.Text = statisticalData.RateLoss.ToString() + "%";
+
+          if (statisticalData.eEvaluate == eEvaluate.Pass)
+          {
+            this.lblShift3_PassFail.BackColor = Color.Green;
+            this.lblShift3_PassFail.ForeColor = Color.White;
+          }
+          else
+          {
+            this.lblShift3_PassFail.BackColor = Color.Red;
+            this.lblShift3_PassFail.ForeColor = Color.White;
+          }
+          break;
+      }
     }
 
 
@@ -81,62 +159,6 @@ namespace SyngentaWeigherQC.UI.UcUI
       }
     }
 
-    public void UpdateSynthetic(StatisticalData statisticalData, int id)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          UpdateSynthetic(statisticalData, id);
-        }));
-        return;
-      }
-
-      if (statisticalData == null) return;
-
-      if (id == 0)
-      {
-        //this.lblShift1.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name;
-        this.lblShift1_Stdev.Text = statisticalData.Stdev.ToString();
-        this.lblShift1_TB.Text = statisticalData.Average.ToString();
-        this.lblShift1_Standard.Text = statisticalData.Target.ToString();
-        //this.lblShift1_PassFail.Text = statisticalData.eEvaluate;
-        this.lblShift1_TotalSamples.Text = statisticalData.TotalSample.ToString();
-        this.lblShift1_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
-        this.lblShift1_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
-        this.lblShift1_PercentFail.Text = statisticalData.RateError.ToString();
-        this.lblShift1_Loss.Text = statisticalData.RateLoss.ToString();
-        //this.lblShift1_PassFail.BackColor = (statisticalData.eEvaluate == "ĐẠT") ? Color.Green : Color.Red;
-      }
-      else if (id == 1)
-      {
-        //this.lblShift2.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name; ;
-        this.lblShift2_Stdev.Text = statisticalData.Stdev.ToString();
-        this.lblShift2_TB.Text = statisticalData.Average.ToString();
-        this.lblShift2_Standard.Text = statisticalData.Target.ToString();
-        //this.lblShift2_PassFail.Text = statisticalData.eEvaluate;
-        this.lblShift2_TotalSamples.Text = statisticalData.TotalSample.ToString();
-        this.lblShift2_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
-        this.lblShift2_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
-        this.lblShift2_PercentFail.Text = statisticalData.RateError.ToString();
-        this.lblShift2_Loss.Text = statisticalData.RateLoss.ToString();
-        //this.lblShift2_PassFail.BackColor = (statisticalData.eEvaluate == "ĐẠT") ? Color.Green : Color.Red;
-      }
-      else if (id==2)
-      {
-        //this.lblShift3.Text = AppCore.Ins._listShift?.Where(x => x.CodeShift == statisticalData.Shift).FirstOrDefault().Name;
-        this.lblShift3_Stdev.Text = statisticalData.Stdev.ToString();
-        this.lblShift3_TB.Text = statisticalData.Average.ToString();
-        this.lblShift3_Standard.Text = statisticalData.Target.ToString();
-        //this.lblShift3_PassFail.Text = statisticalData.eEvaluate;
-        this.lblShift3_TotalSamples.Text = statisticalData.TotalSample.ToString();
-        this.lblShift3_TotalLowerLimit.Text = statisticalData.NumberSampleLower.ToString();
-        this.lblShift3_TotalUpperLimit.Text = statisticalData.NumberSampleOver.ToString();
-        this.lblShift3_PercentFail.Text = statisticalData.RateError.ToString();
-        this.lblShift3_Loss.Text = statisticalData.RateLoss.ToString();
-        //this.lblShift3_PassFail.BackColor = (statisticalData.eEvaluate == "ĐẠT") ? Color.Green : Color.Red;
-      }
-    }
 
     public void UpdateSynthetic(List<StatisticalData> statisticalData)
     {
@@ -173,7 +195,7 @@ namespace SyngentaWeigherQC.UI.UcUI
     }
 
 
-    public void ClearStatistical()
+    public void ClearSumary()
     {
       this.lblShift1.Text = "";
       this.lblShift1_Stdev.Text = "";

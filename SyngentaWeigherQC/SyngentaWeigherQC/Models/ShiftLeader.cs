@@ -15,13 +15,5 @@ namespace SyngentaWeigherQC.Models
     public int RoleId { get; set; }
     public bool IsEnable { get; set; }
     public bool IsDelete { get; set; }
-
-
-    [Browsable(false)]
-    public ICollection<InforLine> InforLines { get; set; }
-
-
-    [Browsable(false)]
-    public ICollection<DatalogWeight> DatalogWeights { get; set; }
   }
 }

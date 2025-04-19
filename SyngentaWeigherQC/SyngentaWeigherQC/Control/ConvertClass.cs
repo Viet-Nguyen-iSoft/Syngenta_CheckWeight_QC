@@ -70,6 +70,7 @@ namespace SyngentaWeigherQC.Control
       int groupSize = 10;
       int totalGroups = (int)Math.Ceiling((double)dataList.Count / groupSize);
 
+      dataList = dataList?.OrderBy(x => x.Id).ToList();
 
       int productId = (int)dataList.FirstOrDefault().ProductionId;
       Production production = _listAllProductsBelongLine?.Where(x => x.Id == productId).FirstOrDefault();
@@ -110,7 +111,7 @@ namespace SyngentaWeigherQC.Control
 
         int groupSize = 10;
         int totalGroups = (int)Math.Ceiling((double)datalogWeights.Count / groupSize);
-
+        datalogWeights = datalogWeights.OrderBy(x => x.Id).ToList();
         for (int i = 0; i < totalGroups; i++)
         {
           double average = datalogWeights

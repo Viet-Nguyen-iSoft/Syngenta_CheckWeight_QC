@@ -207,7 +207,7 @@ namespace SyngentaWeigherQC.Control
               datalogWeight.InforLine = inforLineOperation;
               datalogWeight.Production = inforLineOperation.ProductionCurrent;
               datalogWeight.DatalogTare = inforLineOperation?.DatalogTareCurrent;
-              datalogWeight.ShiftLeader = inforLineOperation?.ShiftLeader;
+              datalogWeight.ShiftLeaderId = inforLineOperation?.ShiftLeaderId;
               datalogWeight.Shift = _shiftIdCurrent;
               OnSendValueDatalogWeight?.Invoke(inforLineOperation, datalogWeightAdd);
             }

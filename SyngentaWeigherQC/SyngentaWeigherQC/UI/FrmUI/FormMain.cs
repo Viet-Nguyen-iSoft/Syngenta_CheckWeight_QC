@@ -74,10 +74,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
         //  this.btnHistorical.ForeColor = Select;
         //  OpenChildForm(AppModulSupport.Synthetic, FrmHistorical.Instance);
         //  break;
-        //case AppModulSupport.Report:
-        //  this.btnReport.ForeColor = Select;
-        //  OpenChildForm(AppModulSupport.Report, FrmReport.Instance);
-        //  break;
+        case AppModulSupport.ReportExcel:
+          this.btnReport.ForeColor = Select;
+          OpenChildForm(AppModulSupport.ReportExcel, FrmExcelExport.Instance);
+          break;
         case AppModulSupport.Setting:
           this.btnSetting.ForeColor = Select;
           OpenChildForm(AppModulSupport.Setting, FrmSettings.Instance);
@@ -143,7 +143,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnReport_Click(object sender, EventArgs e)
     {
-
+      ChangePage(AppModulSupport.ReportExcel);
     }
 
     private void btnSetting_Click(object sender, EventArgs e)

@@ -21,6 +21,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public delegate void SendChooseShiftLeader(InforLine inforLine);
     public event SendChooseShiftLeader OnSendChooseShiftLeader;
 
+    public delegate void SendChooseTypeShift(InforLine inforLine);
+    public event SendChooseTypeShift OnSendChooseTypeShift;
+
     public FrmOverView()
     {
       InitializeComponent();
@@ -103,6 +106,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
             settingUC.OnSendChooseLineWeight += SettingUC_OnSendChooseLineWeight;
             settingUC.OnSendChooseProduct += SettingUC_OnSendChooseProduct;
             settingUC.OnSendChangeShiftLeader += SettingUC_OnSendChangeShiftLeader;
+            settingUC.OnSendChangeShiftType += SettingUC_OnSendChangeShiftType;
             flowLayoutPanelLine.Controls.Add(settingUC);
           }
         }
@@ -111,6 +115,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         LoggerHelper.LogErrorToFileLog(ex);
       }
+    }
+
+    private void SettingUC_OnSendChangeShiftType(InforLine inforLine)
+    {
+      OnSendChooseTypeShift?.Invoke(inforLine);
     }
 
     private void SettingUC_OnSendChangeShiftLeader(InforLine inforLine)
@@ -198,7 +207,37 @@ namespace SyngentaWeigherQC.UI.FrmUI
           UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
           if (parametterSimpleUc.Tag == inforLine)
           {
-            ((UcOverViewMachine)control).SetProduct();
+            ((UcOverViewMachine)control).SelectProduct();
+          }
+        }
+      }
+    }
+
+    public void FindAndUpdateTypeShift(InforLine inforLine)
+    {
+      foreach (var control in flowLayoutPanelLine.Controls)
+      {
+        if (control is UcOverViewMachine)
+        {
+          UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
+          if (parametterSimpleUc.Tag == inforLine)
+          {
+            ((UcOverViewMachine)control).SelectTypeShift();
+          }
+        }
+      }
+    }
+
+    public void FindAndUpdateShiftLeader(InforLine inforLine)
+    {
+      foreach (var control in flowLayoutPanelLine.Controls)
+      {
+        if (control is UcOverViewMachine)
+        {
+          UcOverViewMachine parametterSimpleUc = (UcOverViewMachine)control;
+          if (parametterSimpleUc.Tag == inforLine)
+          {
+            ((UcOverViewMachine)control).SelectShiftLeader();
           }
         }
       }

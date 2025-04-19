@@ -288,6 +288,7 @@
     <Compile Include="Control\CommunicationTcp.cs" />
     <Compile Include="Control\ConvertClass.cs" />
     <Compile Include="Control\DataBase.cs" />
+    <Compile Include="DTO\DataReportExcel.cs" />
     <Compile Include="DTO\TableDatalogDTO.cs" />
     <Compile Include="Helper\ChartHelper.cs" />
     <Compile Include="Helper\LoggerHelper.cs" />
