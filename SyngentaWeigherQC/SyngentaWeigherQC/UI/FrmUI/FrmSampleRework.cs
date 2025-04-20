@@ -29,8 +29,6 @@ namespace SynCheckWeigherLoggerApp.DashboardViews
 
     private void Ins_OnSendDataReWeigher(double value)
     {
-      AppCore.Ins.OnSendDataReWeigher -= Ins_OnSendDataReWeigher;
-
       ShowDisplay(lblNewValue, value);
       ShowStatus();
 

@@ -91,70 +91,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
         "ĐANG XUẤT BÁO CÁO THEO TUẦN TỰ ĐỘNG. VUI LÒNG CHỜ ĐỢI TRONG GIÂY LÁT ...";
     }
 
-    private void ReportStart()
-    {
-      try
-      {
-        if (_permitExportWeek)
-        {
-          List<DateTime> listDaysOfWeek = GetAllDaysInWeek(_year, _week);
-
-          //Nếu đã có file report thì không làm gì hết
-          if (!File.Exists(_pathReportLocalWeek) || !File.Exists(_pathReportOndriveWeek))
-          {
-            //SetTitleReport(eReportConsumption.Week);
-            LoadDataReportAuToMonth(listDaysOfWeek, _week, eReportConsumption.Week);
-            SetDataProductDetail(dataReport);
-
-            if (!File.Exists(_pathReportLocalWeek))
-            {
-              ExportToPdf(_pathReportLocalWeek);
-            }
-
-            if (!File.Exists(_pathReportOndriveWeek))
-            {
-              ExportToPdf(_pathReportOndriveWeek);
-            }
-          }
-        }  
-        
-
-        if (_permitExportMonth)
-        {
-          ClearPage();
-          List<DateTime> listDaysOfMonth = GetAllDaysInMonth(_year, _month);
-          if (!File.Exists(_pathReportLocalMonth) || !File.Exists(_pathReportOndriveMonth))
-          {
-            //SetTitleReport(eReportConsumption.Month);
-            LoadDataReportAuToMonth(listDaysOfMonth, _month, eReportConsumption.Month);
-            SetDataProductDetail(dataReport);
-
-            if (!File.Exists(_pathReportLocalMonth))
-            {
-              ExportToPdf(_pathReportLocalMonth);
-            }
-
-            if (!File.Exists(_pathReportOndriveMonth))
-            {
-              ExportToPdf(_pathReportOndriveMonth);
-            }
-          }
-        }  
-
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex);
-      }
-      finally { this.Close(); }
-    }
-
+   
 
     private List<DataReportByDate> dataReport = new List<DataReportByDate>();
-    private async void LoadDataReportAuToMonth(List<DateTime> listDays, int numberMonthOrWeek, eReportConsumption eReportConsumption)
-    {
-      
-    }
+   
 
     
 
@@ -328,63 +268,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
-    private async Task<DataReportByDate> LoadDataProductByDate(DateTime dt_DB)
-    {
-      return null;
-      ////Load tất cả Data ngày đó
-      //List<DatalogWeight> allDatalogs = await AppCore.Ins.LoadAllDatalogs(dt_DB);
-      //List<Sample> allSamples = await AppCore.Ins.LoadAllSamplesContainZero(dt_DB);
-
-      //if (allDatalogs == null) return null;
-      //if (allDatalogs.Count == 0) return null;
-
-      //if (allDatalogs.Count > 0)
-      //{
-      //  //Các datalog theo sản phẩm
-      //  Dictionary<int, List<DatalogWeight>> groupDatalogs = allDatalogs
-      //    .GroupBy(x => x.ProductId)
-      //    .ToDictionary(group => group.Key, group => group.ToList());
-
-      //  List<DataDateGroupByProduct> dataByDates = new List<DataDateGroupByProduct>();
-      //  foreach (var item in groupDatalogs)
-      //  {
-      //    List<DatalogWeight> listDatalog = item.Value.ToList();
-      //    if (listDatalog.Count > 0)
-      //    {
-      //      int productId = listDatalog.FirstOrDefault().ProductId;
-      //      List<int> listValueDatalogId = listDatalog.Select(x => x.Id).ToList();
-      //      List<Sample> samples = AppCore.Ins.GetDataSampleByListIdDatalog(allSamples, listValueDatalogId);
-
-      //      DataDateGroupByProduct dataDateGroupByProduct = new DataDateGroupByProduct()
-      //      {
-      //        ProductId = productId,
-      //        Datalogs = listDatalog,
-      //        Samples = samples,
-      //      };
-      //      dataByDates.Add(dataDateGroupByProduct);
-      //    }
-      //  }
-
-      //  if (dataByDates.Count > 0)
-      //  {
-      //    DataReportByDate dataReportByDate = new DataReportByDate()
-      //    {
-      //      DateTime = dt_DB,
-      //      DataDateGroupByProducts = dataByDates
-      //    };
-
-      //    return dataReportByDate;
-      //  }
-      //  else
-      //  {
-      //    return null;
-      //  }
-      //}
-      //else
-      //{
-      //  return null;
-      //}
-    }
+   
 
     private void UpdateUIChartPie(UcChartPie ucChartPie, DataChartReport dataChartReport)
     {
@@ -557,7 +441,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void timer1_Tick(object sender, EventArgs e)
     {
-      ReportStart();
+      //ReportStart();
     }
   }
 }

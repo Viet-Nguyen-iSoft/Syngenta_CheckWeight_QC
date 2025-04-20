@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using static SyngentaWeigherQC.eNum.eUI;
+using Color = System.Drawing.Color;
 using DateTime = System.DateTime;
 using Image = System.Drawing.Image;
 using Production = SyngentaWeigherQC.Models.Production;
@@ -59,37 +60,7 @@ namespace SyngentaWeigherQC.Control
     #endregion
 
 
-
-    public delegate void SendSendUpdateProducts(object sender);
-    public event SendSendUpdateProducts OnSendSendUpdateProducts;
-
-    public delegate void SendUpdateDataDone();
-    public event SendUpdateDataDone OnSendUpdateDataDone;
-
-    public delegate void SendDataRealTimeWeigherHome(double value, eEvaluateStatus eValuate);
-    public event SendDataRealTimeWeigherHome OnSendDataRealTimeWeigherHome;
-
-    public delegate void SendDataRealTimeWeigherTare(double value);
-    public event SendDataRealTimeWeigherTare OnSendDataRealTimeWeigherTare;
-
-    public delegate void SendDataRealTimeWeigherNoApp(double value);
-    public event SendDataRealTimeWeigherNoApp OnSendDataRealTimeWeigherNoApp;
-
-    public delegate void SendRequestOffApp();
-    public event SendRequestOffApp OnSendRequestOffApp;
-
-    public delegate void SendDataReWeigher(double value);
-    public event SendDataReWeigher OnSendDataReWeigher;
-
-    public delegate void SendChangeLine(List<Production> productions);
-    public event SendChangeLine OnSendChangeLine;
-
-
-    public System.Timers.Timer _timerRealTimeShift = new System.Timers.Timer();
     public System.Timers.Timer _timerRealTimeCheckChangeDay = new System.Timers.Timer();
-    public System.Timers.Timer _timerSendRequestWeigher = new System.Timers.Timer();
-
-
 
     public eStatusModeWeight eStatusModeWeight = eStatusModeWeight.OverView;
     public InforLine inforLineOperation;
@@ -167,7 +138,7 @@ namespace SyngentaWeigherQC.Control
     public eModeTare _modeTare { get; set; } = eModeTare.TareWithLabel;
 
     public ShiftLeader _listUserCurrent { get; set; } = new ShiftLeader();
-    public InforValueSettingStation _inforValueSettingStation { get; set; } = new InforValueSettingStation();
+    public ConfigSoftware _inforValueSettingStation { get; set; } = new ConfigSoftware();
 
     public eModeUseApp _modeUseApp = eModeUseApp.OFF;
     public eReadyReceidDataTare _readyReceidDataTare = eReadyReceidDataTare.No;
@@ -179,6 +150,7 @@ namespace SyngentaWeigherQC.Control
     public List<Production> _listAllProductsBelongLine { get; set; } = new List<Production>();
     public List<InforLine> _listInforLine { get; set; } = new List<InforLine>();
     public List<DatalogWeight> _listDatalogWeight { get; set; } = new List<DatalogWeight>();
+    public ConfigSoftware _configSoftware { get; set; } = new ConfigSoftware();
     public async Task LoadDataLine()
     {
       try
@@ -198,13 +170,20 @@ namespace SyngentaWeigherQC.Control
         _listAllProductsBelongLine = await LoadAllProducts();
 
         // Datalog 
-        _listDatalogWeight = await LoadAllDatalogWeight();
+        _listDatalogWeight = await AppCore.Ins.LoadAllDatalogWeight(0, DateTime.Now, DateTime.Now, 0);
 
         //Role
         //_listRoles = await LoadRoles();
         _roleCurrent = _listRoles?.Where(s => s.Name == "OP").FirstOrDefault();
 
-
+        //Config Software
+        var configSoftwares = await LoadConfigSoftware();
+        _configSoftware = configSoftwares.FirstOrDefault();
+        if (_configSoftware != null)
+        {
+          ip_tcp_mettler = _configSoftware.IpTcp;
+          port_tcp_mettler = _configSoftware.PortTcp;
+        }
 
 
         //Get Shift Currrent
@@ -324,33 +303,63 @@ namespace SyngentaWeigherQC.Control
       if (datalogWeights == null)
         return new List<DataReportExcel>();
 
-      var result = datalogWeights
-          .Where(d => d.CreatedAt != null && d.Shift != null && d.Production != null)
-          .GroupBy(d => ((DateTime)d.CreatedAt).Date)
-          .Select(dateGroup => new DataReportExcel
-          {
-            DateTime = dateGroup.Key,
-            DataByDates = dateGroup
-              .GroupBy(d => d.Shift)
-              .Select(shiftGroup => new DataByDate
+      return datalogWeights
+      .GroupBy(dw => ((DateTime)dw.CreatedAt).Date) // Giả sử BaseModel có CreateDate
+      .Select(dateGroup => new DataReportExcel
+      {
+        DateTime = dateGroup.Key,
+        DataByDates = dateGroup
+              .GroupBy(dw => dw.ShiftType)
+              .Select(shiftTypeGroup => new DataByShiftType
               {
-                Shift = shiftGroup.Key,
-                DataByProducts = shiftGroup
-                      .GroupBy(d => d.Production)
-                      .Select(prodGroup => new DataByProduct
+                ShiftType = shiftTypeGroup.Key,
+                DataByProducts = shiftTypeGroup
+                      .GroupBy(dw => dw.Production)
+                      .Select(prodGroup => new DataByProduction
                       {
                         Production = prodGroup.Key,
-                        DatalogWeights = prodGroup.OrderBy(x => x.Id).ToList()
+                        DataByProductionByShifts = prodGroup
+                              .GroupBy(dw => dw.Shift)
+                              .Select(shiftGroup => new DataByProductionByShift
+                              {
+                                Shift = shiftGroup.Key,
+                                DatalogWeights = shiftGroup.ToList()
+                              })
+                              .ToList()
                       })
                       .ToList()
               })
-              .OrderBy(x => x.Shift.Id)
               .ToList()
-          })
-          .OrderBy(x => x.DateTime)
-          .ToList();
+      })
+      .ToList();
 
-      return result;
+      //var result = datalogWeights
+      //    .Where(d => d.CreatedAt != null && d.Shift != null && d.Production != null)
+      //    .GroupBy(d => ((DateTime)d.CreatedAt).Date)
+      //    .Select(dateGroup => new DataReportExcel
+      //    {
+      //      DateTime = dateGroup.Key,
+      //      DataByDates = dateGroup
+      //        .GroupBy(d => d.Shift)
+      //        .Select(shiftGroup => new DataByShiftType
+      //        {
+      //          Shift = shiftGroup.Key,
+      //          DataByProducts = shiftGroup
+      //                .GroupBy(d => d.Production)
+      //                .Select(prodGroup => new DataByProduction
+      //                {
+      //                  Production = prodGroup.Key,
+      //                  DatalogWeights = prodGroup.OrderBy(x => x.Id).ToList()
+      //                })
+      //                .ToList()
+      //        })
+      //        .OrderBy(x => x.Shift.Id)
+      //        .ToList()
+      //    })
+      //    .OrderBy(x => x.DateTime)
+      //    .ToList();
+
+      return null;
     }
 
     /// <summary>
@@ -419,98 +428,8 @@ namespace SyngentaWeigherQC.Control
 
 
 
-    private double _current_weigher_value = 0;
 
-    //Hàm khi nhận data rồi đưa lên DashBoard và xử lý đưa xuống DB
-    private void ReceivedData(double dataWeigherReceid)
-    {
-      //Hiển thị
-      DisplayValueWeigher(dataWeigherReceid);
-
-      if (eModeCommunication == eModeCommunication.Serial)
-      {
-        //FilterDataWeigher(dataWeigherReceid);
-      }
-      else
-      {
-        FilterDataWeigherTcp(dataWeigherReceid);
-      }
-    }
-
-
-
-    private string FilterBuffer(string bufferStr)
-    {
-      //Ver 2
-      string subString = "";
-      List<int> dotPositions = new List<int>();
-      if (bufferStr.Length > 0)
-      {
-        for (int i = 0; i < bufferStr.Length; i++)
-        {
-          if (bufferStr[i] == '.')
-          {
-            dotPositions.Add(i);
-          }
-        }
-      }
-
-      if (dotPositions.Count > 0)
-      {
-        int lastIndex = dotPositions.LastOrDefault();
-
-        if (bufferStr[bufferStr.Length - 1] == '.')
-          lastIndex = dotPositions[-2];
-
-        if (lastIndex > 0)
-        {
-          int indexGetData = lastIndex - 1;
-
-          for (int k = lastIndex - 1; k > 0; k--)
-          {
-            int cnt = 1;
-            if (indexGetData >= 0)
-            {
-              if (char.IsDigit(bufferStr[indexGetData - cnt]))
-              {
-                indexGetData--;
-              }
-              else
-              {
-                break;
-              }
-            }
-            cnt++;
-          }
-
-          if (indexGetData - 1 >= 0)
-          {
-            if (bufferStr[indexGetData - 1] == '-' || bufferStr[indexGetData - 1] == '+')
-            {
-              indexGetData--;
-            }
-          }
-
-          // Lấy chuỗi con bắt đầu từ index 0 đến 
-          subString = bufferStr.Substring((indexGetData));
-          int indexFilter = subString.LastIndexOf('.');
-          int of = 0;
-          //Check các số sau
-          for (int i = indexFilter + 1; i < subString.Length; i++)
-          {
-            if (char.IsDigit(subString[i]))
-              of++;
-            else
-              break;
-          }
-
-          if ((indexFilter + of - 1) < subString.Length)
-            subString = subString.Substring(0, indexFilter + 1 + of);
-        }
-      }
-      return subString;
-    }
-
+   
 
 
 
@@ -615,176 +534,7 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    private void DisplayValueWeigher(double value)
-    {
-      if (_eWeigherMode == eWeigherMode.Normal)
-      {
-        eEvaluateStatus eValuate = eEvaluateStatus.PASS;
-        if (_currentProduct == null)
-        {
-          eValuate = eEvaluateStatus.UNKNOWN;
-        }
-        else
-        {
-          if (value < _currentProduct.LowerLimitFinal) eValuate = eEvaluateStatus.FAIL;
-          else if (value > _currentProduct.UpperLimitFinal) eValuate = eEvaluateStatus.OVER;
-        }
-
-        OnSendDataRealTimeWeigherHome?.Invoke(value, eValuate);
-      }
-      else if (_eWeigherMode == eWeigherMode.Tare)
-      {
-        OnSendDataRealTimeWeigherTare?.Invoke(value);
-      }
-      else if (_eWeigherMode == eWeigherMode.NoApp)
-      {
-        OnSendDataRealTimeWeigherNoApp?.Invoke(value);
-      }
-    }
-
-    private string ConvertRawDataFromWeigher(byte[] receive_buffer, int data_len)
-    {
-      string weigher_data = "";
-      string tmp = "";
-      for (int i = 0; i < data_len; i++)
-      {
-        tmp += receive_buffer[i].ToString("");
-        char chr = Convert.ToChar(receive_buffer[i]);
-        if (Char.IsDigit(chr) || (chr == '.') || (chr == '-') || (chr == '+'))
-        {
-          weigher_data += String.Format("{0}", chr);
-        }
-
-      }/*for (int i = 0; i < data_len; i++)*/
-      return weigher_data;
-    }
-    public double CvtStrToDouble(string src)
-    {
-      double ret = -1;
-      try
-      {
-        ret = (src != "") ? Convert.ToDouble(src) : ret;
-      }
-      catch
-      {
-      }
-      return ret;
-    }
-
-
-
-
-
-
-
-
-    public DatalogWeight datalogCurrent = new DatalogWeight();
-
-
-
-
-    private void LoadInforTareHome()
-    {
-      if (_inforValueSettingStation.ValueAvgTare != 0)
-      {
-        //FrmHome.Instance.UpdateValueTareUI(_inforValueSettingStation.ValueAvgTare,
-        //                                _inforValueSettingStation.Target,
-        //                                _inforValueSettingStation.Max,
-        //                                _inforValueSettingStation.Min,
-        //                                _inforValueSettingStation.ModeTare,
-        //                                (DateTime)_inforValueSettingStation.UpdatedAt);
-
-        FrmMain.Instance.UpdateInforModeTare(_inforValueSettingStation.ModeTare);
-      }
-    }
-
-
-    public double Stdev(List<double> data, int number_digits = 2)
-    {
-      if (data.Count > 0)
-      {
-        double mean = data.Average();
-        double sumOfSquares = data.Sum(x => Math.Pow(x - mean, 2));
-        double variance = (data.Count() > 1) ? sumOfSquares / (data.Count() - 1) : 1;
-        return Math.Round(Math.Sqrt(variance), number_digits);
-      }
-      return 0;
-    }
-
-
-
-
-    private async Task CreateBlockSampleData()
-    {
-      try
-      {
-        //Load all Sample và Datalog
-        DateTime dt_fileDB = DateTime.Now;
-        if (dt_fileDB.Hour >= 0 && dt_fileDB.Hour < 6)
-        {
-          dt_fileDB = DateTime.Now.AddDays(-1);
-        }
-
-        List<Sample> samples = new List<Sample>();
-        int sampleNumberMax = 15;
-        int sampleNumber = 15;
-
-        //Yêu cầu khách hàng full tất cả, ko cần check số vòi fill
-        //if (_currentProduct != null)
-        //{
-        //  if (_currentProduct.FillterMax > 0)
-        //  {
-        //    sampleNumber = _currentProduct.FillterMax;
-        //  }  
-        //}  
-
-        for (int i = 1; i <= sampleNumberMax; i++)
-        {
-          Sample sample = new Sample();
-          if (i <= sampleNumber)
-          {
-            sample = new Sample()
-            {
-              DatalogId = datalogId_Sample_DB,
-              GroupId = groupId_DB,
-              LocalId = i,
-              Value = 0,
-              PreviouValue = 0,
-              isHasValue = false,
-              isEnable = true,
-              isEdited = false,
-              CreatedAt = DateTime.Now,
-              UpdatedAt = DateTime.Now,
-            };
-          }
-          else
-          {
-            sample = new Sample()
-            {
-              DatalogId = datalogId_Sample_DB,
-              GroupId = groupId_DB,
-              LocalId = i,
-              Value = 0,
-              PreviouValue = 0,
-              isHasValue = false,
-              isEnable = false,
-              isEdited = false,
-              CreatedAt = DateTime.Now,
-              UpdatedAt = DateTime.Now,
-            };
-          }
-          samples.Add(sample);
-        }
-
-        await AddSample(samples, dt_fileDB);
-        _listSamplesCurrent = samples;
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex.ToString());
-      }
-    }
-
+    
     private Shift GetNameShift(int codeShiftType)
     {
       List<Shift> listShift = _listShift?.Where(x => x.ShiftTypeId == codeShiftType).ToList();
@@ -793,7 +543,6 @@ namespace SyngentaWeigherQC.Control
         TimeSpan startTime = new TimeSpan(item.StartHour, item.StartMinute, item.StartSecond);
         TimeSpan endTime = new TimeSpan(item.EndHour, item.EndMinute, item.EndSecond);
         TimeSpan datatimeCurrent = DateTime.Now.TimeOfDay;
-
 
         if (startTime < endTime)
         {
@@ -821,15 +570,12 @@ namespace SyngentaWeigherQC.Control
     {
       try
       {
-        _timerRealTimeShift.Interval = 1000;
-        _timerRealTimeShift.Elapsed += _timerRealTimeShift_Elapsed;
-        _timerRealTimeShift.Start();
-
         _timerRealTimeCheckChangeDay.Interval = 1000;
         _timerRealTimeCheckChangeDay.Elapsed += _timerRealTimeCheckChangeDay_Elapsed;
         _timerRealTimeCheckChangeDay.Start();
 
 
+        FrmSettingConfigSoftware.Instance.OnSendChangeConnection += Instance_OnSendChangeConnection;
       }
       catch (Exception ex)
       {
@@ -837,31 +583,40 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-
-
-    private int _shiftIdLast = -1;
-    private void _timerRealTimeShift_Elapsed(object sender, ElapsedEventArgs e)
+    private void Instance_OnSendChangeConnection(ConfigSoftware configSoftware)
     {
-      _timerRealTimeShift.Stop();
-      try
+      if (configSoftware != null)
       {
-        //_shiftIdCurrent = GetShiftCode();
-        //string nameShift = (_shiftIdCurrent != -1) ? _listShift?.Where(x => x.CodeShift == _shiftIdCurrent).Select(x => x.Name).FirstOrDefault() : "";
-        //FrmMain.Instance.UpdateShiftUI(nameShift);
-
+        ip_tcp_mettler = configSoftware.IpTcp;
+        port_tcp_mettler = configSoftware.PortTcp;
       }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex.ToString());
-      }
-      finally { _timerRealTimeShift.Start(); }
     }
 
-    private void ReportAutoDailys()
+    public async void ReportAutoDailys(DateTime dateTime)
     {
-      DateTime dt = DateTime.Now.AddDays(-1);
-      FrmReportAutoExcel frmReportAutoExcel = new FrmReportAutoExcel(dt);
-      frmReportAutoExcel.ShowDialog();
+      if (AppCore.Ins._listInforLine.Count > 0)
+      {
+        var lines = AppCore.Ins._listInforLine?.Where(x => x.IsEnable == true).ToList();
+        foreach (var line in lines)
+        {
+          var datalogs = await AppCore.Ins.LoadAllDatalogWeight(line.Id, dateTime, dateTime, 0);
+          List<DataReportExcel> dataReportExcels = AppCore.Ins.GenerateDataReport(datalogs);
+
+          if (dataReportExcels != null)
+          {
+            if (dataReportExcels.Count > 0)
+            {
+              string[] pathReport = new string[3];
+              pathReport[0] = line.PathReportLocal;
+              pathReport[1] = line.PathReportOneDrive;
+              foreach (var item in dataReportExcels)
+              {
+                ExcelHelper.ReportExcel(item, pathReport);
+              }
+            }
+          }
+        }
+      }
     }
 
 
@@ -879,18 +634,12 @@ namespace SyngentaWeigherQC.Control
           dayCurrent = dt.Day;
           if (dayLast != dayCurrent)
           {
-            //_datalogId_Sample = 0;
-            groupId_DB = 1;
-            stt_Datalog_DB = 0;
-            datalogId_Sample_DB = 0;
-
             //Check Xuất report auto theo tháng, tuần
-            ExportAutoMonthOrWeek();
+            //ExportAutoMonthOrWeek();
 
             //Report Auto Dailys
-            ReportAutoDailys();
+            ReportAutoDailys(DateTime.Now.AddDays(-1));
 
-            //FrmHome.Instance.ClearHome();
             dayLast = dayCurrent;
           }
         }
@@ -929,20 +678,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public async void OnSendConfirmChangeLine(int stationID)
-    {
-      for (int i = 0; i < _listInforLine.Count(); i++)
-      {
-        _listInforLine[i].IsEnable = (_listInforLine[i].Id == stationID);
-      }
-      await UpdateStation(_listInforLine);
-      _stationCurrent = _listInforLine.Where(x => x.IsEnable == true).FirstOrDefault();
-
-      _listProductsWithStation = _listAllProductsBelongLine?.Where(x => x.LineCode == _stationCurrent.Name).ToList();
-      OnSendChangeLine?.Invoke(_listProductsWithStation);
-    }
-
-
+    
 
     public bool CheckRole(ePermit permit)
     {
@@ -977,7 +713,6 @@ namespace SyngentaWeigherQC.Control
 
       //ReLoad Product
       LoadProduct().Wait();
-      OnSendSendUpdateProducts?.Invoke(this);
     }
 
     public async Task UpdateProduct(Production productions)
@@ -990,7 +725,6 @@ namespace SyngentaWeigherQC.Control
 
       //ReLoad Product
       LoadProduct().Wait();
-      OnSendSendUpdateProducts?.Invoke(this);
     }
 
 
@@ -1006,20 +740,20 @@ namespace SyngentaWeigherQC.Control
 
 
     //Load Infor Setting Value
-    public async Task<InforValueSettingStation> LoadValueSetting()
+    public async Task<ConfigSoftware> LoadValueSetting()
     {
       using (var context = new ConfigDBContext())
       {
-        var repo = new ResponsitoryInfoValueSettingStation(context);
+        var repo = new ResponsitoryConfigSoftware(context);
         return await repo.GetAsync();
       }
     }
 
-    public async Task UpdateValueSetting(InforValueSettingStation inforValueSettingStation)
+    public async Task UpdateValueSetting(ConfigSoftware inforValueSettingStation)
     {
       using (var context = new ConfigDBContext())
       {
-        var repo = new ResponsitoryInfoValueSettingStation(context);
+        var repo = new ResponsitoryConfigSoftware(context);
         await repo.Update(inforValueSettingStation);
       }
     }
@@ -1352,27 +1086,7 @@ namespace SyngentaWeigherQC.Control
       return rs;
     }
 
-    public void SetColor(IXLWorksheet worksheet, double value, double min, double max, string location, bool isReweigher = false)
-    {
-      if (value != 0)
-      {
-        worksheet.Cell(location).Value = value;
-        if (isReweigher)
-        {
-          worksheet.Cell(location).Style.Fill.BackgroundColor = XLColor.DarkViolet;
-          worksheet.Cell(location).Style.Font.FontColor = XLColor.White;
-          return;
-        }
-        if (value > max)
-          worksheet.Cell(location).Style.Fill.BackgroundColor = XLColor.Orange;
-        else if (value < min)
-          worksheet.Cell(location).Style.Fill.BackgroundColor = XLColor.Red;
-      }
-      else
-      {
-        worksheet.Cell(location).Style.Fill.BackgroundColor = XLColor.DarkGray;
-      }
-    }
+
 
     public void SetColor(IXLWorksheet worksheet, Sample sample, string location)
     {

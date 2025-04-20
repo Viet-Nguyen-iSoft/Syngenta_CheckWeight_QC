@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Org.BouncyCastle.Asn1.Ocsp;
 using SynCheckWeigherLoggerApp.SettingsViews;
 using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Models;
@@ -24,7 +25,23 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.WindowState = FormWindowState.Maximized;
       this.StartPosition = FormStartPosition.CenterScreen;
 
+      this.lbStation.Text = $"PHẦN MỀM THU THẬP DỮ LIỆU CÂN  -  {AppCore.Ins._configSoftware?.NameStation}";
       this.Shown += FormMain_Shown;
+      FrmSettingConfigSoftware.Instance.OnSendChangeNameStation += Instance_OnSendChangeNameStation;
+    }
+
+    private void Instance_OnSendChangeNameStation(ConfigSoftware configSoftware)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          Instance_OnSendChangeNameStation(configSoftware);
+        }));
+        return;
+      }
+
+      this.lbStation.Text = $"PHẦN MỀM THU THẬP DỮ LIỆU CÂN  -  {configSoftware?.NameStation}";
     }
 
     private void FormMain_Shown(object sender, EventArgs e)
@@ -64,6 +81,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
           OpenChildForm(AppModulSupport.OverView, FrmOverView.Instance);
           break;
         case AppModulSupport.Home:
+          this.btnHome.ForeColor = Select;
           OpenChildForm(AppModulSupport.Home, FrmHome.GetInstance(_InforLine));
           break;
         //case AppModulSupport.MasterData:
@@ -121,10 +139,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         this.panelMain.Controls.Add(ChildForm);
         ChildForm.Show();
       }
-      else
-      {
-        //do not 
-      }
     }
     #endregion
 
@@ -138,7 +152,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnSynthetic_Click(object sender, EventArgs e)
     {
-
+      new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
+      return;
     }
 
     private void btnReport_Click(object sender, EventArgs e)
@@ -158,8 +173,18 @@ namespace SyngentaWeigherQC.UI.FrmUI
       ChangePage(AppModulSupport.Home, inforLine.Name);
     }
 
+    private void picCloseApp_Click(object sender, EventArgs e)
+    {
+      //AppCore.Ins.ReportAutoDailys(DateTime.Now.AddDays(-1));
+      //return;
+      FrmConfirm frmConfirm = new FrmConfirm($"Xác nhận tắt phần mềm ?", eMsgType.Question);
+      frmConfirm.OnSendOKClicked += FrmConfirmCloseApp_OnSendOKClicked;
+      frmConfirm.ShowDialog();
+    }
 
-
-    
+    private void FrmConfirmCloseApp_OnSendOKClicked()
+    {
+      this.Close();
+    }
   }
 }

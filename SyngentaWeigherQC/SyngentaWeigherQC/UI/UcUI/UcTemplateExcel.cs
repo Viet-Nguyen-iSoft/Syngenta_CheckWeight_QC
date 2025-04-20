@@ -136,26 +136,31 @@ namespace SyngentaWeigherQC.UI.UcUI
 
 
 
-    public void SetResultFinal(bool isPass)
+    public void SetResultFinal(eEvaluate eEvaluate)
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          SetResultFinal(isPass);
+          SetResultFinal(eEvaluate);
         }));
         return;
       }
 
-      if (isPass)
+      switch (eEvaluate)
       {
-        this.lblPasFail.Text = "TRỌNG LƯỢNG TRUNG BÌNH ĐẠT";
-        this.lblPasFail.BackColor = Color.Green;
-      }
-      else
-      {
-        this.lblPasFail.Text = "TRỌNG LƯỢNG TRUNG BÌNH CHƯA ĐẠT";
-        this.lblPasFail.BackColor = Color.Red;
+        case eEvaluate.None:
+          this.lblPasFail.Text = "CHƯA CÓ ĐÁNH GIÁ";
+          this.lblPasFail.BackColor = Color.Gray;
+          break;
+        case eEvaluate.Pass:
+          this.lblPasFail.Text = "TRỌNG LƯỢNG TRUNG BÌNH ĐẠT";
+          this.lblPasFail.BackColor = Color.Green;
+          break;
+        case eEvaluate.Fail:
+          this.lblPasFail.Text = "TRỌNG LƯỢNG TRUNG BÌNH CHƯA ĐẠT";
+          this.lblPasFail.BackColor = Color.Red;
+          break;
       }
     }
 

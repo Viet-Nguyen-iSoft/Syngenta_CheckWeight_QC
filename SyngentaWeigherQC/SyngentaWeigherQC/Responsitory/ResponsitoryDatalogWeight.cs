@@ -33,8 +33,11 @@ namespace SyngentaWeigherQC.Responsitory
         .FirstOrDefaultAsync();
     }
 
-    public async Task<List<DatalogWeight>> GetProductByDate(int LineId, DateTime from, DateTime to, int shiftId)
+    public async Task<List<DatalogWeight>> GetProductByDate(int LineId, DateTime fromDate, DateTime toDate, int shiftId)
     {
+      DateTime from = fromDate.Date + new TimeSpan(6, 0, 0);
+      DateTime to = toDate.Date.AddDays(1) + new TimeSpan(5, 59, 59);
+
       if (LineId==0)
       {
         if (shiftId==0)
@@ -45,8 +48,9 @@ namespace SyngentaWeigherQC.Responsitory
             .Include(x => x.Shift)
             .Include(x => x.InforLine)
             .Include(x=>x.ShiftLeader)
-            .Where(x => x.CreatedAt.Value.Date >= from.Date &&
-                        x.CreatedAt.Value.Date <= to.Date
+            .Include(x=>x.ShiftType)
+            .Where(x => x.CreatedAt.Date >= from.Date &&
+                        x.CreatedAt.Date <= to.Date
                         )
             .ToListAsync();
         }
@@ -58,8 +62,9 @@ namespace SyngentaWeigherQC.Responsitory
             .Include(x => x.Shift)
             .Include(x=>x.InforLine)
             .Include(x => x.ShiftLeader)
-            .Where(x => x.CreatedAt.Value.Date >= from.Date &&
-                        x.CreatedAt.Value.Date <= to.Date &&
+            .Include(x => x.ShiftType)
+            .Where(x => x.CreatedAt.Date >= from.Date &&
+                        x.CreatedAt.Date <= to.Date &&
                         x.ShiftId == shiftId
                         )
             .ToListAsync();
@@ -75,8 +80,9 @@ namespace SyngentaWeigherQC.Responsitory
           .Include(x => x.Shift)
           .Include(x=>x.InforLine)
           .Include(x => x.ShiftLeader)
-          .Where(x => x.CreatedAt.Value.Date >= from.Date &&
-                      x.CreatedAt.Value.Date <= to.Date &&
+          .Include(x => x.ShiftType)
+          .Where(x => x.CreatedAt.Date >= from.Date &&
+                      x.CreatedAt.Date <= to.Date &&
                       x.InforLineId == LineId
                       )
           .ToListAsync();
@@ -89,8 +95,9 @@ namespace SyngentaWeigherQC.Responsitory
           .Include(x => x.Shift)
           .Include(x => x.InforLine)
           .Include(x => x.ShiftLeader)
-          .Where(x => x.CreatedAt.Value.Date >= from.Date &&
-                      x.CreatedAt.Value.Date <= to.Date &&
+          .Include(x => x.ShiftType)
+          .Where(x => x.CreatedAt.Date >= from.Date &&
+                      x.CreatedAt.Date <= to.Date &&
                       x.ShiftId == shiftId && 
                       x.InforLineId == LineId
                       )

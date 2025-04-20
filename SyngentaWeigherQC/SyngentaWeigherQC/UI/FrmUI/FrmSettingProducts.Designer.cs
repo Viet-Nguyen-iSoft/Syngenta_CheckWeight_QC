@@ -79,7 +79,7 @@
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 322F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 323F));
       this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnCheckHistorical, 7, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnSaveChange, 6, 0);
@@ -126,9 +126,9 @@
       this.btnCheckHistorical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCheckHistorical.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCheckHistorical.ForeColor = System.Drawing.Color.White;
-      this.btnCheckHistorical.Location = new System.Drawing.Point(1004, 3);
+      this.btnCheckHistorical.Location = new System.Drawing.Point(1003, 3);
       this.btnCheckHistorical.Name = "btnCheckHistorical";
-      this.btnCheckHistorical.Size = new System.Drawing.Size(317, 44);
+      this.btnCheckHistorical.Size = new System.Drawing.Size(318, 44);
       this.btnCheckHistorical.TabIndex = 16;
       this.btnCheckHistorical.Text = "Lịch sử Import";
       this.btnCheckHistorical.TextColor = System.Drawing.Color.White;
@@ -149,7 +149,7 @@
       this.btnSaveChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSaveChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSaveChange.ForeColor = System.Drawing.Color.White;
-      this.btnSaveChange.Location = new System.Drawing.Point(818, 3);
+      this.btnSaveChange.Location = new System.Drawing.Point(817, 3);
       this.btnSaveChange.Name = "btnSaveChange";
       this.btnSaveChange.Size = new System.Drawing.Size(180, 44);
       this.btnSaveChange.TabIndex = 15;
@@ -172,7 +172,7 @@
       this.btnImportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnImportExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnImportExcel.ForeColor = System.Drawing.Color.White;
-      this.btnImportExcel.Location = new System.Drawing.Point(648, 3);
+      this.btnImportExcel.Location = new System.Drawing.Point(647, 3);
       this.btnImportExcel.Name = "btnImportExcel";
       this.btnImportExcel.Size = new System.Drawing.Size(164, 44);
       this.btnImportExcel.TabIndex = 14;
@@ -195,13 +195,14 @@
       this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnAdd.ForeColor = System.Drawing.Color.White;
-      this.btnAdd.Location = new System.Drawing.Point(478, 3);
+      this.btnAdd.Location = new System.Drawing.Point(477, 3);
       this.btnAdd.Name = "btnAdd";
       this.btnAdd.Size = new System.Drawing.Size(164, 44);
       this.btnAdd.TabIndex = 13;
       this.btnAdd.Text = "Thêm dữ liệu";
       this.btnAdd.TextColor = System.Drawing.Color.White;
       this.btnAdd.UseVisualStyleBackColor = false;
+      this.btnAdd.Visible = false;
       this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
       // 
       // btnSearch
@@ -216,7 +217,7 @@
       this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSearch.ForeColor = System.Drawing.Color.White;
       this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-      this.btnSearch.Location = new System.Drawing.Point(336, 4);
+      this.btnSearch.Location = new System.Drawing.Point(335, 4);
       this.btnSearch.Name = "btnSearch";
       this.btnSearch.Size = new System.Drawing.Size(44, 42);
       this.btnSearch.TabIndex = 18;
@@ -242,7 +243,7 @@
       this.txtSearch.PasswordChar = false;
       this.txtSearch.PlaceholderColor = System.Drawing.Color.DarkGray;
       this.txtSearch.PlaceholderText = "";
-      this.txtSearch.Size = new System.Drawing.Size(224, 39);
+      this.txtSearch.Size = new System.Drawing.Size(223, 39);
       this.txtSearch.TabIndex = 19;
       this.txtSearch.Texts = "";
       this.txtSearch.UnderlinedStyle = false;

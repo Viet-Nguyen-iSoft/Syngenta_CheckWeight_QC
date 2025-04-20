@@ -19,7 +19,7 @@ namespace SyngentaWeigherQC.Control
         var numbersLower = (datalogWeights != null) ? datalogWeights?.Count(x => x.Value < production.LowerLimitFinal) : 0;
 
         var listValue = datalogWeights.Select(x => x.Value).ToList();
-        double stdev = AppCore.Ins.Stdev(listValue, 3);
+        double stdev = MathHelper.Stdev(listValue, 3);
         double average = Math.Round(listValue.Average(), 3);
 
         double target = production.StandardFinal;
@@ -88,7 +88,7 @@ namespace SyngentaWeigherQC.Control
         {
           No = i + 1,
           Shift = group.First()?.Shift?.Name,
-          DateTime = group.First().CreatedAt?.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
+          DateTime = group.First().CreatedAt.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
           DatalogWeights = group,
           AvgRaw = Math.Round(group.Average(x => x.Value), 2),
           AvgTotal = Math.Round(dataList.Average(x => x.Value), 2),
@@ -97,6 +97,14 @@ namespace SyngentaWeigherQC.Control
 
         result.Add(dto);
       }
+
+      if (result.Count>0)
+      {
+        double averageTotal =Math.Round( result.Select(x => x.AvgRaw).Average(),3);
+        result.ForEach(x => x.AvgTotal = averageTotal);
+      }  
+      
+
       return result;
     }
 

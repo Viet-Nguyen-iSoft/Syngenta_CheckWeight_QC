@@ -80,13 +80,15 @@ namespace SyngentaWeigherQC.UI.FrmUI
       CbbLines = AppCore.Ins._listInforLine?.Where(x => x.IsEnable == true).ToList();
     }
 
+
+    private List<DataReportExcel> dataReportExcels = new List<DataReportExcel>();
     private async void btnPreview_Click(object sender, EventArgs e)
     {
       var lineChoose = cbbLine.SelectedItem as InforLine;
       int lineId = (lineChoose != null) ? lineChoose.Id : 0;
       var datalogs = await AppCore.Ins.LoadAllDatalogWeight(lineId, From, To, ShiftId);
 
-      var dataReportExcels = AppCore.Ins.GenerateDataReport(datalogs);
+      dataReportExcels = AppCore.Ins.GenerateDataReport(datalogs);
 
       ShowResult(dataReportExcels);
     }
@@ -104,40 +106,69 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
 
       this.flowLayoutPanelProduct.Controls.Clear();
-      //Đi từng ngày
-      foreach (var dataReportExcel in dataReportExcels)
-      {
-        //Đi từng Ca
-        foreach (var data_by_shift in dataReportExcel.DataByDates)
-        {
-          foreach (var data_by_product in data_by_shift.DataByProducts)
-          {
-            string textButton = dataReportExcel.DateTime.ToString("yyyy/MM/dd") + " - " +
-                                data_by_shift.Shift.Name + " - " +
-                                data_by_product.Production.Name;
 
-            CreateButtonWithDataProduction(textButton, data_by_product.DatalogWeights);
+      if (dataReportExcels.Count()>0)
+      {
+        //Đi từng ngày
+        foreach (var dataReportExcel in dataReportExcels)
+        {
+          //Đi từng Loại Ca
+          foreach (var data_by_shift in dataReportExcel.DataByDates)
+          {
+            //Đi từng sp
+            foreach (var data_by_product in data_by_shift.DataByProducts)
+            {
+              string textButton = dataReportExcel.DateTime.ToString("yyyy/MM/dd") + " - " +
+                                  data_by_shift.ShiftType.Name + " - " +
+                                  data_by_product.Production.Name;
+
+              CreateButtonWithDataProduction(textButton, data_by_product);
+            }
           }
         }
       }
+      else
+      {
+        //Bảng thông tin SP
+        ucTemplateExcel1.UpdateInforProductUI(null);
+
+        //Thống kê 3 ca
+        LoadSumaryByShift(null, null);
+
+        //Table
+        this.dataGridView1.Rows.Clear();
+
+        //Histogram
+        this.ucChartHistogram1.SetDataChart(null, null);
+
+        //ChartLine
+        this.ucChartLine1.SetDataChart(null);
+      }
+
+
+      if (flowLayoutPanelProduct.Controls.Count > 0 && flowLayoutPanelProduct.Controls[0] is Button)
+      {
+        Button firstButton = (Button)flowLayoutPanelProduct.Controls[0];
+        firstButton.PerformClick();
+      }
     }
 
-    private void CreateButtonWithDataProduction(string text, List<DatalogWeight> datalogWeights)
+    private void CreateButtonWithDataProduction(string text, DataByProduction datalogWeights)
     {
-      Button button = new System.Windows.Forms.Button();
+      Button button = new Button();
       button.BackColor = Color.FromArgb(72, 61, 139);
       button.FlatAppearance.BorderColor = Color.FromArgb(102, 102, 153);
       button.FlatAppearance.BorderSize = 3;
-      button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      button.FlatStyle = FlatStyle.Flat;
       button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular);
-      button.ForeColor = System.Drawing.Color.White;
+      button.ForeColor = Color.White;
       button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
       button.Location = new System.Drawing.Point(3, 3);
       button.Name = text;
-      button.Size = new System.Drawing.Size(300, 40);
+      button.Size = new System.Drawing.Size(400, 40);
       button.TabIndex = 16;
       button.Text = text;
-      button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      button.TextImageRelation = TextImageRelation.ImageBeforeText;
       button.UseVisualStyleBackColor = false;
       button.Tag = datalogWeights;
       button.Click += EventButton_Click;
@@ -165,13 +196,14 @@ namespace SyngentaWeigherQC.UI.FrmUI
         button.BackColor = Color.FromArgb(204, 102, 255);
 
         //Xử lý data
-        var datalogWeights = (List<DatalogWeight>)button.Tag;
+        var datalogWeights = (DataByProduction)button.Tag;
 
-        Production production = datalogWeights.FirstOrDefault().Production;
-        eModeTare eModeTare = datalogWeights.FirstOrDefault().DatalogTare.eModeTare;
-        DatalogWeight datalogWeight = datalogWeights.FirstOrDefault();
+        var production = datalogWeights.Production;
+        var listWeightByShift = datalogWeights.DataByProductionByShifts;
+
+        DatalogWeight datalogWeight = listWeightByShift.FirstOrDefault().DatalogWeights.FirstOrDefault();
         //Thông tin report
-        ExcelClassInforProduct excelClassInforProduct= new ExcelClassInforProduct();
+        ExcelClassInforProduct excelClassInforProduct = new ExcelClassInforProduct();
         excelClassInforProduct.NameLine = production.InforLine.Name;
         excelClassInforProduct.ModeTare = eNumHelper.GetDescription(datalogWeight.DatalogTare.eModeTare);
         excelClassInforProduct.ProductName = production.Name;
@@ -181,34 +213,58 @@ namespace SyngentaWeigherQC.UI.FrmUI
         excelClassInforProduct.Lower = production.LowerLimitFinal;
         excelClassInforProduct.NameShiftLeader = datalogWeight.ShiftLeader.UserName;
         ucTemplateExcel1.UpdateInforProductUI(excelClassInforProduct);
-        this.ucTemplateExcel1.SetResultFinal(true);
 
-        //Table
-        var data_table = AppCore.Ins.ConvertToDTOList(datalogWeights);
-        SetDataTable(data_table, production);
 
-        //Histogram
-        ucChartHistogram1.SetDataChart(datalogWeights, production);
+        ////Table
+        this.dataGridView1.Rows.Clear();
+        foreach ( var item in listWeightByShift)
+        {
+          var data_table = AppCore.Ins.ConvertToDTOList(item.DatalogWeights);
+          SetDataTable(data_table, production);
+        }
 
-        //ChartLine
-        var dataChartLine = AppCore.Ins.CvtDatalogWeightToChartLine(datalogWeights, production);
+        ///Gộp data Weight
+        List<DatalogWeight> allDatalogWeights = listWeightByShift.SelectMany(d => d.DatalogWeights).ToList();
+
+
+        ////Histogram
+        ucChartHistogram1.SetDataChart(allDatalogWeights, production);
+
+        ////ChartLine
+        var dataChartLine = AppCore.Ins.CvtDatalogWeightToChartLine(allDatalogWeights, production);
         ucChartLine1.SetDataChart(dataChartLine);
 
-        //Thống kê 3 ca
-        LoadSumaryByShift(datalogWeights, production);
-
-        //Kết quả
+        ////Thống kê 3 ca
+        LoadSumaryByShift(listWeightByShift, production);
       }
     }
 
-    private void LoadSumaryByShift(List<DatalogWeight> listDatalogByLine, Production production)
+    private void LoadSumaryByShift(List<DataByProductionByShift> dataByProductionByShifts, Production production)
     {
       ucTemplateExcel1.ClearSumary();
-      var rs = AppCore.Ins.SumaryDTO(listDatalogByLine);
-      foreach (var item in rs)
+      eEvaluate eEvaluate = eEvaluate.None;
+
+      if (dataByProductionByShifts?.Count>0)
       {
-        ucTemplateExcel1.SetValueSumary(item);
-      }
+        eEvaluate = eEvaluate.Pass;
+
+        foreach (var item in dataByProductionByShifts)
+        {
+          var rs = AppCore.Ins.SumaryDTO(item.DatalogWeights);
+          foreach (var item2 in rs)
+          {
+            ucTemplateExcel1.SetValueSumary(item2);
+
+            if (item2.eEvaluate == eEvaluate.Fail)
+            {
+              eEvaluate = eEvaluate.Fail;
+            }
+          }
+        }
+      }  
+
+      //Kết quả
+      this.ucTemplateExcel1.SetResultFinal(eEvaluate);
     }
 
     public void SetDataTable(List<TableDatalogDTO> tableDatalogDTOs, Production production)
@@ -222,7 +278,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         return;
       }
 
-      dataGridView1.Rows.Clear();
       if (tableDatalogDTOs.Count() > 0)
       {
         tableDatalogDTOs.Reverse();
@@ -255,72 +310,58 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-
-
-
-
-
-
+    private string nameFolder =  string.Empty;
     private void btnExport_Click(object sender, EventArgs e)
     {
-
-
-    }
-
-
-
-
-
-
-
-    private void AddListDataExcel(List<DataReportByDate> dataReportByDates)
-    {
-      if (dataReportByDates.Count <= 0) return;
-
-      this.flowLayoutPanelProduct.Controls.Clear();
-      //ĐI từng ngày
-      int cnt = 0;
-      foreach (var item in dataReportByDates)
+      try
       {
-        cnt++;
-        //Các sản phẩm ngày hôm đó
-        DateTime dt_Report = item.DateTime;
-        List<DataDateGroupByProduct> dataReportByDate = item.DataDateGroupByProducts.ToList();
-
-        if (dataReportByDate.Count > 0)
+        if (dataReportExcels != null)
         {
-          //Đi từng sản phẩm
-          foreach (var dataDateGroupByProduct in dataReportByDate)
+          if (dataReportExcels.Count > 0)
           {
-            //List<Datalog> datalogs = dataDateGroupByProduct.Datalogs.ToList();
-            //List<Sample> samples = dataDateGroupByProduct.Samples.ToList();
-            int idProduct = dataDateGroupByProduct.ProductId;
-            string nameProduct = AppCore.Ins._listAllProductsContainIsDelete?.Where(x => x.Id == idProduct)?.Select(x => x.Name).FirstOrDefault();
-            this.flowLayoutPanelProduct.Visible = true;
-            string textButton = dt_Report.ToString($"dd/MM/yyyy - {nameProduct}");
-            //CreateButtonWithDataProduction(textButton, dataDateGroupByProduct);
-          }
+            //Chọn folder để lưu
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+              folderDialog.Description = "Chọn thư mục lưu";
+              DialogResult result = folderDialog.ShowDialog();
+              if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderDialog.SelectedPath))
+              {
+                nameFolder = folderDialog.SelectedPath;
+                string[] path = new string[1];
+                path[0] = nameFolder;
+                foreach (var item in dataReportExcels)
+                {
+                  ExcelHelper.ReportExcel(item, path);
+                }
 
-          if (flowLayoutPanelProduct.Controls.Count > 0 && flowLayoutPanelProduct.Controls[0] is Button)
+                FrmConfirm frmConfirm = new FrmConfirm("Xuất report thành công !\n Bạn có muốn mở file bây giờ ?", eMsgType.Question);
+                frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+                frmConfirm.ShowDialog();
+              }
+            }
+          }
+          else
           {
-            Button firstButton = (Button)flowLayoutPanelProduct.Controls[0];
-            firstButton.PerformClick();
+            new FrmNotification().ShowMessage("Không có dữ liệu xuất Report !", eMsgType.Info);
           }
         }
-
-        Progress((cnt * 100 / dataReportByDates.Count()));
+        else
+        {
+          new FrmNotification().ShowMessage("Không có dữ liệu xuất Report !", eMsgType.Info);
+        }
       }
+      catch (Exception)
+      {
+        return;
+      }
+
     }
 
-
-
-
-
-
-
-
-    private string nameFolder = "";
-
+    private void FrmConfirm_OnSendOKClicked()
+    {
+      Process.Start("explorer.exe", nameFolder);
+    }
+    
 
 
     private void Progress(int value)
@@ -337,27 +378,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       value = value > 100 ? 100 : value;
       this.progressBar1.Value = value;
     }
-
-    private void FrmConfirm_OnSendOKClicked(object sender)
-    {
-      Process.Start("explorer.exe", nameFolder);
-      //Process.Start(fileNameExcel);
-    }
-
-
-    private List<Sample> GetDataSampleByListIdDatalog(List<Sample> listSamples, List<int> listIdDatalogs)
-    {
-      List<Sample> rs = new List<Sample>();
-
-      foreach (var id in listIdDatalogs)
-      {
-        List<Sample> samples = listSamples?.Where(x => x.DatalogId == id).ToList();
-        rs.AddRange(samples);
-      }
-      return rs;
-    }
-
-
 
 
 

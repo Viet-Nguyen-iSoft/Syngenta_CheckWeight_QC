@@ -110,7 +110,7 @@ namespace SyngentaWeigherQC.eNum
 
     public enum eShiftTypes
     {
-      BaCa,
+      BaCa = 1,
       GianCa,
       HanhChinh,
     }
@@ -127,10 +127,12 @@ namespace SyngentaWeigherQC.eNum
 
     public enum eEvaluate
     {
-      [Description("Không đạt")]
-      Fail,
+      [Description("NG")]
+      None,
       [Description("Đạt")]
       Pass,
+      [Description("Không đạt")]
+      Fail,
     }
 
     public enum eSort

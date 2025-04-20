@@ -634,21 +634,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(31)))), ((int)(((byte)(74)))));
-      this.tableLayoutPanel3.ColumnCount = 14;
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+      this.tableLayoutPanel3.ColumnCount = 15;
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.61905F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 3F));
       this.tableLayoutPanel3.Controls.Add(this.lbLineName, 0, 0);
       this.tableLayoutPanel3.Controls.Add(this.cbShiftTypes, 11, 0);
       this.tableLayoutPanel3.Controls.Add(this.label7, 10, 0);
@@ -679,7 +680,7 @@
       this.lbLineName.Location = new System.Drawing.Point(10, 0);
       this.lbLineName.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
       this.lbLineName.Name = "lbLineName";
-      this.lbLineName.Size = new System.Drawing.Size(256, 50);
+      this.lbLineName.Size = new System.Drawing.Size(255, 50);
       this.lbLineName.TabIndex = 22;
       this.lbLineName.Text = "Line Name";
       this.lbLineName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -690,10 +691,10 @@
       this.cbShiftTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbShiftTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cbShiftTypes.FormattingEnabled = true;
-      this.cbShiftTypes.Location = new System.Drawing.Point(1582, 9);
+      this.cbShiftTypes.Location = new System.Drawing.Point(1583, 9);
       this.cbShiftTypes.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
       this.cbShiftTypes.Name = "cbShiftTypes";
-      this.cbShiftTypes.Size = new System.Drawing.Size(145, 32);
+      this.cbShiftTypes.Size = new System.Drawing.Size(135, 32);
       this.cbShiftTypes.TabIndex = 19;
       // 
       // label7
@@ -705,7 +706,7 @@
       this.label7.BackColor = System.Drawing.Color.Transparent;
       this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label7.ForeColor = System.Drawing.Color.White;
-      this.label7.Location = new System.Drawing.Point(1518, 0);
+      this.label7.Location = new System.Drawing.Point(1519, 0);
       this.label7.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.label7.Name = "label7";
       this.label7.Size = new System.Drawing.Size(64, 50);
@@ -719,10 +720,10 @@
       this.cbShiftLeader.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbShiftLeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cbShiftLeader.FormattingEnabled = true;
-      this.cbShiftLeader.Location = new System.Drawing.Point(1229, 9);
+      this.cbShiftLeader.Location = new System.Drawing.Point(1177, 9);
       this.cbShiftLeader.Margin = new System.Windows.Forms.Padding(0);
       this.cbShiftLeader.Name = "cbShiftLeader";
-      this.cbShiftLeader.Size = new System.Drawing.Size(266, 32);
+      this.cbShiftLeader.Size = new System.Drawing.Size(319, 32);
       this.cbShiftLeader.TabIndex = 17;
       // 
       // cbProductions
@@ -731,10 +732,10 @@
       this.cbProductions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbProductions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cbProductions.FormattingEnabled = true;
-      this.cbProductions.Location = new System.Drawing.Point(352, 9);
+      this.cbProductions.Location = new System.Drawing.Point(351, 9);
       this.cbProductions.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
       this.cbProductions.Name = "cbProductions";
-      this.cbProductions.Size = new System.Drawing.Size(527, 32);
+      this.cbProductions.Size = new System.Drawing.Size(526, 32);
       this.cbProductions.TabIndex = 15;
       // 
       // label6
@@ -746,7 +747,7 @@
       this.label6.BackColor = System.Drawing.Color.Transparent;
       this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label6.ForeColor = System.Drawing.Color.White;
-      this.label6.Location = new System.Drawing.Point(269, 0);
+      this.label6.Location = new System.Drawing.Point(268, 0);
       this.label6.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(83, 50);
@@ -763,7 +764,7 @@
       this.label12.BackColor = System.Drawing.Color.Transparent;
       this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label12.ForeColor = System.Drawing.Color.White;
-      this.label12.Location = new System.Drawing.Point(1147, 0);
+      this.label12.Location = new System.Drawing.Point(1095, 0);
       this.label12.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.label12.Name = "label12";
       this.label12.Size = new System.Drawing.Size(82, 50);
@@ -780,7 +781,7 @@
       this.label8.BackColor = System.Drawing.Color.Transparent;
       this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label8.ForeColor = System.Drawing.Color.White;
-      this.label8.Location = new System.Drawing.Point(907, 0);
+      this.label8.Location = new System.Drawing.Point(905, 0);
       this.label8.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.label8.Name = "label8";
       this.label8.Size = new System.Drawing.Size(67, 50);
@@ -797,10 +798,10 @@
       this.lbDensity.BackColor = System.Drawing.Color.Transparent;
       this.lbDensity.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbDensity.ForeColor = System.Drawing.Color.White;
-      this.lbDensity.Location = new System.Drawing.Point(977, 0);
+      this.lbDensity.Location = new System.Drawing.Point(975, 0);
       this.lbDensity.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.lbDensity.Name = "lbDensity";
-      this.lbDensity.Size = new System.Drawing.Size(147, 50);
+      this.lbDensity.Size = new System.Drawing.Size(97, 50);
       this.lbDensity.TabIndex = 21;
       this.lbDensity.Text = "0.0";
       this.lbDensity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -819,9 +820,9 @@
       this.btnTare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnTare.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnTare.ForeColor = System.Drawing.Color.White;
-      this.btnTare.Location = new System.Drawing.Point(1740, 3);
+      this.btnTare.Location = new System.Drawing.Point(1731, 3);
       this.btnTare.Name = "btnTare";
-      this.btnTare.Size = new System.Drawing.Size(145, 44);
+      this.btnTare.Size = new System.Drawing.Size(149, 44);
       this.btnTare.TabIndex = 23;
       this.btnTare.Text = "Tare sản phẩm";
       this.btnTare.TextColor = System.Drawing.Color.White;

@@ -53,5 +53,12 @@ namespace SyngentaWeigherQC.Models
 
     [Browsable(false)]
     public Shift Shift { get; set; }
+
+
+    [Browsable(false)]
+    public int? ShiftTypeId { get; set; }
+
+    [Browsable(false)]
+    public ShiftType ShiftType { get; set; }
   }
 }

@@ -86,7 +86,7 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
       this.btnSettingLine.PerformClick();
       this.btnSettingDevice.Visible = true;
       this.btnSettingDevice.Visible = (AppCore.Ins._roleCurrent?.Name == "iSOFT" || AppCore.Ins._roleCurrent?.Name == "Admin" || AppCore.Ins._isPermitDev==true);
-      FrmMain.Instance.OnSendChangeLogin += Instance_OnSendChangeLogin;
+      //FrmMain.Instance.OnSendChangeLogin += Instance_OnSendChangeLogin;
     }
 
     private void Instance_OnSendChangeLogin()
@@ -111,7 +111,7 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
 
     private void btnSettingDevice_Click(object sender, EventArgs e)
     {
-      OpenChildForm(AppModulSupport.DeviceSetting, FrmSettingDevice.Instance);
+      OpenChildForm(AppModulSupport.DeviceSetting, FrmSettingConfigSoftware.Instance);
     }
 
     private void btnSettingUser_Click(object sender, EventArgs e)
@@ -121,11 +121,15 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
 
     private void btnDecentralization_Click(object sender, EventArgs e)
     {
+      new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
+      return;
       OpenChildForm(AppModulSupport.Decentralization, FrmDecentralization.Instance);
     }
 
     private void btnChangePass_Click(object sender, EventArgs e)
     {
+      new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
+      return;
       OpenChildForm(AppModulSupport.PassChangeSetting, FrmChangePass.Instance);
     }
 

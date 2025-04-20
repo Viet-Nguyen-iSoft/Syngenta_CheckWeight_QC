@@ -66,7 +66,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.ucAccount5.SetTag(ClickSave5);
 
       Instance_OnSendChangeLogin();
-      FrmMain.Instance.OnSendChangeLogin += Instance_OnSendChangeLogin;
     }
 
     private bool isRole = false;

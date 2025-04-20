@@ -133,7 +133,7 @@
       this.btnSettingDevice.Name = "btnSettingDevice";
       this.btnSettingDevice.Size = new System.Drawing.Size(180, 70);
       this.btnSettingDevice.TabIndex = 8;
-      this.btnSettingDevice.Text = "Cài đặt thiết bị";
+      this.btnSettingDevice.Text = "Cài đặt trạm";
       this.btnSettingDevice.TextColor = System.Drawing.Color.White;
       this.btnSettingDevice.UseVisualStyleBackColor = false;
       this.btnSettingDevice.Click += new System.EventHandler(this.btnSettingDevice_Click);

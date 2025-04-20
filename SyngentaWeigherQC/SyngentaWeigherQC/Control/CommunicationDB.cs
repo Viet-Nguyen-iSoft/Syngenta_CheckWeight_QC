@@ -59,6 +59,14 @@ namespace SyngentaWeigherQC.Control
         return await repo.Update(datalogWeight);
       }
     }
+    public async Task<bool> Update(ConfigSoftware configSoftware)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<ConfigSoftware, ConfigDBContext>(context);
+        return await repo.Update(configSoftware);
+      }
+    }
 
 
     public async Task AddRangeProducts(List<Production> productions)
@@ -143,6 +151,15 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
+
+    public async Task<List<ConfigSoftware>> LoadConfigSoftware()
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryConfigSoftware(context);
+        return await repo.GetAllAsync();
+      }
+    }
 
   }
 }

@@ -113,15 +113,16 @@ namespace SyngentaWeigherQC.Control
           }
           await db.SaveChangesAsync();
 
-          ////InforValueSettingStation
-          //if (db.InforValueSettingStations.Count() <= 0)
-          //{
-          //  await db.InforValueSettingStations.AddRangeAsync(new InforValueSettingStation[]
-          //  {
-          //    new InforValueSettingStation(){ StationId=0, ValueAvgTare=0, Min=0, Max=0,Target=0, ModeTare=1, IsChangeProductNoTare=true,GroupId_Datalog=1, STT_Datalog=1,GroupId_Sample=1,DatalogId_Sample=1, CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
-          //  }); ;
-          //}
-          //await db.SaveChangesAsync();
+          //ConfigSoftwares
+          if (db.ConfigSoftwares.Count() <= 0)
+          {
+            await db.ConfigSoftwares.AddRangeAsync(new ConfigSoftware[]
+            {
+              new ConfigSoftware(){ NameStation="TRẠM 1", IpTcp="127.0.0.1", PortTcp=2305, Spare1=0,Spare2="", Spare3="1"},
+            });
+          }
+          await db.SaveChangesAsync();
+
           db.Database.CommitTransaction();
 
           return true;

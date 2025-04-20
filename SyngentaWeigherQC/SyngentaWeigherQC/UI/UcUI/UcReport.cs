@@ -62,19 +62,6 @@ namespace SyngentaWeigherQC.UI.UcUI
       this.ucChartLine1.SetDataChart(chartLineData);
     }
 
-    public void SetResultFinal(bool isPass)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          SetResultFinal(isPass);
-        }));
-        return;
-      }
-
-      this.ucTemplateExcel1.SetResultFinal(isPass);
-    }
 
     public void SetDataTable(List<DatalogWeight> datalogs, List<Sample> samples)
     {
@@ -111,7 +98,7 @@ namespace SyngentaWeigherQC.UI.UcUI
 
           List<double> listValueSample = samplesByShift.Where(x => x.isEnable == true && x.isHasValue == true).Select(x => x.Value).ToList();
           double averageShift = Math.Round(listValueSample.Average(), 2);
-          double stdev = Math.Round(AppCore.Ins.Stdev(listValueSample), 3);
+          double stdev = Math.Round(MathHelper.Stdev(listValueSample), 3);
 
           int stt = 1;
           foreach (var datalog in listDatalogByShift)

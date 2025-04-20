@@ -299,12 +299,29 @@ namespace SyngentaWeigherQC.UI.FrmUI
         //Clear bản dữ liệu cũ
         _listDatalogShiftCurrrent = new List<DatalogWeight>();
         LoadUiWhenAddData();
+
+        ShowUiRequestTare(_inforLine.RequestTare);
       }
       catch (Exception ex)
       {
         LoggerHelper.LogErrorToFileLog(ex);
         new FrmNotification().ShowMessage("Thay đổi sản phẩm thất bại !", eMsgType.Error);
       }
+    }
+
+    private void ShowUiRequestTare(bool request)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          ShowUiRequestTare(request);
+        }));
+        return;
+      }
+
+      //Kiểm tra có yêu cầu Tare
+      this.lbRequestTare.Visible = request;
     }
 
     private void FrmInformation_OnSendCancelClicked(object sender)

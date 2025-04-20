@@ -12,5 +12,8 @@ namespace SyngentaWeigherQC.Models
     public string Name { get; set; }
     public int Code { get; set; }
     public bool isEnable { get; set; }
+
+    [Browsable(false)]
+    public ICollection<DatalogWeight> DatalogWeights { get; set; }
   }
 }

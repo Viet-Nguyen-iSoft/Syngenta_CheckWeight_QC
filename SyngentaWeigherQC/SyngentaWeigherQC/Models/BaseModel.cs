@@ -17,11 +17,11 @@ namespace SyngentaWeigherQC.Models
     public int Id { get; set; }
 
     [DisplayName("Ngày tạo")]
-    public DateTime? CreatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
     //[Browsable(false)]
 
     [DisplayName("Ngày cập nhật")]
-    public DateTime? UpdatedAt { get; set; } = DateTime.Now;
+    public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
   }
 }

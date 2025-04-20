@@ -1,6 +1,7 @@
 ﻿using SyngentaWeigherQC.Communication;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
+using SyngentaWeigherQC.UI.FrmUI;
 using System;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -172,7 +173,7 @@ namespace SyngentaWeigherQC.Control
           if (dataWeigher.Contains("ERR"))
           {
             //THông báo
-            FrmMain.Instance.WarningWeight();
+            //FormMain.Instance.WarningWeight();
           }
           else
           {
@@ -200,6 +201,8 @@ namespace SyngentaWeigherQC.Control
               datalogWeight.DatalogTareId = inforLineOperation?.DatalogTareCurrent?.Id;
 
               datalogWeight.ShiftLeaderId = inforLineOperation?.ShiftLeaderId;
+
+              datalogWeight.ShiftTypeId = inforLineOperation?.ShiftTypesId;
 
               DatalogWeight datalogWeightAdd = await Add(datalogWeight);
 
@@ -239,35 +242,7 @@ namespace SyngentaWeigherQC.Control
       OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight);
     }
 
-    private void FilterDataWeigherTcp(double current_weigher_value)
-    {
-      try
-      {
-        if (_currentProduct == null) return;
-
-        //Save DB
-        if (_eWeigherMode == eWeigherMode.Normal && _readyReceidDataWeigher == eReadyReceidWeigher.Yes)
-        {
-          //SaveDataWeigher(current_weigher_value);
-        }
-        else if (_eWeigherMode == eWeigherMode.SampleRework)
-        {
-          OnSendDataReWeigher?.Invoke(current_weigher_value);
-        }
-        else if (_eWeigherMode == eWeigherMode.Tare)
-        {
-          //SaveDataTareWeigher(valueFilter);
-        }
-
-
-        FrmMain.Instance.RefeshTimeOut();
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog("FilterDataWeigher>> " + ex.Message + "&&" + ex.StackTrace);
-      }
-
-    }
+    
     #endregion
   }
 }

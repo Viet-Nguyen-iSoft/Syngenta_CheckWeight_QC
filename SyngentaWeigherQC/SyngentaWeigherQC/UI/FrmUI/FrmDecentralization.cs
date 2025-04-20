@@ -94,7 +94,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
 
       Instance_OnSendChangeLogin();
-      FrmMain.Instance.OnSendChangeLogin += Instance_OnSendChangeLogin;
     }
 
     private void Instance_OnSendChangeLogin()

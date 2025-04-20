@@ -44,7 +44,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmUser_Load(object sender, EventArgs e)
     {
       UpdateDataUI(AppCore.Ins._listShiftLeader);
-      FrmMain.Instance.OnSendAddNewUser += Instance_OnSendAddNewUser;
     }
 
     private void Instance_OnSendAddNewUser()
@@ -125,15 +124,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-    private async void FrmConfirm_OnSendOKClicked(object sender)
-    {
-      //await AppCore.Ins.RemoveUser(user);
-      //AppCore.Ins._listShiftLeader.Remove(user);
-      //UpdateDataUI(AppCore.Ins._listShiftLeader);
-      //OnSendRemoveUser?.Invoke();
-    }
 
-    private async void FrmAddNewUser_OnSendOKClicked(ShiftLeader user)
+
+    private void FrmAddNewUser_OnSendOKClicked(ShiftLeader user)
     {
       //await AppCore.Ins.UpdateUser(user);
       //UpdateDataUI(AppCore.Ins._listShiftLeader);
@@ -161,7 +154,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         RemoveUserOld();
         await AppCore.Ins.AddRangeUsers(listUserExcel);
         VisibleSave(false);
-        FrmMain.Instance.LoadUsers(listUserExcel);
         AppCore.Ins._listShiftLeader = listUserExcel;
         new FrmNotification().ShowMessage("Lưu thành công", eMsgType.Info);
       }

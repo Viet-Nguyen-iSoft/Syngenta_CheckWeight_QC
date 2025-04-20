@@ -182,7 +182,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         listTare.Add(DateTime.Now, value);
 
-        stdevValue = (listTare.Count > 1) ? AppCore.Ins.Stdev(listTare.Select(x=>x.Value).ToList()) : 0;
+        stdevValue = (listTare.Count > 1) ? MathHelper.Stdev(listTare.Select(x=>x.Value).ToList()) : 0;
         averageValue = (listTare.Count > 0) ? Math.Round(listTare.Average(x => x.Value), 3) : 0;
         SetDataUI(listTare, averageValue, stdevValue);
       }

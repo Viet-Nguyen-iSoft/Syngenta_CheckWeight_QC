@@ -51,10 +51,11 @@
       this.panel10 = new System.Windows.Forms.Panel();
       this.btnHome = new CustomControls.RJControls.RJButton();
       this.panel2 = new System.Windows.Forms.Panel();
-      this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      this.label4 = new System.Windows.Forms.Label();
+      this.lb = new System.Windows.Forms.TableLayoutPanel();
+      this.lbStation = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
+      this.picCloseApp = new System.Windows.Forms.PictureBox();
       this.tableLayoutPanel5.SuspendLayout();
       this.tableLayoutPanel7.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
@@ -65,8 +66,9 @@
       this.panel12.SuspendLayout();
       this.panel1.SuspendLayout();
       this.panel9.SuspendLayout();
-      this.tableLayoutPanel3.SuspendLayout();
+      this.lb.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picCloseApp)).BeginInit();
       this.SuspendLayout();
       // 
       // tableLayoutPanel5
@@ -117,7 +119,7 @@
       this.tableLayoutPanel1.ColumnCount = 1;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
-      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.lb, 0, 0);
       this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 5);
       this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -418,41 +420,42 @@
       this.panel2.Size = new System.Drawing.Size(170, 2);
       this.panel2.TabIndex = 8;
       // 
-      // tableLayoutPanel3
+      // lb
       // 
-      this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
-      this.tableLayoutPanel3.ColumnCount = 2;
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel3.Controls.Add(this.label4, 1, 0);
-      this.tableLayoutPanel3.Controls.Add(this.pictureBox1, 0, 0);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-      this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-      this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-      this.tableLayoutPanel3.RowCount = 1;
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(1171, 50);
-      this.tableLayoutPanel3.TabIndex = 2;
+      this.lb.BackColor = System.Drawing.Color.Transparent;
+      this.lb.ColumnCount = 3;
+      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+      this.lb.Controls.Add(this.lbStation, 1, 0);
+      this.lb.Controls.Add(this.pictureBox1, 0, 0);
+      this.lb.Controls.Add(this.picCloseApp, 2, 0);
+      this.lb.Location = new System.Drawing.Point(0, 0);
+      this.lb.Margin = new System.Windows.Forms.Padding(0);
+      this.lb.Name = "lb";
+      this.lb.RowCount = 1;
+      this.lb.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.lb.Size = new System.Drawing.Size(1171, 50);
+      this.lb.TabIndex = 2;
       // 
-      // label4
+      // lbStation
       // 
-      this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbStation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label4.AutoSize = true;
-      this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-      this.label4.Location = new System.Drawing.Point(193, 0);
-      this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(975, 50);
-      this.label4.TabIndex = 6;
-      this.label4.Text = "PHẦN MỀM THU THẬP DỮ LIỆU CÂN";
-      this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbStation.AutoSize = true;
+      this.lbStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbStation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+      this.lbStation.Location = new System.Drawing.Point(193, 10);
+      this.lbStation.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+      this.lbStation.Name = "lbStation";
+      this.lbStation.Size = new System.Drawing.Size(915, 40);
+      this.lbStation.TabIndex = 6;
+      this.lbStation.Text = "PHẦN MỀM THU THẬP DỮ LIỆU CÂN";
+      this.lbStation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // pictureBox1
       // 
@@ -473,12 +476,27 @@
       this.elipseControl1.CornerRadius = 15;
       this.elipseControl1.TargetControl = this.pictureBox1;
       // 
+      // picCloseApp
+      // 
+      this.picCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.picCloseApp.Image = ((System.Drawing.Image)(resources.GetObject("picCloseApp.Image")));
+      this.picCloseApp.Location = new System.Drawing.Point(1114, 3);
+      this.picCloseApp.Name = "picCloseApp";
+      this.picCloseApp.Size = new System.Drawing.Size(54, 44);
+      this.picCloseApp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.picCloseApp.TabIndex = 19;
+      this.picCloseApp.TabStop = false;
+      this.picCloseApp.Click += new System.EventHandler(this.picCloseApp_Click);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1197, 763);
       this.Controls.Add(this.tableLayoutPanel5);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.tableLayoutPanel5.ResumeLayout(false);
@@ -492,9 +510,10 @@
       this.panel12.ResumeLayout(false);
       this.panel1.ResumeLayout(false);
       this.panel9.ResumeLayout(false);
-      this.tableLayoutPanel3.ResumeLayout(false);
-      this.tableLayoutPanel3.PerformLayout();
+      this.lb.ResumeLayout(false);
+      this.lb.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picCloseApp)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -508,8 +527,8 @@
     private System.Windows.Forms.Panel panelMenu;
     private System.Windows.Forms.PictureBox picLogoVule;
     private System.Windows.Forms.Panel panel2;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.TableLayoutPanel lb;
+    private System.Windows.Forms.Label lbStation;
     private CustomControls.RJControls.RJButton btnSetting;
     private System.Windows.Forms.Panel panel12;
     private CustomControls.RJControls.RJButton btnReport;
@@ -527,5 +546,6 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Panel panelMain;
+    private System.Windows.Forms.PictureBox picCloseApp;
   }
 }

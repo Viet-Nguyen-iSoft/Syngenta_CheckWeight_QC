@@ -10,20 +10,44 @@ namespace SyngentaWeigherQC.DTO
   public class DataReportExcel
   {
     public DateTime DateTime { get; set; }
-    public List<DataByDate> DataByDates { get; set; }
+    public List<DataByShiftType> DataByDates { get; set; }
   }
 
-  public class DataByDate
+  public class DataByShiftType
   {
-    public Shift Shift { get; set; }
-    public List<DataByProduct> DataByProducts { get; set; }
+    public ShiftType ShiftType { get; set; }
+    public List<DataByProduction> DataByProducts { get; set; }
   }
 
-  public class DataByProduct
+  public class DataByProduction
   {
     public Production Production { get; set; }
+    public List<DataByProductionByShift> DataByProductionByShifts { get; set; }
+  }
+
+  public class DataByProductionByShift
+  {
+    public Shift Shift { get; set; }
     public List<DatalogWeight> DatalogWeights { get; set; }
   }
+
+  //public class DataReportExcel
+  //{
+  //  public DateTime DateTime { get; set; }
+  //  public List<DataByDate> DataByDates { get; set; }
+  //}
+
+  //public class DataByDate
+  //{
+  //  public Shift Shift { get; set; }
+  //  public List<DataByProduct> DataByProducts { get; set; }
+  //}
+
+  //public class DataByProduct
+  //{
+  //  public Production Production { get; set; }
+  //  public List<DatalogWeight> DatalogWeights { get; set; }
+  //}
 
 
 }

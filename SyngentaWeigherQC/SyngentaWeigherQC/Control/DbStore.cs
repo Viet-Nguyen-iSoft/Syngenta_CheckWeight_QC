@@ -33,22 +33,8 @@ namespace SyngentaWeigherQC.Models
     public DbSet<ShiftType> ShiftTypes { get; set; }
     public DbSet<InforLine> InforLines { get; set; }
     public DbSet<HistoricalChangeMasterData> ProductionChangedLoggings { get; set; }
+    public DbSet<ConfigSoftware> ConfigSoftwares { get; set; }
 
-
-
-
-
-
-    //public DbSet<Roles> Roles { get; set; }
-    //public DbSet<SerialControllers> SerialControllers { get; set; }
-    //public DbSet<InforValueSettingStation> InforValueSettingStations { get; set; }
-
-
-
-    
-    
-
-    
     public ConfigDBContext()
     {
       DBPath += $"\\ConfigDB.sqlite";

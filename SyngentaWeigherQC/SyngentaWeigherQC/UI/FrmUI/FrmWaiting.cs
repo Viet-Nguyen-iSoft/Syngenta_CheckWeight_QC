@@ -43,25 +43,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public System.Timers.Timer timerDateTime = new System.Timers.Timer();
     private void FrmWaiting_Load(object sender, EventArgs e)
     {
-      AppCore.Ins.OnSendDataRealTimeWeigherNoApp += Ins_OnSendDataWeigherNoApp;
       timerDateTime.Interval = 1000;
       timerDateTime.Elapsed += TimerDateTime_Elapsed;
       timerDateTime.Start();
     }
 
-    private void Ins_OnSendDataWeigherNoApp(double value)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          Ins_OnSendDataWeigherNoApp(value);
-        }));
-        return;
-      }
-      this.lbValueWeigher.Text = value.ToString();
-    }
-
+   
     private void TimerDateTime_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
       timerDateTime.Stop();
