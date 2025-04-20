@@ -169,18 +169,19 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         Production production = datalogWeights.FirstOrDefault().Production;
         eModeTare eModeTare = datalogWeights.FirstOrDefault().DatalogTare.eModeTare;
-
+        DatalogWeight datalogWeight = datalogWeights.FirstOrDefault();
         //Thông tin report
         ExcelClassInforProduct excelClassInforProduct= new ExcelClassInforProduct();
         excelClassInforProduct.NameLine = production.InforLine.Name;
-        excelClassInforProduct.ModeTare = eNumHelper.GetDescription(production.InforLine.eModeTare);
+        excelClassInforProduct.ModeTare = eNumHelper.GetDescription(datalogWeight.DatalogTare.eModeTare);
         excelClassInforProduct.ProductName = production.Name;
         excelClassInforProduct.PackSize = production.PackSize;
         excelClassInforProduct.Standard = production.StandardFinal;
         excelClassInforProduct.Upper = production.UpperLimitFinal;
         excelClassInforProduct.Lower = production.LowerLimitFinal;
-
+        excelClassInforProduct.NameShiftLeader = datalogWeight.ShiftLeader.UserName;
         ucTemplateExcel1.UpdateInforProductUI(excelClassInforProduct);
+        this.ucTemplateExcel1.SetResultFinal(true);
 
         //Table
         var data_table = AppCore.Ins.ConvertToDTOList(datalogWeights);
@@ -195,6 +196,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         //Thống kê 3 ca
         LoadSumaryByShift(datalogWeights, production);
+
+        //Kết quả
       }
     }
 

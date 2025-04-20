@@ -34,7 +34,6 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.ucTemplateExcel1 = new SyngentaWeigherQC.UI.UcUI.UcTemplateExcel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,10 +64,11 @@
       this.cbbLine = new System.Windows.Forms.ComboBox();
       this.flowLayoutPanelProduct = new System.Windows.Forms.FlowLayoutPanel();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      this.ucChartHistogram1 = new SyngentaWeigherQC.UI.UcUI.UcChartHistogram();
-      this.ucChartLine1 = new SyngentaWeigherQC.UI.UcUI.UcChartLine();
       this.progressBar1 = new System.Windows.Forms.ProgressBar();
       this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
+      this.ucChartHistogram1 = new SyngentaWeigherQC.UI.UcUI.UcChartHistogram();
+      this.ucChartLine1 = new SyngentaWeigherQC.UI.UcUI.UcChartLine();
+      this.ucTemplateExcel1 = new SyngentaWeigherQC.UI.UcUI.UcTemplateExcel();
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel2.SuspendLayout();
@@ -79,12 +79,12 @@
       // 
       this.tableLayoutPanel1.ColumnCount = 1;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Controls.Add(this.ucTemplateExcel1, 0, 4);
       this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 6);
       this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
       this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanelProduct, 0, 2);
       this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 5);
       this.tableLayoutPanel1.Controls.Add(this.progressBar1, 0, 3);
+      this.tableLayoutPanel1.Controls.Add(this.ucTemplateExcel1, 0, 4);
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -98,17 +98,6 @@
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.69466F));
       this.tableLayoutPanel1.Size = new System.Drawing.Size(1787, 955);
       this.tableLayoutPanel1.TabIndex = 0;
-      // 
-      // ucTemplateExcel1
-      // 
-      this.ucTemplateExcel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucTemplateExcel1.Location = new System.Drawing.Point(0, 133);
-      this.ucTemplateExcel1.Margin = new System.Windows.Forms.Padding(0);
-      this.ucTemplateExcel1.Name = "ucTemplateExcel1";
-      this.ucTemplateExcel1.Size = new System.Drawing.Size(1787, 325);
-      this.ucTemplateExcel1.TabIndex = 2;
       // 
       // dataGridView1
       // 
@@ -491,6 +480,18 @@
       this.tableLayoutPanel3.Size = new System.Drawing.Size(1787, 299);
       this.tableLayoutPanel3.TabIndex = 3;
       // 
+      // progressBar1
+      // 
+      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
+      this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+      this.progressBar1.Location = new System.Drawing.Point(3, 121);
+      this.progressBar1.Name = "progressBar1";
+      this.progressBar1.Size = new System.Drawing.Size(1781, 9);
+      this.progressBar1.TabIndex = 9;
+      // 
       // ucChartHistogram1
       // 
       this.ucChartHistogram1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -511,17 +512,16 @@
       this.ucChartLine1.Size = new System.Drawing.Size(888, 293);
       this.ucChartLine1.TabIndex = 1;
       // 
-      // progressBar1
+      // ucTemplateExcel1
       // 
-      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.ucTemplateExcel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
-      this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-      this.progressBar1.Location = new System.Drawing.Point(3, 121);
-      this.progressBar1.Name = "progressBar1";
-      this.progressBar1.Size = new System.Drawing.Size(1781, 9);
-      this.progressBar1.TabIndex = 9;
+      this.ucTemplateExcel1.Location = new System.Drawing.Point(0, 133);
+      this.ucTemplateExcel1.Margin = new System.Windows.Forms.Padding(0);
+      this.ucTemplateExcel1.Name = "ucTemplateExcel1";
+      this.ucTemplateExcel1.Size = new System.Drawing.Size(1787, 325);
+      this.ucTemplateExcel1.TabIndex = 2;
       // 
       // FrmExcelExport
       // 

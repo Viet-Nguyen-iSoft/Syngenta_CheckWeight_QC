@@ -40,9 +40,11 @@ namespace SyngentaWeigherQC.Responsitory
         if (shiftId==0)
         {
           return await this.Context.Set<DatalogWeight>()
+            .Include(x => x.DatalogTare)
             .Include(x => x.Production)
             .Include(x => x.Shift)
             .Include(x => x.InforLine)
+            .Include(x=>x.ShiftLeader)
             .Where(x => x.CreatedAt.Value.Date >= from.Date &&
                         x.CreatedAt.Value.Date <= to.Date
                         )
@@ -51,9 +53,11 @@ namespace SyngentaWeigherQC.Responsitory
         else
         {
           return await this.Context.Set<DatalogWeight>()
+            .Include(x => x.DatalogTare)
             .Include(x => x.Production)
             .Include(x => x.Shift)
             .Include(x=>x.InforLine)
+            .Include(x => x.ShiftLeader)
             .Where(x => x.CreatedAt.Value.Date >= from.Date &&
                         x.CreatedAt.Value.Date <= to.Date &&
                         x.ShiftId == shiftId
@@ -66,9 +70,11 @@ namespace SyngentaWeigherQC.Responsitory
         if (shiftId == 0)
         {
           return await this.Context.Set<DatalogWeight>()
+          .Include(x => x.DatalogTare)
           .Include(x => x.Production)
           .Include(x => x.Shift)
           .Include(x=>x.InforLine)
+          .Include(x => x.ShiftLeader)
           .Where(x => x.CreatedAt.Value.Date >= from.Date &&
                       x.CreatedAt.Value.Date <= to.Date &&
                       x.InforLineId == LineId
@@ -78,9 +84,11 @@ namespace SyngentaWeigherQC.Responsitory
         else
         {
           return await this.Context.Set<DatalogWeight>()
+          .Include(x => x.DatalogTare)
           .Include(x => x.Production)
           .Include(x => x.Shift)
           .Include(x => x.InforLine)
+          .Include(x => x.ShiftLeader)
           .Where(x => x.CreatedAt.Value.Date >= from.Date &&
                       x.CreatedAt.Value.Date <= to.Date &&
                       x.ShiftId == shiftId && 
