@@ -1,15 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SerialPortLib;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.IO.Ports;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SyngentaWeigherQC.Control
 {
@@ -87,7 +81,7 @@ namespace SyngentaWeigherQC.Control
           }
           await db.SaveChangesAsync();
 
-          
+
 
           //Station
           if (db.InforLines.Count() <= 0)
@@ -108,7 +102,7 @@ namespace SyngentaWeigherQC.Control
               new InforLine(){Name = "Sachet", Code = "Sachet", PathReportLocal = "", PassReport = "1", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
               new InforLine(){Name = "SBL", Code = "SBL", PathReportLocal = "", PassReport = "1", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
               new InforLine(){Name = "CUP", Code = "CUP", PathReportLocal = "", PassReport = "1", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-              
+
             });
           }
           await db.SaveChangesAsync();

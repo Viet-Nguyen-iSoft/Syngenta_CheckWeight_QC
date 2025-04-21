@@ -332,7 +332,6 @@
     <Compile Include="Models\Production.cs" />
     <Compile Include="Models\NewFolder1\Roles.cs" />
     <Compile Include="Models\NewFolder1\Sample.cs" />
-    <Compile Include="Models\NewFolder1\SerialControllers.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\ShiftType.cs" />
     <Compile Include="Models\InforLine.cs" />
@@ -346,7 +345,6 @@
     <Compile Include="Responsitory\ResponsitoryProducts.cs" />
     <Compile Include="Responsitory\ResponsitoryRoles.cs" />
     <Compile Include="Responsitory\ResponsitorySamples.cs" />
-    <Compile Include="Responsitory\ResponsitorySerialControllers.cs" />
     <Compile Include="Responsitory\ResponsitoryShifts.cs" />
     <Compile Include="Responsitory\ResponsitoryShiftTypes.cs" />
     <Compile Include="Responsitory\ResponsitoryInforLines.cs" />

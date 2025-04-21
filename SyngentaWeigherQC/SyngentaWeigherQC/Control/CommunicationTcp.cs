@@ -61,13 +61,7 @@ namespace SyngentaWeigherQC.Control
       this._timerCheckTimerCheckConnect.Stop();
       try
       {
-        if (eModeCommunication == eModeCommunication.Serial)
-        {
-          //_listPortPC = SerialPort.GetPortNames();
-          //bool isConnectSerrial = (_listPortPC.Contains(_serialControllers.COM));
-          ////FrmHome.Instance.ConnectSerialWeigher(isConnectSerrial);
-        }
-        else if (eModeCommunication == eModeCommunication.TcpClient)
+        if (eModeCommunication == eModeCommunication.TcpClient)
         {
           try
           {
@@ -84,6 +78,8 @@ namespace SyngentaWeigherQC.Control
               }
               if (!commonTCPClient.Connected)
               {
+                OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight.Disconnnect);
+
                 //Đóng kết nối
                 commonTCPClient.OnConnectionEventRaise -= CommonTCPClient_OnConnectionEventRaise;
                 commonTCPClient.OnDataReceive -= CommonTCPClient_OnDataReceive;
@@ -94,32 +90,21 @@ namespace SyngentaWeigherQC.Control
                 commonTCPClient.OnConnectionEventRaise += CommonTCPClient_OnConnectionEventRaise;
                 commonTCPClient.OnDataReceive += CommonTCPClient_OnDataReceive;
                 commonTCPClient.Connect();
+                return;
               }
               else
               {
-                if (!ensureLoadUI)
-                {
-                  eStatusConnectWeight eStatusConnectWeight = eStatusConnectWeight.Disconnnect;
-                  if (commonTCPClient != null)
-                  {
-                    eStatusConnectWeight = commonTCPClient.Connected ? eStatusConnectWeight.Connected : eStatusConnectWeight.Disconnnect;
-                  }
-                  OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight);
-                }
+                OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight.Connected);
               }
+            }
+            else
+            {
+              OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight.Disconnnect);
             }
           }
           catch (Exception ex)
           {
-            if (!ensureLoadUI)
-            {
-              eStatusConnectWeight eStatusConnectWeight = eStatusConnectWeight.Disconnnect;
-              if (commonTCPClient != null)
-              {
-                eStatusConnectWeight = commonTCPClient.Connected ? eStatusConnectWeight.Connected : eStatusConnectWeight.Disconnnect;
-              }
-              OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight);
-            }
+            //OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight.Disconnnect);
 
             LoggerHelper.LogErrorToFileLog("Kết nối InitTcpConnectivity: " + ex.ToString());
           }

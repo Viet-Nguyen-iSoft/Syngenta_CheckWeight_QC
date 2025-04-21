@@ -64,11 +64,11 @@
       this.cbbLine = new System.Windows.Forms.ComboBox();
       this.flowLayoutPanelProduct = new System.Windows.Forms.FlowLayoutPanel();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      this.progressBar1 = new System.Windows.Forms.ProgressBar();
-      this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
       this.ucChartHistogram1 = new SyngentaWeigherQC.UI.UcUI.UcChartHistogram();
       this.ucChartLine1 = new SyngentaWeigherQC.UI.UcUI.UcChartLine();
+      this.progressBar1 = new System.Windows.Forms.ProgressBar();
       this.ucTemplateExcel1 = new SyngentaWeigherQC.UI.UcUI.UcTemplateExcel();
+      this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel2.SuspendLayout();
@@ -480,18 +480,6 @@
       this.tableLayoutPanel3.Size = new System.Drawing.Size(1787, 299);
       this.tableLayoutPanel3.TabIndex = 3;
       // 
-      // progressBar1
-      // 
-      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
-      this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-      this.progressBar1.Location = new System.Drawing.Point(3, 121);
-      this.progressBar1.Name = "progressBar1";
-      this.progressBar1.Size = new System.Drawing.Size(1781, 9);
-      this.progressBar1.TabIndex = 9;
-      // 
       // ucChartHistogram1
       // 
       this.ucChartHistogram1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -511,6 +499,18 @@
       this.ucChartLine1.Name = "ucChartLine1";
       this.ucChartLine1.Size = new System.Drawing.Size(888, 293);
       this.ucChartLine1.TabIndex = 1;
+      // 
+      // progressBar1
+      // 
+      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
+      this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+      this.progressBar1.Location = new System.Drawing.Point(3, 121);
+      this.progressBar1.Name = "progressBar1";
+      this.progressBar1.Size = new System.Drawing.Size(1781, 9);
+      this.progressBar1.TabIndex = 9;
       // 
       // ucTemplateExcel1
       // 

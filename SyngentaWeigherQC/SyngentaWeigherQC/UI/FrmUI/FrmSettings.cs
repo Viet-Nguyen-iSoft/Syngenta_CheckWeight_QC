@@ -85,7 +85,7 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
     {
       this.btnSettingLine.PerformClick();
       this.btnSettingDevice.Visible = true;
-      this.btnSettingDevice.Visible = (AppCore.Ins._roleCurrent?.Name == "iSOFT" || AppCore.Ins._roleCurrent?.Name == "Admin" || AppCore.Ins._isPermitDev==true);
+      //this.btnSettingDevice.Visible = (AppCore.Ins._roleCurrent?.Name == "iSOFT" || AppCore.Ins._roleCurrent?.Name == "Admin" || AppCore.Ins._isPermitDev==true);
       //FrmMain.Instance.OnSendChangeLogin += Instance_OnSendChangeLogin;
     }
 

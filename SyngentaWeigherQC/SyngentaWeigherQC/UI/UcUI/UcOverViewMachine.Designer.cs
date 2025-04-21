@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-      System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-      System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+      System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+      System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+      System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcOverViewMachine));
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -689,24 +689,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.chartPie.BorderlineColor = System.Drawing.Color.Transparent;
-      chartArea3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      chartArea3.Name = "ChartArea1";
-      this.chartPie.ChartAreas.Add(chartArea3);
-      legend3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      legend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      legend3.ForeColor = System.Drawing.Color.White;
-      legend3.IsTextAutoFit = false;
-      legend3.Name = "Legend1";
-      this.chartPie.Legends.Add(legend3);
+      chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      chartArea2.Name = "ChartArea1";
+      this.chartPie.ChartAreas.Add(chartArea2);
+      legend2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      legend2.ForeColor = System.Drawing.Color.White;
+      legend2.IsTextAutoFit = false;
+      legend2.Name = "Legend1";
+      this.chartPie.Legends.Add(legend2);
       this.chartPie.Location = new System.Drawing.Point(527, 0);
       this.chartPie.Margin = new System.Windows.Forms.Padding(0);
       this.chartPie.Name = "chartPie";
-      series3.ChartArea = "ChartArea1";
-      series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-      series3.CustomProperties = "PieStartAngle=270";
-      series3.Legend = "Legend1";
-      series3.Name = "Series1";
-      this.chartPie.Series.Add(series3);
+      series2.ChartArea = "ChartArea1";
+      series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+      series2.CustomProperties = "PieStartAngle=270";
+      series2.Legend = "Legend1";
+      series2.Name = "Series1";
+      this.chartPie.Series.Add(series2);
       this.chartPie.Size = new System.Drawing.Size(300, 228);
       this.chartPie.TabIndex = 2;
       this.chartPie.Text = "chart1";
@@ -1126,12 +1126,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbStatusWeight.AutoSize = true;
       this.lbStatusWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbStatusWeight.ForeColor = System.Drawing.Color.Silver;
-      this.lbStatusWeight.Location = new System.Drawing.Point(666, 0);
+      this.lbStatusWeight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+      this.lbStatusWeight.Location = new System.Drawing.Point(510, 0);
       this.lbStatusWeight.Name = "lbStatusWeight";
-      this.lbStatusWeight.Size = new System.Drawing.Size(98, 50);
+      this.lbStatusWeight.Size = new System.Drawing.Size(254, 50);
       this.lbStatusWeight.TabIndex = 1;
-      this.lbStatusWeight.Text = "Status";
+      this.lbStatusWeight.Text = "Trạng thái: Kết nối";
       this.lbStatusWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
       // lbTitle
@@ -1144,7 +1144,7 @@
       this.lbTitle.ForeColor = System.Drawing.Color.White;
       this.lbTitle.Location = new System.Drawing.Point(3, 0);
       this.lbTitle.Name = "lbTitle";
-      this.lbTitle.Size = new System.Drawing.Size(657, 50);
+      this.lbTitle.Size = new System.Drawing.Size(501, 50);
       this.lbTitle.TabIndex = 0;
       this.lbTitle.Text = "Name";
       this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

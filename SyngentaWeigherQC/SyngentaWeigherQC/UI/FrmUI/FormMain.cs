@@ -47,6 +47,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FormMain_Shown(object sender, EventArgs e)
     {
       this.btnHome.PerformClick();
+      AppCore.Ins.ConnectDataWeight();
     }
     #region Singleton parttern
     private static FormMain _Instance = null;

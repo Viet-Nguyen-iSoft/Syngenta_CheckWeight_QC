@@ -350,9 +350,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
           new FrmNotification().ShowMessage("Không có dữ liệu xuất Report !", eMsgType.Info);
         }
       }
-      catch (Exception)
+      catch (Exception ex)
       {
-        return;
+        MessageBox.Show(ex.Message + "---" + ex.StackTrace);
       }
 
     }

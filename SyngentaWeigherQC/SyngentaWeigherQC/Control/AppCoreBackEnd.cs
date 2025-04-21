@@ -70,7 +70,7 @@ namespace SyngentaWeigherQC.Control
     public eWeigherMode _eWeigherModeLast = eWeigherMode.Normal;
     public string[] _listPortPC = new string[100];
 
-    public Shift _shiftIdCurrent = null;
+    public Shift _shiftIdCurrent= null;
 
     //public string ip_tcp_mettler = "192.168.2.100"; //Sachet //"147.167.40.239";
 
@@ -92,15 +92,7 @@ namespace SyngentaWeigherQC.Control
 
       InformationDeviceDev();
 
-      if (eModeCommunication == eModeCommunication.Serial)
-      {
-
-      }
-      else if (eModeCommunication == eModeCommunication.TcpClient)
-      {
-        InitTcpConnectivity();
-      }
-
+     
 
 
       InitEvent();
@@ -113,6 +105,18 @@ namespace SyngentaWeigherQC.Control
       StartShowUI();
     }
 
+    public void ConnectDataWeight()
+    {
+      if (eModeCommunication == eModeCommunication.Serial)
+      {
+
+      }
+      else if (eModeCommunication == eModeCommunication.TcpClient)
+      {
+        InitTcpConnectivity();
+      }
+
+    }
 
 
     public Image ByteArrayToImage(byte[] byteArray)
@@ -450,10 +454,6 @@ namespace SyngentaWeigherQC.Control
 
 
     //DB Data
-
-    public SerialControllers _serialControllers { get; set; } = new SerialControllers();
-
-
     public List<Production> _listAllProductsContainIsDelete { get; set; } = new List<Production>();
     public List<HistoricalChangeMasterData> _listChangeProductsLogging { get; set; } = new List<HistoricalChangeMasterData>();
 
@@ -773,16 +773,7 @@ namespace SyngentaWeigherQC.Control
 
 
 
-    public async Task<SerialControllers> LoadSerialControlSetting()
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitorySerialControllers(context);
-        return await repo.GetAsync();
-      }
-    }
-
-
+   
     public async Task<List<ShiftType>> LoadShiftTypes()
     {
       using (var context = new ConfigDBContext())
@@ -1045,16 +1036,7 @@ namespace SyngentaWeigherQC.Control
 
 
     //SerialControl
-    public async Task UpdateSerial(SerialControllers serialControllers)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitorySerialControllers(context);
-        await repo.Update(serialControllers);
-      }
-    }
-
-
+   
     //Excel Report
     public async Task<List<DatalogWeight>> GetDatalogReport(DateTime dt)
     {

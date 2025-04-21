@@ -78,6 +78,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.uCinforDataRate.SetTitle = "Tỉ lệ lỗi (%)";
       this.uCinforDataLoss.SetTitle = "Hao hụt (%)";
 
+      ////
+      _inforLine.eStatusConnectWeight = eStatusConnectWeight.Connected;
+      this.panelWeigher1.SetSatutusConnectSerialWeigher(_inforLine.eStatusConnectWeight);
+
       SetInforLine();
 
       _listDatalogByLine = AppCore.Ins._listDatalogWeight?.Where(x => x.InforLineId == this._inforLine.Id).ToList();
@@ -534,7 +538,16 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void Ins_OnSendStatusConnectWeight(eStatusConnectWeight eStatusConnectWeight)
     {
-      this.panelWeigher1.SetSatutusConnectSerialWeigher(_inforLine.eStatusConnectWeight);
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          Ins_OnSendStatusConnectWeight(eStatusConnectWeight);
+        }));
+        return;
+      }
+
+      this.panelWeigher1.SetSatutusConnectSerialWeigher(eStatusConnectWeight);
     }
 
     private void btnTare_Click(object sender, EventArgs e)

@@ -58,8 +58,16 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void Ins_OnSendStatusConnectWeight(eStatusConnectWeight eStatusConnectWeight)
     {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          Ins_OnSendStatusConnectWeight(eStatusConnectWeight);
+        }));
+        return;
+      }
+
       UpdateStatusConnectWeight(eStatusConnectWeight);
-      AppCore.Ins.ensureLoadUI = true;
     }
 
     private void Instance_OnSendChangeLine()

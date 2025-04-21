@@ -33,6 +33,7 @@ namespace SyngentaWeigherQC.UI.UcUI
     public UcOverViewMachine()
     {
       InitializeComponent();
+      SetStatusConnectWeight(eStatusConnectWeight.Connected);
     }
 
     private InforLine _inforLine;
@@ -222,7 +223,8 @@ namespace SyngentaWeigherQC.UI.UcUI
         this.lbStatusWeight.ForeColor = Color.Silver;
       }
 
-      this._inforLine.eStatusConnectWeight = eStatusConnectWeight;
+      if (this._inforLine!=null)
+        this._inforLine.eStatusConnectWeight = eStatusConnectWeight;
     }
 
     public string Title

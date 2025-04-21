@@ -112,21 +112,30 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnImportExcel_Click(object sender, EventArgs e)
     {
-      if (AppCore.Ins.CheckRole(ePermit.role_ImportProduct))
+      DialogResult result = this.openFileDialogImport.ShowDialog();
+      if (result == DialogResult.OK)
       {
-        DialogResult result = this.openFileDialogImport.ShowDialog();
-        if (result == DialogResult.OK)
+        if (backgroundWorkerImport.IsBusy == false)
         {
-          if (backgroundWorkerImport.IsBusy == false)
-          {
-            this.backgroundWorkerImport.RunWorkerAsync();
-          }
+          this.backgroundWorkerImport.RunWorkerAsync();
         }
       }
-      else
-      {
-        new FrmNotification().ShowMessage("Tài khoản không có quyền import dữ liệu sản phẩm !", eMsgType.Warning);
-      }
+
+      //if (AppCore.Ins.CheckRole(ePermit.role_ImportProduct))
+      //{
+      //  DialogResult result = this.openFileDialogImport.ShowDialog();
+      //  if (result == DialogResult.OK)
+      //  {
+      //    if (backgroundWorkerImport.IsBusy == false)
+      //    {
+      //      this.backgroundWorkerImport.RunWorkerAsync();
+      //    }
+      //  }
+      //}
+      //else
+      //{
+      //  new FrmNotification().ShowMessage("Tài khoản không có quyền import dữ liệu sản phẩm !", eMsgType.Warning);
+      //}
     }
 
 
