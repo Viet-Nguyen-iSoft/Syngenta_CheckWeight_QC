@@ -46,7 +46,7 @@
       // 
       // tableLayoutPanel1
       // 
-      this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.tableLayoutPanel1.ColumnCount = 1;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel1.Controls.Add(this.lbAccount, 0, 0);
@@ -67,12 +67,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbAccount.AutoSize = true;
+      this.lbAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
       this.lbAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbAccount.ForeColor = System.Drawing.Color.White;
+      this.lbAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.lbAccount.Location = new System.Drawing.Point(3, 0);
       this.lbAccount.Name = "lbAccount";
       this.lbAccount.Size = new System.Drawing.Size(660, 40);
       this.lbAccount.TabIndex = 1;
-      this.lbAccount.Text = "Tên Account:";
+      this.lbAccount.Text = "Tên tài khoản";
       this.lbAccount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // tableLayoutPanel3
@@ -80,7 +83,7 @@
       this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
       this.tableLayoutPanel3.ColumnCount = 3;
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -100,30 +103,26 @@
       this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
       this.tableLayoutPanel2.ColumnCount = 4;
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-      this.tableLayoutPanel2.Controls.Add(this.txtPass, 1, 1);
-      this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
-      this.tableLayoutPanel2.Controls.Add(this.btnSave, 3, 1);
-      this.tableLayoutPanel2.Controls.Add(this.btnHidePass, 2, 1);
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+      this.tableLayoutPanel2.Controls.Add(this.txtPass, 1, 0);
+      this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnSave, 3, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnHidePass, 2, 0);
       this.tableLayoutPanel2.Location = new System.Drawing.Point(93, 3);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-      this.tableLayoutPanel2.RowCount = 3;
-      this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+      this.tableLayoutPanel2.RowCount = 1;
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
       this.tableLayoutPanel2.Size = new System.Drawing.Size(565, 79);
       this.tableLayoutPanel2.TabIndex = 0;
       // 
       // txtPass
       // 
-      this.txtPass.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.txtPass.BackColor = System.Drawing.SystemColors.Window;
       this.txtPass.BorderColor = System.Drawing.Color.MediumSlateBlue;
       this.txtPass.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -132,7 +131,7 @@
       this.txtPass.Enabled = false;
       this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-      this.txtPass.Location = new System.Drawing.Point(131, 19);
+      this.txtPass.Location = new System.Drawing.Point(126, 19);
       this.txtPass.Margin = new System.Windows.Forms.Padding(4);
       this.txtPass.Multiline = false;
       this.txtPass.Name = "txtPass";
@@ -140,7 +139,7 @@
       this.txtPass.PasswordChar = true;
       this.txtPass.PlaceholderColor = System.Drawing.Color.DarkGray;
       this.txtPass.PlaceholderText = "";
-      this.txtPass.Size = new System.Drawing.Size(260, 40);
+      this.txtPass.Size = new System.Drawing.Size(235, 40);
       this.txtPass.TabIndex = 2;
       this.txtPass.Texts = "";
       this.txtPass.UnderlinedStyle = false;
@@ -152,20 +151,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(3, 15);
+      this.label1.ForeColor = System.Drawing.Color.White;
+      this.label1.Location = new System.Drawing.Point(3, 0);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(121, 49);
+      this.label1.Size = new System.Drawing.Size(116, 79);
       this.label1.TabIndex = 0;
-      this.label1.Text = "Password:";
+      this.label1.Text = "Mật khẩu:";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // btnSave
       // 
-      this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnSave.BackColor = System.Drawing.Color.MediumSlateBlue;
-      this.btnSave.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+      this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnSave.BackColor = System.Drawing.Color.Green;
+      this.btnSave.BackgroundColor = System.Drawing.Color.Green;
       this.btnSave.BorderColor = System.Drawing.Color.PaleVioletRed;
       this.btnSave.BorderRadius = 5;
       this.btnSave.BorderSize = 0;
@@ -173,19 +171,20 @@
       this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(448, 18);
+      this.btnSave.Location = new System.Drawing.Point(418, 18);
       this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(114, 43);
+      this.btnSave.Size = new System.Drawing.Size(144, 43);
       this.btnSave.TabIndex = 3;
-      this.btnSave.Text = "Change";
+      this.btnSave.Text = "Thay đổi";
       this.btnSave.TextColor = System.Drawing.Color.White;
       this.btnSave.UseVisualStyleBackColor = false;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
       // btnHidePass
       // 
-      this.btnHidePass.BackColor = System.Drawing.Color.DimGray;
-      this.btnHidePass.BackgroundColor = System.Drawing.Color.DimGray;
+      this.btnHidePass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnHidePass.BackColor = System.Drawing.Color.RosyBrown;
+      this.btnHidePass.BackgroundColor = System.Drawing.Color.RosyBrown;
       this.btnHidePass.BorderColor = System.Drawing.Color.PaleVioletRed;
       this.btnHidePass.BorderRadius = 5;
       this.btnHidePass.BorderSize = 0;
@@ -193,7 +192,7 @@
       this.btnHidePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnHidePass.ForeColor = System.Drawing.Color.White;
       this.btnHidePass.Image = global::SyngentaWeigherQC.Properties.Resources.passDisable32px;
-      this.btnHidePass.Location = new System.Drawing.Point(398, 18);
+      this.btnHidePass.Location = new System.Drawing.Point(368, 19);
       this.btnHidePass.Name = "btnHidePass";
       this.btnHidePass.Size = new System.Drawing.Size(44, 40);
       this.btnHidePass.TabIndex = 4;

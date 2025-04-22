@@ -71,24 +71,22 @@ namespace SyngentaWeigherQC.UI.UcUI
 
     public void CheckMode()
     {
-      if (this.btnSave.Text=="Change")
+      if (this.btnSave.Text=="Thay đổi")
       {
-        this.btnSave.Text = "Save";
+        this.btnSave.Text = "Lưu thay đổi";
         this.txtPass.Enabled = true;
-        this.btnSave.BackColor= Color.Green;
       }
       else
       {
-        this.btnSave.Text = "Change";
+        this.btnSave.Text = "Thay đổi";
         this.txtPass.Enabled = false;
-        this.btnSave.BackColor = Color.MediumSlateBlue;
       }
     }
 
 
     private void btnHidePass_Click(object sender, EventArgs e)
     {
-      if (AppCore.Ins.CheckRole(ePermit.role_AccountSetting) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      if (AppCore.Ins.CheckRole(ePermit.Role_Setting_User) || AppCore.Ins._roleCurrent.Name == "iSOFT")
       {
         this.txtPass.PasswordChar = !this.txtPass.PasswordChar;
         this.btnHidePass.Image = (this.txtPass.PasswordChar) ? Properties.Resources.passDisable32px : Properties.Resources.passEnable32px;

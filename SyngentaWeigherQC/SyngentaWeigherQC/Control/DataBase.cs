@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
@@ -29,30 +30,19 @@ namespace SyngentaWeigherQC.Control
           await db.Database.EnsureCreatedAsync();
           await db.Database.BeginTransactionAsync();
 
-          ////Roles
-          //if (db.Roles.Count() <= 0)
-          //{
-          //  await db.Roles.AddRangeAsync(new Roles[]
-          //  {
-          //    new Roles(){ Name="QC", Description="Nhân viên kiểm soát chất lượng", Passwords="11",  CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, Permission="", isEnable=false},
-          //    new Roles(){ Name="ME", Description="Nhân viên cơ điện", Passwords="22", CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, Permission="", isEnable=false},
-          //    new Roles(){ Name="ShiftLeader", Description="Trưởng ca", Passwords="33", CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, Permission="", isEnable=false},
-          //    new Roles(){ Name="OP", Description="Công nhân vận hành", Passwords="44", CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, Permission="", isEnable=true},
-          //    new Roles(){ Name="Admin", Description="Admin", Passwords="55", CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, Permission="", isEnable=false},
-          //  });
-          //}
-          //await db.SaveChangesAsync();
-
-          ////SerialControllers
-          //if (db.SerialControllers.Count() <= 0)
-          //{
-          //  await db.SerialControllers.AddRangeAsync(new SerialControllers[]
-          //  {
-          //      new SerialControllers(){ Name="satorious", Serial="satorious", COM="COM1", Baud=9600, Parity=Parity.Odd, Databits=DataBits.Seven, Stopbits=StopBits.One, CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now},
-          //  });
-          //}
-          //await db.SaveChangesAsync();
-
+          //Roles
+          if (db.Roles.Count() <= 0)
+          {
+            await db.Roles.AddRangeAsync(new Roles[]
+            {
+              new Roles(){ Name="QC", Description="Nhân viên kiểm soát chất lượng", Passwords="11", Permission="", isEnable=false},
+              new Roles(){ Name="ME", Description="Nhân viên cơ điện", Passwords="22", Permission="", isEnable=false},
+              new Roles(){ Name="ShiftLeader", Description="Trưởng ca", Passwords="33", Permission="", isEnable=false},
+              new Roles(){ Name="OP", Description="Công nhân vận hành", Passwords="44", Permission="", isEnable=true},
+              new Roles(){ Name="Admin", Description="Admin", Passwords="55", Permission="", isEnable=false},
+            });
+          }
+          await db.SaveChangesAsync();
 
           //Shift Type
           if (db.ShiftTypes.Count() <= 0)

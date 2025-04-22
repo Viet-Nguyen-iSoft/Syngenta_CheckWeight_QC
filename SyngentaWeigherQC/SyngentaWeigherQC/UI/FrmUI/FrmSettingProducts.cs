@@ -720,7 +720,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private async void btnCheckHistorical_Click(object sender, EventArgs e)
     {
-      if (AppCore.Ins.CheckRole(ePermit.role_ImportProduct) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      if (AppCore.Ins.CheckRole(ePermit.Role_Setting_Product) || AppCore.Ins._roleCurrent.Name == "iSOFT")
       {
         List<HistoricalChangeMasterData> dataHistorical = await AppCore.Ins.LoadHistoricalChangeMasterData();
         FrmSeeHistoricalChangeMasterData frmSeeHistoricalChangeMasterData = new FrmSeeHistoricalChangeMasterData(dataHistorical);
@@ -748,7 +748,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnAdd_Click(object sender, EventArgs e)
     {
-      if (!AppCore.Ins.CheckRole(ePermit.role_ImportProduct))
+      if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_Product))
       {
         new FrmNotification().ShowMessage("Tài khoản không có quyền thêm dữ liệu sản phẩm !", eMsgType.Warning);
         return;
@@ -788,7 +788,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       if (!(e.RowIndex >= 0)) return;
 
-      if (!AppCore.Ins.CheckRole(ePermit.role_ImportProduct))
+      if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_Product))
       {
         new FrmNotification().ShowMessage("Tài khoản không có quyền sửa dữ liệu sản phẩm !", eMsgType.Warning);
         return;

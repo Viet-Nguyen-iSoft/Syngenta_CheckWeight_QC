@@ -14,21 +14,21 @@ using static SyngentaWeigherQC.eNum.eUI;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
-  public partial class FrmChangePass : Form
+  public partial class FrmSettingUser : Form
   {
-    public FrmChangePass()
+    public FrmSettingUser()
     {
       InitializeComponent();
     }
     #region Singleton parttern
-    private static FrmChangePass _Instance = null;
-    public static FrmChangePass Instance
+    private static FrmSettingUser _Instance = null;
+    public static FrmSettingUser Instance
     {
       get
       {
         if (_Instance == null)
         {
-          _Instance = new FrmChangePass();
+          _Instance = new FrmSettingUser();
         }
         return _Instance;
       }
@@ -80,13 +80,13 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
     private bool CheckRoleEditShiftInfor()
     {
-      return (AppCore.Ins.CheckRole(ePermit.role_AccountSetting) || AppCore.Ins._roleCurrent.Name == "iSOFT");
+      return (AppCore.Ins.CheckRole(ePermit.Role_Setting_User) || AppCore.Ins._roleCurrent.Name == "iSOFT");
     }
     
 
     private async void Save(eRole eRole)
     {
-      if (AppCore.Ins.CheckRole(ePermit.role_AccountSetting) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      if (AppCore.Ins.CheckRole(ePermit.Role_Setting_User) || AppCore.Ins._roleCurrent.Name == "iSOFT")
       {
         string pass = "";
         switch (eRole)

@@ -15,24 +15,24 @@ using Worksheet = Aspose.Cells.Worksheet;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
-  public partial class FrmUser : Form
+  public partial class FrmShiftLeader : Form
   {
     public delegate void SendChangeLine();
     public event SendChangeLine OnSendChangeLine;
 
-    public FrmUser()
+    public FrmShiftLeader()
     {
       InitializeComponent();
     }
     #region Singleton parttern
-    private static FrmUser _Instance = null;
-    public static FrmUser Instance
+    private static FrmShiftLeader _Instance = null;
+    public static FrmShiftLeader Instance
     {
       get
       {
         if (_Instance == null)
         {
-          _Instance = new FrmUser();
+          _Instance = new FrmShiftLeader();
         }
         return _Instance;
       }
@@ -93,7 +93,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         {
           if (colmnIndex == 2)//Edit
           {
-            if (!AppCore.Ins.CheckRole(ePermit.role_ChangeUser))
+            if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_ShiftLeader))
             {
               new FrmNotification().ShowMessage("Tài khoản không có quyền chỉnh sửa User!", eMsgType.Warning);
               return;
@@ -105,7 +105,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
           }
           else if (colmnIndex == 3)//Remove
           {
-            if (!AppCore.Ins.CheckRole(ePermit.role_ChangeUser))
+            if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_ShiftLeader))
             {
               new FrmNotification().ShowMessage("Tài khoản không có quyền xóa User!", eMsgType.Warning);
               return;

@@ -116,21 +116,17 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
 
     private void btnSettingUser_Click(object sender, EventArgs e)
     {
-      OpenChildForm(AppModulSupport.UserSetting, FrmUser.Instance);
+      OpenChildForm(AppModulSupport.UserSetting, FrmShiftLeader.Instance);
     }
 
     private void btnDecentralization_Click(object sender, EventArgs e)
     {
-      new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
-      return;
-      OpenChildForm(AppModulSupport.Decentralization, FrmDecentralization.Instance);
+      OpenChildForm(AppModulSupport.Decentralization, FrmSettingDecentralization.Instance);
     }
 
     private void btnChangePass_Click(object sender, EventArgs e)
     {
-      new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
-      return;
-      OpenChildForm(AppModulSupport.PassChangeSetting, FrmChangePass.Instance);
+      OpenChildForm(AppModulSupport.PassChangeSetting, FrmSettingUser.Instance);
     }
 
 

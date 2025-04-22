@@ -56,7 +56,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       Instance_OnSendChangeRole();
       //FrmMain.Instance.OnSendChangeLogin += Instance_OnSendChangeRole;
-      FrmDecentralization.Instance.OnSendChangeDecentralization += Instance_OnSendChangeRole;
+      FrmSettingDecentralization.Instance.OnSendChangeDecentralization += Instance_OnSendChangeRole;
 
       this.btn3Ca.PerformClick();
     }
@@ -96,7 +96,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         }
       }
 
-      dataGridView1.Columns[3].Visible = AppCore.Ins.CheckRole(ePermit.role_ShiftLineSetting);
+      dataGridView1.Columns[3].Visible = AppCore.Ins.CheckRole(ePermit.Role_Setting_SettingGeneral);
     }
 
 
@@ -111,7 +111,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         return;
       } 
 
-      bool isRoleOK = AppCore.Ins.CheckRole(ePermit.role_ShiftLineSetting);
+      bool isRoleOK = AppCore.Ins.CheckRole(ePermit.Role_Setting_SettingGeneral);
 
       this.dataGridView1.Columns[3].Visible = isRoleOK;
     }

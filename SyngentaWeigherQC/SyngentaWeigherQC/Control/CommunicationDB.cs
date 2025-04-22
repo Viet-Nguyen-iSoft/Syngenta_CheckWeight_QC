@@ -92,9 +92,7 @@ namespace SyngentaWeigherQC.Control
       {
         throw ex;
       }
-      
     }
-
 
     public async Task<DatalogWeight> Add(DatalogWeight datalogWeight)
     {
@@ -123,15 +121,14 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public async Task<List<DatalogWeight>> LoadAllDatalogWeight()
+    public async Task<List<Roles>> LoadAllRole()
     {
       using (var context = new ConfigDBContext())
       {
-        var repo = new ResponsitoryDatalogWeight(context);
-        return await repo.GetList();
+        var repo = new GenericRepository<Roles, ConfigDBContext>(context);
+        return await repo.GetAllAsync();
       }
     }
-
 
     public async Task<List<Production>> LoadAllProducts()
     {

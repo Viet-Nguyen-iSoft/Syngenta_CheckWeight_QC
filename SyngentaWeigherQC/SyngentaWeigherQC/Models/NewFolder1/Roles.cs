@@ -13,6 +13,5 @@ namespace SyngentaWeigherQC.Models
     public string Permission { get; set; }
     public string Passwords { get; set; }
     public bool isEnable { get; set; }
-
   }
 }

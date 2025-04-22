@@ -70,7 +70,7 @@ namespace SyngentaWeigherQC.Control
     public eWeigherMode _eWeigherModeLast = eWeigherMode.Normal;
     public string[] _listPortPC = new string[100];
 
-    public Shift _shiftIdCurrent= null;
+    public Shift _shiftIdCurrent = null;
 
     //public string ip_tcp_mettler = "192.168.2.100"; //Sachet //"147.167.40.239";
 
@@ -84,6 +84,7 @@ namespace SyngentaWeigherQC.Control
 
     public int _numberDataEachRow = 10;
 
+    public List<Roles> _listRoles { get; set; } = new List<Roles>();
     public void Init()
     {
       InitDB();
@@ -92,7 +93,7 @@ namespace SyngentaWeigherQC.Control
 
       InformationDeviceDev();
 
-     
+
 
 
       InitEvent();
@@ -177,7 +178,8 @@ namespace SyngentaWeigherQC.Control
         _listDatalogWeight = await AppCore.Ins.LoadAllDatalogWeight(0, DateTime.Now, DateTime.Now, 0);
 
         //Role
-        //_listRoles = await LoadRoles();
+        _listRoles = await LoadAllRole();
+        _listRoles = _listRoles.OrderBy(x => x.Id).ToList();
         _roleCurrent = _listRoles?.Where(s => s.Name == "OP").FirstOrDefault();
 
         //Config Software
@@ -188,10 +190,6 @@ namespace SyngentaWeigherQC.Control
           ip_tcp_mettler = _configSoftware.IpTcp;
           port_tcp_mettler = _configSoftware.PortTcp;
         }
-
-
-        //Get Shift Currrent
-        //_shiftIdCurrent = _shiftIdLast = GetShiftCode();
       }
       catch (Exception ex)
       {
@@ -420,7 +418,7 @@ namespace SyngentaWeigherQC.Control
     private void InformationDeviceDev()
     {
       string computerName = Environment.MachineName;
-      _isPermitDev = (computerName == "DESKTOP-VIPBB6Q");
+      _isPermitDev = (computerName == "DESKTOP-VIPBB6Qx");
     }
 
 
@@ -433,7 +431,7 @@ namespace SyngentaWeigherQC.Control
 
 
 
-   
+
 
 
 
@@ -461,7 +459,7 @@ namespace SyngentaWeigherQC.Control
     public List<ShiftType> _listShiftType { get; set; } = new List<ShiftType>();
     public ShiftType _shiftTypeCurrent { get; set; } = new ShiftType();
     public List<Shift> _listShift { get; set; } = new List<Shift>();
-    public List<Roles> _listRoles { get; set; } = new List<Roles>();
+    
     public List<ShiftLeader> _listShiftLeader { get; set; } = new List<ShiftLeader>();
 
 
@@ -534,7 +532,7 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    
+
     private Shift GetNameShift(int codeShiftType)
     {
       List<Shift> listShift = _listShift?.Where(x => x.ShiftTypeId == codeShiftType).ToList();
@@ -678,7 +676,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    
+
 
     public bool CheckRole(ePermit permit)
     {
@@ -773,7 +771,7 @@ namespace SyngentaWeigherQC.Control
 
 
 
-   
+
     public async Task<List<ShiftType>> LoadShiftTypes()
     {
       using (var context = new ConfigDBContext())
@@ -792,14 +790,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public async Task<List<Roles>> LoadRoles()
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryRoles(context);
-        return await repo.GetAllAsync();
-      }
-    }
+    
 
     public async Task UpdateRole(Roles role)
     {
@@ -1036,7 +1027,7 @@ namespace SyngentaWeigherQC.Control
 
 
     //SerialControl
-   
+
     //Excel Report
     public async Task<List<DatalogWeight>> GetDatalogReport(DateTime dt)
     {

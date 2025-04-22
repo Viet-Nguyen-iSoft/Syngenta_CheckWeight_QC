@@ -169,17 +169,15 @@ namespace SyngentaWeigherQC.eNum
 
     public enum ePermit
     {
-      role_ImportProduct,
-      role_Synthetic,
-      role_Excel,
-      role_ShiftLineSetting,
-      role_AccountSetting,
-      role_ChangeProduct,
-      role_ChangeShiftType,
-      role_CreateUser,
-      role_ChangeUser,
-
-
+      Role_Setting_Line,
+      Role_Setting_SettingGeneral,
+      Role_Setting_Product,
+      Role_Setting_User,
+      Role_Setting_ShiftLeader,
+      Role_Setting_Decentralization,
+      Role_Setting_Connection,
+      Role_Excel,
+      Role_Consumption,
     }
 
     public enum eShift

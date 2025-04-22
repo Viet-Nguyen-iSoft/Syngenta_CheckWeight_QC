@@ -85,10 +85,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
           this.btnHome.ForeColor = Select;
           OpenChildForm(AppModulSupport.Home, FrmHome.GetInstance(_InforLine));
           break;
-        //case AppModulSupport.MasterData:
-        //  this.btnMasterData.ForeColor = Select;
-        //  OpenChildForm(AppModulSupport.MasterData, FrmMasterData.Instance);
-        //  break;
         //case AppModulSupport.Synthetic:
         //  this.btnHistorical.ForeColor = Select;
         //  OpenChildForm(AppModulSupport.Synthetic, FrmHistorical.Instance);
@@ -101,10 +97,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
           this.btnSetting.ForeColor = Select;
           OpenChildForm(AppModulSupport.Setting, FrmSettings.Instance);
           break;
-          //case AppModulSupport.User:
-          //  this.btnUser.ForeColor = Select;
-          //  OpenChildForm(AppModulSupport.User, FrmManagerUser.Instance);
-          //  break;
       }
     }
 

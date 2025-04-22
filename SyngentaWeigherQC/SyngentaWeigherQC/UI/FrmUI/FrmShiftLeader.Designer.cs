@@ -1,6 +1,6 @@
 ﻿namespace SyngentaWeigherQC.UI.FrmUI
 {
-  partial class FrmUser
+  partial class FrmShiftLeader
   {
     /// <summary>
     /// Required designer variable.
@@ -200,8 +200,8 @@
       this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
-      this.btnSave.BackgroundColor = System.Drawing.Color.SeaGreen;
+      this.btnSave.BackColor = System.Drawing.Color.DarkGreen;
+      this.btnSave.BackgroundColor = System.Drawing.Color.DarkGreen;
       this.btnSave.BorderColor = System.Drawing.Color.PaleVioletRed;
       this.btnSave.BorderRadius = 5;
       this.btnSave.BorderSize = 0;
@@ -270,13 +270,13 @@
       this.openFileDialogImport.FileName = "openFileDialog1";
       this.openFileDialogImport.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogImport_FileOk);
       // 
-      // FrmUser
+      // FrmShiftLeader
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1312, 682);
       this.Controls.Add(this.tableLayoutPanel2);
-      this.Name = "FrmUser";
+      this.Name = "FrmShiftLeader";
       this.Text = "FrmUser";
       this.Load += new System.EventHandler(this.FrmUser_Load);
       this.tableLayoutPanel1.ResumeLayout(false);

@@ -28,34 +28,36 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.check = new System.Windows.Forms.CheckBox();
+      this.pictureBox1 = new System.Windows.Forms.PictureBox();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.SuspendLayout();
       // 
-      // check
+      // pictureBox1
       // 
-      this.check.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.check.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.check.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.check.Location = new System.Drawing.Point(0, 0);
-      this.check.Margin = new System.Windows.Forms.Padding(0);
-      this.check.Name = "check";
-      this.check.Size = new System.Drawing.Size(80, 50);
-      this.check.TabIndex = 1;
-      this.check.UseVisualStyleBackColor = true;
+      this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(120, 60);
+      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.pictureBox1.TabIndex = 0;
+      this.pictureBox1.TabStop = false;
+      this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
       // 
       // UcCheckbox
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.check);
+      this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.Controls.Add(this.pictureBox1);
       this.Name = "UcCheckbox";
-      this.Size = new System.Drawing.Size(80, 50);
+      this.Size = new System.Drawing.Size(120, 60);
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.ResumeLayout(false);
 
     }
 
     #endregion
 
-    private System.Windows.Forms.CheckBox check;
+    private System.Windows.Forms.PictureBox pictureBox1;
   }
 }

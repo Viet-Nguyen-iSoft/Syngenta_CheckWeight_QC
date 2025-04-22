@@ -404,11 +404,11 @@
     <Compile Include="UI\FrmUI\FrmChangeLine.Designer.cs">
       <DependentUpon>FrmChangeLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmChangePass.cs">
+    <Compile Include="UI\FrmUI\FrmSettingUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmChangePass.Designer.cs">
-      <DependentUpon>FrmChangePass.cs</DependentUpon>
+    <Compile Include="UI\FrmUI\FrmSettingUser.Designer.cs">
+      <DependentUpon>FrmSettingUser.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmUI\FrmChangeSettingLine.cs">
       <SubType>Form</SubType>
@@ -440,11 +440,11 @@
     <Compile Include="UI\FrmUI\FrmConsumption.Designer.cs">
       <DependentUpon>FrmConsumption.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmDecentralization.cs">
+    <Compile Include="UI\FrmUI\FrmSettingDecentralization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmDecentralization.Designer.cs">
-      <DependentUpon>FrmDecentralization.cs</DependentUpon>
+    <Compile Include="UI\FrmUI\FrmSettingDecentralization.Designer.cs">
+      <DependentUpon>FrmSettingDecentralization.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmUI\FrmExcelExport.cs">
       <SubType>Form</SubType>
@@ -554,11 +554,11 @@
     <Compile Include="UI\FrmUI\FrmTare.Designer.cs">
       <DependentUpon>FrmTare.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmUser.cs">
+    <Compile Include="UI\FrmUI\FrmShiftLeader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmUser.Designer.cs">
-      <DependentUpon>FrmUser.cs</DependentUpon>
+    <Compile Include="UI\FrmUI\FrmShiftLeader.Designer.cs">
+      <DependentUpon>FrmShiftLeader.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmUI\FrmWaiting.cs">
       <SubType>Form</SubType>
@@ -726,8 +726,8 @@
     <EmbeddedResource Include="UI\FrmUI\FrmChangeLine.resx">
       <DependentUpon>FrmChangeLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmChangePass.resx">
-      <DependentUpon>FrmChangePass.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmUI\FrmSettingUser.resx">
+      <DependentUpon>FrmSettingUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmChangeSettingLine.resx">
       <DependentUpon>FrmChangeSettingLine.cs</DependentUpon>
@@ -744,8 +744,8 @@
     <EmbeddedResource Include="UI\FrmUI\FrmConsumption.resx">
       <DependentUpon>FrmConsumption.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmDecentralization.resx">
-      <DependentUpon>FrmDecentralization.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmUI\FrmSettingDecentralization.resx">
+      <DependentUpon>FrmSettingDecentralization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmExcelExport.resx">
       <DependentUpon>FrmExcelExport.cs</DependentUpon>
@@ -801,8 +801,8 @@
     <EmbeddedResource Include="UI\FrmUI\FrmTare.resx">
       <DependentUpon>FrmTare.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmUser.resx">
-      <DependentUpon>FrmUser.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmUI\FrmShiftLeader.resx">
+      <DependentUpon>FrmShiftLeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmWaiting.resx">
       <DependentUpon>FrmWaiting.cs</DependentUpon>

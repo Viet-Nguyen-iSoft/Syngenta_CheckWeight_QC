@@ -54,13 +54,15 @@
       this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(19)))), ((int)(((byte)(52)))));
       this.tableLayoutPanel1.ColumnCount = 1;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.dgvMasterData, 0, 1);
+      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+      this.tableLayoutPanel1.Controls.Add(this.dgvMasterData, 0, 3);
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+      this.tableLayoutPanel1.RowCount = 4;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel1.Size = new System.Drawing.Size(1324, 645);
       this.tableLayoutPanel1.TabIndex = 1;
@@ -79,7 +81,7 @@
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 323F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
       this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnCheckHistorical, 7, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnSaveChange, 6, 0);
@@ -87,12 +89,12 @@
       this.tableLayoutPanel2.Controls.Add(this.btnAdd, 4, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnSearch, 2, 0);
       this.tableLayoutPanel2.Controls.Add(this.txtSearch, 1, 0);
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 3);
       this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 1;
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(1324, 50);
+      this.tableLayoutPanel2.Size = new System.Drawing.Size(1324, 60);
       this.tableLayoutPanel2.TabIndex = 0;
       // 
       // label2
@@ -107,16 +109,14 @@
       this.label2.Location = new System.Drawing.Point(0, 0);
       this.label2.Margin = new System.Windows.Forms.Padding(0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(101, 50);
+      this.label2.Size = new System.Drawing.Size(101, 60);
       this.label2.TabIndex = 17;
       this.label2.Text = "Tìm kiếm:";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // btnCheckHistorical
       // 
-      this.btnCheckHistorical.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnCheckHistorical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.btnCheckHistorical.BackColor = System.Drawing.Color.CornflowerBlue;
       this.btnCheckHistorical.BackgroundColor = System.Drawing.Color.CornflowerBlue;
       this.btnCheckHistorical.BorderColor = System.Drawing.Color.PaleVioletRed;
@@ -126,9 +126,9 @@
       this.btnCheckHistorical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCheckHistorical.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCheckHistorical.ForeColor = System.Drawing.Color.White;
-      this.btnCheckHistorical.Location = new System.Drawing.Point(1003, 3);
+      this.btnCheckHistorical.Location = new System.Drawing.Point(1002, 8);
       this.btnCheckHistorical.Name = "btnCheckHistorical";
-      this.btnCheckHistorical.Size = new System.Drawing.Size(318, 44);
+      this.btnCheckHistorical.Size = new System.Drawing.Size(319, 44);
       this.btnCheckHistorical.TabIndex = 16;
       this.btnCheckHistorical.Text = "Lịch sử Import";
       this.btnCheckHistorical.TextColor = System.Drawing.Color.White;
@@ -137,9 +137,7 @@
       // 
       // btnSaveChange
       // 
-      this.btnSaveChange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnSaveChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.btnSaveChange.BackColor = System.Drawing.Color.CornflowerBlue;
       this.btnSaveChange.BackgroundColor = System.Drawing.Color.CornflowerBlue;
       this.btnSaveChange.BorderColor = System.Drawing.Color.PaleVioletRed;
@@ -149,7 +147,7 @@
       this.btnSaveChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSaveChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSaveChange.ForeColor = System.Drawing.Color.White;
-      this.btnSaveChange.Location = new System.Drawing.Point(817, 3);
+      this.btnSaveChange.Location = new System.Drawing.Point(816, 8);
       this.btnSaveChange.Name = "btnSaveChange";
       this.btnSaveChange.Size = new System.Drawing.Size(180, 44);
       this.btnSaveChange.TabIndex = 15;
@@ -160,9 +158,7 @@
       // 
       // btnImportExcel
       // 
-      this.btnImportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnImportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.btnImportExcel.BackColor = System.Drawing.Color.CornflowerBlue;
       this.btnImportExcel.BackgroundColor = System.Drawing.Color.CornflowerBlue;
       this.btnImportExcel.BorderColor = System.Drawing.Color.PaleVioletRed;
@@ -172,7 +168,7 @@
       this.btnImportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnImportExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnImportExcel.ForeColor = System.Drawing.Color.White;
-      this.btnImportExcel.Location = new System.Drawing.Point(647, 3);
+      this.btnImportExcel.Location = new System.Drawing.Point(646, 8);
       this.btnImportExcel.Name = "btnImportExcel";
       this.btnImportExcel.Size = new System.Drawing.Size(164, 44);
       this.btnImportExcel.TabIndex = 14;
@@ -183,9 +179,7 @@
       // 
       // btnAdd
       // 
-      this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.btnAdd.BackColor = System.Drawing.Color.CornflowerBlue;
       this.btnAdd.BackgroundColor = System.Drawing.Color.CornflowerBlue;
       this.btnAdd.BorderColor = System.Drawing.Color.PaleVioletRed;
@@ -195,7 +189,7 @@
       this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnAdd.ForeColor = System.Drawing.Color.White;
-      this.btnAdd.Location = new System.Drawing.Point(477, 3);
+      this.btnAdd.Location = new System.Drawing.Point(476, 8);
       this.btnAdd.Name = "btnAdd";
       this.btnAdd.Size = new System.Drawing.Size(164, 44);
       this.btnAdd.TabIndex = 13;
@@ -217,7 +211,7 @@
       this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSearch.ForeColor = System.Drawing.Color.White;
       this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-      this.btnSearch.Location = new System.Drawing.Point(335, 4);
+      this.btnSearch.Location = new System.Drawing.Point(334, 9);
       this.btnSearch.Name = "btnSearch";
       this.btnSearch.Size = new System.Drawing.Size(44, 42);
       this.btnSearch.TabIndex = 18;
@@ -235,7 +229,7 @@
       this.txtSearch.BorderSize = 2;
       this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-      this.txtSearch.Location = new System.Drawing.Point(105, 5);
+      this.txtSearch.Location = new System.Drawing.Point(105, 10);
       this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
       this.txtSearch.Multiline = false;
       this.txtSearch.Name = "txtSearch";
@@ -243,7 +237,7 @@
       this.txtSearch.PasswordChar = false;
       this.txtSearch.PlaceholderColor = System.Drawing.Color.DarkGray;
       this.txtSearch.PlaceholderText = "";
-      this.txtSearch.Size = new System.Drawing.Size(223, 39);
+      this.txtSearch.Size = new System.Drawing.Size(222, 39);
       this.txtSearch.TabIndex = 19;
       this.txtSearch.Texts = "";
       this.txtSearch.UnderlinedStyle = false;
@@ -274,7 +268,7 @@
       dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
       this.dgvMasterData.DefaultCellStyle = dataGridViewCellStyle2;
       this.dgvMasterData.EnableHeadersVisualStyles = false;
-      this.dgvMasterData.Location = new System.Drawing.Point(3, 53);
+      this.dgvMasterData.Location = new System.Drawing.Point(3, 69);
       this.dgvMasterData.Name = "dgvMasterData";
       this.dgvMasterData.ReadOnly = true;
       dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -291,7 +285,7 @@
       this.dgvMasterData.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
       this.dgvMasterData.RowTemplate.Height = 40;
       this.dgvMasterData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvMasterData.Size = new System.Drawing.Size(1318, 589);
+      this.dgvMasterData.Size = new System.Drawing.Size(1318, 573);
       this.dgvMasterData.TabIndex = 1;
       this.dgvMasterData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMasterData_CellDoubleClick);
       this.dgvMasterData.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvMasterData_Scroll);

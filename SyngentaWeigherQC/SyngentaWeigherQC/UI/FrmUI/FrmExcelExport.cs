@@ -84,13 +84,20 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private List<DataReportExcel> dataReportExcels = new List<DataReportExcel>();
     private async void btnPreview_Click(object sender, EventArgs e)
     {
-      var lineChoose = cbbLine.SelectedItem as InforLine;
-      int lineId = (lineChoose != null) ? lineChoose.Id : 0;
-      var datalogs = await AppCore.Ins.LoadAllDatalogWeight(lineId, From, To, ShiftId);
+      if (AppCore.Ins.CheckRole(ePermit.Role_Excel) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      {
+        var lineChoose = cbbLine.SelectedItem as InforLine;
+        int lineId = (lineChoose != null) ? lineChoose.Id : 0;
+        var datalogs = await AppCore.Ins.LoadAllDatalogWeight(lineId, From, To, ShiftId);
 
-      dataReportExcels = AppCore.Ins.GenerateDataReport(datalogs);
+        dataReportExcels = AppCore.Ins.GenerateDataReport(datalogs);
 
-      ShowResult(dataReportExcels);
+        ShowResult(dataReportExcels);
+      }
+      else
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+      }
     }
 
 
@@ -315,6 +322,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       try
       {
+        if (!(AppCore.Ins.CheckRole(ePermit.Role_Excel) || AppCore.Ins._roleCurrent.Name == "iSOFT"))
+        {
+          new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+          return;
+        }
+
         if (dataReportExcels != null)
         {
           if (dataReportExcels.Count > 0)

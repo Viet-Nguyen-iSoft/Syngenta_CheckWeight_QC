@@ -24,12 +24,15 @@ namespace SyngentaWeigherQC.Models
     //public string Passwords = "isoft2025";
     //public string DbDatalog = "DB_Syngenta_CheckWeight";
     //public bool IsPostgres = true;
+
+    public string ConnectionStr = $"Host=localhost;Username=postgres;Password=058200005781;Database=DB_Syngenta_CheckWeight";
   }
 
 
   public class ConfigDBContext : CommonDBContext
   {
     public string DBPath = Application.StartupPath;
+    
 
     //Danh Sách Bảng DB
     public DbSet<DatalogWeight> DatalogWeights { get; set; }
@@ -41,12 +44,13 @@ namespace SyngentaWeigherQC.Models
     public DbSet<InforLine> InforLines { get; set; }
     public DbSet<HistoricalChangeMasterData> ProductionChangedLoggings { get; set; }
     public DbSet<ConfigSoftware> ConfigSoftwares { get; set; }
+    public DbSet<Roles> Roles { get; set; }
 
     public ConfigDBContext()
     {
       DBPath += $"\\ConfigDB.sqlite";
     }
-
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       if (IsPostgres)

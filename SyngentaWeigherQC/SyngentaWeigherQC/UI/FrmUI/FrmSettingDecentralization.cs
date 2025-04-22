@@ -14,24 +14,24 @@ using static SyngentaWeigherQC.eNum.eUI;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
-  public partial class FrmDecentralization : Form
+  public partial class FrmSettingDecentralization : Form
   {
     public delegate void SendChangeDecentralization();
     public event SendChangeDecentralization OnSendChangeDecentralization;
 
-    public FrmDecentralization()
+    public FrmSettingDecentralization()
     {
       InitializeComponent();
     }
     #region Singleton parttern
-    private static FrmDecentralization _Instance = null;
-    public static FrmDecentralization Instance
+    private static FrmSettingDecentralization _Instance = null;
+    public static FrmSettingDecentralization Instance
     {
       get
       {
         if (_Instance == null)
         {
-          _Instance = new FrmDecentralization();
+          _Instance = new FrmSettingDecentralization();
         }
         return _Instance;
       }
@@ -72,17 +72,17 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmDecentralization_Load(object sender, EventArgs e)
     {
       List<ePermit> ePermits = new List<ePermit>();
-      ePermits.Add(ePermit.role_ImportProduct);
-      ePermits.Add(ePermit.role_Synthetic);
-      ePermits.Add(ePermit.role_Excel);
-      ePermits.Add(ePermit.role_ShiftLineSetting);
-      ePermits.Add(ePermit.role_AccountSetting);
-      ePermits.Add(ePermit.role_ChangeProduct);
-      ePermits.Add(ePermit.role_ChangeShiftType);
-      ePermits.Add(ePermit.role_CreateUser);
-      ePermits.Add(ePermit.role_ChangeUser);
+      ePermits.Add(ePermit.Role_Setting_Line);
+      ePermits.Add(ePermit.Role_Setting_SettingGeneral);
+      ePermits.Add(ePermit.Role_Setting_Product);
+      ePermits.Add(ePermit.Role_Setting_User);
+      ePermits.Add(ePermit.Role_Setting_ShiftLeader);
+      ePermits.Add(ePermit.Role_Setting_Decentralization);
+      ePermits.Add(ePermit.Role_Setting_Connection);
+      ePermits.Add(ePermit.Role_Excel);
+      ePermits.Add(ePermit.Role_Consumption);
 
-      List<string> role = AppCore.Ins._listRoles?.Select(x => x.Permission).ToList();
+      List<string> role = AppCore.Ins._listRoles?.OrderBy(x => x.Id).Select(x => x.Permission).ToList();
 
       if (role != null)
       {
@@ -103,7 +103,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private bool CheckRoleEditShiftInfor()
     {
-      return (AppCore.Ins.CheckRole(ePermit.role_ShiftLineSetting));
+      return (AppCore.Ins.CheckRole(ePermit.Role_Setting_Decentralization));
     }
 
     private void FrmDecentralization_KeyUp(object sender, KeyEventArgs e)
@@ -113,5 +113,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         this.btnSave.PerformClick();
       }
     }
+
+  
   }
 }
