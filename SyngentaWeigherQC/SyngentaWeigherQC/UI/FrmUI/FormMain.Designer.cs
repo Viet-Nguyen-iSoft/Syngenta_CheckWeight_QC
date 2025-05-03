@@ -35,19 +35,26 @@
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.panelMain = new System.Windows.Forms.Panel();
       this.panelMenu = new System.Windows.Forms.Panel();
+      this.btnRestartApp = new CustomControls.RJControls.RJButton();
+      this.panel6 = new System.Windows.Forms.Panel();
+      this.btnSetting = new CustomControls.RJControls.RJButton();
       this.panel7 = new System.Windows.Forms.Panel();
+      this.btnMasterData = new CustomControls.RJControls.RJButton();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
       this.picLogoVule = new System.Windows.Forms.PictureBox();
-      this.label1 = new System.Windows.Forms.Label();
+      this.lbVersion = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.panel4 = new System.Windows.Forms.Panel();
       this.panel12 = new System.Windows.Forms.Panel();
       this.panel1 = new System.Windows.Forms.Panel();
       this.panel3 = new System.Windows.Forms.Panel();
       this.panel5 = new System.Windows.Forms.Panel();
+      this.btnReport = new CustomControls.RJControls.RJButton();
       this.panel11 = new System.Windows.Forms.Panel();
+      this.btnSynthetic = new CustomControls.RJControls.RJButton();
       this.panel9 = new System.Windows.Forms.Panel();
       this.panel10 = new System.Windows.Forms.Panel();
+      this.btnHome = new CustomControls.RJControls.RJButton();
       this.panel2 = new System.Windows.Forms.Panel();
       this.lb = new System.Windows.Forms.TableLayoutPanel();
       this.lbStation = new System.Windows.Forms.Label();
@@ -56,14 +63,7 @@
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.lbAccount = new System.Windows.Forms.Label();
       this.picIconLogIn = new System.Windows.Forms.PictureBox();
-      this.btnSetting = new CustomControls.RJControls.RJButton();
-      this.btnMasterData = new CustomControls.RJControls.RJButton();
-      this.btnReport = new CustomControls.RJControls.RJButton();
-      this.btnSynthetic = new CustomControls.RJControls.RJButton();
-      this.btnHome = new CustomControls.RJControls.RJButton();
       this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
-      this.panel6 = new System.Windows.Forms.Panel();
-      this.btnRestartApp = new CustomControls.RJControls.RJButton();
       this.tableLayoutPanel5.SuspendLayout();
       this.tableLayoutPanel7.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
@@ -197,6 +197,65 @@
       this.panelMenu.Size = new System.Drawing.Size(190, 682);
       this.panelMenu.TabIndex = 0;
       // 
+      // btnRestartApp
+      // 
+      this.btnRestartApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnRestartApp.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnRestartApp.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnRestartApp.BorderRadius = 8;
+      this.btnRestartApp.BorderSize = 0;
+      this.btnRestartApp.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnRestartApp.FlatAppearance.BorderSize = 0;
+      this.btnRestartApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnRestartApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnRestartApp.ForeColor = System.Drawing.Color.White;
+      this.btnRestartApp.Image = ((System.Drawing.Image)(resources.GetObject("btnRestartApp.Image")));
+      this.btnRestartApp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnRestartApp.Location = new System.Drawing.Point(10, 320);
+      this.btnRestartApp.Name = "btnRestartApp";
+      this.btnRestartApp.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnRestartApp.Size = new System.Drawing.Size(170, 50);
+      this.btnRestartApp.TabIndex = 36;
+      this.btnRestartApp.Text = "        Restart";
+      this.btnRestartApp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnRestartApp.TextColor = System.Drawing.Color.White;
+      this.btnRestartApp.UseVisualStyleBackColor = false;
+      this.btnRestartApp.Click += new System.EventHandler(this.btnRestartApp_Click);
+      // 
+      // panel6
+      // 
+      this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel6.Location = new System.Drawing.Point(10, 308);
+      this.panel6.Margin = new System.Windows.Forms.Padding(0);
+      this.panel6.Name = "panel6";
+      this.panel6.Size = new System.Drawing.Size(170, 12);
+      this.panel6.TabIndex = 35;
+      // 
+      // btnSetting
+      // 
+      this.btnSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnSetting.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnSetting.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSetting.BorderRadius = 8;
+      this.btnSetting.BorderSize = 0;
+      this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnSetting.FlatAppearance.BorderSize = 0;
+      this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSetting.ForeColor = System.Drawing.Color.White;
+      this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
+      this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnSetting.Location = new System.Drawing.Point(10, 258);
+      this.btnSetting.Name = "btnSetting";
+      this.btnSetting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnSetting.Size = new System.Drawing.Size(170, 50);
+      this.btnSetting.TabIndex = 34;
+      this.btnSetting.Text = "        Cài đặt";
+      this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnSetting.TextColor = System.Drawing.Color.White;
+      this.btnSetting.UseVisualStyleBackColor = false;
+      this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+      // 
       // panel7
       // 
       this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
@@ -206,12 +265,37 @@
       this.panel7.Size = new System.Drawing.Size(170, 12);
       this.panel7.TabIndex = 33;
       // 
+      // btnMasterData
+      // 
+      this.btnMasterData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnMasterData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnMasterData.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnMasterData.BorderRadius = 8;
+      this.btnMasterData.BorderSize = 0;
+      this.btnMasterData.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnMasterData.FlatAppearance.BorderSize = 0;
+      this.btnMasterData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnMasterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnMasterData.ForeColor = System.Drawing.Color.White;
+      this.btnMasterData.Image = ((System.Drawing.Image)(resources.GetObject("btnMasterData.Image")));
+      this.btnMasterData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnMasterData.Location = new System.Drawing.Point(10, 196);
+      this.btnMasterData.Name = "btnMasterData";
+      this.btnMasterData.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnMasterData.Size = new System.Drawing.Size(170, 50);
+      this.btnMasterData.TabIndex = 32;
+      this.btnMasterData.Text = "        Sản phẩm";
+      this.btnMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnMasterData.TextColor = System.Drawing.Color.White;
+      this.btnMasterData.UseVisualStyleBackColor = false;
+      this.btnMasterData.Click += new System.EventHandler(this.btnMasterData_Click);
+      // 
       // tableLayoutPanel4
       // 
       this.tableLayoutPanel4.ColumnCount = 1;
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.Controls.Add(this.picLogoVule, 0, 0);
-      this.tableLayoutPanel4.Controls.Add(this.label1, 0, 2);
+      this.tableLayoutPanel4.Controls.Add(this.lbVersion, 0, 2);
       this.tableLayoutPanel4.Controls.Add(this.label2, 0, 3);
       this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 548);
@@ -238,20 +322,20 @@
       this.picLogoVule.TabIndex = 17;
       this.picLogoVule.TabStop = false;
       // 
-      // label1
+      // lbVersion
       // 
-      this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.ForeColor = System.Drawing.Color.White;
-      this.label1.Location = new System.Drawing.Point(3, 92);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(164, 16);
-      this.label1.TabIndex = 29;
-      this.label1.Text = "© 2025 i-Soft JSC - V1.0.0";
-      this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbVersion.AutoSize = true;
+      this.lbVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbVersion.ForeColor = System.Drawing.Color.White;
+      this.lbVersion.Location = new System.Drawing.Point(3, 92);
+      this.lbVersion.Name = "lbVersion";
+      this.lbVersion.Size = new System.Drawing.Size(164, 16);
+      this.lbVersion.TabIndex = 29;
+      this.lbVersion.Text = "© 2025 i-Soft JSC - V1.0.0";
+      this.lbVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label2
       // 
@@ -316,6 +400,31 @@
       this.panel5.Size = new System.Drawing.Size(170, 12);
       this.panel5.TabIndex = 26;
       // 
+      // btnReport
+      // 
+      this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnReport.BorderRadius = 8;
+      this.btnReport.BorderSize = 0;
+      this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnReport.FlatAppearance.BorderSize = 0;
+      this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnReport.ForeColor = System.Drawing.Color.White;
+      this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
+      this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnReport.Location = new System.Drawing.Point(10, 134);
+      this.btnReport.Name = "btnReport";
+      this.btnReport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnReport.Size = new System.Drawing.Size(170, 50);
+      this.btnReport.TabIndex = 23;
+      this.btnReport.Text = "        Báo cáo";
+      this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnReport.TextColor = System.Drawing.Color.White;
+      this.btnReport.UseVisualStyleBackColor = false;
+      this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+      // 
       // panel11
       // 
       this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
@@ -324,6 +433,31 @@
       this.panel11.Name = "panel11";
       this.panel11.Size = new System.Drawing.Size(170, 12);
       this.panel11.TabIndex = 22;
+      // 
+      // btnSynthetic
+      // 
+      this.btnSynthetic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnSynthetic.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnSynthetic.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSynthetic.BorderRadius = 8;
+      this.btnSynthetic.BorderSize = 0;
+      this.btnSynthetic.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnSynthetic.FlatAppearance.BorderSize = 0;
+      this.btnSynthetic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSynthetic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSynthetic.ForeColor = System.Drawing.Color.White;
+      this.btnSynthetic.Image = ((System.Drawing.Image)(resources.GetObject("btnSynthetic.Image")));
+      this.btnSynthetic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnSynthetic.Location = new System.Drawing.Point(10, 72);
+      this.btnSynthetic.Name = "btnSynthetic";
+      this.btnSynthetic.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnSynthetic.Size = new System.Drawing.Size(170, 50);
+      this.btnSynthetic.TabIndex = 21;
+      this.btnSynthetic.Text = "        Tổng hợp";
+      this.btnSynthetic.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnSynthetic.TextColor = System.Drawing.Color.White;
+      this.btnSynthetic.UseVisualStyleBackColor = false;
+      this.btnSynthetic.Click += new System.EventHandler(this.btnSynthetic_Click);
       // 
       // panel9
       // 
@@ -343,6 +477,31 @@
       this.panel10.Name = "panel10";
       this.panel10.Size = new System.Drawing.Size(170, 12);
       this.panel10.TabIndex = 21;
+      // 
+      // btnHome
+      // 
+      this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnHome.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnHome.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnHome.BorderRadius = 8;
+      this.btnHome.BorderSize = 0;
+      this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnHome.FlatAppearance.BorderSize = 0;
+      this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnHome.ForeColor = System.Drawing.Color.White;
+      this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+      this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnHome.Location = new System.Drawing.Point(10, 10);
+      this.btnHome.Name = "btnHome";
+      this.btnHome.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnHome.Size = new System.Drawing.Size(170, 50);
+      this.btnHome.TabIndex = 19;
+      this.btnHome.Text = "        Trang chủ";
+      this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnHome.TextColor = System.Drawing.Color.White;
+      this.btnHome.UseVisualStyleBackColor = false;
+      this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
       // 
       // panel2
       // 
@@ -464,169 +623,10 @@
       this.picIconLogIn.TabStop = false;
       this.picIconLogIn.Click += new System.EventHandler(this.picIconLogIn_Click);
       // 
-      // btnSetting
-      // 
-      this.btnSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnSetting.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnSetting.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSetting.BorderRadius = 8;
-      this.btnSetting.BorderSize = 0;
-      this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnSetting.FlatAppearance.BorderSize = 0;
-      this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSetting.ForeColor = System.Drawing.Color.White;
-      this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
-      this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSetting.Location = new System.Drawing.Point(10, 258);
-      this.btnSetting.Name = "btnSetting";
-      this.btnSetting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-      this.btnSetting.Size = new System.Drawing.Size(170, 50);
-      this.btnSetting.TabIndex = 34;
-      this.btnSetting.Text = "        Cài đặt";
-      this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSetting.TextColor = System.Drawing.Color.White;
-      this.btnSetting.UseVisualStyleBackColor = false;
-      this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
-      // 
-      // btnMasterData
-      // 
-      this.btnMasterData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnMasterData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnMasterData.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnMasterData.BorderRadius = 8;
-      this.btnMasterData.BorderSize = 0;
-      this.btnMasterData.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnMasterData.FlatAppearance.BorderSize = 0;
-      this.btnMasterData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnMasterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnMasterData.ForeColor = System.Drawing.Color.White;
-      this.btnMasterData.Image = ((System.Drawing.Image)(resources.GetObject("btnMasterData.Image")));
-      this.btnMasterData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnMasterData.Location = new System.Drawing.Point(10, 196);
-      this.btnMasterData.Name = "btnMasterData";
-      this.btnMasterData.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-      this.btnMasterData.Size = new System.Drawing.Size(170, 50);
-      this.btnMasterData.TabIndex = 32;
-      this.btnMasterData.Text = "        Sản phẩm";
-      this.btnMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnMasterData.TextColor = System.Drawing.Color.White;
-      this.btnMasterData.UseVisualStyleBackColor = false;
-      this.btnMasterData.Click += new System.EventHandler(this.btnMasterData_Click);
-      // 
-      // btnReport
-      // 
-      this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnReport.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnReport.BorderRadius = 8;
-      this.btnReport.BorderSize = 0;
-      this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnReport.FlatAppearance.BorderSize = 0;
-      this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnReport.ForeColor = System.Drawing.Color.White;
-      this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
-      this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnReport.Location = new System.Drawing.Point(10, 134);
-      this.btnReport.Name = "btnReport";
-      this.btnReport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-      this.btnReport.Size = new System.Drawing.Size(170, 50);
-      this.btnReport.TabIndex = 23;
-      this.btnReport.Text = "        Báo cáo";
-      this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnReport.TextColor = System.Drawing.Color.White;
-      this.btnReport.UseVisualStyleBackColor = false;
-      this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-      // 
-      // btnSynthetic
-      // 
-      this.btnSynthetic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnSynthetic.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnSynthetic.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSynthetic.BorderRadius = 8;
-      this.btnSynthetic.BorderSize = 0;
-      this.btnSynthetic.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnSynthetic.FlatAppearance.BorderSize = 0;
-      this.btnSynthetic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSynthetic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSynthetic.ForeColor = System.Drawing.Color.White;
-      this.btnSynthetic.Image = ((System.Drawing.Image)(resources.GetObject("btnSynthetic.Image")));
-      this.btnSynthetic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSynthetic.Location = new System.Drawing.Point(10, 72);
-      this.btnSynthetic.Name = "btnSynthetic";
-      this.btnSynthetic.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-      this.btnSynthetic.Size = new System.Drawing.Size(170, 50);
-      this.btnSynthetic.TabIndex = 21;
-      this.btnSynthetic.Text = "        Tổng hợp";
-      this.btnSynthetic.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSynthetic.TextColor = System.Drawing.Color.White;
-      this.btnSynthetic.UseVisualStyleBackColor = false;
-      this.btnSynthetic.Click += new System.EventHandler(this.btnSynthetic_Click);
-      // 
-      // btnHome
-      // 
-      this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnHome.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnHome.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnHome.BorderRadius = 8;
-      this.btnHome.BorderSize = 0;
-      this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnHome.FlatAppearance.BorderSize = 0;
-      this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnHome.ForeColor = System.Drawing.Color.White;
-      this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-      this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnHome.Location = new System.Drawing.Point(10, 10);
-      this.btnHome.Name = "btnHome";
-      this.btnHome.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-      this.btnHome.Size = new System.Drawing.Size(170, 50);
-      this.btnHome.TabIndex = 19;
-      this.btnHome.Text = "        Trang chủ";
-      this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnHome.TextColor = System.Drawing.Color.White;
-      this.btnHome.UseVisualStyleBackColor = false;
-      this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
-      // 
       // elipseControl1
       // 
       this.elipseControl1.CornerRadius = 15;
       this.elipseControl1.TargetControl = this.pictureBox1;
-      // 
-      // panel6
-      // 
-      this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel6.Location = new System.Drawing.Point(10, 308);
-      this.panel6.Margin = new System.Windows.Forms.Padding(0);
-      this.panel6.Name = "panel6";
-      this.panel6.Size = new System.Drawing.Size(170, 12);
-      this.panel6.TabIndex = 35;
-      // 
-      // btnRestartApp
-      // 
-      this.btnRestartApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnRestartApp.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnRestartApp.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnRestartApp.BorderRadius = 8;
-      this.btnRestartApp.BorderSize = 0;
-      this.btnRestartApp.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnRestartApp.FlatAppearance.BorderSize = 0;
-      this.btnRestartApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnRestartApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnRestartApp.ForeColor = System.Drawing.Color.White;
-      this.btnRestartApp.Image = ((System.Drawing.Image)(resources.GetObject("btnRestartApp.Image")));
-      this.btnRestartApp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnRestartApp.Location = new System.Drawing.Point(10, 320);
-      this.btnRestartApp.Name = "btnRestartApp";
-      this.btnRestartApp.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-      this.btnRestartApp.Size = new System.Drawing.Size(170, 50);
-      this.btnRestartApp.TabIndex = 36;
-      this.btnRestartApp.Text = "        Restart";
-      this.btnRestartApp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnRestartApp.TextColor = System.Drawing.Color.White;
-      this.btnRestartApp.UseVisualStyleBackColor = false;
-      this.btnRestartApp.Click += new System.EventHandler(this.btnRestartApp_Click);
       // 
       // FormMain
       // 
@@ -683,7 +683,7 @@
     private System.Windows.Forms.Panel panel4;
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Panel panel3;
-    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Label lbVersion;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Panel panelMain;
     private System.Windows.Forms.PictureBox picCloseApp;

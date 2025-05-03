@@ -308,6 +308,7 @@
     <Compile Include="Helper\CvtClassDTO.cs" />
     <Compile Include="Helper\DatetimeHelper.cs" />
     <Compile Include="Helper\ExcelHelper.cs" />
+    <Compile Include="Helper\HelperFolder_File.cs" />
     <Compile Include="Helper\HelperImportExcel.cs" />
     <Compile Include="Helper\LoggerHelper.cs" />
     <Compile Include="Helper\eNumHelper.cs" />

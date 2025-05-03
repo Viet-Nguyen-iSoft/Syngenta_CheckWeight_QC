@@ -16,6 +16,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public FormMain()
     {
       InitializeComponent();
+      this.lbVersion.Text = $"© 2025 Vuletech - {AppCore.Ins.Version}";
       this.WindowState = FormWindowState.Minimized;
       this.StartPosition = FormStartPosition.CenterScreen;
 
