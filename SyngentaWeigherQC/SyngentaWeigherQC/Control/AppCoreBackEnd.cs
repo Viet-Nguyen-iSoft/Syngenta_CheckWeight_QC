@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using static SyngentaWeigherQC.Control.AppCore;
 using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 using DateTime = System.DateTime;
@@ -62,6 +63,9 @@ namespace SyngentaWeigherQC.Control
     public delegate void SendTimeoutPage();
     public event SendTimeoutPage OnSendTimeoutPage;
 
+    public delegate void SendChangeDate();
+    public event SendChangeDate OnSendChangeDate;
+
     #endregion
 
     public System.Timers.Timer _timerCheckTimeout = new System.Timers.Timer();
@@ -76,6 +80,7 @@ namespace SyngentaWeigherQC.Control
     public string[] _listPortPC = new string[100];
 
     public Shift _shiftIdCurrent = null;
+    public Shift _shiftIdPrevious = null;
 
     public AppModulSupport _pageCurrent = AppModulSupport.OverView;
 
@@ -92,6 +97,8 @@ namespace SyngentaWeigherQC.Control
     public int _numberDataEachRow = 10;
 
     public List<Roles> _listRoles { get; set; } = new List<Roles>();
+
+    public string Version = "V1.0.1";
     public void Init()
     {
       InitDB();
@@ -101,7 +108,6 @@ namespace SyngentaWeigherQC.Control
       InformationDeviceDev();
 
       InitEvent();
-      //Init_RandomData();
 
       CreateFolderReport();
 
@@ -110,7 +116,32 @@ namespace SyngentaWeigherQC.Control
       StartShowUI();
     }
 
-    
+    private void CreateFolderReport()
+    {
+      try
+      {
+        var lineForStationCurrent = _listInforLine?.Where(x=>x.IsEnable).ToList();
+
+        foreach (var item in lineForStationCurrent)
+        {
+          string pathLocal = item?.PathReportLocal;
+          HelperFolder_File.CreateFolderIfExits(pathLocal);
+          HelperFolder_File.CreateFolderIfExits(pathLocal + "\\Months");
+          HelperFolder_File.CreateFolderIfExits(pathLocal + "\\Weeks");
+          HelperFolder_File.CreateFolderIfExits(pathLocal + "\\Dailys");
+
+          string pathOneDrive = item?.PathReportOneDrive;
+          HelperFolder_File.CreateFolderIfExits(pathOneDrive);
+          HelperFolder_File.CreateFolderIfExits(pathOneDrive + "\\Months");
+          HelperFolder_File.CreateFolderIfExits(pathOneDrive + "\\Weeks");
+          HelperFolder_File.CreateFolderIfExits(pathOneDrive + "\\Dailys");
+        }
+      }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex.ToString());
+      }
+    }
 
 
     public void ConnectDataWeight()
@@ -144,13 +175,6 @@ namespace SyngentaWeigherQC.Control
     }
 
     //Current Data
-    public InforLine _stationCurrent { get; set; } = new InforLine();
-    public List<Production> _listProductsWithStation { get; set; } = new List<Production>();
-    public Production _currentProduct { get; set; } = new Production();
-    public eModeTare _modeTare { get; set; } = eModeTare.TareWithLabel;
-
-    public ShiftLeader _listUserCurrent { get; set; } = new ShiftLeader();
-    public ConfigSoftware _inforValueSettingStation { get; set; } = new ConfigSoftware();
 
     public eModeUseApp _modeUseApp = eModeUseApp.OFF;
     public eReadyReceidDataTare _readyReceidDataTare = eReadyReceidDataTare.No;
@@ -185,13 +209,9 @@ namespace SyngentaWeigherQC.Control
                                 .Contains((int)p.InforLineId))
                                 .ToList();
 
-
-
-
-
-
         // Datalog 
-        _listDatalogWeight = await AppCore.Ins.LoadAllDatalogWeight(0, DateTime.Now, DateTime.Now, 0);
+        var dateTimeSearch = DatetimeHelper.GetRangeDateCurrent(DateTime.Now);
+        _listDatalogWeight = await AppCore.Ins.LoadAllDatalogWeight(0, dateTimeSearch.StartDate, dateTimeSearch.EndDate);
 
         //Role
         _listRoles = await LoadAllRole();
@@ -211,6 +231,12 @@ namespace SyngentaWeigherQC.Control
       {
         LoggerHelper.LogErrorToFileLog(ex);
       }
+    }
+
+    public async void ReloadDataChangeDate()
+    {
+      var dateTimeSearch = DatetimeHelper.GetRangeDateCurrent(DateTime.Now);
+      _listDatalogWeight = await AppCore.Ins.LoadAllDatalogWeight(0, dateTimeSearch.StartDate, dateTimeSearch.EndDate);
     }
 
 
@@ -343,63 +369,78 @@ namespace SyngentaWeigherQC.Control
       if (datalogWeights == null)
         return new List<DataReportExcel>();
 
-      return datalogWeights
-      .GroupBy(dw => ((DateTime)dw.CreatedAt).Date) // Giả sử BaseModel có CreateDate
-      .Select(dateGroup => new DataReportExcel
-      {
-        DateTime = dateGroup.Key,
-        DataByDates = dateGroup
-              .GroupBy(dw => dw.ShiftType)
-              .Select(shiftTypeGroup => new DataByShiftType
-              {
-                ShiftType = shiftTypeGroup.Key,
-                DataByProducts = shiftTypeGroup
-                      .GroupBy(dw => dw.Production)
-                      .Select(prodGroup => new DataByProduction
-                      {
-                        Production = prodGroup.Key,
-                        DataByProductionByShifts = prodGroup
-                              .GroupBy(dw => dw.Shift)
-                              .Select(shiftGroup => new DataByProductionByShift
-                              {
-                                Shift = shiftGroup.Key,
-                                DatalogWeights = shiftGroup.ToList()
-                              })
-                              .ToList()
-                      })
-                      .ToList()
-              })
-              .ToList()
-      })
-      .ToList();
-
-      //var result = datalogWeights
-      //    .Where(d => d.CreatedAt != null && d.Shift != null && d.Production != null)
-      //    .GroupBy(d => ((DateTime)d.CreatedAt).Date)
-      //    .Select(dateGroup => new DataReportExcel
-      //    {
-      //      DateTime = dateGroup.Key,
-      //      DataByDates = dateGroup
-      //        .GroupBy(d => d.Shift)
-      //        .Select(shiftGroup => new DataByShiftType
+      //return datalogWeights
+      //.GroupBy(dw => ((DateTime)dw.CreatedAt).Date)
+      //.Select(dateGroup => new DataReportExcel
+      //{
+      //  DateTime = dateGroup.Key,
+      //  DataByDates = dateGroup
+      //        .GroupBy(dw => dw.ShiftType)
+      //        .Select(shiftTypeGroup => new DataByShiftType
       //        {
-      //          Shift = shiftGroup.Key,
-      //          DataByProducts = shiftGroup
-      //                .GroupBy(d => d.Production)
+      //          ShiftType = shiftTypeGroup.Key,
+      //          DataByProducts = shiftTypeGroup
+      //                .GroupBy(dw => dw.Production)
       //                .Select(prodGroup => new DataByProduction
       //                {
       //                  Production = prodGroup.Key,
-      //                  DatalogWeights = prodGroup.OrderBy(x => x.Id).ToList()
+      //                  DataByProductionByShifts = prodGroup
+      //                        .GroupBy(dw => dw.Shift)
+      //                        .Select(shiftGroup => new DataByProductionByShift
+      //                        {
+      //                          Shift = shiftGroup.Key,
+      //                          DatalogWeights = shiftGroup.ToList()
+      //                        })
+      //                        .ToList()
       //                })
       //                .ToList()
       //        })
-      //        .OrderBy(x => x.Shift.Id)
       //        .ToList()
-      //    })
-      //    .OrderBy(x => x.DateTime)
-      //    .ToList();
+      //})
+      //.ToList();
 
-      return null;
+
+      return datalogWeights
+        .GroupBy(dw =>
+        {
+          var createdAt = dw.CreatedAt;
+          var date = createdAt.Date;
+
+          // Nếu thời gian trước 6h sáng thì tính vào ngày hôm trước
+          if (createdAt.TimeOfDay < TimeSpan.FromHours(6))
+          {
+            date = date.AddDays(-1);
+          }
+
+          return date;
+        })
+        .Select(dateGroup => new DataReportExcel
+        {
+          DateTime = dateGroup.Key, // Ngày "6h sáng"
+          DataByDates = dateGroup
+                .GroupBy(dw => dw.ShiftType)
+                .Select(shiftTypeGroup => new DataByShiftType
+                {
+                  ShiftType = shiftTypeGroup.Key,
+                  DataByProducts = shiftTypeGroup
+                        .GroupBy(dw => dw.Production)
+                        .Select(prodGroup => new DataByProduction
+                        {
+                          Production = prodGroup.Key,
+                          DataByProductionByShifts = prodGroup
+                                .GroupBy(dw => dw.Shift)
+                                .Select(shiftGroup => new DataByProductionByShift
+                                {
+                                  Shift = shiftGroup.Key,
+                                  DatalogWeights = shiftGroup.ToList()
+                                })
+                                .ToList()
+                        })
+                        .ToList()
+                })
+                .ToList()
+        })
+        .ToList();
     }
 
 
@@ -541,38 +582,9 @@ namespace SyngentaWeigherQC.Control
 
 
 
-    private void CreateFolderReport()
-    {
-      try
-      {
-        string pathLocal = AppCore.Ins._stationCurrent?.PathReportLocal;
-        string pathOneDrive = AppCore.Ins._stationCurrent?.PathReportOneDrive;
+    
 
-        CheckCreateFolderIfExits(pathLocal);
-        CheckCreateFolderIfExits(pathLocal + "\\Months");
-        CheckCreateFolderIfExits(pathLocal + "\\Weeks");
-        CheckCreateFolderIfExits(pathLocal + "\\Dailys");
-
-
-        CheckCreateFolderIfExits(pathOneDrive);
-        CheckCreateFolderIfExits(pathOneDrive + "\\Months");
-        CheckCreateFolderIfExits(pathOneDrive + "\\Weeks");
-        CheckCreateFolderIfExits(pathOneDrive + "\\Dailys");
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex.ToString());
-      }
-
-    }
-
-    private void CheckCreateFolderIfExits(string pathFolder)
-    {
-      if (!Directory.Exists(pathFolder))
-      {
-        Directory.CreateDirectory(pathFolder);
-      }
-    }
+    
 
     public bool _isPermitDev = false;
     private void InformationDeviceDev()
@@ -719,7 +731,6 @@ namespace SyngentaWeigherQC.Control
         _timerCheckTimeout.Elapsed += _timerCheckTimeout_Elapsed;
         _timerCheckTimeout.Start();
 
-
         FrmSettingConfigSoftware.Instance.OnSendChangeConnection += Instance_OnSendChangeConnection;
       }
       catch (Exception ex)
@@ -728,6 +739,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
+  
 
     public int _timeTimeoutCurrent = 0;
     private void _timerCheckTimeout_Elapsed(object sender, ElapsedEventArgs e)
@@ -769,10 +781,11 @@ namespace SyngentaWeigherQC.Control
     {
       if (AppCore.Ins._listInforLine.Count > 0)
       {
+        var dt_report = DatetimeHelper.GetRangeDateCurrent(dateTime);
         var lines = AppCore.Ins._listInforLine?.Where(x => x.IsEnable == true).ToList();
         foreach (var line in lines)
         {
-          var datalogs = await AppCore.Ins.LoadAllDatalogWeight(line.Id, dateTime, dateTime, 0);
+          var datalogs = await AppCore.Ins.LoadAllDatalogWeight(line.Id, dt_report.StartDate, dt_report.EndDate);
           List<DataReportExcel> dataReportExcels = AppCore.Ins.GenerateDataReport(datalogs);
 
           if (dataReportExcels != null)
@@ -780,8 +793,16 @@ namespace SyngentaWeigherQC.Control
             if (dataReportExcels.Count > 0)
             {
               string[] pathReport = new string[3];
-              pathReport[0] = line.PathReportLocal;
-              pathReport[1] = line.PathReportOneDrive;
+
+              //Yêu càu tạo các Folder Tháng trong Ngày
+              //Tháng nào ?
+              int month = dateTime.Month;
+
+              HelperFolder_File.CreateFolderIfExits(line.PathReportLocal + $"\\Dailys\\Month{month}");
+              HelperFolder_File.CreateFolderIfExits(line.PathReportOneDrive + $"\\Dailys\\Month{month}");
+
+              pathReport[0] = line.PathReportLocal + $"\\Dailys\\Month{month}";
+              pathReport[1] = line.PathReportOneDrive + $"\\Dailys\\Month{month}";
               foreach (var item in dataReportExcels)
               {
                 ExcelHelper.ReportExcel(item, pathReport);
@@ -807,6 +828,8 @@ namespace SyngentaWeigherQC.Control
           dayCurrent = dt.Day;
           if (dayLast != dayCurrent)
           {
+            ReloadDataChangeDate();
+            OnSendChangeDate?.Invoke();
             //Check Xuất report auto theo tháng, tuần
             //ExportAutoMonthOrWeek();
 
@@ -833,17 +856,17 @@ namespace SyngentaWeigherQC.Control
     {
       try
       {
-        DateTime dt = DateTime.Now;
-        int year = dt.Year;
-        int month = dt.Month;
-        CultureInfo cul = CultureInfo.CurrentCulture;
-        int weekCurrent = cul.Calendar.GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+        //DateTime dt = DateTime.Now;
+        //int year = dt.Year;
+        //int month = dt.Month;
+        //CultureInfo cul = CultureInfo.CurrentCulture;
+        //int weekCurrent = cul.Calendar.GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 
-        string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
-        string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
-        string nameStation = AppCore.Ins._stationCurrent.Name;
-        FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(year, month - 1, weekCurrent - 1, pathLocal, pathOneDrive, nameStation);
-        frmReportAutoPdfMonth.ShowDialog();
+        //string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
+        //string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
+        //string nameStation = AppCore.Ins._stationCurrent.Name;
+        //FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(year, month - 1, weekCurrent - 1, pathLocal, pathOneDrive, nameStation);
+        //frmReportAutoPdfMonth.ShowDialog();
       }
       catch (Exception ex)
       {

@@ -36,18 +36,18 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private string fileNameReportOneDrive = "";
     private void FrmReportAutoExcel_Load(object sender, EventArgs e)
     {
-      //Load tên file excel
-      fileNameReportLocal = AppCore.Ins._stationCurrent.PathReportLocal + $"\\Dailys\\ReportDailys_{_stationName}_{_dt_DB.ToString("yyyy_MM_dd")}.xlsx";
-      fileNameReportOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive + $"\\Dailys\\ReportDailys_{_stationName}_{_dt_DB.ToString("yyyy_MM_dd")}.xlsx";
+      ////Load tên file excel
+      //fileNameReportLocal = AppCore.Ins._stationCurrent.PathReportLocal + $"\\Dailys\\ReportDailys_{_stationName}_{_dt_DB.ToString("yyyy_MM_dd")}.xlsx";
+      //fileNameReportOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive + $"\\Dailys\\ReportDailys_{_stationName}_{_dt_DB.ToString("yyyy_MM_dd")}.xlsx";
 
-      if (!File.Exists(fileNameReportLocal))
-      {
-        LoadDataReport();
-      }
-      else
-      {
-        this.Close();
-      }  
+      //if (!File.Exists(fileNameReportLocal))
+      //{
+      //  LoadDataReport();
+      //}
+      //else
+      //{
+      //  this.Close();
+      //}  
     }
 
     private  ExportManual exportManual = new ExportManual();

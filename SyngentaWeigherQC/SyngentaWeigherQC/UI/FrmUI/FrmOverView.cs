@@ -28,24 +28,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       InitializeComponent();
       this.Shown += FrmOverView_Shown;
-      FrmMasterdata.Instance.OnSendChangeMasterData += Instance_OnSendChangeMasterData;
-    }
-
-    private void Instance_OnSendChangeMasterData()
-    {
-      ReloadUI();
-    }
-
-    private void FrmOverView_Shown(object sender, EventArgs e)
-    {
-      LoadLine();
-    }
-
-    private async void ReloadUI()
-    {
-      //Line
-      AppCore.Ins._listInforLine = await AppCore.Ins.LoadInforLines();
-      LoadLine();
     }
 
     #region Singleton parttern
@@ -67,6 +49,37 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       FrmSettingLine.Instance.OnSendChangeLine += Instance_OnSendChangeLine;
       AppCore.Ins.OnSendStatusConnectWeight += Ins_OnSendStatusConnectWeight;
+      FrmMasterdata.Instance.OnSendChangeMasterData += Instance_OnSendChangeMasterData;
+      AppCore.Ins.OnSendChangeDate += Ins_OnSendChangeDate;
+    }
+
+
+    private void Ins_OnSendChangeDate()
+    {
+      if (AppCore.Ins._listInforLine.Count > 0)
+      {
+        foreach (var item in AppCore.Ins._listInforLine)
+        {
+          FindAndUpdateStatisticalData(item, null);
+        }
+      }  
+    }
+
+    private void Instance_OnSendChangeMasterData()
+    {
+      ReloadUI();
+    }
+
+    private void FrmOverView_Shown(object sender, EventArgs e)
+    {
+      LoadLine();
+    }
+
+    private async void ReloadUI()
+    {
+      //Line
+      AppCore.Ins._listInforLine = await AppCore.Ins.LoadInforLines();
+      LoadLine();
     }
 
     private void Ins_OnSendStatusConnectWeight(eStatusConnectWeight eStatusConnectWeight)

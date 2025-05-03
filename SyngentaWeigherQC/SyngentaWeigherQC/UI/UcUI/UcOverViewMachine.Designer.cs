@@ -761,7 +761,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbResult_3.AutoSize = true;
       this.lbResult_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbResult_3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbResult_3.ForeColor = System.Drawing.Color.White;
       this.lbResult_3.Location = new System.Drawing.Point(410, 171);
       this.lbResult_3.Margin = new System.Windows.Forms.Padding(0);
@@ -795,7 +795,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbResult_2.AutoSize = true;
       this.lbResult_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.lbResult_2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbResult_2.ForeColor = System.Drawing.Color.White;
       this.lbResult_2.Location = new System.Drawing.Point(410, 114);
       this.lbResult_2.Margin = new System.Windows.Forms.Padding(0);
@@ -829,7 +829,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbResult_1.AutoSize = true;
       this.lbResult_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbResult_1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbResult_1.ForeColor = System.Drawing.Color.White;
       this.lbResult_1.Location = new System.Drawing.Point(410, 57);
       this.lbResult_1.Margin = new System.Windows.Forms.Padding(0);
@@ -922,7 +922,7 @@
       this.lbShift_3.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.lbShift_3.Size = new System.Drawing.Size(86, 57);
       this.lbShift_3.TabIndex = 13;
-      this.lbShift_3.Text = "3";
+      this.lbShift_3.Text = "...";
       this.lbShift_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // lbStdev_2
@@ -957,7 +957,7 @@
       this.lbShift_2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.lbShift_2.Size = new System.Drawing.Size(86, 57);
       this.lbShift_2.TabIndex = 11;
-      this.lbShift_2.Text = "2";
+      this.lbShift_2.Text = "...";
       this.lbShift_2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // lbStdev_3
@@ -1027,7 +1027,7 @@
       this.lbShift_1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
       this.lbShift_1.Size = new System.Drawing.Size(86, 57);
       this.lbShift_1.TabIndex = 15;
-      this.lbShift_1.Text = "1";
+      this.lbShift_1.Text = "...";
       this.lbShift_1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label16

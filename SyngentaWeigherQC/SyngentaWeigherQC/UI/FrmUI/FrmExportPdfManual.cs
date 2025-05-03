@@ -118,11 +118,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       try
       {
-        string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
-        string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
-        string nameStation = AppCore.Ins._stationCurrent.Name;
-        FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(yearCurrent, monthCurrent, weekCurrent, pathLocal, pathOneDrive, nameStation, isExportWeek:false);
-        frmReportAutoPdfMonth.ShowDialog();
+        //string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
+        //string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
+        //string nameStation = AppCore.Ins._stationCurrent.Name;
+        //FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(yearCurrent, monthCurrent, weekCurrent, pathLocal, pathOneDrive, nameStation, isExportWeek:false);
+        //frmReportAutoPdfMonth.ShowDialog();
       }
       catch (Exception ex)
       {
@@ -133,11 +133,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       try
       {
-        string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
-        string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
-        string nameStation = AppCore.Ins._stationCurrent.Name;
-        FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(yearCurrent, monthCurrent, weekCurrent, pathLocal, pathOneDrive, nameStation, isExportMonth:false);
-        frmReportAutoPdfMonth.ShowDialog();
+        //string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
+        //string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
+        //string nameStation = AppCore.Ins._stationCurrent.Name;
+        //FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(yearCurrent, monthCurrent, weekCurrent, pathLocal, pathOneDrive, nameStation, isExportMonth:false);
+        //frmReportAutoPdfMonth.ShowDialog();
       }
       catch (Exception ex)
       {

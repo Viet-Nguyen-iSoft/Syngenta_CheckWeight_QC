@@ -28,11 +28,11 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,11 +64,11 @@
       this.cbbLine = new System.Windows.Forms.ComboBox();
       this.flowLayoutPanelProduct = new System.Windows.Forms.FlowLayoutPanel();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      this.progressBar1 = new System.Windows.Forms.ProgressBar();
+      this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
       this.ucChartHistogram1 = new SyngentaWeigherQC.UI.UcUI.UcChartHistogram();
       this.ucChartLine1 = new SyngentaWeigherQC.UI.UcUI.UcChartLine();
-      this.progressBar1 = new System.Windows.Forms.ProgressBar();
       this.ucTemplateExcel1 = new SyngentaWeigherQC.UI.UcUI.UcTemplateExcel();
-      this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel2.SuspendLayout();
@@ -104,18 +104,18 @@
       this.dataGridView1.AllowUserToAddRows = false;
       this.dataGridView1.AllowUserToResizeColumns = false;
       this.dataGridView1.AllowUserToResizeRows = false;
-      dataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke;
-      this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+      this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
       this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
-      dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-      dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
       this.dataGridView1.ColumnHeadersHeight = 40;
       this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -134,30 +134,30 @@
             this.Column12,
             this.Column13,
             this.Column15});
-      dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-      dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle13;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
       this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dataGridView1.EnableHeadersVisualStyles = false;
       this.dataGridView1.Location = new System.Drawing.Point(3, 760);
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.ReadOnly = true;
-      dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-      dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
       this.dataGridView1.RowHeadersVisible = false;
-      dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-      this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle15;
+      dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+      this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
       this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
       this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
       this.dataGridView1.RowTemplate.Height = 40;
@@ -480,6 +480,18 @@
       this.tableLayoutPanel3.Size = new System.Drawing.Size(1787, 299);
       this.tableLayoutPanel3.TabIndex = 3;
       // 
+      // progressBar1
+      // 
+      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
+      this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+      this.progressBar1.Location = new System.Drawing.Point(3, 121);
+      this.progressBar1.Name = "progressBar1";
+      this.progressBar1.Size = new System.Drawing.Size(1781, 9);
+      this.progressBar1.TabIndex = 9;
+      // 
       // ucChartHistogram1
       // 
       this.ucChartHistogram1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -499,18 +511,6 @@
       this.ucChartLine1.Name = "ucChartLine1";
       this.ucChartLine1.Size = new System.Drawing.Size(888, 293);
       this.ucChartLine1.TabIndex = 1;
-      // 
-      // progressBar1
-      // 
-      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
-      this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-      this.progressBar1.Location = new System.Drawing.Point(3, 121);
-      this.progressBar1.Name = "progressBar1";
-      this.progressBar1.Size = new System.Drawing.Size(1781, 9);
-      this.progressBar1.TabIndex = 9;
       // 
       // ucTemplateExcel1
       // 

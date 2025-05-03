@@ -172,7 +172,6 @@ namespace SyngentaWeigherQC.UI.FrmAddProduct
         Production production_data = new Production();
 
         production_data.Name = txtNameProduct.Text;
-        production_data.LineCode = AppCore.Ins._stationCurrent?.Name;
         production_data.PackSize = packsize;
         production_data.Density = density_product;
 

@@ -422,17 +422,25 @@ namespace SyngentaWeigherQC.UI.UcUI
         return;
       }
 
-      foreach (var sumary in statisticalDatas)
+      if (statisticalDatas?.Count>0)
       {
-        SetValueSumary(sumary);
-      }
+        foreach (var sumary in statisticalDatas)
+        {
+          SetValueSumary(sumary);
+        }
 
-      //Chart
-      int total = statisticalDatas.Sum(x => x.TotalSample);
-      int lower = statisticalDatas.Sum(x => x.NumberSampleLower);
-      int over = statisticalDatas.Sum(x => x.NumberSampleOver);
-      int pass = total - lower - over;
-      ChartHelper.SetDataChartPie(chartPie, pass, lower, over);
+        //Chart
+        int total = statisticalDatas.Sum(x => x.TotalSample);
+        int lower = statisticalDatas.Sum(x => x.NumberSampleLower);
+        int over = statisticalDatas.Sum(x => x.NumberSampleOver);
+        int pass = total - lower - over;
+        ChartHelper.SetDataChartPie(chartPie, pass, lower, over);
+      }
+      else
+      {
+        ClearValueSumary();
+        ChartHelper.SetDataChartPie(chartPie, 0, 0, 0);
+      }  
     }
 
     private void SetValueSumary(StatisticalData statisticalData)
@@ -501,6 +509,39 @@ namespace SyngentaWeigherQC.UI.UcUI
             break;
         }
       }
+    }
+
+    private void ClearValueSumary()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          ClearValueSumary();
+        }));
+        return;
+      }
+
+      this.lbShift_1.Text = "...";
+      this.lbStdev_1.Text = "...";
+      this.lbAverage_1.Text = "...";
+      this.lbTotalSample_1.Text = "...";
+      this.lbResult_1.Text = "...";
+      this.lbResult_1.ForeColor = Color.White;
+
+      this.lbShift_2.Text = "...";
+      this.lbStdev_2.Text = "...";
+      this.lbAverage_2.Text = "...";
+      this.lbTotalSample_2.Text = "...";
+      this.lbResult_2.Text = "...";
+      this.lbResult_2.ForeColor = Color.White;
+
+      this.lbShift_3.Text = "...";
+      this.lbStdev_3.Text = "...";
+      this.lbAverage_3.Text = "...";
+      this.lbTotalSample_3.Text = "...";
+      this.lbResult_3.Text = "...";
+      this.lbResult_3.ForeColor = Color.White;
     }
 
 

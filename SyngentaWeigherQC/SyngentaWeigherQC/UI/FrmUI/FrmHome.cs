@@ -9,7 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Timers;
 using System.Windows.Forms;
+using static SyngentaWeigherQC.Control.AppCore;
 using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 using Production = SyngentaWeigherQC.Models.Production;
@@ -41,8 +43,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       return _instances[key.Id];
     }
-
     #endregion
+
+    public System.Timers.Timer _timerCheckShift = new System.Timers.Timer();
 
     private List<ShiftLeader> _ShiftLeaders = new List<ShiftLeader>();
     private List<ShiftType> _ShiftTypes = new List<ShiftType>();
@@ -52,7 +55,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     public List<DatalogWeight> _listDatalogByLine { get; set; } = new List<DatalogWeight>();
     public List<DatalogWeight> _listDatalogShiftCurrrent { get; set; } = new List<DatalogWeight>();
-    public List<TableDatalogDTO> _listDatatableByLine { get; set; } = new List<TableDatalogDTO>();
+    //public List<TableDatalogDTO> _listDatatableByLine { get; set; } = new List<TableDatalogDTO>();
 
     private int _indexColData = 0;
 
@@ -64,6 +67,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private int _colAvgTotal = 14;
     private int _colEvaluate = 15;
 
+    public Shift _shiftIdCurrent = null;
+    public Shift _shiftIdPrevious = null;
 
     private void FrmHome_Load(object sender, EventArgs e)
     {
@@ -103,8 +108,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       ucChartLine.SetDataChart(dataChartLine);
 
       //Table
-      _listDatatableByLine = AppCore.Ins.ConvertToDTOList(_listDatalogShiftCurrrent);
-      SetDataTable(_listDatatableByLine);
+      var listDatatableByLine = AppCore.Ins.ConvertToDTOList(_listDatalogShiftCurrrent);
+      SetDataTable(listDatatableByLine);
 
       //Histogram
       ucChartHistogram.SetDataChart(_listDatalogShiftCurrrent, this._inforLine.ProductionCurrent);
@@ -120,10 +125,39 @@ namespace SyngentaWeigherQC.UI.FrmUI
       AppCore.Ins.OnSendStatusConnectWeight += Ins_OnSendStatusConnectWeight;
       AppCore.Ins.OnSendValueDatalogWeight += Ins_OnSendValueDatalogWeight;
       AppCore.Ins.OnSendWarning += Ins_OnSendWarning;
+      AppCore.Ins.OnSendChangeDate += Ins_OnSendChangeDate;
 
       FrmOverView.Instance.OnSendChooseProduct += Instance_OnSendChooseProduct;
       FrmOverView.Instance.OnSendChooseShiftLeader += Instance_OnSendChooseShiftLeader;
       FrmOverView.Instance.OnSendChooseTypeShift += Instance_OnSendChooseTypeShift;
+
+
+      _shiftIdCurrent = AppCore.Ins.GetShiftCode(_inforLine);
+      _shiftIdPrevious = _shiftIdCurrent;
+      _timerCheckShift.Interval = 1000;
+      _timerCheckShift.Elapsed += _timerCheckShift_Elapsed;
+      _timerCheckShift.Start();
+    }
+
+    private void Ins_OnSendChangeDate()
+    {
+      _listDatalogByLine = new List<DatalogWeight>();
+      _listDatalogShiftCurrrent = new List<DatalogWeight>();
+
+      LoadSumaryByShift(_listDatalogByLine);
+      LoadUiWhenAddData(_listDatalogShiftCurrrent);
+    }
+
+    private void _timerCheckShift_Elapsed(object sender, ElapsedEventArgs e)
+    {
+      _shiftIdCurrent = AppCore.Ins.GetShiftCode(_inforLine);
+      if (_shiftIdCurrent != _shiftIdPrevious)
+      {
+        _listDatalogShiftCurrrent = new List<DatalogWeight>();
+        LoadUiWhenAddData(_listDatalogShiftCurrrent);
+
+        _shiftIdPrevious = _shiftIdCurrent;
+      }
     }
 
     private void CbbTypeTare_SelectedIndexChanged(object sender, EventArgs e)
@@ -361,7 +395,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         //Clear bản dữ liệu cũ
         _listDatalogShiftCurrrent = new List<DatalogWeight>();
-        LoadUiWhenAddData();
+        LoadUiWhenAddData(_listDatalogShiftCurrrent);
       }
       catch (Exception ex)
       {
@@ -392,11 +426,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       FrmOverView.Instance.FindAndUpdateShiftLeader(this._inforLine);
     }
 
-
-
-
-
-
     private void Instance_OnSendChooseProduct(InforLine inforLine)
     {
       if (inforLine.Id != _inforLine.Id) return;
@@ -412,41 +441,48 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       //Clear bản dữ liệu cũ
       _listDatalogShiftCurrrent = new List<DatalogWeight>();
-      LoadUiWhenAddData();
+      LoadUiWhenAddData(_listDatalogShiftCurrrent);
     }
 
     private void LoadSumaryByShift(List<DatalogWeight> listDatalogByLine)
     {
       var rs = AppCore.Ins.SumaryDTO(listDatalogByLine);
-      foreach (var item in rs)
+      if (rs?.Count()>0)
       {
-        SetValueSumary(item);
+        foreach (var item in rs)
+        {
+          SetValueSumary(item);
+        }
       }
+      else
+      {
+        ClearValueSumary();
+      }  
 
       FrmOverView.Instance.FindAndUpdateStatisticalData(this._inforLine, rs);
     }
 
 
-    private void LoadUiWhenAddData()
+    private void LoadUiWhenAddData(List<DatalogWeight> datalogWeights)
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          LoadUiWhenAddData();
+          LoadUiWhenAddData(datalogWeights);
         }));
         return;
       }
       //Table
-      _listDatatableByLine = AppCore.Ins.ConvertToDTOList(_listDatalogShiftCurrrent);
-      SetDataTable(_listDatatableByLine);
+      var listDatatableByLine = AppCore.Ins.ConvertToDTOList(datalogWeights);
+      SetDataTable(listDatatableByLine);
 
       //ChartLine
-      var dataChartLine = AppCore.Ins.CvtDatalogWeightToChartLine(_listDatalogShiftCurrrent, this._inforLine.ProductionCurrent);
+      var dataChartLine = AppCore.Ins.CvtDatalogWeightToChartLine(datalogWeights, this._inforLine.ProductionCurrent);
       ucChartLine.SetDataChart(dataChartLine);
 
       //Histogram
-      ucChartHistogram.SetDataChart(_listDatalogShiftCurrrent, this._inforLine.ProductionCurrent);
+      ucChartHistogram.SetDataChart(datalogWeights, this._inforLine.ProductionCurrent);
     }
 
 
@@ -506,6 +542,35 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
+    private void ClearValueSumary()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          ClearValueSumary();
+        }));
+        return;
+      }
+
+      for (int i = 1;i<=3;i++)
+      {
+        this.uCinforDataShift.SetText(i, "");
+        this.uCinforDataStd.SetText(i, "");
+        this.dataInforCpk.SetText(i, "");
+        this.dataInforSigma.SetText(i, "");
+        this.uCinforDataAverage.SetText(i, "");
+        this.uCinforDataStardard.SetText(i, "");
+        this.uCinforDataResult.SetText(i, "");
+        this.uCinforDataSample.SetText(i, "");
+        this.uCinforDataErrorLower.SetText(i, "");
+        this.uCinforDataErrorOver.SetText(i, "");
+        this.uCinforDataRate.SetText(i, "");
+        this.uCinforDataLoss.SetText(i, "");
+        this.uCinforDataResult.SetBackColor(i, Color.White);
+      }  
+    }
+
 
     private void Ins_OnSendValueDatalogWeight(InforLine inforLine, DatalogWeight datalogWeight)
     {
@@ -522,7 +587,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         //Thống kê 3 ca
         LoadSumaryByShift(_listDatalogByLine);
 
-        LoadUiWhenAddData();
+        LoadUiWhenAddData(_listDatalogShiftCurrrent);
       }
     }
 
@@ -660,8 +725,16 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       await AppCore.Ins.Update(datalogWeight);
 
-      var item = _listDatalogShiftCurrrent.FirstOrDefault(d => d.Id == datalogWeight.Id);
 
+      var itemFullShift = _listDatalogByLine.FirstOrDefault(d => d.Id == datalogWeight.Id);
+      if (itemFullShift!=null)
+      {
+        itemFullShift.Value = datalogWeight.Value;
+        itemFullShift.IsChange = datalogWeight.IsChange;
+      }
+
+
+      var item = _listDatalogShiftCurrrent.FirstOrDefault(d => d.Id == datalogWeight.Id);
       if (item != null)
       {
         item.Value = datalogWeight.Value;
@@ -669,8 +742,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         //Thống kê 3 ca
         LoadSumaryByShift(_listDatalogByLine);
-
-        LoadUiWhenAddData();
+        LoadUiWhenAddData(_listDatalogShiftCurrrent);
       }
     }
 

@@ -1,7 +1,96 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\control\\appcorebackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\control\\appcorebackend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\helper\\excelhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\helper\\excelhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\helper\\helperfolder_file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\helper\\helperfolder_file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\control\\communicationdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\control\\communicationdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\helper\\datetimehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\helper\\datetimehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmreportautoexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmreportautoexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmstartup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmstartup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmstartup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmstartup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmchangesettingline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmchangesettingline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmsettingline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmsettingline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmaddproduct\\frmaddproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmaddproduct\\frmaddproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\ucui\\ucoverviewmachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\ucui\\ucoverviewmachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\responsitory\\responsitorydatalogweight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\responsitory\\responsitorydatalogweight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\ucui\\ucoverviewmachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\ucui\\ucoverviewmachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmexcelexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmexcelexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|c:\\users\\administrator\\desktop\\project\\syngenta\\syngenta_checkweight_qc\\syngentaweigherqc\\syngentaweigherqc\\ui\\frmui\\frmexcelexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5E4E1EDF-D797-4846-94C0-1B1AF9CD134F}|SyngentaWeigherQC\\SyngentaWeigherQC.csproj|solutionrelative:syngentaweigherqc\\ui\\frmui\\frmexcelexport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +98,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 123,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppCoreBackEnd.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Control\\AppCoreBackEnd.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\Control\\AppCoreBackEnd.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Control\\AppCoreBackEnd.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\Control\\AppCoreBackEnd.cs",
+              "ViewState": "AgIAAA8DAAAAAAAAAAAtwCYDAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T04:40:23.492Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -38,6 +141,272 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HelperFolder_File.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Helper\\HelperFolder_File.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\Helper\\HelperFolder_File.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Helper\\HelperFolder_File.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\Helper\\HelperFolder_File.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T08:11:43.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FrmStartup.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAQwEAAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T07:55:57.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FrmStartup.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs [Design]",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmStartup.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T07:55:41.117Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FrmSettingLine.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmSettingLine.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmSettingLine.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmSettingLine.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmSettingLine.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAowD4AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:09:01.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FrmReportAutoExcel.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmReportAutoExcel.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmReportAutoExcel.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmReportAutoExcel.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmReportAutoExcel.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAADwvyAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:06:06.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UcOverViewMachine.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:03:06.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DatetimeHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Helper\\DatetimeHelper.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\Helper\\DatetimeHelper.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Helper\\DatetimeHelper.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\Helper\\DatetimeHelper.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAADwvxIAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T17:02:44.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ExcelHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Helper\\ExcelHelper.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\Helper\\ExcelHelper.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Helper\\ExcelHelper.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\Helper\\ExcelHelper.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAApwBQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T04:38:45.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FormMain.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs [Design]",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T07:58:55.735Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CommunicationDB.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Control\\CommunicationDB.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\Control\\CommunicationDB.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Control\\CommunicationDB.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\Control\\CommunicationDB.cs",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAQwLwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T17:02:11.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormMain.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FormMain.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T07:59:19.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FrmChangeSettingLine.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmChangeSettingLine.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmChangeSettingLine.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmChangeSettingLine.cs [Design]",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmChangeSettingLine.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:09:20.723Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FrmHome.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs [Design]",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T07:23:52.259Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UcOverViewMachine.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs [Design]",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\UcUI\\UcOverViewMachine.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T07:13:32.427Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FrmAddProduct.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmAddProduct\\FrmAddProduct.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmAddProduct\\FrmAddProduct.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmAddProduct\\FrmAddProduct.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmAddProduct\\FrmAddProduct.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAiwK0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:06:24.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "FrmOverView.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs [Design]",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:00:54.474Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FrmHome.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmHome.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAASwJIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T07:03:59.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ResponsitoryDatalogWeight.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Responsitory\\ResponsitoryDatalogWeight.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\Responsitory\\ResponsitoryDatalogWeight.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\Responsitory\\ResponsitoryDatalogWeight.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\Responsitory\\ResponsitoryDatalogWeight.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAmwCMAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:00:59.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FrmOverView.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmOverView.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAcwDUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T23:00:55.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FrmExcelExport.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs",
+              "ViewState": "AgIAAD4BAAAAAAAAAAAYwFYBAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T04:37:09.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FrmExcelExport.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs",
+              "RelativeDocumentMoniker": "SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Project\\Syngenta\\Syngenta_CheckWeight_QC\\SyngentaWeigherQC\\SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs [Design]",
+              "RelativeToolTip": "SyngentaWeigherQC\\UI\\FrmUI\\FrmExcelExport.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T04:37:08.267Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

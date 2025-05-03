@@ -31,6 +31,8 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChangeSettingLine));
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      this.txtLineCode = new CustomControls.RJControls.RJTextBox();
+      this.label7 = new System.Windows.Forms.Label();
       this.btnActionLine = new CustomControls.RJControls.RJButton();
       this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
       this.txtPassExcel = new CustomControls.RJControls.RJTextBox();
@@ -53,8 +55,6 @@
       this.btnDeteleLine = new CustomControls.RJControls.RJButton();
       this.btnSaveChange = new CustomControls.RJControls.RJButton();
       this.btnCancel = new CustomControls.RJControls.RJButton();
-      this.label7 = new System.Windows.Forms.Label();
-      this.txtLineCode = new CustomControls.RJControls.RJTextBox();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel6.SuspendLayout();
@@ -114,6 +114,44 @@
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
       this.tableLayoutPanel2.Size = new System.Drawing.Size(1048, 364);
       this.tableLayoutPanel2.TabIndex = 1;
+      // 
+      // txtLineCode
+      // 
+      this.txtLineCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtLineCode.BackColor = System.Drawing.SystemColors.Window;
+      this.txtLineCode.BorderColor = System.Drawing.Color.MediumSlateBlue;
+      this.txtLineCode.BorderFocusColor = System.Drawing.Color.HotPink;
+      this.txtLineCode.BorderRadius = 5;
+      this.txtLineCode.BorderSize = 2;
+      this.txtLineCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtLineCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+      this.txtLineCode.Location = new System.Drawing.Point(275, 70);
+      this.txtLineCode.Margin = new System.Windows.Forms.Padding(4);
+      this.txtLineCode.Multiline = false;
+      this.txtLineCode.Name = "txtLineCode";
+      this.txtLineCode.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+      this.txtLineCode.PasswordChar = false;
+      this.txtLineCode.PlaceholderColor = System.Drawing.Color.DarkGray;
+      this.txtLineCode.PlaceholderText = "";
+      this.txtLineCode.Size = new System.Drawing.Size(769, 39);
+      this.txtLineCode.TabIndex = 15;
+      this.txtLineCode.Texts = "";
+      this.txtLineCode.UnderlinedStyle = false;
+      // 
+      // label7
+      // 
+      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label7.AutoSize = true;
+      this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label7.ForeColor = System.Drawing.Color.White;
+      this.label7.Location = new System.Drawing.Point(3, 60);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(265, 60);
+      this.label7.TabIndex = 14;
+      this.label7.Text = "Line Code";
+      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // btnActionLine
       // 
@@ -503,6 +541,7 @@
       this.btnDeteleLine.Text = "Xóa Line";
       this.btnDeteleLine.TextColor = System.Drawing.Color.White;
       this.btnDeteleLine.UseVisualStyleBackColor = false;
+      this.btnDeteleLine.Visible = false;
       this.btnDeteleLine.Click += new System.EventHandler(this.btnDeteleLine_Click);
       // 
       // btnSaveChange
@@ -550,44 +589,6 @@
       this.btnCancel.TextColor = System.Drawing.Color.White;
       this.btnCancel.UseVisualStyleBackColor = false;
       this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-      // 
-      // label7
-      // 
-      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label7.AutoSize = true;
-      this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label7.ForeColor = System.Drawing.Color.White;
-      this.label7.Location = new System.Drawing.Point(3, 60);
-      this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(265, 60);
-      this.label7.TabIndex = 14;
-      this.label7.Text = "Line Code";
-      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // txtLineCode
-      // 
-      this.txtLineCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtLineCode.BackColor = System.Drawing.SystemColors.Window;
-      this.txtLineCode.BorderColor = System.Drawing.Color.MediumSlateBlue;
-      this.txtLineCode.BorderFocusColor = System.Drawing.Color.HotPink;
-      this.txtLineCode.BorderRadius = 5;
-      this.txtLineCode.BorderSize = 2;
-      this.txtLineCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtLineCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-      this.txtLineCode.Location = new System.Drawing.Point(275, 70);
-      this.txtLineCode.Margin = new System.Windows.Forms.Padding(4);
-      this.txtLineCode.Multiline = false;
-      this.txtLineCode.Name = "txtLineCode";
-      this.txtLineCode.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-      this.txtLineCode.PasswordChar = false;
-      this.txtLineCode.PlaceholderColor = System.Drawing.Color.DarkGray;
-      this.txtLineCode.PlaceholderText = "";
-      this.txtLineCode.Size = new System.Drawing.Size(769, 39);
-      this.txtLineCode.TabIndex = 15;
-      this.txtLineCode.Texts = "";
-      this.txtLineCode.UnderlinedStyle = false;
       // 
       // FrmChangeSettingLine
       // 

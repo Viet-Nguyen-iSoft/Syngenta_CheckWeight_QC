@@ -17553,3 +17553,308 @@ Parameter name: path
    at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
    at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
 2025/05/01 11:28:59: Content: Start App 
+2025/05/24 11:40:26: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:40:26: Content: Start App 
+2025/05/24 11:42:28: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:42:28: Content: Start App 
+2025/05/24 11:44:16: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:44:16: Content: Start App 
+2025/05/24 11:44:45: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:44:45: Content: Start App 
+2025/05/24 11:49:52: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:49:52: Content: Start App 
+2025/05/24 11:50:25: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:50:25: Content: Start App 
+2025/05/24 11:51:19: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:51:19: Content: Start App 
+2025/05/24 11:57:44: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/24 11:57:44: Content: Start App 
+2025/05/03 13:00:35: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/03 13:00:35: Content: Start App 
+2025/05/03 14:03:45: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/03 14:03:45: Content: Start App 
+2025/05/03 14:13:16: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 581
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 559 
+2025/05/03 14:13:16: Content: Start App 
+2025/05/03 14:13:54: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 581
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 559 
+2025/05/03 14:13:54: Content: Start App 
+2025/05/03 14:14:32: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 581
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 559 
+2025/05/03 14:14:32: Content: Start App 
+2025/05/03 14:14:52: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 581
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 559 
+2025/05/03 14:14:52: Content: Start App 
+2025/05/03 14:15:58: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 581
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 559 
+2025/05/03 14:15:58: Content: Start App 
+2025/05/03 14:16:17: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 581
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 559 
+2025/05/03 14:16:17: Content: Start App 
+2025/05/03 14:17:46: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 581
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 559 
+2025/05/03 14:17:46: Content: Start App 
+2025/05/03 14:20:48: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/03 14:20:48: Content: Start App 
+2025/05/03 14:21:49: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/03 14:21:49: Content: Start App 
+2025/05/03 14:24:12: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/03 14:24:12: Content: Start App 
+2025/05/03 14:25:13: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/03 14:25:13: Content: Start App 
+2025/05/03 14:27:56: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/03 14:27:56: Content: Start App 
+2025/05/04 00:00:52: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 573
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 551 
+2025/05/04 00:00:52: Content: Start App 
+2025/05/04 00:07:21: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 574
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 552 
+2025/05/04 00:07:21: Content: Start App 
+2025/05/04 00:16:24: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 575
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 553 
+2025/05/04 00:16:24: Content: Start App 
+2025/05/04 00:20:06: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 00:20:06: Content: Start App 
+2025/05/04 00:21:32: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 00:21:32: Content: Start App 
+2025/05/04 05:59:23: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:23: Content: Start App 
+2025/05/04 06:00:42: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:00:42: Content: Start App 
+2025/05/04 05:59:39: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:39: Content: Start App 
+2025/05/04 05:59:12: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:12: Content: Start App 
+2025/05/04 05:59:18: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:18: Content: Start App 
+2025/05/04 05:59:53: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:53: Content: Start App 
+2025/05/04 06:01:36: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:01:36: Content: Start App 
+2025/05/04 06:00:01: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:00:01: Content: Start App 
+2025/05/04 05:59:19: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:19: Content: Start App 
+2025/05/04 06:03:33: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:03:33: Content: Start App 
+2025/05/04 05:59:41: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:41: Content: Start App 
+2025/05/04 06:01:29: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:01:29: Content: Start App 
+2025/05/04 05:59:19: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:19: Content: Start App 
+2025/05/04 05:59:15: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:15: Content: Start App 
+2025/05/04 06:00:00: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:00:00: Content: Start App 
+2025/05/04 05:59:22: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:22: Content: Start App 
+2025/05/04 05:59:31: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:31: Content: Start App 
+2025/05/04 05:59:41: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 05:59:41: Content: Start App 
+2025/05/04 06:00:43: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:00:43: Content: Start App 
+2025/05/04 06:03:16: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 579
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 557 
+2025/05/04 06:03:16: Content: Start App 
+2025/05/04 06:07:28: Content: Start App 
+2025/05/04 06:10:05: Content: Start App 
+2025/05/24 14:56:38: Content: Start App 
+2025/05/24 14:56:47: Content: Start App 
+2025/05/24 14:56:55: Content: Start App 
+2025/05/24 14:57:55: Content: Start App 
+2025/05/24 14:58:42: Content: Start App 
+2025/05/24 14:59:48: Content: Start App 
+2025/05/24 15:00:48: Content: Start App 
+2025/05/24 15:02:30: Content: Start App 
+2025/05/24 15:03:48: Content: Start App 
+2025/05/24 15:04:29: Content: System.ArgumentException: Path cannot be the empty string or all whitespace.
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 574
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 126 
+2025/05/24 15:04:29: Content: Start App 
+2025/05/24 15:05:48: Content: Start App 
+2025/05/24 05:59:39: Content: Start App 
+2025/05/04 05:59:21: Content: Start App 
+2025/05/04 05:59:17: Content: Start App 
+2025/05/04 05:59:38: Content: Start App 
+2025/05/04 05:59:41: Content: Start App 
+2025/05/04 05:59:25: Content: Start App 

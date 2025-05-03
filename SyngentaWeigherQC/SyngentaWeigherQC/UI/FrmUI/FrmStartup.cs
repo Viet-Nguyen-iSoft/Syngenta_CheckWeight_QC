@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SyngentaWeigherQC.Control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,6 +65,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public FrmStartup()
     {
       InitializeComponent();
+      this.lbVersion.Text = $"Version: {AppCore.Ins.Version}";
       this.FormClosing += FrmStartup_FormClosing;
     }
 
