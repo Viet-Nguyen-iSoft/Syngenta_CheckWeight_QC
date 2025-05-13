@@ -176,6 +176,18 @@ namespace SyngentaWeigherQC.Control
               //  OnSendWarning?.Invoke(inforLineOperation, "Vui lòng Tare sản phẩm trước khi lấy mẫu !", eMsgType.Warning);
               //  return;
               //}
+
+              //Trừ Tare
+              double weight = result.Weight;
+              if (inforLineOperation.eModeTare==eModeTare.TareNoLabel)
+              {
+                weight -= inforLineOperation.ProductionCurrent.Tare_no_label_standard;
+              }
+              else
+              {
+                weight -= inforLineOperation.ProductionCurrent.Tare_with_label_standard;
+              } 
+
               //Save DB
               DatalogWeight datalogWeight = new DatalogWeight();
               datalogWeight.Value = result.Weight;

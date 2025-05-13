@@ -1,5 +1,6 @@
 ﻿using SynCheckWeigherLoggerApp.SettingsViews;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Logs;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Windows.Forms;
@@ -13,13 +14,55 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public FormMain()
     {
       InitializeComponent();
-      this.WindowState = FormWindowState.Maximized;
+      this.WindowState = FormWindowState.Minimized;
       this.StartPosition = FormStartPosition.CenterScreen;
 
       this.lbStation.Text = $"PHẦN MỀM THU THẬP DỮ LIỆU CÂN  -  {AppCore.Ins._configSoftware?.NameStation}";
       this.Shown += FormMain_Shown;
       FrmSettingConfigSoftware.Instance.OnSendChangeNameStation += Instance_OnSendChangeNameStation;
       AppCore.Ins.OnSendTimeoutPage += Ins_OnSendTimeoutPage;
+    }
+
+    protected override void OnShown(EventArgs e)
+    {
+      base.OnShown(e);
+      this.ShowInTaskbar = false;
+      this.Hide();
+
+      // Hiển thị form startup
+      FrmStartup frmStartup = new FrmStartup();
+      frmStartup.OnSendCloseStartup += FrmStartup_OnSendCloseStartup;
+      frmStartup.Show();
+    }
+
+    private void FrmStartup_OnSendCloseStartup()
+    {
+      ShowMainForm();
+    }
+
+    public void ShowMainForm()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          ShowMainForm();
+        }));
+        return;
+      }
+      try
+      {
+        this.WindowState = FormWindowState.Maximized;
+        this.ShowInTaskbar = true;
+
+        this.Show();
+        this.BringToFront();
+      }
+      catch (Exception ex)
+      {
+        LogHelper.LogErrorToFileLog(ex);
+        throw;
+      }
     }
 
     private void Ins_OnSendTimeoutPage()

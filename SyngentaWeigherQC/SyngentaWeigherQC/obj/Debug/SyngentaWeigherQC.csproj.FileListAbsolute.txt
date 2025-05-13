@@ -1383,3 +1383,4 @@ C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\Syngenta
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\Syngenta.8286281A.Up2Date
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.exe
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.pdb
+C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmStartup.resources

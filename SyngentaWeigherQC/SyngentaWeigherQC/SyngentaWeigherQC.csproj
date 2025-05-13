@@ -564,6 +564,12 @@
     <Compile Include="UI\FrmUI\FrmSampleRework.Designer.cs">
       <DependentUpon>FrmSampleRework.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmUI\FrmStartup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmUI\FrmStartup.Designer.cs">
+      <DependentUpon>FrmStartup.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmUI\FrmTare.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -813,6 +819,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmSampleRework.resx">
       <DependentUpon>FrmSampleRework.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmUI\FrmStartup.resx">
+      <DependentUpon>FrmStartup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmTare.resx">
       <DependentUpon>FrmTare.cs</DependentUpon>

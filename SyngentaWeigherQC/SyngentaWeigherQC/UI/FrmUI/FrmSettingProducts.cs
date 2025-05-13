@@ -120,22 +120,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
           this.backgroundWorkerImport.RunWorkerAsync();
         }
       }
-
-      //if (AppCore.Ins.CheckRole(ePermit.role_ImportProduct))
-      //{
-      //  DialogResult result = this.openFileDialogImport.ShowDialog();
-      //  if (result == DialogResult.OK)
-      //  {
-      //    if (backgroundWorkerImport.IsBusy == false)
-      //    {
-      //      this.backgroundWorkerImport.RunWorkerAsync();
-      //    }
-      //  }
-      //}
-      //else
-      //{
-      //  new FrmNotification().ShowMessage("Tài khoản không có quyền import dữ liệu sản phẩm !", eMsgType.Warning);
-      //}
     }
 
 
@@ -290,6 +274,66 @@ namespace SyngentaWeigherQC.UI.FrmUI
     #region Read Exxcel
     private List<Production> allDataProductExcel = new List<Production>();
     private List<Production> allDataProductExcelCreate = new List<Production>();
+
+    private void PareXlsxByAsposeV2(string file_path)
+    {
+      FileInfo dest_file_info = new FileInfo(file_path);
+      Workbook wb = new Workbook(dest_file_info.FullName);
+      WorksheetCollection collection = wb.Worksheets;
+      int max_rows = 0; int max_cols = 0;
+      for (int worksheetIndex = 0; worksheetIndex < collection.Count; worksheetIndex++)
+      {
+        Worksheet worksheet = collection[worksheetIndex];
+        max_rows = worksheet.Cells.MaxDataRow;
+        max_cols = worksheet.Cells.MaxDataColumn;
+
+        for (int row = 6; row <= max_rows; row++)
+        {
+          Production production_data = new Production();
+
+          production_data.Name = GetTextNameProduct(worksheet, row, 0);
+          production_data.LineCode = GetText(worksheet, row, 1);
+          production_data.PackSize = GetDouble(worksheet, row, 2);
+          production_data.Density = GetDouble(worksheet, row, 3);
+
+          production_data.Tare_no_label_lowerlimit = GetDouble(worksheet, row, 16);
+          production_data.Tare_no_label_standard = GetDouble(worksheet, row, 17);
+          production_data.Tare_no_label_upperlimit = GetDouble(worksheet, row, 18);
+
+          production_data.Tare_with_label_lowerlimit = GetDouble(worksheet, row, 19);
+          production_data.Tare_with_label_standard = GetDouble(worksheet, row, 20);
+          production_data.Tare_with_label_upperlimit = GetDouble(worksheet, row, 21);
+
+          production_data.LowerLimitFinal = GetDouble(worksheet, row, 22);
+          production_data.StandardFinal = GetDouble(worksheet, row, 23);
+          production_data.UpperLimitFinal = GetDouble(worksheet, row, 24);
+
+          production_data.CreatedAt = DateTime.Now;
+          production_data.UpdatedAt = DateTime.Now;
+
+          production_data.IsDelete = false;
+
+          //Check Line
+          var is_line = AppCore.Ins._listInforLine.FirstOrDefault(x => x.Code == production_data.LineCode);
+          if (is_line != null)
+          {
+            production_data.InforLineId = is_line.Id;
+            //Check phải dataline hiện tại
+            bool isCreateOrUpdate = isCreateOrUpdateIfExits(allProductDatasOld, production_data);
+            if (isCreateOrUpdate)
+            {
+              //Có sự thay đổi
+              if (production_data.Name.Trim() != "") allDataProductExcelCreate.Add(production_data);
+            }
+            if (production_data.Name.Trim() != "") allDataProductExcel.Add(production_data);
+          }
+        }
+      }  
+
+
+
+    }
+
 
     public void PareXlsxByAspose(string file_path)
     {

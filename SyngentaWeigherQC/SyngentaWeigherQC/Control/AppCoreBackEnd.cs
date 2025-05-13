@@ -99,9 +99,6 @@ namespace SyngentaWeigherQC.Control
 
       InformationDeviceDev();
 
-
-
-
       InitEvent();
       //Init_RandomData();
 
@@ -393,7 +390,7 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    public DetailConsumption DataDetailConsumption(Production production,List<DatalogWeight> datalogWeights)
+    public DetailConsumption DataDetailConsumption(Production production, List<DatalogWeight> datalogWeights)
     {
       if (datalogWeights == null)
         return null;
@@ -609,7 +606,7 @@ namespace SyngentaWeigherQC.Control
     public List<ShiftType> _listShiftType { get; set; } = new List<ShiftType>();
     public ShiftType _shiftTypeCurrent { get; set; } = new ShiftType();
     public List<Shift> _listShift { get; set; } = new List<Shift>();
-    
+
     public List<ShiftLeader> _listShiftLeader { get; set; } = new List<ShiftLeader>();
 
 
@@ -721,7 +718,7 @@ namespace SyngentaWeigherQC.Control
         _timerRealTimeCheckChangeDay.Interval = 1000;
         _timerRealTimeCheckChangeDay.Elapsed += _timerRealTimeCheckChangeDay_Elapsed;
         _timerRealTimeCheckChangeDay.Start();
-        
+
         _timerCheckTimeout.Interval = 1000;
         _timerCheckTimeout.Elapsed += _timerCheckTimeout_Elapsed;
         _timerCheckTimeout.Start();
@@ -742,16 +739,16 @@ namespace SyngentaWeigherQC.Control
       try
       {
         _timerCheckTimeout.Stop();
-        
-        if (_pageCurrent!= AppModulSupport.OverView && _pageCurrent != AppModulSupport.Setting)
+
+        if (_pageCurrent != AppModulSupport.OverView && _pageCurrent != AppModulSupport.Setting)
         {
           _timeTimeoutCurrent += 1;
 
           if (_timeTimeoutCurrent > _configSoftware.Spare1)
           {
             OnSendTimeoutPage?.Invoke();
-          }  
-        }  
+          }
+        }
       }
       catch (Exception ex)
       {
@@ -973,7 +970,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    
+
 
     public async Task UpdateRole(Roles role)
     {

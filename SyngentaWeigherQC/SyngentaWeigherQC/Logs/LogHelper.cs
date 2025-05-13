@@ -10,7 +10,7 @@ namespace SyngentaWeigherQC.Logs
 {
   public class LogHelper
   {
-    public void LogErrorToFileLog(string content)
+    public static void LogErrorToFileLog(string content)
     {
       string NameFileLog = Application.StartupPath + $"\\log.txt";
       if (!File.Exists(NameFileLog))
@@ -21,7 +21,7 @@ namespace SyngentaWeigherQC.Logs
       File.AppendAllText(NameFileLog, contentLog);
     }
 
-    public void LogErrorToFileLog(Exception content)
+    public static void LogErrorToFileLog(Exception content)
     {
       string NameFileLog = Application.StartupPath + $"\\log.txt";
       if (!File.Exists(NameFileLog))
