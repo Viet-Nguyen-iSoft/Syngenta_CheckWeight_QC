@@ -4,7 +4,7 @@ using SyngentaWeigherQC.Models;
 using System;
 using System.Net;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {

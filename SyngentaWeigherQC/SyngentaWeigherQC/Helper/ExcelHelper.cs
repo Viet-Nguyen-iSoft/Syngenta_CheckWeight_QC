@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using System.Windows.Forms;
 using SyngentaWeigherQC.DTO;
 using DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;

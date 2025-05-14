@@ -9,7 +9,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Workbook = Aspose.Cells.Workbook;
 using Worksheet = Aspose.Cells.Worksheet;
 

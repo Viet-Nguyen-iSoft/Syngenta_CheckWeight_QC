@@ -40,22 +40,25 @@
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.panel4 = new System.Windows.Forms.Panel();
-      this.btnSetting = new CustomControls.RJControls.RJButton();
       this.panel12 = new System.Windows.Forms.Panel();
       this.panel1 = new System.Windows.Forms.Panel();
       this.panel3 = new System.Windows.Forms.Panel();
-      this.btnReport = new CustomControls.RJControls.RJButton();
       this.panel11 = new System.Windows.Forms.Panel();
-      this.btnSynthetic = new CustomControls.RJControls.RJButton();
       this.panel9 = new System.Windows.Forms.Panel();
       this.panel10 = new System.Windows.Forms.Panel();
-      this.btnHome = new CustomControls.RJControls.RJButton();
       this.panel2 = new System.Windows.Forms.Panel();
       this.lb = new System.Windows.Forms.TableLayoutPanel();
       this.lbStation = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
-      this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.picCloseApp = new System.Windows.Forms.PictureBox();
+      this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      this.lbAccount = new System.Windows.Forms.Label();
+      this.picIconLogIn = new System.Windows.Forms.PictureBox();
+      this.btnSetting = new CustomControls.RJControls.RJButton();
+      this.btnReport = new CustomControls.RJControls.RJButton();
+      this.btnSynthetic = new CustomControls.RJControls.RJButton();
+      this.btnHome = new CustomControls.RJControls.RJButton();
+      this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.tableLayoutPanel5.SuspendLayout();
       this.tableLayoutPanel7.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
@@ -69,6 +72,8 @@
       this.lb.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picCloseApp)).BeginInit();
+      this.tableLayoutPanel3.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.picIconLogIn)).BeginInit();
       this.SuspendLayout();
       // 
       // tableLayoutPanel5
@@ -150,12 +155,13 @@
       // 
       // panelMain
       // 
-      this.panelMain.BackColor = System.Drawing.Color.Transparent;
+      this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
       this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panelMain.Location = new System.Drawing.Point(195, 5);
-      this.panelMain.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+      this.panelMain.Location = new System.Drawing.Point(195, 0);
+      this.panelMain.Margin = new System.Windows.Forms.Padding(0);
       this.panelMain.Name = "panelMain";
-      this.panelMain.Size = new System.Drawing.Size(976, 677);
+      this.panelMain.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+      this.panelMain.Size = new System.Drawing.Size(976, 682);
       this.panelMain.TabIndex = 2;
       // 
       // panelMenu
@@ -189,16 +195,14 @@
       this.tableLayoutPanel4.Controls.Add(this.label1, 0, 2);
       this.tableLayoutPanel4.Controls.Add(this.label2, 0, 3);
       this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 564);
+      this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 548);
       this.tableLayoutPanel4.Name = "tableLayoutPanel4";
       this.tableLayoutPanel4.RowCount = 4;
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel4.Size = new System.Drawing.Size(170, 108);
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel4.Size = new System.Drawing.Size(170, 124);
       this.tableLayoutPanel4.TabIndex = 30;
       // 
       // picLogoVule
@@ -210,7 +214,7 @@
       this.picLogoVule.Location = new System.Drawing.Point(0, 0);
       this.picLogoVule.Margin = new System.Windows.Forms.Padding(0);
       this.picLogoVule.Name = "picLogoVule";
-      this.picLogoVule.Size = new System.Drawing.Size(170, 38);
+      this.picLogoVule.Size = new System.Drawing.Size(170, 82);
       this.picLogoVule.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
       this.picLogoVule.TabIndex = 17;
       this.picLogoVule.TabStop = false;
@@ -223,9 +227,9 @@
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.ForeColor = System.Drawing.Color.White;
-      this.label1.Location = new System.Drawing.Point(3, 58);
+      this.label1.Location = new System.Drawing.Point(3, 92);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(164, 25);
+      this.label1.Size = new System.Drawing.Size(164, 16);
       this.label1.TabIndex = 29;
       this.label1.Text = "© 2025 i-Soft JSC - V1.0.0";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -238,9 +242,9 @@
       this.label2.AutoSize = true;
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.ForeColor = System.Drawing.Color.White;
-      this.label2.Location = new System.Drawing.Point(3, 83);
+      this.label2.Location = new System.Drawing.Point(3, 108);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(164, 25);
+      this.label2.Size = new System.Drawing.Size(164, 16);
       this.label2.TabIndex = 30;
       this.label2.Text = "All rights reserved.";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -253,31 +257,6 @@
       this.panel4.Name = "panel4";
       this.panel4.Size = new System.Drawing.Size(170, 10);
       this.panel4.TabIndex = 29;
-      // 
-      // btnSetting
-      // 
-      this.btnSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnSetting.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
-      this.btnSetting.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSetting.BorderRadius = 8;
-      this.btnSetting.BorderSize = 0;
-      this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
-      this.btnSetting.FlatAppearance.BorderSize = 0;
-      this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSetting.ForeColor = System.Drawing.Color.White;
-      this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
-      this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSetting.Location = new System.Drawing.Point(10, 196);
-      this.btnSetting.Name = "btnSetting";
-      this.btnSetting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-      this.btnSetting.Size = new System.Drawing.Size(170, 50);
-      this.btnSetting.TabIndex = 25;
-      this.btnSetting.Text = "        Cài đặt";
-      this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSetting.TextColor = System.Drawing.Color.White;
-      this.btnSetting.UseVisualStyleBackColor = false;
-      this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
       // 
       // panel12
       // 
@@ -308,6 +287,179 @@
       this.panel3.Size = new System.Drawing.Size(170, 12);
       this.panel3.TabIndex = 25;
       // 
+      // panel11
+      // 
+      this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel11.Location = new System.Drawing.Point(10, 122);
+      this.panel11.Margin = new System.Windows.Forms.Padding(0);
+      this.panel11.Name = "panel11";
+      this.panel11.Size = new System.Drawing.Size(170, 12);
+      this.panel11.TabIndex = 22;
+      // 
+      // panel9
+      // 
+      this.panel9.Controls.Add(this.panel10);
+      this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel9.Location = new System.Drawing.Point(10, 60);
+      this.panel9.Margin = new System.Windows.Forms.Padding(0);
+      this.panel9.Name = "panel9";
+      this.panel9.Size = new System.Drawing.Size(170, 12);
+      this.panel9.TabIndex = 20;
+      // 
+      // panel10
+      // 
+      this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel10.Location = new System.Drawing.Point(0, 0);
+      this.panel10.Margin = new System.Windows.Forms.Padding(0);
+      this.panel10.Name = "panel10";
+      this.panel10.Size = new System.Drawing.Size(170, 12);
+      this.panel10.TabIndex = 21;
+      // 
+      // panel2
+      // 
+      this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel2.Location = new System.Drawing.Point(10, 8);
+      this.panel2.Margin = new System.Windows.Forms.Padding(0);
+      this.panel2.Name = "panel2";
+      this.panel2.Size = new System.Drawing.Size(170, 2);
+      this.panel2.TabIndex = 8;
+      // 
+      // lb
+      // 
+      this.lb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lb.BackColor = System.Drawing.Color.Transparent;
+      this.lb.ColumnCount = 4;
+      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+      this.lb.Controls.Add(this.lbStation, 1, 0);
+      this.lb.Controls.Add(this.pictureBox1, 0, 0);
+      this.lb.Controls.Add(this.picCloseApp, 3, 0);
+      this.lb.Controls.Add(this.tableLayoutPanel3, 2, 0);
+      this.lb.Location = new System.Drawing.Point(0, 0);
+      this.lb.Margin = new System.Windows.Forms.Padding(0);
+      this.lb.Name = "lb";
+      this.lb.RowCount = 1;
+      this.lb.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.lb.Size = new System.Drawing.Size(1171, 50);
+      this.lb.TabIndex = 2;
+      // 
+      // lbStation
+      // 
+      this.lbStation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lbStation.AutoSize = true;
+      this.lbStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbStation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+      this.lbStation.Location = new System.Drawing.Point(193, 0);
+      this.lbStation.Name = "lbStation";
+      this.lbStation.Size = new System.Drawing.Size(715, 50);
+      this.lbStation.TabIndex = 6;
+      this.lbStation.Text = "PHẦN MỀM THU THẬP DỮ LIỆU CÂN";
+      this.lbStation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // pictureBox1
+      // 
+      this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+      this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+      this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+      this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(190, 50);
+      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.pictureBox1.TabIndex = 18;
+      this.pictureBox1.TabStop = false;
+      // 
+      // picCloseApp
+      // 
+      this.picCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.picCloseApp.Image = ((System.Drawing.Image)(resources.GetObject("picCloseApp.Image")));
+      this.picCloseApp.Location = new System.Drawing.Point(1114, 3);
+      this.picCloseApp.Name = "picCloseApp";
+      this.picCloseApp.Size = new System.Drawing.Size(54, 44);
+      this.picCloseApp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.picCloseApp.TabIndex = 19;
+      this.picCloseApp.TabStop = false;
+      this.picCloseApp.Click += new System.EventHandler(this.picCloseApp_Click);
+      // 
+      // tableLayoutPanel3
+      // 
+      this.tableLayoutPanel3.ColumnCount = 2;
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.5F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.5F));
+      this.tableLayoutPanel3.Controls.Add(this.lbAccount, 1, 0);
+      this.tableLayoutPanel3.Controls.Add(this.picIconLogIn, 0, 0);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(911, 0);
+      this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+      this.tableLayoutPanel3.RowCount = 1;
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 50);
+      this.tableLayoutPanel3.TabIndex = 20;
+      // 
+      // lbAccount
+      // 
+      this.lbAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lbAccount.AutoSize = true;
+      this.lbAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbAccount.ForeColor = System.Drawing.Color.White;
+      this.lbAccount.Location = new System.Drawing.Point(56, 0);
+      this.lbAccount.Name = "lbAccount";
+      this.lbAccount.Size = new System.Drawing.Size(141, 50);
+      this.lbAccount.TabIndex = 30;
+      this.lbAccount.Text = "Đăng nhập";
+      this.lbAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbAccount.Click += new System.EventHandler(this.lbLogin_Click);
+      // 
+      // picIconLogIn
+      // 
+      this.picIconLogIn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.picIconLogIn.Image = global::SyngentaWeigherQC.Properties.Resources.user;
+      this.picIconLogIn.Location = new System.Drawing.Point(3, 3);
+      this.picIconLogIn.Name = "picIconLogIn";
+      this.picIconLogIn.Size = new System.Drawing.Size(47, 44);
+      this.picIconLogIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.picIconLogIn.TabIndex = 20;
+      this.picIconLogIn.TabStop = false;
+      this.picIconLogIn.Click += new System.EventHandler(this.picIconLogIn_Click);
+      // 
+      // btnSetting
+      // 
+      this.btnSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnSetting.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnSetting.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSetting.BorderRadius = 8;
+      this.btnSetting.BorderSize = 0;
+      this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnSetting.FlatAppearance.BorderSize = 0;
+      this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSetting.ForeColor = System.Drawing.Color.White;
+      this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
+      this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnSetting.Location = new System.Drawing.Point(10, 196);
+      this.btnSetting.Name = "btnSetting";
+      this.btnSetting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnSetting.Size = new System.Drawing.Size(170, 50);
+      this.btnSetting.TabIndex = 25;
+      this.btnSetting.Text = "        Cài đặt";
+      this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnSetting.TextColor = System.Drawing.Color.White;
+      this.btnSetting.UseVisualStyleBackColor = false;
+      this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+      // 
       // btnReport
       // 
       this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
@@ -332,15 +484,6 @@
       this.btnReport.TextColor = System.Drawing.Color.White;
       this.btnReport.UseVisualStyleBackColor = false;
       this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-      // 
-      // panel11
-      // 
-      this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel11.Location = new System.Drawing.Point(10, 122);
-      this.panel11.Margin = new System.Windows.Forms.Padding(0);
-      this.panel11.Name = "panel11";
-      this.panel11.Size = new System.Drawing.Size(170, 12);
-      this.panel11.TabIndex = 22;
       // 
       // btnSynthetic
       // 
@@ -367,25 +510,6 @@
       this.btnSynthetic.UseVisualStyleBackColor = false;
       this.btnSynthetic.Click += new System.EventHandler(this.btnSynthetic_Click);
       // 
-      // panel9
-      // 
-      this.panel9.Controls.Add(this.panel10);
-      this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel9.Location = new System.Drawing.Point(10, 60);
-      this.panel9.Margin = new System.Windows.Forms.Padding(0);
-      this.panel9.Name = "panel9";
-      this.panel9.Size = new System.Drawing.Size(170, 12);
-      this.panel9.TabIndex = 20;
-      // 
-      // panel10
-      // 
-      this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel10.Location = new System.Drawing.Point(0, 0);
-      this.panel10.Margin = new System.Windows.Forms.Padding(0);
-      this.panel10.Name = "panel10";
-      this.panel10.Size = new System.Drawing.Size(170, 12);
-      this.panel10.TabIndex = 21;
-      // 
       // btnHome
       // 
       this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
@@ -411,84 +535,10 @@
       this.btnHome.UseVisualStyleBackColor = false;
       this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
       // 
-      // panel2
-      // 
-      this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel2.Location = new System.Drawing.Point(10, 8);
-      this.panel2.Margin = new System.Windows.Forms.Padding(0);
-      this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(170, 2);
-      this.panel2.TabIndex = 8;
-      // 
-      // lb
-      // 
-      this.lb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lb.BackColor = System.Drawing.Color.Transparent;
-      this.lb.ColumnCount = 3;
-      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.lb.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-      this.lb.Controls.Add(this.lbStation, 1, 0);
-      this.lb.Controls.Add(this.pictureBox1, 0, 0);
-      this.lb.Controls.Add(this.picCloseApp, 2, 0);
-      this.lb.Location = new System.Drawing.Point(0, 0);
-      this.lb.Margin = new System.Windows.Forms.Padding(0);
-      this.lb.Name = "lb";
-      this.lb.RowCount = 1;
-      this.lb.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.lb.Size = new System.Drawing.Size(1171, 50);
-      this.lb.TabIndex = 2;
-      // 
-      // lbStation
-      // 
-      this.lbStation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbStation.AutoSize = true;
-      this.lbStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbStation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-      this.lbStation.Location = new System.Drawing.Point(193, 10);
-      this.lbStation.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-      this.lbStation.Name = "lbStation";
-      this.lbStation.Size = new System.Drawing.Size(915, 40);
-      this.lbStation.TabIndex = 6;
-      this.lbStation.Text = "PHẦN MỀM THU THẬP DỮ LIỆU CÂN";
-      this.lbStation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-      this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-      this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-      this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(190, 50);
-      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-      this.pictureBox1.TabIndex = 18;
-      this.pictureBox1.TabStop = false;
-      // 
       // elipseControl1
       // 
       this.elipseControl1.CornerRadius = 15;
       this.elipseControl1.TargetControl = this.pictureBox1;
-      // 
-      // picCloseApp
-      // 
-      this.picCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.picCloseApp.Image = ((System.Drawing.Image)(resources.GetObject("picCloseApp.Image")));
-      this.picCloseApp.Location = new System.Drawing.Point(1114, 3);
-      this.picCloseApp.Name = "picCloseApp";
-      this.picCloseApp.Size = new System.Drawing.Size(54, 44);
-      this.picCloseApp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-      this.picCloseApp.TabIndex = 19;
-      this.picCloseApp.TabStop = false;
-      this.picCloseApp.Click += new System.EventHandler(this.picCloseApp_Click);
       // 
       // FormMain
       // 
@@ -514,6 +564,9 @@
       this.lb.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.picCloseApp)).EndInit();
+      this.tableLayoutPanel3.ResumeLayout(false);
+      this.tableLayoutPanel3.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.picIconLogIn)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -547,5 +600,8 @@
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Panel panelMain;
     private System.Windows.Forms.PictureBox picCloseApp;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+    private System.Windows.Forms.PictureBox picIconLogIn;
+    private System.Windows.Forms.Label lbAccount;
   }
 }

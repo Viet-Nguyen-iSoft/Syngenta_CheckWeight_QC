@@ -32,17 +32,14 @@
       this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-      this.lblTareAvg = new System.Windows.Forms.Label();
+      this.lblTareTarget = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
       this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
       this.ss = new System.Windows.Forms.Label();
       this.lblTareLowerLimit = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
-      this.lblTareStandard = new System.Windows.Forms.Label();
-      this.label3 = new System.Windows.Forms.Label();
       this.lblTareUpperLimit = new System.Windows.Forms.Label();
       this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-      this.lblTareLastUpdated = new System.Windows.Forms.Label();
       this.btTareWithLabel = new System.Windows.Forms.Label();
       this.panel2 = new System.Windows.Forms.Panel();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -128,9 +125,9 @@
       this.tableLayoutPanel5.ColumnCount = 4;
       this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
       this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel5.Controls.Add(this.lblTareAvg, 0, 0);
+      this.tableLayoutPanel5.Controls.Add(this.lblTareTarget, 0, 0);
       this.tableLayoutPanel5.Controls.Add(this.label8, 1, 0);
       this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 3, 0);
       this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -141,18 +138,18 @@
       this.tableLayoutPanel5.Size = new System.Drawing.Size(518, 56);
       this.tableLayoutPanel5.TabIndex = 4;
       // 
-      // lblTareAvg
+      // lblTareTarget
       // 
-      this.lblTareAvg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lblTareTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblTareAvg.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblTareAvg.Location = new System.Drawing.Point(3, 0);
-      this.lblTareAvg.Name = "lblTareAvg";
-      this.lblTareAvg.Size = new System.Drawing.Size(211, 56);
-      this.lblTareAvg.TabIndex = 1;
-      this.lblTareAvg.Text = "00.00";
-      this.lblTareAvg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lblTareTarget.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblTareTarget.Location = new System.Drawing.Point(3, 0);
+      this.lblTareTarget.Name = "lblTareTarget";
+      this.lblTareTarget.Size = new System.Drawing.Size(218, 56);
+      this.lblTareTarget.TabIndex = 1;
+      this.lblTareTarget.Text = "00.00";
+      this.lblTareTarget.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label8
       // 
@@ -160,7 +157,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label8.Location = new System.Drawing.Point(220, 0);
+      this.label8.Location = new System.Drawing.Point(227, 0);
       this.label8.Name = "label8";
       this.label8.Size = new System.Drawing.Size(27, 56);
       this.label8.TabIndex = 2;
@@ -175,21 +172,18 @@
       this.tableLayoutPanel7.ColumnCount = 2;
       this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel7.Controls.Add(this.ss, 0, 0);
-      this.tableLayoutPanel7.Controls.Add(this.lblTareLowerLimit, 1, 2);
-      this.tableLayoutPanel7.Controls.Add(this.label2, 0, 2);
-      this.tableLayoutPanel7.Controls.Add(this.lblTareStandard, 1, 1);
-      this.tableLayoutPanel7.Controls.Add(this.label3, 0, 1);
+      this.tableLayoutPanel7.Controls.Add(this.lblTareLowerLimit, 1, 1);
+      this.tableLayoutPanel7.Controls.Add(this.label2, 0, 1);
       this.tableLayoutPanel7.Controls.Add(this.lblTareUpperLimit, 1, 0);
-      this.tableLayoutPanel7.Location = new System.Drawing.Point(300, 0);
+      this.tableLayoutPanel7.Location = new System.Drawing.Point(293, 0);
       this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-      this.tableLayoutPanel7.RowCount = 3;
-      this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-      this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-      this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-      this.tableLayoutPanel7.Size = new System.Drawing.Size(218, 56);
+      this.tableLayoutPanel7.RowCount = 2;
+      this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel7.Size = new System.Drawing.Size(225, 56);
       this.tableLayoutPanel7.TabIndex = 4;
       // 
       // ss
@@ -197,12 +191,12 @@
       this.ss.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ss.BackColor = System.Drawing.Color.Teal;
-      this.ss.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ss.BackColor = System.Drawing.Color.Transparent;
+      this.ss.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ss.Location = new System.Drawing.Point(0, 0);
       this.ss.Margin = new System.Windows.Forms.Padding(0);
       this.ss.Name = "ss";
-      this.ss.Size = new System.Drawing.Size(91, 18);
+      this.ss.Size = new System.Drawing.Size(136, 28);
       this.ss.TabIndex = 0;
       this.ss.Text = "Tare cận trên (g)";
       this.ss.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -212,12 +206,12 @@
       this.lblTareLowerLimit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblTareLowerLimit.BackColor = System.Drawing.Color.Teal;
-      this.lblTareLowerLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblTareLowerLimit.Location = new System.Drawing.Point(91, 36);
+      this.lblTareLowerLimit.BackColor = System.Drawing.Color.Transparent;
+      this.lblTareLowerLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblTareLowerLimit.Location = new System.Drawing.Point(136, 28);
       this.lblTareLowerLimit.Margin = new System.Windows.Forms.Padding(0);
       this.lblTareLowerLimit.Name = "lblTareLowerLimit";
-      this.lblTareLowerLimit.Size = new System.Drawing.Size(127, 20);
+      this.lblTareLowerLimit.Size = new System.Drawing.Size(89, 28);
       this.lblTareLowerLimit.TabIndex = 5;
       this.lblTareLowerLimit.Text = "0 g";
       this.lblTareLowerLimit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -227,57 +221,27 @@
       this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.label2.BackColor = System.Drawing.Color.Teal;
-      this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label2.Location = new System.Drawing.Point(0, 36);
+      this.label2.BackColor = System.Drawing.Color.Transparent;
+      this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label2.Location = new System.Drawing.Point(0, 28);
       this.label2.Margin = new System.Windows.Forms.Padding(0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(91, 20);
+      this.label2.Size = new System.Drawing.Size(136, 28);
       this.label2.TabIndex = 6;
       this.label2.Text = "Tare cận dưới (g)";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // lblTareStandard
-      // 
-      this.lblTareStandard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblTareStandard.BackColor = System.Drawing.Color.Teal;
-      this.lblTareStandard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblTareStandard.Location = new System.Drawing.Point(91, 18);
-      this.lblTareStandard.Margin = new System.Windows.Forms.Padding(0);
-      this.lblTareStandard.Name = "lblTareStandard";
-      this.lblTareStandard.Size = new System.Drawing.Size(127, 18);
-      this.lblTareStandard.TabIndex = 3;
-      this.lblTareStandard.Text = "0 g";
-      this.lblTareStandard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label3
-      // 
-      this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label3.BackColor = System.Drawing.Color.Teal;
-      this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.Location = new System.Drawing.Point(0, 18);
-      this.label3.Margin = new System.Windows.Forms.Padding(0);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(91, 18);
-      this.label3.TabIndex = 2;
-      this.label3.Text = "Tare chuẩn (g)";
-      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // lblTareUpperLimit
       // 
       this.lblTareUpperLimit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblTareUpperLimit.BackColor = System.Drawing.Color.Teal;
-      this.lblTareUpperLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblTareUpperLimit.Location = new System.Drawing.Point(91, 0);
+      this.lblTareUpperLimit.BackColor = System.Drawing.Color.Transparent;
+      this.lblTareUpperLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblTareUpperLimit.Location = new System.Drawing.Point(136, 0);
       this.lblTareUpperLimit.Margin = new System.Windows.Forms.Padding(0);
       this.lblTareUpperLimit.Name = "lblTareUpperLimit";
-      this.lblTareUpperLimit.Size = new System.Drawing.Size(127, 18);
+      this.lblTareUpperLimit.Size = new System.Drawing.Size(89, 28);
       this.lblTareUpperLimit.TabIndex = 1;
       this.lblTareUpperLimit.Text = "0 g";
       this.lblTareUpperLimit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -287,33 +251,17 @@
       this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel8.ColumnCount = 2;
-      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel8.Controls.Add(this.lblTareLastUpdated, 1, 0);
+      this.tableLayoutPanel8.ColumnCount = 1;
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel8.Controls.Add(this.btTareWithLabel, 0, 0);
       this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 62);
       this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel8.Name = "tableLayoutPanel8";
       this.tableLayoutPanel8.RowCount = 1;
-      this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel8.Size = new System.Drawing.Size(524, 20);
       this.tableLayoutPanel8.TabIndex = 5;
-      // 
-      // lblTareLastUpdated
-      // 
-      this.lblTareLastUpdated.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblTareLastUpdated.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(41)))), ((int)(((byte)(90)))));
-      this.lblTareLastUpdated.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblTareLastUpdated.Location = new System.Drawing.Point(262, 0);
-      this.lblTareLastUpdated.Margin = new System.Windows.Forms.Padding(0);
-      this.lblTareLastUpdated.Name = "lblTareLastUpdated";
-      this.lblTareLastUpdated.Size = new System.Drawing.Size(262, 20);
-      this.lblTareLastUpdated.TabIndex = 4;
-      this.lblTareLastUpdated.Text = "Last updated: 2022/09/18 18:16:00";
-      this.lblTareLastUpdated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // btTareWithLabel
       // 
@@ -326,7 +274,7 @@
       this.btTareWithLabel.Location = new System.Drawing.Point(0, 0);
       this.btTareWithLabel.Margin = new System.Windows.Forms.Padding(0);
       this.btTareWithLabel.Name = "btTareWithLabel";
-      this.btTareWithLabel.Size = new System.Drawing.Size(262, 20);
+      this.btTareWithLabel.Size = new System.Drawing.Size(524, 20);
       this.btTareWithLabel.TabIndex = 6;
       this.btTareWithLabel.Text = "Tare chai có nhãn";
       this.btTareWithLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -564,16 +512,13 @@
     private System.Windows.Forms.Label lblPasFail;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-    private System.Windows.Forms.Label lblTareAvg;
+    private System.Windows.Forms.Label lblTareTarget;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Label btTareWithLabel;
-    private System.Windows.Forms.Label lblTareLastUpdated;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
     private System.Windows.Forms.Label ss;
     private System.Windows.Forms.Label lblTareLowerLimit;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.Label lblTareStandard;
-    private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label lblTareUpperLimit;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
   }

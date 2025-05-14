@@ -1,11 +1,9 @@
-﻿using DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;
-using SyngentaWeigherQC.Helper;
+﻿using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Production = SyngentaWeigherQC.Models.Production;
 
 namespace SyngentaWeigherQC.UI.UcUI
@@ -33,7 +31,7 @@ namespace SyngentaWeigherQC.UI.UcUI
         return;
       }
 
-      if (production!=null)
+      if (production != null)
       {
         //Sản phẩm
         this.ucProductionDataInforPacksize.SetValue = production.PackSize.ToString();
@@ -42,17 +40,17 @@ namespace SyngentaWeigherQC.UI.UcUI
         this.ucProductionDataInforMin.SetValue = production.LowerLimitFinal.ToString();
 
         //Tare
-        if(eModeTare == eModeTare.TareWithLabel)
+        if (eModeTare == eModeTare.TareWithLabel)
         {
           this.lblTareUpperLimit.Text = $" : {production.Tare_with_label_upperlimit}";
           this.lblTareLowerLimit.Text = $" : {production.Tare_with_label_lowerlimit}";
-          this.lblTareStandard.Text = $" : {production.Tare_with_label_standard}";
+          this.lblTareTarget.Text = $"{production.Tare_with_label_lowerlimit}";
         }
         else
         {
           this.lblTareUpperLimit.Text = $" : {production.Tare_no_label_upperlimit}";
           this.lblTareLowerLimit.Text = $" : {production.Tare_no_label_lowerlimit}";
-          this.lblTareStandard.Text = $" : {production.Tare_no_label_standard}";
+          this.lblTareTarget.Text = $"{production.Tare_no_label_standard}";
         }
       }
       else
@@ -66,47 +64,48 @@ namespace SyngentaWeigherQC.UI.UcUI
         //Tare
         this.lblTareUpperLimit.Text = $"---";
         this.lblTareLowerLimit.Text = $"---";
-        this.lblTareStandard.Text = $"---";
-      }  
+      }
     }
 
-    public void SetInforProduction(Production production, eModeTare eModeTare)
+    public void SetInforTare(InforLine inforLine)
     {
       if (this.InvokeRequired)
       {
         this.Invoke(new Action(() =>
         {
-          SetInforProduction(production, eModeTare);
+          SetInforTare(inforLine);
         }));
         return;
       }
 
-      this.btTareWithLabel.Text = "Kiểu Tare: " + eNumHelper.GetDescription(eModeTare);
-
-      if (production != null)
+      if (inforLine.ProductionCurrent != null)
       {
-        if (eModeTare == eModeTare.TareWithLabel)
+        if (inforLine.eModeTare == eModeTare.TareWithLabel)
         {
-          this.lblTareUpperLimit.Text = $" : {production.Tare_with_label_upperlimit}";
-          this.lblTareLowerLimit.Text = $" : {production.Tare_with_label_lowerlimit}";
-          this.lblTareStandard.Text = $" : {production.Tare_with_label_standard}";
-
+          this.lblTareUpperLimit.Text = $" : {inforLine.ProductionCurrent.Tare_with_label_upperlimit}";
+          this.lblTareLowerLimit.Text = $" : {inforLine.ProductionCurrent.Tare_with_label_lowerlimit}";
+          this.lblTareTarget.Text = $"{inforLine.ProductionCurrent.Tare_with_label_standard}";
         }
         else
         {
-          this.lblTareUpperLimit.Text = $" : {production.Tare_no_label_upperlimit}";
-          this.lblTareLowerLimit.Text = $" : {production.Tare_no_label_lowerlimit}";
-          this.lblTareStandard.Text = $" : {production.Tare_no_label_standard}";
+          this.lblTareUpperLimit.Text = $" : {inforLine.ProductionCurrent.Tare_no_label_upperlimit}";
+          this.lblTareLowerLimit.Text = $" : {inforLine.ProductionCurrent.Tare_no_label_lowerlimit}";
+          this.lblTareTarget.Text = $"{inforLine.ProductionCurrent.Tare_no_label_standard}";
         }
       }
       else
       {
-        this.lblTareUpperLimit.Text = $" : ---";
-        this.lblTareLowerLimit.Text = $" : ---";
-        this.lblTareStandard.Text = $" : ---";
+        //Sản phẩm
+        this.ucProductionDataInforPacksize.SetValue = "---";
+        this.ucProductionDataInforTarget.SetValue = "---";
+        this.ucProductionDataInforMax.SetValue = "---";
+        this.ucProductionDataInforMin.SetValue = "---";
+
+        //Tare
+        this.lblTareUpperLimit.Text = $"---";
+        this.lblTareLowerLimit.Text = $"---";
       }
     }
-
 
     public void SetValueWeigherRealTime(double value, eEvaluateStatus eEvaluateStatus)
     {
@@ -145,29 +144,6 @@ namespace SyngentaWeigherQC.UI.UcUI
           this.lblPasFail.ForeColor = Color.Black;
           break;
       }
-    }
-
-    public void SetValueTare(DatalogTare datalogTare)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          SetValueTare(datalogTare);
-        }));
-        return;
-      }
-
-      if (datalogTare!=null)
-      {
-        this.lblTareAvg.Text = datalogTare.Value.ToString();
-        this.lblTareLastUpdated.Text = $"Last updated: {((DateTime)(datalogTare.CreatedAt)).ToString("yyyy/MM/dd HH:mm:ss")}";
-      }  
-      else
-      {
-        this.lblTareAvg.Text = "---";
-        this.lblTareLastUpdated.Text = $"Last updated: ---";
-      }  
     }
 
     public void SetSatutusConnectSerialWeigher(eStatusConnectWeight eStatusConnectWeight)

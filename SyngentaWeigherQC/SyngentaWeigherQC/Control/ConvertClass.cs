@@ -5,7 +5,7 @@ using SyngentaWeigherQC.Responsitory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.Control
 {
@@ -68,45 +68,102 @@ namespace SyngentaWeigherQC.Control
         return result;
 
       int groupSize = 10;
-      int totalGroups = (int)Math.Ceiling((double)dataList.Count / groupSize);
+      dataList = dataList.OrderBy(x => x.Id).ToList();
 
-      dataList = dataList?.OrderBy(x => x.Id).ToList();
+      // Nhóm theo ShiftId
+      var groupedByShift = dataList.GroupBy(x => x.ShiftId);
 
-      int productId = (int)dataList.FirstOrDefault().ProductionId;
-      Production production = _listAllProductsBelongLine?.Where(x => x.Id == productId).FirstOrDefault();
-
-      for (int i = 0; i < totalGroups; i++)
+      foreach (var shiftGroup in groupedByShift)
       {
-        var group = dataList
-            .Skip(i * groupSize)
-            .Take(groupSize)
-            .ToList();
+        var items = shiftGroup.ToList();
+        int totalGroups = (int)Math.Ceiling((double)items.Count / groupSize);
 
-        if (group.Count == 0) continue;
+        int productId = (int)(items.FirstOrDefault()?.ProductionId ?? 0);
+        Production production = _listAllProductsBelongLine?.FirstOrDefault(x => x.Id == productId);
 
-        var dto = new TableDatalogDTO
+        for (int i = 0; i < totalGroups; i++)
         {
-          No = i + 1,
-          Shift = group.First()?.Shift?.Name,
-          DateTime = group.First().CreatedAt.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
-          DatalogWeights = group,
-          AvgRaw = Math.Round(group.Average(x => x.Value), 2),
-          AvgTotal = Math.Round(dataList.Average(x => x.Value), 2),
-          eEvaluate = EvaluateData(Math.Round(group.Average(x => x.Value), 2), production)
-        };
+          var group = items
+              .Skip(i * groupSize)
+              .Take(groupSize)
+              .ToList();
 
-        result.Add(dto);
+          if (group.Count == 0) continue;
+
+          double avgRaw = Math.Round(group.Average(x => x.Value), 2);
+
+          var dto = new TableDatalogDTO
+          {
+            No = result.Count + 1,
+            Shift = group.FirstOrDefault()?.Shift?.Name,
+            DateTime = group.FirstOrDefault()?.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
+            DatalogWeights = group,
+            AvgRaw = avgRaw,
+            AvgTotal = 0, // sẽ cập nhật sau
+            eEvaluate = EvaluateData(avgRaw, production)
+          };
+
+          result.Add(dto);
+        }
       }
 
-      if (result.Count>0)
+      // Tính lại AvgTotal chung từ tất cả các AvgRaw
+      if (result.Count > 0)
       {
-        double averageTotal =Math.Round( result.Select(x => x.AvgRaw).Average(),3);
+        double averageTotal = Math.Round(result.Select(x => x.AvgRaw).Average(), 3);
         result.ForEach(x => x.AvgTotal = averageTotal);
-      }  
-      
+      }
 
       return result;
     }
+
+    //public List<TableDatalogDTO> ConvertToDTOList(List<DatalogWeight> dataList)
+    //{
+    //  var result = new List<TableDatalogDTO>();
+
+    //  if (dataList == null || dataList.Count == 0)
+    //    return result;
+
+    //  int groupSize = 10;
+    //  int totalGroups = (int)Math.Ceiling((double)dataList.Count / groupSize);
+
+    //  dataList = dataList?.OrderBy(x => x.Id).ToList();
+
+    //  int productId = (int)dataList.FirstOrDefault().ProductionId;
+    //  Production production = _listAllProductsBelongLine?.Where(x => x.Id == productId).FirstOrDefault();
+
+    //  for (int i = 0; i < totalGroups; i++)
+    //  {
+    //    var group = dataList
+    //        .Skip(i * groupSize)
+    //        .Take(groupSize)
+    //        .ToList();
+
+    //    if (group.Count == 0) continue;
+
+    //    var dto = new TableDatalogDTO
+    //    {
+    //      No = i + 1,
+    //      Shift = group.First()?.Shift?.Name,
+    //      DateTime = group.First().CreatedAt.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
+    //      DatalogWeights = group,
+    //      AvgRaw = Math.Round(group.Average(x => x.Value), 2),
+    //      AvgTotal = Math.Round(dataList.Average(x => x.Value), 2),
+    //      eEvaluate = EvaluateData(Math.Round(group.Average(x => x.Value), 2), production)
+    //    };
+
+    //    result.Add(dto);
+    //  }
+
+    //  if (result.Count>0)
+    //  {
+    //    double averageTotal =Math.Round( result.Select(x => x.AvgRaw).Average(),3);
+    //    result.ForEach(x => x.AvgTotal = averageTotal);
+    //  }  
+
+
+    //  return result;
+    //}
 
     public ChartLineData CvtDatalogWeightToChartLine(List<DatalogWeight> datalogWeights, Production production)
     {

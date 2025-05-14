@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 
 namespace SyngentaWeigherQC.UI.FrmUI
@@ -49,13 +49,14 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private Color colorNoSelect = Color.DarkSlateBlue;
     private List<Shift> listShift = new List<Shift>();
     private eShiftTypes eShiftTypesCurrent = new eShiftTypes();
-    private bool isEnableChangeRecord= false;
+
     private void FrmSettingLine_Load(object sender, EventArgs e)
     {
+      numericUpDownTimeout.Value = AppCore.Ins._configSoftware.Spare1;
+
       listShift = AppCore.Ins._listShift;
 
       Instance_OnSendChangeRole();
-      //FrmMain.Instance.OnSendChangeLogin += Instance_OnSendChangeRole;
       FrmSettingDecentralization.Instance.OnSendChangeDecentralization += Instance_OnSendChangeRole;
 
       this.btn3Ca.PerformClick();
@@ -186,9 +187,21 @@ namespace SyngentaWeigherQC.UI.FrmUI
       UpdateDataShiftUI(eShiftTypesCurrent);
     }
 
+    private async void btnSaveTimeout_Click(object sender, EventArgs e)
+    {
+      int value = (int)numericUpDownTimeout.Value;
+      if (value < 10)
+      {
+        new FrmNotification().ShowMessage("Thời gian tối thiểu cài đặt là 60 giây !", eMsgType.Warning);
+        return;
+      }
+      AppCore.Ins._configSoftware.Spare1 = value;
+      await AppCore.Ins.Update(AppCore.Ins._configSoftware);
+    }
 
-   
-
-   
+    private void btnSaveChangeNumberChange_Click(object sender, EventArgs e)
+    {
+      
+    }
   }
 }

@@ -139,7 +139,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public async Task<List<DatalogWeight>> LoadAllDatalogWeight(int LineId, DateTime from, DateTime to, int shiftId)
+    public async Task<List<DatalogWeight>> LoadAllDatalogWeight(int LineId, DateTime from, DateTime to, int shiftId=0)
     {
       using (var context = new ConfigDBContext())
       {

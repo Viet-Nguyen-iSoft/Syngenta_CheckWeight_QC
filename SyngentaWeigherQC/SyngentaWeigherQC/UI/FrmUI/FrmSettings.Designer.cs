@@ -191,15 +191,15 @@
       this.pnBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnBody.BackColor = System.Drawing.Color.Transparent;
-      this.pnBody.Location = new System.Drawing.Point(3, 83);
+      this.pnBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
+      this.pnBody.Location = new System.Drawing.Point(3, 78);
       this.pnBody.Name = "pnBody";
-      this.pnBody.Size = new System.Drawing.Size(1324, 486);
+      this.pnBody.Size = new System.Drawing.Size(1324, 491);
       this.pnBody.TabIndex = 27;
       // 
       // tableLayoutPanel1
       // 
-      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(19)))), ((int)(((byte)(52)))));
+      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
       this.tableLayoutPanel1.ColumnCount = 1;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -208,7 +208,7 @@
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
       this.tableLayoutPanel1.RowCount = 3;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel1.Size = new System.Drawing.Size(1330, 572);
@@ -243,7 +243,7 @@
       this.tableLayoutPanel2.Controls.Add(this.btnChangePass, 7, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnSettingDevice, 13, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnSettingLine, 1, 0);
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 10);
+      this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 5);
       this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 1;

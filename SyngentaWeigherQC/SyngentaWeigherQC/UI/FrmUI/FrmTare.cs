@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Production = SyngentaWeigherQC.Models.Production;
 
 namespace SyngentaWeigherQC.UI.FrmUI

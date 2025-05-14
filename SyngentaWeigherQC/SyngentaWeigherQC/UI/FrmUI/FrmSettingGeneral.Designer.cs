@@ -44,9 +44,9 @@
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-      this.label2 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
       this.numericUpDownTimeout = new System.Windows.Forms.NumericUpDown();
+      this.label2 = new System.Windows.Forms.Label();
       this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
       this.label4 = new System.Windows.Forms.Label();
@@ -55,8 +55,11 @@
       this.btnHanhChinh = new CustomControls.RJControls.RJButton();
       this.btnGianCa = new CustomControls.RJControls.RJButton();
       this.btn3Ca = new CustomControls.RJControls.RJButton();
-      this.btnSave = new CustomControls.RJControls.RJButton();
-      this.rjButton1 = new CustomControls.RJControls.RJButton();
+      this.btnSaveTimeout = new CustomControls.RJControls.RJButton();
+      this.btnSaveChangeNumberChange = new CustomControls.RJControls.RJButton();
+      this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
+      this.elipseControl2 = new SyngentaWeigherQC.ItemControls.ElipseControl();
+      this.elipseControl3 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
       this.tableLayoutPanel5.SuspendLayout();
@@ -72,7 +75,7 @@
       // 
       // tableLayoutPanel1
       // 
-      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(19)))), ((int)(((byte)(52)))));
+      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
       this.tableLayoutPanel1.ColumnCount = 3;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -289,7 +292,7 @@
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel4.Controls.Add(this.btnSave, 3, 0);
+      this.tableLayoutPanel4.Controls.Add(this.btnSaveTimeout, 3, 0);
       this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
       this.tableLayoutPanel4.Controls.Add(this.numericUpDownTimeout, 1, 0);
       this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 50);
@@ -299,23 +302,6 @@
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.Size = new System.Drawing.Size(1223, 60);
       this.tableLayoutPanel4.TabIndex = 1;
-      // 
-      // label2
-      // 
-      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label2.AutoSize = true;
-      this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(63)))), ((int)(((byte)(92)))));
-      this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label2.ForeColor = System.Drawing.Color.White;
-      this.label2.Location = new System.Drawing.Point(0, 0);
-      this.label2.Margin = new System.Windows.Forms.Padding(0);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(1223, 50);
-      this.label2.TabIndex = 0;
-      this.label2.Text = "Thời gian Timeout:";
-      this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label3
       // 
@@ -337,11 +323,38 @@
       // numericUpDownTimeout
       // 
       this.numericUpDownTimeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.numericUpDownTimeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numericUpDownTimeout.Location = new System.Drawing.Point(203, 15);
+      this.numericUpDownTimeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.numericUpDownTimeout.Location = new System.Drawing.Point(203, 12);
+      this.numericUpDownTimeout.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
       this.numericUpDownTimeout.Name = "numericUpDownTimeout";
-      this.numericUpDownTimeout.Size = new System.Drawing.Size(120, 29);
+      this.numericUpDownTimeout.Size = new System.Drawing.Size(120, 35);
       this.numericUpDownTimeout.TabIndex = 2;
+      this.numericUpDownTimeout.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+      // 
+      // label2
+      // 
+      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label2.AutoSize = true;
+      this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(63)))), ((int)(((byte)(92)))));
+      this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label2.ForeColor = System.Drawing.Color.White;
+      this.label2.Location = new System.Drawing.Point(0, 0);
+      this.label2.Margin = new System.Windows.Forms.Padding(0);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(1223, 50);
+      this.label2.TabIndex = 0;
+      this.label2.Text = "Thời gian Timeout:";
+      this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // tableLayoutPanel7
       // 
@@ -373,7 +386,7 @@
       this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
       this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel8.Controls.Add(this.rjButton1, 3, 0);
+      this.tableLayoutPanel8.Controls.Add(this.btnSaveChangeNumberChange, 3, 0);
       this.tableLayoutPanel8.Controls.Add(this.label4, 0, 0);
       this.tableLayoutPanel8.Controls.Add(this.numericUpDown1, 1, 0);
       this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 50);
@@ -404,10 +417,15 @@
       // numericUpDown1
       // 
       this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numericUpDown1.Location = new System.Drawing.Point(203, 15);
+      this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.numericUpDown1.Location = new System.Drawing.Point(203, 12);
+      this.numericUpDown1.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
       this.numericUpDown1.Name = "numericUpDown1";
-      this.numericUpDown1.Size = new System.Drawing.Size(120, 29);
+      this.numericUpDown1.Size = new System.Drawing.Size(120, 35);
       this.numericUpDown1.TabIndex = 2;
       // 
       // label5
@@ -496,47 +514,62 @@
       this.btn3Ca.UseVisualStyleBackColor = false;
       this.btn3Ca.Click += new System.EventHandler(this.btn3Ca_Click);
       // 
-      // btnSave
+      // btnSaveTimeout
       // 
-      this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.btnSave.BackColor = System.Drawing.Color.DarkGreen;
-      this.btnSave.BackgroundColor = System.Drawing.Color.DarkGreen;
-      this.btnSave.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSave.BorderRadius = 5;
-      this.btnSave.BorderSize = 0;
-      this.btnSave.FlatAppearance.BorderSize = 0;
-      this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(339, 6);
-      this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(162, 48);
-      this.btnSave.TabIndex = 12;
-      this.btnSave.Text = "Lưu thay đổi";
-      this.btnSave.TextColor = System.Drawing.Color.White;
-      this.btnSave.UseVisualStyleBackColor = false;
-      this.btnSave.Visible = false;
+      this.btnSaveTimeout.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.btnSaveTimeout.BackColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveTimeout.BackgroundColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveTimeout.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSaveTimeout.BorderRadius = 5;
+      this.btnSaveTimeout.BorderSize = 0;
+      this.btnSaveTimeout.FlatAppearance.BorderSize = 0;
+      this.btnSaveTimeout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSaveTimeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSaveTimeout.ForeColor = System.Drawing.Color.White;
+      this.btnSaveTimeout.Location = new System.Drawing.Point(339, 6);
+      this.btnSaveTimeout.Name = "btnSaveTimeout";
+      this.btnSaveTimeout.Size = new System.Drawing.Size(162, 48);
+      this.btnSaveTimeout.TabIndex = 12;
+      this.btnSaveTimeout.Text = "Lưu thay đổi";
+      this.btnSaveTimeout.TextColor = System.Drawing.Color.White;
+      this.btnSaveTimeout.UseVisualStyleBackColor = false;
+      this.btnSaveTimeout.Click += new System.EventHandler(this.btnSaveTimeout_Click);
       // 
-      // rjButton1
+      // btnSaveChangeNumberChange
       // 
-      this.rjButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.rjButton1.BackColor = System.Drawing.Color.DarkGreen;
-      this.rjButton1.BackgroundColor = System.Drawing.Color.DarkGreen;
-      this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.rjButton1.BorderRadius = 5;
-      this.rjButton1.BorderSize = 0;
-      this.rjButton1.FlatAppearance.BorderSize = 0;
-      this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.rjButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.rjButton1.ForeColor = System.Drawing.Color.White;
-      this.rjButton1.Location = new System.Drawing.Point(339, 6);
-      this.rjButton1.Name = "rjButton1";
-      this.rjButton1.Size = new System.Drawing.Size(162, 48);
-      this.rjButton1.TabIndex = 12;
-      this.rjButton1.Text = "Lưu thay đổi";
-      this.rjButton1.TextColor = System.Drawing.Color.White;
-      this.rjButton1.UseVisualStyleBackColor = false;
-      this.rjButton1.Visible = false;
+      this.btnSaveChangeNumberChange.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.btnSaveChangeNumberChange.BackColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveChangeNumberChange.BackgroundColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveChangeNumberChange.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSaveChangeNumberChange.BorderRadius = 5;
+      this.btnSaveChangeNumberChange.BorderSize = 0;
+      this.btnSaveChangeNumberChange.FlatAppearance.BorderSize = 0;
+      this.btnSaveChangeNumberChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSaveChangeNumberChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSaveChangeNumberChange.ForeColor = System.Drawing.Color.White;
+      this.btnSaveChangeNumberChange.Location = new System.Drawing.Point(339, 6);
+      this.btnSaveChangeNumberChange.Name = "btnSaveChangeNumberChange";
+      this.btnSaveChangeNumberChange.Size = new System.Drawing.Size(162, 48);
+      this.btnSaveChangeNumberChange.TabIndex = 12;
+      this.btnSaveChangeNumberChange.Text = "Lưu thay đổi";
+      this.btnSaveChangeNumberChange.TextColor = System.Drawing.Color.White;
+      this.btnSaveChangeNumberChange.UseVisualStyleBackColor = false;
+      this.btnSaveChangeNumberChange.Click += new System.EventHandler(this.btnSaveChangeNumberChange_Click);
+      // 
+      // elipseControl1
+      // 
+      this.elipseControl1.CornerRadius = 20;
+      this.elipseControl1.TargetControl = this.tableLayoutPanel3;
+      // 
+      // elipseControl2
+      // 
+      this.elipseControl2.CornerRadius = 20;
+      this.elipseControl2.TargetControl = this.tableLayoutPanel2;
+      // 
+      // elipseControl3
+      // 
+      this.elipseControl3.CornerRadius = 20;
+      this.elipseControl3.TargetControl = this.tableLayoutPanel7;
       // 
       // FrmSettingGeneral
       // 
@@ -587,12 +620,15 @@
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.NumericUpDown numericUpDownTimeout;
-    private CustomControls.RJControls.RJButton btnSave;
+    private CustomControls.RJControls.RJButton btnSaveTimeout;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-    private CustomControls.RJControls.RJButton rjButton1;
+    private CustomControls.RJControls.RJButton btnSaveChangeNumberChange;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.NumericUpDown numericUpDown1;
     private System.Windows.Forms.Label label5;
+    private ItemControls.ElipseControl elipseControl1;
+    private ItemControls.ElipseControl elipseControl2;
+    private ItemControls.ElipseControl elipseControl3;
   }
 }

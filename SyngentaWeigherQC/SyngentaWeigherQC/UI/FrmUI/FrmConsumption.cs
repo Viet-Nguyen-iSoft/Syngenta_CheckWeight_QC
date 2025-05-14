@@ -1,105 +1,46 @@
-﻿using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Spreadsheet;
-using DocumentFormat.OpenXml.Wordprocessing;
-using Irony.Parsing;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using SixLabors.Fonts;
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
-using SyngentaWeigherQC.Responsitory;
+using SyngentaWeigherQC.Models.NewFolder1;
 using SyngentaWeigherQC.UI.Filter;
 using SyngentaWeigherQC.UI.UcUI;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Color = System.Drawing.Color;
-using Document = iTextSharp.text.Document;
-using PageSize = iTextSharp.text.PageSize;
-using Rectangle = iTextSharp.text.Rectangle;
 
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
-  public partial class FrmConsumption : Form
+  public partial class FrmSynthetic : Form
   {
-    public FrmConsumption()
+    public FrmSynthetic()
     {
       InitializeComponent();
+      SetTitleChart();
     }
     #region Singleton parttern
-    private static FrmConsumption _Instance = null;
-    public static FrmConsumption Instance
+    private static FrmSynthetic _Instance = null;
+    public static FrmSynthetic Instance
     {
       get
       {
         if (_Instance == null)
         {
-          _Instance = new FrmConsumption();
+          _Instance = new FrmSynthetic();
         }
         return _Instance;
       }
     }
     #endregion
 
-
-
-    private List<DateTime> GetAllDaysInMonth(int year, int month)
-    {
-      List<DateTime> listOfDaysInMonth = new List<DateTime>();
-      int daysInMonth = DateTime.DaysInMonth(year, month);
-      for (int day = 1; day <= daysInMonth; day++)
-      {
-        listOfDaysInMonth.Add(new DateTime(year, month, day));
-      }
-      return listOfDaysInMonth;
-    }
-
-
-    private int year = 0;
-    private int month = 0;
-
-    //Home
-    private List<DateTime> listDateHome = new List<DateTime>();
-    private int monthCurrent = DateTime.Now.Month;
-    private int weekCurrent = 0;
-
-    private void FrmConsumption_Load(object sender, EventArgs e)
-    {
-      SetTitleChart();
-
-      // Lấy ngày đầu tiên của tuần
-      DateTime dt_curent = DateTime.Now;
-      month = dt_curent.Month;
-      year = dt_curent.Year;
-
-      CultureInfo cul = CultureInfo.CurrentCulture;
-      int week = cul.Calendar.GetWeekOfYear(dt_curent, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-      weekCurrent = week;
-
-      List<DateTime> listDaysOfMonth = GetAllDaysInMonth(year, month);
-      List<DateTime> listDaysOfWeek = GetAllDaysInWeek(year, week);
-
-      listDateHome = listDaysOfMonth;
-
-      DataHome(listDaysOfMonth);
-    }
-
-    private List<DataReportByDate> reportDataWeek = new List<DataReportByDate>();
-
+    #region Init Chart
     private void SetTitleChart()
     {
       //Home
@@ -143,8 +84,311 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     }
 
+    #endregion
 
-    
+    public List<InforLine> CbbLines
+    {
+      set
+      {
+        this.cbbLine.DataSource = value;
+        this.cbbLine.DisplayMember = "Name";
+      }
+    }
+
+    private int year_current = 0;
+    private int month_current = 0;
+    private int weekCurrent = 0;
+    private int _lineId = 0;
+    private List<DatalogWeight> _weightList = new List<DatalogWeight>();
+    private async void FrmConsumption_Load(object sender, EventArgs e)
+    {
+      CbbLines = AppCore.Ins._listInforLine?.Where(x => x.IsEnable == true).ToList();
+
+      // Lấy tuần tháng năm hiện tại
+      DateTime dt_curent = DateTime.Now;
+      month_current = dt_curent.Month;
+      year_current = dt_curent.Year;
+
+      CultureInfo cul = CultureInfo.CurrentCulture;
+      weekCurrent = cul.Calendar.GetWeekOfYear(dt_curent, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+
+      var lineChoose = cbbLine.SelectedItem as InforLine;
+      _lineId = (lineChoose != null) ? lineChoose.Id : 0;
+
+      //Dữ liệu tháng hiện tại
+      month_current = 4;
+      _weightList = await LoadDataMonth(year_current, month_current, _lineId);
+      LoadDataShowUI(_weightList);
+    }
+
+    private void LoadDataShowUI(List<DatalogWeight> datalogWeights)
+    {
+      var dataReportExcels = AppCore.Ins.GenerateDataReport(datalogWeights);
+      var consumptionCharts = AppCore.Ins.CvtDataReportExcelToConsumptionChart(dataReportExcels);
+      var consumptionTable = AppCore.Ins.CvtDataReportExcelToConsumptionTable(dataReportExcels);
+
+      SetDataChart(consumptionCharts);
+      SetDataTable(consumptionTable);
+    }
+
+
+    #region Month
+    private void btnMonth_Click(object sender, EventArgs e)
+    {
+      FrmFilterMonth frmFilterMonth = new FrmFilterMonth();
+      frmFilterMonth.OnSendMonthChoose += FrmFilterMonth_OnSendMonthChoose;
+      frmFilterMonth.Location = new System.Drawing.Point(10, 500);
+      frmFilterMonth.ShowDialog();
+    }
+    private async void FrmFilterMonth_OnSendMonthChoose(List<DateTime> listDate)
+    {
+      if (listDate.Count > 0)
+      {
+        var from = listDate.FirstOrDefault();
+        var to = listDate.LastOrDefault();
+        _weightList = await LoadDataByRangeDate(from, to, _lineId);
+        LoadDataShowUI(_weightList);
+      }
+    }
+    #endregion
+
+    #region Week
+    private void btnWeek_Click(object sender, EventArgs e)
+    {
+      FrmFilterWeek frmFilterWeek = new FrmFilterWeek();
+      frmFilterWeek.OnSendWeekChoose += FrmFilterWeek_OnSendWeekChoose;
+      frmFilterWeek.Location = new System.Drawing.Point(100, 210);
+      frmFilterWeek.ShowDialog();
+    }
+
+    private async void FrmFilterWeek_OnSendWeekChoose(List<DateTime> listDate)
+    {
+      if (listDate.Count > 0)
+      {
+        var from = listDate.FirstOrDefault();
+        var to = listDate.LastOrDefault();
+        _weightList = await LoadDataByRangeDate(from, to, _lineId);
+        LoadDataShowUI(_weightList);
+      }
+    }
+    #endregion
+
+
+    #region Day
+    private void btnDay_Click(object sender, EventArgs e)
+    {
+      FrmFilterDate frmFilterDate = new FrmFilterDate(monthCurrent);
+      frmFilterDate.OnSendDateChoose += FrmFilterDate_OnSendDateChoose;
+      frmFilterDate.Location = new System.Drawing.Point(200, 320);
+      frmFilterDate.ShowDialog();
+    }
+
+    private async void FrmFilterDate_OnSendDateChoose(List<DateTime> listDate)
+    {
+      if (listDate.Count > 0)
+      {
+        var from = listDate.FirstOrDefault();
+        var to = listDate.LastOrDefault();
+        _weightList = await LoadDataByRangeDate(from, to, _lineId);
+        LoadDataShowUI(_weightList);
+      }
+    }
+
+    #endregion
+
+    private void btnLoad_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void btnExportPdf_Click(object sender, EventArgs e)
+    {
+      string path = "";
+      using (var saveFD = new SaveFileDialog())
+      {
+        saveFD.Filter = "Excel|*.xlsx|All files|*.*";
+        saveFD.Title = "Save report to excel file";
+        saveFD.FileName = $"Báo cáo tổng hợp  {DateTime.Now.ToString("dd_MM_yyyy")}  At {DateTime.Now.ToString("HH_mm")}.pdf";
+
+        DialogResult dialogResult = saveFD.ShowDialog();
+        if (dialogResult == DialogResult.OK) path = saveFD.FileName; //lay duong dan luu file
+        else return; //huy report neu chon cancel
+      }
+
+      //FrmReportAutoPdf frmReportAutoPdf = new FrmReportAutoPdf(_weightList, path);
+      //frmReportAutoPdf.ShowDialog();
+      //string path = "";
+      //using (var saveFD = new SaveFileDialog())
+      //{
+      //  saveFD.Filter = "Excel|*.xlsx|All files|*.*";
+      //  saveFD.Title = "Save report to excel file";
+      //  saveFD.FileName = $"Báo cáo tổng hợp  {DateTime.Now.ToString("dd_MM_yyyy")}  At {DateTime.Now.ToString("HH_mm")}.pdf";
+
+      //  DialogResult dialogResult = saveFD.ShowDialog();
+      //  if (dialogResult == DialogResult.OK) path = saveFD.FileName; //lay duong dan luu file
+      //  else return; //huy report neu chon cancel
+      //}
+
+      //this.lbTitleHome.Visible = true;
+      //this.tablelayoutFilter.Visible = false;
+
+      //ExportToPdf(path);
+      //tabControl1.SelectedIndex = 0;
+
+      //this.lbTitleHome.Visible = false;
+      //this.tablelayoutFilter.Visible = true;
+    }
+
+
+    private async Task<List<DatalogWeight>> LoadDataMonth(int year, int month, int lineId)
+    {
+      var rangeDate = DatetimeHelper.RangeDateByMonth(year, month);
+      return await AppCore.Ins.LoadAllDatalogWeight(lineId, rangeDate.StartDate, rangeDate.EndDate);
+    }
+    private async Task<List<DatalogWeight>> LoadDataByRangeDate(DateTime from, DateTime to, int lineId)
+    {
+      return await AppCore.Ins.LoadAllDatalogWeight(lineId, from, to);
+    }
+
+
+
+    private void SetDataChart(List<ConsumptionChart> consumptionV2s)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetDataChart(consumptionV2s);
+        }));
+        return;
+      }
+
+      Dictionary<string, double> groupDataTopError = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataTopLoss = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataTopCpk = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataTopStdev = new Dictionary<string, double>();
+
+      Dictionary<string, double> groupDataAverageError = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataAverageLoss = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataAverageCpk = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataAverageStdev = new Dictionary<string, double>();
+
+      //Đi từng sản phẩm
+      foreach (var item in consumptionV2s)
+      {
+        double topError = item.DetailConsumptions.Max(x => x.Error);
+        double topLoss = item.DetailConsumptions.Max(x => x.Loss);
+        double topCpk = item.DetailConsumptions.Max(x => x.Cpk);
+        double topStdev = item.DetailConsumptions.Max(x => x.Stdev);
+
+        groupDataTopError.Add(item.Production.Name, topError);
+        groupDataTopLoss.Add(item.Production.Name, topLoss);
+        groupDataTopCpk.Add(item.Production.Name, topCpk);
+        groupDataTopStdev.Add(item.Production.Name, topStdev);
+
+        double averageError = item.DetailConsumptions.Average(x => x.Error);
+        double averageLoss = item.DetailConsumptions.Average(x => x.Loss);
+        double averageCpk = item.DetailConsumptions.Average(x => x.Cpk);
+        double averageStdev = item.DetailConsumptions.Average(x => x.Stdev);
+
+        groupDataAverageError.Add(item.Production.Name, averageError);
+        groupDataAverageLoss.Add(item.Production.Name, averageLoss);
+        groupDataAverageCpk.Add(item.Production.Name, averageCpk);
+        groupDataAverageStdev.Add(item.Production.Name, averageStdev);
+      }
+
+      //Dãy trên
+      this.chartErrorHome.SetDataChart(groupDataTopError);
+      this.chartLossHome.SetDataChart(groupDataTopLoss);
+      this.chartCpkHome.SetDataChart(groupDataTopCpk);
+      this.chartStdevHome.SetDataChart(groupDataTopStdev);
+
+
+      //Dãy dưới
+      this.chartavgErrorHome.SetDataChart(groupDataAverageError);
+      this.chartavgLossHome.SetDataChart(groupDataAverageLoss);
+      this.chartavgCpkHome.SetDataChart(groupDataAverageCpk);
+      this.chartavgStdevHome.SetDataChart(groupDataAverageStdev);
+
+      //Chart Pie
+      var totalSample = (int)consumptionV2s
+                        .SelectMany(chart => chart.DetailConsumptions)
+                        .Sum(detail => detail.TotalSample);
+      var totalOver = (int)consumptionV2s
+                        .SelectMany(chart => chart.DetailConsumptions)
+                        .Sum(detail => detail.TotalOver);
+      var totalLower = (int)consumptionV2s
+                        .SelectMany(chart => chart.DetailConsumptions)
+                        .Sum(detail => detail.TotalLower);
+
+      ChartPieHome.SetDataChart(totalSample, totalLower, totalOver);
+    }
+
+
+
+
+    private void SetDataTable(List<ConsumptionTable> consumptions)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetDataTable(consumptions);
+        }));
+        return;
+      }
+
+      dataGridViewTableHome.Rows.Clear();
+      if (consumptions.Count > 0)
+      {
+        foreach (ConsumptionTable consumption in consumptions)
+        {
+          int row = dataGridViewTableHome.Rows.Add();
+          dataGridViewTableHome.Rows[row].Cells["Column1"].Value = consumption.Shift;
+          dataGridViewTableHome.Rows[row].Cells["Column3"].Value = consumption.DateTime;
+          dataGridViewTableHome.Rows[row].Cells["Column4"].Value = consumption.ProductionName;
+          dataGridViewTableHome.Rows[row].Cells["Column5"].Value = consumption.AverageMeasure;
+          dataGridViewTableHome.Rows[row].Cells["Column6"].Value = consumption.MinMeasure;
+          dataGridViewTableHome.Rows[row].Cells["Column7"].Value = consumption.MaxMeasure;
+          dataGridViewTableHome.Rows[row].Cells["Column8"].Value = consumption.Target;
+          dataGridViewTableHome.Rows[row].Cells["Column9"].Value = consumption.LowerProduct;
+          dataGridViewTableHome.Rows[row].Cells["Column10"].Value = consumption.UpperProduct;
+          dataGridViewTableHome.Rows[row].Cells["Column11"].Value = consumption.Evaluate;
+          dataGridViewTableHome.Rows[row].Cells["Column11"].Style.BackColor = (consumption.Evaluate == "ĐẠT") ? Color.Green : Color.Red;
+          dataGridViewTableHome.Rows[row].Cells["Column11"].Style.ForeColor = Color.White;
+        }
+      }
+    }
+
+
+
+    private List<DateTime> GetAllDaysInMonth(int year, int month)
+    {
+      List<DateTime> listOfDaysInMonth = new List<DateTime>();
+      int daysInMonth = DateTime.DaysInMonth(year, month);
+      for (int day = 1; day <= daysInMonth; day++)
+      {
+        listOfDaysInMonth.Add(new DateTime(year, month, day));
+      }
+      return listOfDaysInMonth;
+    }
+
+
+
+
+    //Home
+    private List<DateTime> listDateHome = new List<DateTime>();
+    private int monthCurrent = DateTime.Now.Month;
+
+
+
+
+    private List<DataReportByDate> reportDataWeek = new List<DataReportByDate>();
+
+
+
+
+
     private void DataHome(List<DateTime> listDays)
     {
       if (this.InvokeRequired)
@@ -156,17 +400,17 @@ namespace SyngentaWeigherQC.UI.FrmUI
         return;
       }
 
-      
+
     }
 
 
-   
-    private void UpdateUIChartPie(UcChartPie ucChartPie,DataChartReport dataChartReport)
+
+    private void UpdateUIChartPie(UcChartPie ucChartPie, DataChartReport dataChartReport)
     {
       int total = 0;
       int over = 0;
       int lower = 0;
-      if (dataChartReport!=null)
+      if (dataChartReport != null)
       {
         total = dataChartReport.NumberSampleTotal;
         over = dataChartReport.NumberSampleUpper;
@@ -182,55 +426,23 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       List<Sample> listSample = new List<Sample>();
 
-      if (datalogId.Count>0)
+      if (datalogId.Count > 0)
       {
         for (int i = 0; i < datalogId.Count; i++)
         {
           List<Sample> samplesChid = samples?.Where(x => x.DatalogId == datalogId[i]).ToList();
-          if (samplesChid!=null)
+          if (samplesChid != null)
           {
             if (samplesChid.Count > 0)
               listSample.AddRange(samplesChid);
-          }  
+          }
         }
-      }  
+      }
       return listSample;
     }
 
 
-    private void UpdateUITable(List<Consumption> consumptions)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          UpdateUITable(consumptions);
-        }));
-        return;
-      }
 
-      dataGridViewTableHome.Rows.Clear();
-      if (consumptions.Count>0)
-      {
-        foreach (Consumption consumption in consumptions)
-        {
-          int row = dataGridViewTableHome.Rows.Add();
-          dataGridViewTableHome.Rows[row].Cells["Column1"].Value = consumption.Shift;
-          dataGridViewTableHome.Rows[row].Cells["Column2"].Value = consumption.STT;
-          dataGridViewTableHome.Rows[row].Cells["Column3"].Value = consumption.DateTime;
-          dataGridViewTableHome.Rows[row].Cells["Column4"].Value = consumption.Production;
-          dataGridViewTableHome.Rows[row].Cells["Column5"].Value = consumption.AverageMeasure;
-          dataGridViewTableHome.Rows[row].Cells["Column6"].Value = consumption.MinMeasure;
-          dataGridViewTableHome.Rows[row].Cells["Column7"].Value = consumption.MaxMeasure;
-          dataGridViewTableHome.Rows[row].Cells["Column8"].Value = consumption.Target;
-          dataGridViewTableHome.Rows[row].Cells["Column9"].Value = consumption.LowerProduct;
-          dataGridViewTableHome.Rows[row].Cells["Column10"].Value = consumption.UpperProduct;
-          dataGridViewTableHome.Rows[row].Cells["Column11"].Value = consumption.Evaluate;
-          dataGridViewTableHome.Rows[row].Cells["Column11"].Style.BackColor = (consumption.Evaluate=="PASS")? Color.Green:Color.Red;
-          dataGridViewTableHome.Rows[row].Cells["Column11"].Style.ForeColor = Color.White;
-        }  
-      }  
-    }
 
 
 
@@ -258,7 +470,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
-   
+
 
     private Bitmap RenderControlToBitmap(System.Windows.Forms.Control control)
     {
@@ -270,55 +482,14 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
 
 
-    
-    private void btnMonth_Click(object sender, EventArgs e)
-    {
-      FrmFilterMonth frmFilterMonth = new FrmFilterMonth();
-      frmFilterMonth.OnSendMonthChoose += FrmFilterMonth_OnSendMonthChoose;
-      frmFilterMonth.Location = new System.Drawing.Point(10, 500);
-      frmFilterMonth.ShowDialog();
-    }
 
-    private void FrmFilterMonth_OnSendMonthChoose(List<DateTime> listDate)
-    {
-      if (listDate.Count>0)
-      {
-        monthCurrent = listDate.FirstOrDefault().Month;
-      }  
-      listDateHome = listDate;
-      DataHome(listDateHome);
-      //FilterDataPageHome(listDateHome);
-    }
 
-    private void btnWeek_Click(object sender, EventArgs e)
-    {
-      FrmFilterWeek frmFilterWeek = new FrmFilterWeek();
-      frmFilterWeek.OnSendWeekChoose += FrmFilterWeek_OnSendWeekChoose;
-      frmFilterWeek.Location = new System.Drawing.Point(100, 210);
-      frmFilterWeek.ShowDialog();
-    }
 
-    private void FrmFilterWeek_OnSendWeekChoose(List<DateTime> listDate)
-    {
-      listDateHome = listDate;
-      //FilterDataPageHome(listDateHome);
-      DataHome(listDateHome);
-    }
 
-    private void btnDay_Click(object sender, EventArgs e)
-    {
-      FrmFilterDate frmFilterDate = new FrmFilterDate(monthCurrent);
-      frmFilterDate.OnSendDateChoose += FrmFilterDate_OnSendDateChoose;
-      frmFilterDate.Location = new System.Drawing.Point(200, 320);
-      frmFilterDate.ShowDialog();
-    }
 
-    private void FrmFilterDate_OnSendDateChoose(List<DateTime> listDate)
-    {
-      listDateHome = listDate;
-      //FilterDataPageHome(listDateHome);
-      DataHome(listDateHome);
-    }
+
+
+
 
     private List<Shift> listShift = new List<Shift>();
     private List<int> listCodeShiftFilter = new List<int>();
@@ -336,7 +507,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmFilterShift_OnSendShiftChoose(List<string> listDate)
     {
       listCodeShiftFilter = new List<int>();
-      if (listDate.Count>0 && listShift.Count>0)
+      if (listDate.Count > 0 && listShift.Count > 0)
       {
         foreach (var item in listDate)
         {
@@ -430,79 +601,52 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
-    private void btnLoad_Click(object sender, EventArgs e)
-    {
-      List<DateTime> listDaysOfMonth = GetAllDaysInMonth(year, month);
-      DataHome(listDaysOfMonth);
-    }
 
 
-    private void ExportToPdf(string pathReport)
-    {
-      // Kích thước của trang PDF (kích thước A4 nằm ngang)
-      float pageWidth = PageSize.A4.Rotate().Width;
-      float pageHeight = PageSize.A4.Rotate().Height;
+    //private void ExportToPdf(string pathReport)
+    //{
+    //  // Kích thước của trang PDF (kích thước A4 nằm ngang)
+    //  float pageWidth = PageSize.A4.Rotate().Width;
+    //  float pageHeight = PageSize.A4.Rotate().Height;
 
-      int numberTag = tabControl1.TabCount;
-      // Tạo một tài liệu PDF
-      using (Document document = new Document(new Rectangle(pageWidth, pageHeight)))
-      {
-        // Tạo một PdfWriter để ghi tài liệu vào một tệp
-        using (FileStream fileStream = new FileStream(pathReport, FileMode.Create))
-        {
-          using (PdfWriter writer = PdfWriter.GetInstance(document, fileStream))
-          {
-            // Mở Document để bắt đầu ghi
-            document.Open();
-            int tageStart = 0;
-            for (; tageStart < numberTag; tageStart++)
-            {
-              tabControl1.SelectedIndex = tageStart;
-              // Chụp ảnh của TableLayoutPanel
-              //UcReport userControl = (UserControl)tabControl1.TabIndex[2];
-              TabPage tabPage = tabControl1.TabPages[tageStart];
-              Bitmap bitmapN = RenderControlToBitmap(tabPage);
+    //  int numberTag = tabControl1.TabCount;
+    //  // Tạo một tài liệu PDF
+    //  using (Document document = new Document(new Rectangle(pageWidth, pageHeight)))
+    //  {
+    //    // Tạo một PdfWriter để ghi tài liệu vào một tệp
+    //    using (FileStream fileStream = new FileStream(pathReport, FileMode.Create))
+    //    {
+    //      using (PdfWriter writer = PdfWriter.GetInstance(document, fileStream))
+    //      {
+    //        // Mở Document để bắt đầu ghi
+    //        document.Open();
+    //        int tageStart = 0;
+    //        for (; tageStart < numberTag; tageStart++)
+    //        {
+    //          tabControl1.SelectedIndex = tageStart;
+    //          // Chụp ảnh của TableLayoutPanel
+    //          //UcReport userControl = (UserControl)tabControl1.TabIndex[2];
+    //          TabPage tabPage = tabControl1.TabPages[tageStart];
+    //          Bitmap bitmapN = RenderControlToBitmap(tabPage);
 
-              // Tạo đối tượng Image từ Bitmap
-              iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(bitmapN, System.Drawing.Imaging.ImageFormat.Bmp);
-              image.ScaleAbsolute(PageSize.A4.Height, PageSize.A4.Width);
-              image.SetAbsolutePosition(0, 0);
+    //          // Tạo đối tượng Image từ Bitmap
+    //          iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(bitmapN, System.Drawing.Imaging.ImageFormat.Bmp);
+    //          image.ScaleAbsolute(PageSize.A4.Height, PageSize.A4.Width);
+    //          image.SetAbsolutePosition(0, 0);
 
-              // Vẽ ảnh lên trang PDF
-              document.NewPage();
-              document.Add(image);
-            }
+    //          // Vẽ ảnh lên trang PDF
+    //          document.NewPage();
+    //          document.Add(image);
+    //        }
 
-            document.Close();
-          }
-        }
-      }
-    }
+    //        document.Close();
+    //      }
+    //    }
+    //  }
+    //}
 
 
-    private void btnExportPdf_Click(object sender, EventArgs e)
-    {
-      string path = "";
-      using (var saveFD = new SaveFileDialog())
-      {
-        saveFD.Filter = "Excel|*.xlsx|All files|*.*";
-        saveFD.Title = "Save report to excel file";
-        saveFD.FileName = $"Báo cáo tổng hợp  {DateTime.Now.ToString("dd_MM_yyyy")}  At {DateTime.Now.ToString("HH_mm")}.pdf";
 
-        DialogResult dialogResult = saveFD.ShowDialog();
-        if (dialogResult == DialogResult.OK) path = saveFD.FileName; //lay duong dan luu file
-        else return; //huy report neu chon cancel
-      }
-
-      this.lbTitleHome.Visible = true;
-      this.tablelayoutFilter.Visible = false;
-
-      ExportToPdf(path);
-      tabControl1.SelectedIndex = 0;
-
-      this.lbTitleHome.Visible = false;
-      this.tablelayoutFilter.Visible = true;
-    }
 
     private void btnExxportPdfByWeek_Click(object sender, EventArgs e)
     {

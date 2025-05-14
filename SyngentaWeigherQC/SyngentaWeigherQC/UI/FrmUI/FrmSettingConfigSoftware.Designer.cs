@@ -34,17 +34,18 @@
       this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
       this.label1 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
-      this.btnSave = new CustomControls.RJControls.RJButton();
       this.txtIp = new CustomControls.RJControls.RJTextBox();
       this.txtPort = new CustomControls.RJControls.RJTextBox();
+      this.btnSave = new CustomControls.RJControls.RJButton();
       this.label2 = new System.Windows.Forms.Label();
-      this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
       this.label5 = new System.Windows.Forms.Label();
       this.txtNameStation = new CustomControls.RJControls.RJTextBox();
       this.btnSaveStationName = new CustomControls.RJControls.RJButton();
       this.label6 = new System.Windows.Forms.Label();
+      this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
+      this.elipseControl2 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.tableLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel4.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
@@ -73,7 +74,7 @@
       this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(55)))));
+      this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
       this.tableLayoutPanel4.ColumnCount = 3;
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -170,28 +171,6 @@
       this.label3.Text = "IP:";
       this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // btnSave
-      // 
-      this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-      this.btnSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-      this.btnSave.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSave.BorderRadius = 5;
-      this.btnSave.BorderSize = 0;
-      this.btnSave.FlatAppearance.BorderSize = 0;
-      this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(535, 12);
-      this.btnSave.Margin = new System.Windows.Forms.Padding(5, 3, 10, 3);
-      this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(146, 39);
-      this.btnSave.TabIndex = 2;
-      this.btnSave.Text = "Lưu thay đổi";
-      this.btnSave.TextColor = System.Drawing.Color.White;
-      this.btnSave.UseVisualStyleBackColor = false;
-      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-      // 
       // txtIp
       // 
       this.txtIp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -238,6 +217,28 @@
       this.txtPort.Texts = "";
       this.txtPort.UnderlinedStyle = false;
       // 
+      // btnSave
+      // 
+      this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+      this.btnSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+      this.btnSave.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSave.BorderRadius = 5;
+      this.btnSave.BorderSize = 0;
+      this.btnSave.FlatAppearance.BorderSize = 0;
+      this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSave.ForeColor = System.Drawing.Color.White;
+      this.btnSave.Location = new System.Drawing.Point(535, 12);
+      this.btnSave.Margin = new System.Windows.Forms.Padding(5, 3, 10, 3);
+      this.btnSave.Name = "btnSave";
+      this.btnSave.Size = new System.Drawing.Size(146, 40);
+      this.btnSave.TabIndex = 2;
+      this.btnSave.Text = "Lưu thay đổi";
+      this.btnSave.TextColor = System.Drawing.Color.White;
+      this.btnSave.UseVisualStyleBackColor = false;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+      // 
       // label2
       // 
       this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -247,17 +248,13 @@
       this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.ForeColor = System.Drawing.Color.White;
-      this.label2.Location = new System.Drawing.Point(3, 0);
+      this.label2.Location = new System.Drawing.Point(0, 0);
+      this.label2.Margin = new System.Windows.Forms.Padding(0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(1299, 50);
+      this.label2.Size = new System.Drawing.Size(1305, 50);
       this.label2.TabIndex = 0;
       this.label2.Text = "Cài đặt truyền thông cân";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // elipseControl1
-      // 
-      this.elipseControl1.CornerRadius = 20;
-      this.elipseControl1.TargetControl = this.tableLayoutPanel3;
       // 
       // tableLayoutPanel1
       // 
@@ -342,8 +339,8 @@
       // btnSaveStationName
       // 
       this.btnSaveStationName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnSaveStationName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-      this.btnSaveStationName.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+      this.btnSaveStationName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+      this.btnSaveStationName.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
       this.btnSaveStationName.BorderColor = System.Drawing.Color.PaleVioletRed;
       this.btnSaveStationName.BorderRadius = 5;
       this.btnSaveStationName.BorderSize = 0;
@@ -354,7 +351,7 @@
       this.btnSaveStationName.Location = new System.Drawing.Point(535, 12);
       this.btnSaveStationName.Margin = new System.Windows.Forms.Padding(5, 3, 10, 3);
       this.btnSaveStationName.Name = "btnSaveStationName";
-      this.btnSaveStationName.Size = new System.Drawing.Size(146, 39);
+      this.btnSaveStationName.Size = new System.Drawing.Size(146, 40);
       this.btnSaveStationName.TabIndex = 2;
       this.btnSaveStationName.Text = "Lưu thay đổi";
       this.btnSaveStationName.TextColor = System.Drawing.Color.White;
@@ -370,12 +367,23 @@
       this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
       this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label6.ForeColor = System.Drawing.Color.White;
-      this.label6.Location = new System.Drawing.Point(3, 0);
+      this.label6.Location = new System.Drawing.Point(0, 0);
+      this.label6.Margin = new System.Windows.Forms.Padding(0);
       this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(1299, 50);
+      this.label6.Size = new System.Drawing.Size(1305, 50);
       this.label6.TabIndex = 0;
       this.label6.Text = "Thông tin";
       this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // elipseControl1
+      // 
+      this.elipseControl1.CornerRadius = 20;
+      this.elipseControl1.TargetControl = this.tableLayoutPanel3;
+      // 
+      // elipseControl2
+      // 
+      this.elipseControl2.CornerRadius = 20;
+      this.elipseControl2.TargetControl = this.tableLayoutPanel1;
       // 
       // FrmSettingConfigSoftware
       // 
@@ -419,5 +427,6 @@
     private CustomControls.RJControls.RJTextBox txtNameStation;
     private CustomControls.RJControls.RJButton btnSaveStationName;
     private System.Windows.Forms.Label label6;
+    private ItemControls.ElipseControl elipseControl2;
   }
 }

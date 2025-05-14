@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using static System.Net.Mime.MediaTypeNames;
 using Color = System.Drawing.Color;
 using Production = SyngentaWeigherQC.Models.Production;

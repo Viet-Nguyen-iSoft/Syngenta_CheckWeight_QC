@@ -34,7 +34,7 @@
       // flowLayoutPanelLine
       // 
       this.flowLayoutPanelLine.AutoScroll = true;
-      this.flowLayoutPanelLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(55)))));
+      this.flowLayoutPanelLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
       this.flowLayoutPanelLine.Dock = System.Windows.Forms.DockStyle.Fill;
       this.flowLayoutPanelLine.Location = new System.Drawing.Point(0, 0);
       this.flowLayoutPanelLine.Name = "flowLayoutPanelLine";

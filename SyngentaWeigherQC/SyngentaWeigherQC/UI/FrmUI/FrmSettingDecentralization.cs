@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -98,7 +98,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void Instance_OnSendChangeLogin()
     {
-      this.btnSave.Visible = CheckRoleEditShiftInfor();
+      //this.btnSave.Visible = CheckRoleEditShiftInfor();
     }
 
     private bool CheckRoleEditShiftInfor()

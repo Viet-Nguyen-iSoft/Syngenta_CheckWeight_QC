@@ -52,6 +52,7 @@ namespace SyngentaWeigherQC.Responsitory
             .Where(x => x.CreatedAt.Date >= from.Date &&
                         x.CreatedAt.Date <= to.Date
                         )
+            .OrderBy(x => x.Id)
             .ToListAsync();
         }
         else
@@ -67,6 +68,7 @@ namespace SyngentaWeigherQC.Responsitory
                         x.CreatedAt.Date <= to.Date &&
                         x.ShiftId == shiftId
                         )
+            .OrderBy(x => x.Id)
             .ToListAsync();
         }  
       }
@@ -85,6 +87,7 @@ namespace SyngentaWeigherQC.Responsitory
                       x.CreatedAt.Date <= to.Date &&
                       x.InforLineId == LineId
                       )
+          .OrderBy(x => x.Id)
           .ToListAsync();
         }
         else
@@ -101,6 +104,7 @@ namespace SyngentaWeigherQC.Responsitory
                       x.ShiftId == shiftId && 
                       x.InforLineId == LineId
                       )
+          .OrderBy(x => x.Id)
           .ToListAsync();
         }  
       }  

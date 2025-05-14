@@ -11,3 +11,8 @@ CREATE TABLE IF NOT EXISTS public."Roles" (
     "CreatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Cột CreatedAt, kiểu TIMESTAMP (mặc định là thời gian hiện tại)
     "UpdatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP   -- Cột UpdatedAt, kiểu TIMESTAMP (mặc định là thời gian hiện tại)
 );
+
+
+
+ALTER TABLE "DatalogWeights"
+ADD COLUMN "eModeTare" integer;

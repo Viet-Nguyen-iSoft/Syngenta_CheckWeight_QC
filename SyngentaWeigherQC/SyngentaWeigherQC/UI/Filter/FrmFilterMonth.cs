@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -44,20 +44,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         checkBox.CheckedChanged += AllCheckBox_CheckedChanged;
         flowLayoutPanel1.Controls.Add(checkBox);
       }
-
-
-      //foreach (System.Windows.Forms.Control control in flowLayoutPanel1.Controls)
-      //{
-      //  if (control is CheckBox checkBox)
-      //  {
-      //    if ((int)checkBox .Tag == DateTime.Now.Month)
-      //    {
-      //      checkBox.Checked = true;
-      //      break;
-      //    }
-      //  }
-      //}
-
     }
 
     private List<int> months = new List<int>();

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 using Production = SyngentaWeigherQC.Models.Production;
 
@@ -82,6 +82,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
       _inforLine.eStatusConnectWeight = eStatusConnectWeight.Connected;
       this.panelWeigher1.SetSatutusConnectSerialWeigher(_inforLine.eStatusConnectWeight);
 
+      //Set kiểu Tare
+      TypeTare(_inforLine);
+
+
       SetInforLine();
 
       _listDatalogByLine = AppCore.Ins._listDatalogWeight?.Where(x => x.InforLineId == this._inforLine.Id).ToList();
@@ -109,6 +113,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.cbProductions.SelectedIndexChanged += CbProductions_SelectedIndexChanged;
       this.cbShiftLeader.SelectedIndexChanged += CbShiftLeader_SelectedIndexChanged;
       this.cbShiftTypes.SelectedIndexChanged += CbShiftTypes_SelectedIndexChanged;
+      this.cbbTypeTare.SelectedIndexChanged += CbbTypeTare_SelectedIndexChanged;
 
       AppCore.Ins.OnSendStatusConnectWeight += Ins_OnSendStatusConnectWeight;
       AppCore.Ins.OnSendValueDatalogWeight += Ins_OnSendValueDatalogWeight;
@@ -117,6 +122,61 @@ namespace SyngentaWeigherQC.UI.FrmUI
       FrmOverView.Instance.OnSendChooseProduct += Instance_OnSendChooseProduct;
       FrmOverView.Instance.OnSendChooseShiftLeader += Instance_OnSendChooseShiftLeader;
       FrmOverView.Instance.OnSendChooseTypeShift += Instance_OnSendChooseTypeShift;
+    }
+
+    private void CbbTypeTare_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      FrmConfirm frmConfirm = new FrmConfirm($"Xác nhận thay đổi Tare {cbbTypeTare.SelectedItem} ?", eMsgType.Question);
+      frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+      frmConfirm.ShowDialog();
+    }
+
+    private async void FrmConfirm_OnSendOKClicked()
+    {
+      try
+      {
+        if (cbbTypeTare.SelectedIndex >= 0)
+        {
+          eModeTare eModeTare = (eModeTare)cbbTypeTare.SelectedIndex;
+          _inforLine.eModeTare = eModeTare;
+          bool success = await AppCore.Ins.Update(_inforLine);
+          if (success)
+          {
+            this.panelWeigher1.SetInforTare(this._inforLine);
+            FrmOverView.Instance.FindAndUpdateTypeTare(this._inforLine);
+          }
+          else
+          {
+            new FrmNotification().ShowMessage("Thay đổi thất bại !", eMsgType.Warning);
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex);
+      }
+
+    }
+
+    public void TypeTare(InforLine inforLine)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          TypeTare(inforLine);
+        }));
+        return;
+      }
+
+      if (inforLine != null)
+      {
+        this.cbbTypeTare.SelectedIndex = (int)inforLine.eModeTare;
+      }
+      else
+      {
+        this.cbbTypeTare.SelectedIndex = -1;
+      }
     }
 
     private void Instance_OnSendChooseTypeShift(InforLine inforLine)
@@ -157,11 +217,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       SetShiftType();
 
       this.lbLineName.Text = _inforLine?.Name;
-      this.panelWeigher1.SetInforProduction(this._inforLine.ProductionCurrent, _inforLine.eModeTare);
+      this.panelWeigher1.SetInforProduct(this._inforLine.ProductionCurrent, _inforLine.eModeTare);
       this.panelWeigher1.SetSatutusConnectSerialWeigher(_inforLine.eStatusConnectWeight);
-
-      //Kiểm tra có yêu cầu Tare
-      this.lbRequestTare.Visible = _inforLine.RequestTare;
     }
 
     private void SetProduction()
@@ -303,8 +360,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         //Clear bản dữ liệu cũ
         _listDatalogShiftCurrrent = new List<DatalogWeight>();
         LoadUiWhenAddData();
-
-        ShowUiRequestTare(_inforLine.RequestTare);
       }
       catch (Exception ex)
       {
@@ -313,20 +368,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-    private void ShowUiRequestTare(bool request)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          ShowUiRequestTare(request);
-        }));
-        return;
-      }
-
-      //Kiểm tra có yêu cầu Tare
-      this.lbRequestTare.Visible = request;
-    }
 
     private void FrmInformation_OnSendCancelClicked(object sender)
     {
@@ -370,9 +411,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       //Clear bản dữ liệu cũ
       _listDatalogShiftCurrrent = new List<DatalogWeight>();
       LoadUiWhenAddData();
-
-      //Kiểm tra có yêu cầu Tare
-      this.lbRequestTare.Visible = _inforLine.RequestTare;
     }
 
     private void LoadSumaryByShift(List<DatalogWeight> listDatalogByLine)
@@ -549,51 +587,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       this.panelWeigher1.SetSatutusConnectSerialWeigher(eStatusConnectWeight);
     }
-
-    private void btnTare_Click(object sender, EventArgs e)
-    {
-      AppCore.Ins.eStatusModeWeight = eStatusModeWeight.TareForLine;
-
-      FrmTare frmTare = new FrmTare(_inforLine);
-      frmTare.OnSendChangeTypeTare += FrmTare_OnSendChangeTypeTare;
-      frmTare.OnSendCloseFrmTare += FrmTare_OnSendCloseFrmTare;
-      frmTare.OnSendConfirmValueTare += FrmTare_OnSendConfirmValueTare;
-      frmTare.ShowDialog();
-    }
-
-    private void FrmTare_OnSendConfirmValueTare(DatalogTare datalogTare)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          FrmTare_OnSendConfirmValueTare(datalogTare);
-        }));
-        return;
-      }
-
-      panelWeigher1.SetValueTare(datalogTare);
-      //Kiểm tra có yêu cầu Tare
-      this.lbRequestTare.Visible = _inforLine.RequestTare;
-
-      //Cập nhật Tare ID
-      FrmOverView.Instance.UpdateTareId(_inforLine, datalogTare);
-    }
-
-    private void FrmTare_OnSendCloseFrmTare()
-    {
-      AppCore.Ins.eStatusModeWeight = eStatusModeWeight.WeightForLine;
-    }
-
-    private async void FrmTare_OnSendChangeTypeTare()
-    {
-      await AppCore.Ins.Update(_inforLine);
-      panelWeigher1.SetInforProduction(this._inforLine.ProductionCurrent, _inforLine.eModeTare);
-
-      FrmOverView.Instance.FindAndUpdateTypeTare(_inforLine);
-    }
-
-
 
     private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
     {

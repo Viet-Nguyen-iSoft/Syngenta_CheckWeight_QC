@@ -9,7 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -143,7 +143,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void SettingUC_OnSendChooseLineWeight(InforLine inforLine)
     {
       FormMain.Instance.OpenPageWeight(inforLine);
-      AppCore.Ins.eStatusModeWeight = eNum.eUI.eStatusModeWeight.WeightForLine;
+      AppCore.Ins.eStatusModeWeight = eNum.enumSoftware.eStatusModeWeight.WeightForLine;
       AppCore.Ins.inforLineOperation = inforLine;
     }
 
@@ -250,6 +250,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
         }
       }
     }
+
+    
 
   }
 }

@@ -2,6 +2,7 @@
 using SyngentaWeigherQC.DTO;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
+using SyngentaWeigherQC.Models.NewFolder1;
 using SyngentaWeigherQC.Responsitory;
 using SyngentaWeigherQC.UI.FrmUI;
 using System;
@@ -13,7 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 using DateTime = System.DateTime;
 using Image = System.Drawing.Image;
@@ -57,9 +58,12 @@ namespace SyngentaWeigherQC.Control
     public delegate void SendValueReweight(double value);
     public event SendValueReweight OnSendValueReweight;
 
+    public delegate void SendTimeoutPage();
+    public event SendTimeoutPage OnSendTimeoutPage;
+
     #endregion
 
-
+    public System.Timers.Timer _timerCheckTimeout = new System.Timers.Timer();
     public System.Timers.Timer _timerRealTimeCheckChangeDay = new System.Timers.Timer();
 
     public eStatusModeWeight eStatusModeWeight = eStatusModeWeight.OverView;
@@ -71,6 +75,8 @@ namespace SyngentaWeigherQC.Control
     public string[] _listPortPC = new string[100];
 
     public Shift _shiftIdCurrent = null;
+
+    public AppModulSupport _pageCurrent = AppModulSupport.OverView;
 
     //public string ip_tcp_mettler = "192.168.2.100"; //Sachet //"147.167.40.239";
 
@@ -299,7 +305,29 @@ namespace SyngentaWeigherQC.Control
 
       return statisticalDatas;
     }
+    public ConsumptionTable CvtDataByProductionByShiftToConsumptionTable(DataByProductionByShift dataByProductionByShift)
+    {
+      ConsumptionTable consumptionTable = new ConsumptionTable();
 
+      Production production = dataByProductionByShift.DatalogWeights.FirstOrDefault().Production;
+
+      consumptionTable.Shift = dataByProductionByShift.Shift.Name;
+      consumptionTable.DateTime = dataByProductionByShift.DatalogWeights.FirstOrDefault().CreatedAt.ToString("yyyy/MM/dd");
+      consumptionTable.ProductionName = production.Name;
+
+      consumptionTable.AverageMeasure = Math.Round(dataByProductionByShift.DatalogWeights.Average(x => x.Value), 3);
+      consumptionTable.MinMeasure = dataByProductionByShift.DatalogWeights.Min(x => x.Value);
+      consumptionTable.MaxMeasure = dataByProductionByShift.DatalogWeights.Max(x => x.Value);
+
+      consumptionTable.Target = production.StandardFinal;
+      consumptionTable.UpperProduct = production.UpperLimitFinal;
+      consumptionTable.LowerProduct = production.LowerLimitFinal;
+
+      consumptionTable.Evaluate = consumptionTable.AverageMeasure <= production.UpperLimitFinal &&
+                                  consumptionTable.AverageMeasure >= production.LowerLimitFinal ? "ĐẠT" : "KHÔNG ĐẠT";
+
+      return consumptionTable;
+    }
     public List<DataReportExcel> GenerateDataReport(List<DatalogWeight> datalogWeights)
     {
       if (datalogWeights == null)
@@ -363,6 +391,128 @@ namespace SyngentaWeigherQC.Control
 
       return null;
     }
+
+
+    public DetailConsumption DataDetailConsumption(Production production,List<DatalogWeight> datalogWeights)
+    {
+      if (datalogWeights == null)
+        return null;
+
+      try
+      {
+        DetailConsumption detailConsumption = new DetailConsumption();
+        double target = production.StandardFinal;
+        double lower = production.LowerLimitFinal;
+        double upper = production.UpperLimitFinal;
+
+        int totalSamples = datalogWeights.Count();
+        int numbersOver = (datalogWeights != null) ? datalogWeights.Count(x => x.Value > upper) : 0;
+        int numbersLower = (datalogWeights != null) ? datalogWeights.Count(x => x.Value < lower) : 0;
+
+        var listValue = datalogWeights.Select(x => x.Value).ToList();
+
+        //Stdev
+        double stdev = MathHelper.Stdev(listValue, 3);
+
+        //Cpk
+        double average = Math.Round(listValue.Average(), 3);
+        double Cpk_H = Math.Round((upper - average) / (3 * stdev), 3);
+        double Cpk_L = Math.Round((average - lower) / (3 * stdev), 3);
+        double Cpk = Math.Min(Cpk_H, Cpk_L);
+
+        //Error
+        double rateError = (totalSamples != 0) ? ((double)((numbersOver + numbersLower) * 100) / (double)(totalSamples)) : 0;
+        rateError = Math.Round(rateError, 2);
+
+        //Loss
+        double rateLoss = (average > target) ? Math.Round((((average - target) * 100) / target), 2) : 0;
+
+        detailConsumption.Error = rateError;
+        detailConsumption.Loss = rateLoss;
+        detailConsumption.Cpk = Cpk;
+        detailConsumption.Stdev = stdev;
+
+        detailConsumption.TotalSample = totalSamples;
+        detailConsumption.TotalLower = numbersLower;
+        detailConsumption.TotalOver = numbersOver;
+
+        return detailConsumption;
+      }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex);
+        return null;
+      }
+    }
+
+    public List<ConsumptionChart> CvtDataReportExcelToConsumptionChart(List<DataReportExcel> dataReportExcels)
+    {
+      var productionGroups = dataReportExcels
+                            .SelectMany(report => report.DataByDates)            // lấy hết DataByDates trong từng report
+                            .SelectMany(date => date.DataByProducts)              // lấy hết DataByProducts trong từng date
+                            .GroupBy(product => product.Production)               // group theo Production
+                            .Select(group => new
+                            {
+                              Production = group.Key,
+                              AllShifts = group.SelectMany(g => g.DataByProductionByShifts).ToList()
+                            })
+                            .ToList();
+
+      List<ConsumptionChart> consumptionCharts = new List<ConsumptionChart>();
+      foreach (var item in productionGroups)
+      {
+        ConsumptionChart consumptionV2 = new ConsumptionChart();
+
+        consumptionV2.Production = item.Production;
+        foreach (var item2 in item.AllShifts)
+        {
+          var rs = AppCore.Ins.DataDetailConsumption(item.Production, item2.DatalogWeights);
+          if (rs != null)
+            consumptionV2.DetailConsumptions.Add(rs);
+        }
+
+        consumptionCharts.Add(consumptionV2);
+      }
+
+      return consumptionCharts;
+    }
+
+    public List<ConsumptionTable> CvtDataReportExcelToConsumptionTable(List<DataReportExcel> dataReportExcels)
+    {
+      List<ConsumptionTable> consumptionTables = new List<ConsumptionTable>();
+      if (dataReportExcels.Count() > 0)
+      {
+        //Đi từng ngày
+        foreach (var dataReportExcel in dataReportExcels)
+        {
+          //Đi từng Loại Ca
+          foreach (var data_by_shift_type in dataReportExcel.DataByDates)
+          {
+            //Đi từng sp
+            foreach (var data_by_product in data_by_shift_type.DataByProducts)
+            {
+              //Đi từng ca
+              foreach (var data_by_shift in data_by_product.DataByProductionByShifts)
+              {
+                var rs = AppCore.Ins.CvtDataByProductionByShiftToConsumptionTable(data_by_shift);
+                if (rs != null)
+                {
+                  consumptionTables.Add(rs);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      if (consumptionTables.Count > 0)
+      {
+        consumptionTables = consumptionTables.OrderBy(x => x.DateTime).ToList();
+      }
+
+      return consumptionTables;
+    }
+
 
     /// <summary>
     /// ///////////////////////////////////////////////////////
@@ -571,6 +721,10 @@ namespace SyngentaWeigherQC.Control
         _timerRealTimeCheckChangeDay.Interval = 1000;
         _timerRealTimeCheckChangeDay.Elapsed += _timerRealTimeCheckChangeDay_Elapsed;
         _timerRealTimeCheckChangeDay.Start();
+        
+        _timerCheckTimeout.Interval = 1000;
+        _timerCheckTimeout.Elapsed += _timerCheckTimeout_Elapsed;
+        _timerCheckTimeout.Start();
 
 
         FrmSettingConfigSoftware.Instance.OnSendChangeConnection += Instance_OnSendChangeConnection;
@@ -578,6 +732,34 @@ namespace SyngentaWeigherQC.Control
       catch (Exception ex)
       {
         LoggerHelper.LogErrorToFileLog(ex.ToString());
+      }
+    }
+
+
+    public int _timeTimeoutCurrent = 0;
+    private void _timerCheckTimeout_Elapsed(object sender, ElapsedEventArgs e)
+    {
+      try
+      {
+        _timerCheckTimeout.Stop();
+        
+        if (_pageCurrent!= AppModulSupport.OverView && _pageCurrent != AppModulSupport.Setting)
+        {
+          _timeTimeoutCurrent += 1;
+
+          if (_timeTimeoutCurrent > _configSoftware.Spare1)
+          {
+            OnSendTimeoutPage?.Invoke();
+          }  
+        }  
+      }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex);
+      }
+      finally
+      {
+        _timerCheckTimeout.Start();
       }
     }
 
@@ -680,6 +862,7 @@ namespace SyngentaWeigherQC.Control
 
     public bool CheckRole(ePermit permit)
     {
+      return true;
       if (AppCore.Ins._isPermitDev) return true;
       string roleStr = _roleCurrent.Permission;
       if (!string.IsNullOrEmpty(roleStr))

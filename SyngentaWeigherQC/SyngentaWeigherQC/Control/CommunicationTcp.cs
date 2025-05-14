@@ -7,7 +7,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Timers;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.Control
 {
@@ -132,6 +132,9 @@ namespace SyngentaWeigherQC.Control
           return;
         }
 
+        //Clear biến time out
+        AppCore.Ins._timeTimeoutCurrent = 0;
+
         _shiftIdCurrent = GetShiftCode(inforLineOperation);
 
         if (_shiftIdCurrent == null)
@@ -168,11 +171,11 @@ namespace SyngentaWeigherQC.Control
 
             if (eStatusModeWeight == eStatusModeWeight.WeightForLine)
             {
-              if (inforLineOperation.RequestTare == true)
-              {
-                OnSendWarning?.Invoke(inforLineOperation, "Vui lòng Tare sản phẩm trước khi lấy mẫu !", eMsgType.Warning);
-                return;
-              }
+              //if (inforLineOperation.RequestTare == true)
+              //{
+              //  OnSendWarning?.Invoke(inforLineOperation, "Vui lòng Tare sản phẩm trước khi lấy mẫu !", eMsgType.Warning);
+              //  return;
+              //}
               //Save DB
               DatalogWeight datalogWeight = new DatalogWeight();
               datalogWeight.Value = result.Weight;
@@ -182,21 +185,19 @@ namespace SyngentaWeigherQC.Control
               datalogWeight.InforLineId = inforLineOperation?.Id;
 
               datalogWeight.ProductionId = inforLineOperation.ProductionCurrent?.Id;
-
-              datalogWeight.DatalogTareId = inforLineOperation?.DatalogTareCurrent?.Id;
-
               datalogWeight.ShiftLeaderId = inforLineOperation?.ShiftLeaderId;
-
               datalogWeight.ShiftTypeId = inforLineOperation?.ShiftTypesId;
+
+              datalogWeight.eModeTare = inforLineOperation.eModeTare;
 
               DatalogWeight datalogWeightAdd = await Add(datalogWeight);
 
               //Gửi đi update Home
               datalogWeight.InforLine = inforLineOperation;
               datalogWeight.Production = inforLineOperation.ProductionCurrent;
-              datalogWeight.DatalogTare = inforLineOperation?.DatalogTareCurrent;
               datalogWeight.ShiftLeaderId = inforLineOperation?.ShiftLeaderId;
               datalogWeight.Shift = _shiftIdCurrent;
+
               OnSendValueDatalogWeight?.Invoke(inforLineOperation, datalogWeightAdd);
             }
             else if (eStatusModeWeight == eStatusModeWeight.TareForLine)
@@ -226,8 +227,7 @@ namespace SyngentaWeigherQC.Control
       }
       OnSendStatusConnectWeight?.Invoke(eStatusConnectWeight);
     }
-
-    
     #endregion
+
   }
 }

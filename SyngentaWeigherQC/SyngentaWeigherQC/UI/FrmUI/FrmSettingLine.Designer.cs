@@ -34,8 +34,6 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.lbTotal = new System.Windows.Forms.Label();
       this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.col7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +41,8 @@
       this.col4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.col5 = new System.Windows.Forms.DataGridViewImageColumn();
       this.col6 = new System.Windows.Forms.DataGridViewButtonColumn();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.lbTotal = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
@@ -107,40 +107,6 @@
       this.dataGridView1.Size = new System.Drawing.Size(1078, 605);
       this.dataGridView1.TabIndex = 2;
       // 
-      // tableLayoutPanel1
-      // 
-      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(19)))), ((int)(((byte)(52)))));
-      this.tableLayoutPanel1.ColumnCount = 1;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Controls.Add(this.lbTotal, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
-      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(1084, 661);
-      this.tableLayoutPanel1.TabIndex = 3;
-      // 
-      // lbTotal
-      // 
-      this.lbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbTotal.AutoSize = true;
-      this.lbTotal.BackColor = System.Drawing.Color.Transparent;
-      this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbTotal.ForeColor = System.Drawing.Color.White;
-      this.lbTotal.Location = new System.Drawing.Point(0, 0);
-      this.lbTotal.Margin = new System.Windows.Forms.Padding(0);
-      this.lbTotal.Name = "lbTotal";
-      this.lbTotal.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-      this.lbTotal.Size = new System.Drawing.Size(1084, 50);
-      this.lbTotal.TabIndex = 3;
-      this.lbTotal.Text = "00/00";
-      this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      // 
       // col1
       // 
       this.col1.FillWeight = 20F;
@@ -196,6 +162,40 @@
       this.col6.ReadOnly = true;
       this.col6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.col6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+      // 
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
+      this.tableLayoutPanel1.ColumnCount = 1;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Controls.Add(this.lbTotal, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 2;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(1084, 661);
+      this.tableLayoutPanel1.TabIndex = 3;
+      // 
+      // lbTotal
+      // 
+      this.lbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lbTotal.AutoSize = true;
+      this.lbTotal.BackColor = System.Drawing.Color.Transparent;
+      this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbTotal.ForeColor = System.Drawing.Color.White;
+      this.lbTotal.Location = new System.Drawing.Point(0, 0);
+      this.lbTotal.Margin = new System.Windows.Forms.Padding(0);
+      this.lbTotal.Name = "lbTotal";
+      this.lbTotal.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+      this.lbTotal.Size = new System.Drawing.Size(1084, 50);
+      this.lbTotal.TabIndex = 3;
+      this.lbTotal.Text = "00/00";
+      this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
       // FrmSettingLine
       // 

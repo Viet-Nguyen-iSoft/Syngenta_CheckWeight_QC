@@ -1,18 +1,9 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using Org.BouncyCastle.Asn1.Ocsp;
-using SynCheckWeigherLoggerApp.SettingsViews;
+﻿using SynCheckWeigherLoggerApp.SettingsViews;
 using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 
 namespace SyngentaWeigherQC.UI.FrmUI
@@ -28,6 +19,21 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.lbStation.Text = $"PHẦN MỀM THU THẬP DỮ LIỆU CÂN  -  {AppCore.Ins._configSoftware?.NameStation}";
       this.Shown += FormMain_Shown;
       FrmSettingConfigSoftware.Instance.OnSendChangeNameStation += Instance_OnSendChangeNameStation;
+      AppCore.Ins.OnSendTimeoutPage += Ins_OnSendTimeoutPage;
+    }
+
+    private void Ins_OnSendTimeoutPage()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          Ins_OnSendTimeoutPage();
+        }));
+        return;
+      }
+
+      this.btnHome.PerformClick();
     }
 
     private void Instance_OnSendChangeNameStation(ConfigSoftware configSoftware)
@@ -70,6 +76,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private InforLine _InforLine;
     public void ChangePage(AppModulSupport button, string name = "name")
     {
+      AppCore.Ins._pageCurrent = button;
+      AppCore.Ins._timeTimeoutCurrent = 0;
+
       this.btnHome.ForeColor = NoSelect;
       this.btnSynthetic.ForeColor = NoSelect;
       this.btnReport.ForeColor = NoSelect;
@@ -85,10 +94,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
           this.btnHome.ForeColor = Select;
           OpenChildForm(AppModulSupport.Home, FrmHome.GetInstance(_InforLine));
           break;
-        //case AppModulSupport.Synthetic:
-        //  this.btnHistorical.ForeColor = Select;
-        //  OpenChildForm(AppModulSupport.Synthetic, FrmHistorical.Instance);
-        //  break;
+        case AppModulSupport.Synthetic:
+          this.btnSynthetic.ForeColor = Select;
+          OpenChildForm(AppModulSupport.Synthetic, FrmSynthetic.Instance);
+          break;
         case AppModulSupport.ReportExcel:
           this.btnReport.ForeColor = Select;
           OpenChildForm(AppModulSupport.ReportExcel, FrmExcelExport.Instance);
@@ -138,15 +147,17 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnHome_Click(object sender, EventArgs e)
     {
-      AppCore.Ins.eStatusModeWeight = eNum.eUI.eStatusModeWeight.OverView;
+      AppCore.Ins.eStatusModeWeight = eNum.enumSoftware.eStatusModeWeight.OverView;
       AppCore.Ins.inforLineOperation = null;
       ChangePage(AppModulSupport.OverView);
     }
 
     private void btnSynthetic_Click(object sender, EventArgs e)
     {
-      new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
-      return;
+      //new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
+      //return;
+
+      ChangePage(AppModulSupport.Synthetic);
     }
 
     private void btnReport_Click(object sender, EventArgs e)
@@ -168,8 +179,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void picCloseApp_Click(object sender, EventArgs e)
     {
-      //AppCore.Ins.ReportAutoDailys(DateTime.Now.AddDays(-1));
-      //return;
       FrmConfirm frmConfirm = new FrmConfirm($"Xác nhận tắt phần mềm ?", eMsgType.Question);
       frmConfirm.OnSendOKClicked += FrmConfirmCloseApp_OnSendOKClicked;
       frmConfirm.ShowDialog();
@@ -179,5 +188,65 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       this.Close();
     }
+
+    private void lbLogin_Click(object sender, EventArgs e)
+    {
+      if (this.lbAccount.Text == "Đăng nhập")
+      {
+        FrmLogIn frmLogIn = new FrmLogIn(AppCore.Ins._listRoles);
+        frmLogIn.OnSendLogInOK += FrmLogIn_OnSendLogInOK;
+        frmLogIn.ShowDialog();
+      }
+      else
+      {
+        FrmConfirm frmConfirm = new FrmConfirm($"Xác nhận đăng xuất ?", eMsgType.Question);
+        frmConfirm.OnSendOKClicked += FrmConfirmLogout_OnSendOKClicked;
+        frmConfirm.ShowDialog();
+      }
+    }
+    private void picIconLogIn_Click(object sender, EventArgs e)
+    {
+      if (this.lbAccount.Text == "Đăng nhập")
+      {
+        FrmLogIn frmLogIn = new FrmLogIn(AppCore.Ins._listRoles);
+        frmLogIn.OnSendLogInOK += FrmLogIn_OnSendLogInOK;
+        frmLogIn.ShowDialog();
+      }
+      else
+      {
+        FrmConfirm frmConfirm = new FrmConfirm($"Xác nhận đăng xuất ?", eMsgType.Question);
+        frmConfirm.OnSendOKClicked += FrmConfirmLogout_OnSendOKClicked;
+        frmConfirm.ShowDialog();
+      }
+    }
+
+
+    private void FrmConfirmLogout_OnSendOKClicked()
+    {
+      SetInforAccount("Đăng nhập");
+    }
+
+
+    private void FrmLogIn_OnSendLogInOK(Roles roles)
+    {
+      SetInforAccount(roles?.Name);
+    }
+
+
+    private void SetInforAccount(string accountName)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          SetInforAccount(accountName);
+        }));
+        return;
+      }
+
+      this.lbAccount.Text = accountName;
+    }
+
+   
   }
 }

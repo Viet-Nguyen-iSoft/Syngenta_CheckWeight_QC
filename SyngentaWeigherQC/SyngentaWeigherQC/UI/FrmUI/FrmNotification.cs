@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Application = System.Windows.Forms.Application;
 
 namespace SyngentaWeigherQC.UI.FrmUI

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static SyngentaWeigherQC.eNum.eUI;
+﻿using System.ComponentModel;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.Models
 {
@@ -15,6 +10,11 @@ namespace SyngentaWeigherQC.Models
 
     [Browsable(false)]
     public bool IsChange { get; set; } = false;
+
+    [Browsable(false)]
+    public eModeTare eModeTare { get; set; }
+
+
 
     [Browsable(false)]
     public int? ProductionId { get; set; }

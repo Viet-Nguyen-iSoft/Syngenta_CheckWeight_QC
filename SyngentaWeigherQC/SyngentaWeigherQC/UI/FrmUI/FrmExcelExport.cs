@@ -1,18 +1,14 @@
-﻿using Irony.Parsing;
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.DTO;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
-using SyngentaWeigherQC.Responsitory;
-using SyngentaWeigherQC.UI.UcUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
-using static SyngentaWeigherQC.eNum.eUI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 using DateTime = System.DateTime;
 using Production = SyngentaWeigherQC.Models.Production;
@@ -114,7 +110,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       this.flowLayoutPanelProduct.Controls.Clear();
 
-      if (dataReportExcels.Count()>0)
+      if (dataReportExcels.Count() > 0)
       {
         //Đi từng ngày
         foreach (var dataReportExcel in dataReportExcels)
@@ -199,7 +195,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         }
 
 
-        Button button = (Button) sender;
+        Button button = (Button)sender;
         button.BackColor = Color.FromArgb(204, 102, 255);
 
         //Xử lý data
@@ -224,7 +220,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         ////Table
         this.dataGridView1.Rows.Clear();
-        foreach ( var item in listWeightByShift)
+        foreach (var item in listWeightByShift)
         {
           var data_table = AppCore.Ins.ConvertToDTOList(item.DatalogWeights);
           SetDataTable(data_table, production);
@@ -251,7 +247,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       ucTemplateExcel1.ClearSumary();
       eEvaluate eEvaluate = eEvaluate.None;
 
-      if (dataByProductionByShifts?.Count>0)
+      if (dataByProductionByShifts?.Count > 0)
       {
         eEvaluate = eEvaluate.Pass;
 
@@ -268,7 +264,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
             }
           }
         }
-      }  
+      }
 
       //Kết quả
       this.ucTemplateExcel1.SetResultFinal(eEvaluate);
@@ -291,7 +287,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         foreach (var item in tableDatalogDTOs)
         {
           dataGridView1.Rows.Insert(0);
-          int cnt_number_raw= item.DatalogWeights.Count();
+          int cnt_number_raw = item.DatalogWeights.Count();
 
           dataGridView1.Rows[0].Cells[_colShift].Value = item.Shift;
           dataGridView1.Rows[0].Cells[_colNo].Value = item.No;
@@ -317,7 +313,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-    private string nameFolder =  string.Empty;
+    private string nameFolder = string.Empty;
     private void btnExport_Click(object sender, EventArgs e)
     {
       try
@@ -374,8 +370,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       Process.Start("explorer.exe", nameFolder);
     }
-    
-
 
     private void Progress(int value)
     {

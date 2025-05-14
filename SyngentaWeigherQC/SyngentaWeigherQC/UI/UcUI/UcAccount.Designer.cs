@@ -71,9 +71,10 @@
       this.lbAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbAccount.ForeColor = System.Drawing.Color.White;
       this.lbAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbAccount.Location = new System.Drawing.Point(3, 0);
+      this.lbAccount.Location = new System.Drawing.Point(0, 0);
+      this.lbAccount.Margin = new System.Windows.Forms.Padding(0);
       this.lbAccount.Name = "lbAccount";
-      this.lbAccount.Size = new System.Drawing.Size(660, 40);
+      this.lbAccount.Size = new System.Drawing.Size(666, 40);
       this.lbAccount.TabIndex = 1;
       this.lbAccount.Text = "Tên tài khoản";
       this.lbAccount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
