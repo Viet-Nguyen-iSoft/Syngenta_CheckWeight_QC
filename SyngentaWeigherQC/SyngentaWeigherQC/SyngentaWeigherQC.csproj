@@ -305,8 +305,10 @@
     <Compile Include="DTO\DataReportExcel.cs" />
     <Compile Include="DTO\TableDatalogDTO.cs" />
     <Compile Include="Helper\ChartHelper.cs" />
+    <Compile Include="Helper\CvtClassDTO.cs" />
     <Compile Include="Helper\DatetimeHelper.cs" />
     <Compile Include="Helper\ExcelHelper.cs" />
+    <Compile Include="Helper\HelperImportExcel.cs" />
     <Compile Include="Helper\LoggerHelper.cs" />
     <Compile Include="Helper\eNumHelper.cs" />
     <Compile Include="Helper\MathHelper.cs" />
@@ -361,6 +363,7 @@
     <Compile Include="Responsitory\ResponsitoryProducts.cs" />
     <Compile Include="Responsitory\ResponsitoryRoles.cs" />
     <Compile Include="Responsitory\ResponsitorySamples.cs" />
+    <Compile Include="Responsitory\ResponsitoryShiftLeader.cs" />
     <Compile Include="Responsitory\ResponsitoryShifts.cs" />
     <Compile Include="Responsitory\ResponsitoryShiftTypes.cs" />
     <Compile Include="Responsitory\ResponsitoryInforLines.cs" />
@@ -384,23 +387,11 @@
     <Compile Include="UI\Filter\FrmFilterWeek.Designer.cs">
       <DependentUpon>FrmFilterWeek.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmAddProduct\FrmAddProductCup.cs">
+    <Compile Include="UI\FrmAddProduct\FrmAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmAddProduct\FrmAddProductCup.Designer.cs">
-      <DependentUpon>FrmAddProductCup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmAddProduct\FrmAddProductGN_Sachet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmAddProduct\FrmAddProductGN_Sachet.Designer.cs">
-      <DependentUpon>FrmAddProductGN_Sachet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmAddProduct\FrmAddProductKL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmAddProduct\FrmAddProductKL.Designer.cs">
-      <DependentUpon>FrmAddProductKL.cs</DependentUpon>
+    <Compile Include="UI\FrmAddProduct\FrmAddProduct.Designer.cs">
+      <DependentUpon>FrmAddProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmUI\FormMain.cs">
       <SubType>Form</SubType>
@@ -408,11 +399,11 @@
     <Compile Include="UI\FrmUI\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmAddNewUser.cs">
+    <Compile Include="UI\FrmUI\FrmAddNewShiftLeader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmAddNewUser.Designer.cs">
-      <DependentUpon>FrmAddNewUser.cs</DependentUpon>
+    <Compile Include="UI\FrmUI\FrmAddNewShiftLeader.Designer.cs">
+      <DependentUpon>FrmAddNewShiftLeader.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmUI\FrmChangeLine.cs">
       <SubType>Form</SubType>
@@ -540,11 +531,11 @@
     <Compile Include="UI\FrmUI\FrmSettingLine.Designer.cs">
       <DependentUpon>FrmSettingLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmSettingProducts.cs">
+    <Compile Include="UI\FrmUI\FrmMasterdata.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmSettingProducts.Designer.cs">
-      <DependentUpon>FrmSettingProducts.cs</DependentUpon>
+    <Compile Include="UI\FrmUI\FrmMasterdata.Designer.cs">
+      <DependentUpon>FrmMasterdata.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmUI\FrmSettings.cs">
       <SubType>Form</SubType>
@@ -570,23 +561,11 @@
     <Compile Include="UI\FrmUI\FrmStartup.Designer.cs">
       <DependentUpon>FrmStartup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmTare.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmUI\FrmTare.Designer.cs">
-      <DependentUpon>FrmTare.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\FrmUI\FrmShiftLeader.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FrmUI\FrmShiftLeader.Designer.cs">
       <DependentUpon>FrmShiftLeader.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmUI\FrmWaiting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmUI\FrmWaiting.Designer.cs">
-      <DependentUpon>FrmWaiting.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Filter\FrmFilterMonth.cs">
       <SubType>Form</SubType>
@@ -730,20 +709,14 @@
     <EmbeddedResource Include="UI\Filter\FrmFilterWeek.resx">
       <DependentUpon>FrmFilterWeek.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmAddProduct\FrmAddProductCup.resx">
-      <DependentUpon>FrmAddProductCup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmAddProduct\FrmAddProductGN_Sachet.resx">
-      <DependentUpon>FrmAddProductGN_Sachet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmAddProduct\FrmAddProductKL.resx">
-      <DependentUpon>FrmAddProductKL.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmAddProduct\FrmAddProduct.resx">
+      <DependentUpon>FrmAddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmAddNewUser.resx">
-      <DependentUpon>FrmAddNewUser.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmUI\FrmAddNewShiftLeader.resx">
+      <DependentUpon>FrmAddNewShiftLeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmChangeLine.resx">
       <DependentUpon>FrmChangeLine.cs</DependentUpon>
@@ -808,8 +781,8 @@
     <EmbeddedResource Include="UI\FrmUI\FrmSettingLine.resx">
       <DependentUpon>FrmSettingLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmSettingProducts.resx">
-      <DependentUpon>FrmSettingProducts.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmUI\FrmMasterdata.resx">
+      <DependentUpon>FrmMasterdata.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
@@ -823,14 +796,8 @@
     <EmbeddedResource Include="UI\FrmUI\FrmStartup.resx">
       <DependentUpon>FrmStartup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmTare.resx">
-      <DependentUpon>FrmTare.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmShiftLeader.resx">
       <DependentUpon>FrmShiftLeader.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmWaiting.resx">
-      <DependentUpon>FrmWaiting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Filter\FrmFilterMonth.resx">
       <DependentUpon>FrmFilterMonth.cs</DependentUpon>

@@ -18,13 +18,13 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmReportAutoPdf : Form
   {
+    public List<DatalogWeight> _datalogWeights = new List<DatalogWeight>();
+    public string _pathReport = string.Empty;
+
     public FrmReportAutoPdf()
     {
       InitializeComponent();
     }
-
-    public List<DatalogWeight> _datalogWeights = new List<DatalogWeight>();
-    public string _pathReport = string.Empty;
 
     public FrmReportAutoPdf(List<DatalogWeight> datalogWeights, string pathReport, string titleReport) : this()
     {
@@ -87,7 +87,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
                   Standard = product.StandardFinal,
                   Upper = product.UpperLimitFinal,
                   Lower = product.LowerLimitFinal,
-                  NameShiftLeader = lastRecord.ShiftLeader.UserName,
+                  NameShiftLeader = lastRecord.ShiftLeader?.UserName,
                 };
 
 
@@ -122,6 +122,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       finally
       {
         //this.Close(); 
+        ExportToPdf(_pathReport);
       }
     }
 

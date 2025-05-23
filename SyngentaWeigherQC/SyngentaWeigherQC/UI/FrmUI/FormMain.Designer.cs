@@ -35,6 +35,7 @@
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.panelMain = new System.Windows.Forms.Panel();
       this.panelMenu = new System.Windows.Forms.Panel();
+      this.panel7 = new System.Windows.Forms.Panel();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
       this.picLogoVule = new System.Windows.Forms.PictureBox();
       this.label1 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
       this.panel12 = new System.Windows.Forms.Panel();
       this.panel1 = new System.Windows.Forms.Panel();
       this.panel3 = new System.Windows.Forms.Panel();
+      this.panel5 = new System.Windows.Forms.Panel();
       this.panel11 = new System.Windows.Forms.Panel();
       this.panel9 = new System.Windows.Forms.Panel();
       this.panel10 = new System.Windows.Forms.Panel();
@@ -55,6 +57,7 @@
       this.lbAccount = new System.Windows.Forms.Label();
       this.picIconLogIn = new System.Windows.Forms.PictureBox();
       this.btnSetting = new CustomControls.RJControls.RJButton();
+      this.btnMasterData = new CustomControls.RJControls.RJButton();
       this.btnReport = new CustomControls.RJControls.RJButton();
       this.btnSynthetic = new CustomControls.RJControls.RJButton();
       this.btnHome = new CustomControls.RJControls.RJButton();
@@ -68,6 +71,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.picLogoVule)).BeginInit();
       this.panel12.SuspendLayout();
       this.panel1.SuspendLayout();
+      this.panel3.SuspendLayout();
       this.panel9.SuspendLayout();
       this.lb.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -170,9 +174,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
+      this.panelMenu.Controls.Add(this.btnSetting);
+      this.panelMenu.Controls.Add(this.panel7);
+      this.panelMenu.Controls.Add(this.btnMasterData);
       this.panelMenu.Controls.Add(this.tableLayoutPanel4);
       this.panelMenu.Controls.Add(this.panel4);
-      this.panelMenu.Controls.Add(this.btnSetting);
       this.panelMenu.Controls.Add(this.panel12);
       this.panelMenu.Controls.Add(this.btnReport);
       this.panelMenu.Controls.Add(this.panel11);
@@ -186,6 +192,15 @@
       this.panelMenu.Padding = new System.Windows.Forms.Padding(10, 8, 10, 0);
       this.panelMenu.Size = new System.Drawing.Size(190, 682);
       this.panelMenu.TabIndex = 0;
+      // 
+      // panel7
+      // 
+      this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel7.Location = new System.Drawing.Point(10, 246);
+      this.panel7.Margin = new System.Windows.Forms.Padding(0);
+      this.panel7.Name = "panel7";
+      this.panel7.Size = new System.Drawing.Size(170, 12);
+      this.panel7.TabIndex = 33;
       // 
       // tableLayoutPanel4
       // 
@@ -280,12 +295,22 @@
       // 
       // panel3
       // 
+      this.panel3.Controls.Add(this.panel5);
       this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
       this.panel3.Location = new System.Drawing.Point(0, 0);
       this.panel3.Margin = new System.Windows.Forms.Padding(0);
       this.panel3.Name = "panel3";
       this.panel3.Size = new System.Drawing.Size(170, 12);
       this.panel3.TabIndex = 25;
+      // 
+      // panel5
+      // 
+      this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel5.Location = new System.Drawing.Point(0, 0);
+      this.panel5.Margin = new System.Windows.Forms.Padding(0);
+      this.panel5.Name = "panel5";
+      this.panel5.Size = new System.Drawing.Size(170, 12);
+      this.panel5.TabIndex = 26;
       // 
       // panel11
       // 
@@ -449,16 +474,41 @@
       this.btnSetting.ForeColor = System.Drawing.Color.White;
       this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
       this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSetting.Location = new System.Drawing.Point(10, 196);
+      this.btnSetting.Location = new System.Drawing.Point(10, 258);
       this.btnSetting.Name = "btnSetting";
       this.btnSetting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
       this.btnSetting.Size = new System.Drawing.Size(170, 50);
-      this.btnSetting.TabIndex = 25;
+      this.btnSetting.TabIndex = 34;
       this.btnSetting.Text = "        Cài đặt";
       this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnSetting.TextColor = System.Drawing.Color.White;
       this.btnSetting.UseVisualStyleBackColor = false;
       this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+      // 
+      // btnMasterData
+      // 
+      this.btnMasterData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnMasterData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnMasterData.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnMasterData.BorderRadius = 8;
+      this.btnMasterData.BorderSize = 0;
+      this.btnMasterData.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnMasterData.FlatAppearance.BorderSize = 0;
+      this.btnMasterData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnMasterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnMasterData.ForeColor = System.Drawing.Color.White;
+      this.btnMasterData.Image = ((System.Drawing.Image)(resources.GetObject("btnMasterData.Image")));
+      this.btnMasterData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnMasterData.Location = new System.Drawing.Point(10, 196);
+      this.btnMasterData.Name = "btnMasterData";
+      this.btnMasterData.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnMasterData.Size = new System.Drawing.Size(170, 50);
+      this.btnMasterData.TabIndex = 32;
+      this.btnMasterData.Text = "        Sản phẩm";
+      this.btnMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnMasterData.TextColor = System.Drawing.Color.White;
+      this.btnMasterData.UseVisualStyleBackColor = false;
+      this.btnMasterData.Click += new System.EventHandler(this.btnMasterData_Click);
       // 
       // btnReport
       // 
@@ -546,7 +596,6 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1197, 763);
       this.Controls.Add(this.tableLayoutPanel5);
-      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.tableLayoutPanel5.ResumeLayout(false);
@@ -559,6 +608,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.picLogoVule)).EndInit();
       this.panel12.ResumeLayout(false);
       this.panel1.ResumeLayout(false);
+      this.panel3.ResumeLayout(false);
       this.panel9.ResumeLayout(false);
       this.lb.ResumeLayout(false);
       this.lb.PerformLayout();
@@ -582,7 +632,6 @@
     private System.Windows.Forms.Panel panel2;
     private System.Windows.Forms.TableLayoutPanel lb;
     private System.Windows.Forms.Label lbStation;
-    private CustomControls.RJControls.RJButton btnSetting;
     private System.Windows.Forms.Panel panel12;
     private CustomControls.RJControls.RJButton btnReport;
     private System.Windows.Forms.Panel panel11;
@@ -603,5 +652,9 @@
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     private System.Windows.Forms.PictureBox picIconLogIn;
     private System.Windows.Forms.Label lbAccount;
+    private CustomControls.RJControls.RJButton btnSetting;
+    private System.Windows.Forms.Panel panel7;
+    private CustomControls.RJControls.RJButton btnMasterData;
+    private System.Windows.Forms.Panel panel5;
   }
 }

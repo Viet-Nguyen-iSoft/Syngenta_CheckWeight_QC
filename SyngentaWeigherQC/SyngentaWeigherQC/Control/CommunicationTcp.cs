@@ -167,6 +167,15 @@ namespace SyngentaWeigherQC.Control
           {
             //Đã có data
             var result = WeightHelper.ParseDataWeight(dataWeigher);
+            //Trừ Tare
+            if (inforLineOperation.eModeTare == eModeTare.TareNoLabel)
+            {
+              result.Weight -= inforLineOperation.ProductionCurrent.Tare_no_label_standard;
+            }
+            else
+            {
+              result.Weight -= inforLineOperation.ProductionCurrent.Tare_with_label_standard;
+            } 
 
 
             if (eStatusModeWeight == eStatusModeWeight.WeightForLine)
@@ -177,16 +186,7 @@ namespace SyngentaWeigherQC.Control
               //  return;
               //}
 
-              //Trừ Tare
-              double weight = result.Weight;
-              if (inforLineOperation.eModeTare==eModeTare.TareNoLabel)
-              {
-                weight -= inforLineOperation.ProductionCurrent.Tare_no_label_standard;
-              }
-              else
-              {
-                weight -= inforLineOperation.ProductionCurrent.Tare_with_label_standard;
-              } 
+             
 
               //Save DB
               DatalogWeight datalogWeight = new DatalogWeight();

@@ -55,8 +55,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         ("Luôn đấu tranh và nỗ lực nhiều hơn nữa cho những gì bạn tin tưởng, bạn sẽ ngạc nhiên vì nhận ra bản thân mạnh mẽ hơn bạn nghĩ đấy!", "Lady Gaga"),
         ("Trang sức là kiến thức, sắc đẹp là vũ khí và khiêm tốn làm nên sự tao nhã.", "Coco Chanel"),
         ("Không có thành công nào là dễ dàng và không có ước mơ nào là xa vời nếu bạn biết cố gắng.", "Khuyết danh"),
-        //("Tác", "Đoạn"),
-        //("Tác", "Đoạn"),
     };
 
     public delegate void SendCloseStartup();

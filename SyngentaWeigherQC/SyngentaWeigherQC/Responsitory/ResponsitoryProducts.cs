@@ -72,11 +72,23 @@ namespace SyngentaWeigherQC.Responsitory
 
 
 
-    public override async Task<List<Production>> LoadAllProducts()
+    public async Task<List<Production>> GetList(bool is_contain_isDelete = false)
     {
       try
       {
-        return await this.Context.Set<Production>().Where(s => s.IsDelete == false).ToListAsync();
+        if (is_contain_isDelete)
+        {
+          return await this.Context.Set<Production>()
+            .Include(x=>x.InforLine)
+            .ToListAsync();
+        }
+        else
+        {
+          return await this.Context.Set<Production>()
+            .Include(x => x.InforLine)
+            .Where(s => !s.IsDelete)
+            .ToListAsync();
+        }
       }
       catch (Exception ex)
       {

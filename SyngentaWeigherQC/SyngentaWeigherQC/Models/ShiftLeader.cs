@@ -11,10 +11,10 @@ namespace SyngentaWeigherQC.Models
   public class ShiftLeader : BaseModel
   {
     public string UserName { get; set; }
-    public string Passwords { get; set; }
+    public string Passwords { get; set; } = string.Empty;
     public int RoleId { get; set; }
-    public bool IsEnable { get; set; }
-    public bool IsDelete { get; set; }
+    public bool IsEnable { get; set; } = false;
+    public bool IsDelete { get; set; } = false;
 
     [Browsable(false)]
     public ICollection<DatalogWeight> DatalogWeights { get; set; }

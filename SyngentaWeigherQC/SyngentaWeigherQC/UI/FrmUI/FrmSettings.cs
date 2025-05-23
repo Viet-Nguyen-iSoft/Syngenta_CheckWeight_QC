@@ -106,7 +106,7 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
 
     private void btnImportProducts_Click(object sender, EventArgs e)
     {
-      OpenChildForm(AppModulSupport.SettingProducts, FrmSettingProducts.Instance);
+      OpenChildForm(AppModulSupport.SettingProducts, FrmMasterdata.Instance);
     }
 
     private void btnSettingDevice_Click(object sender, EventArgs e)

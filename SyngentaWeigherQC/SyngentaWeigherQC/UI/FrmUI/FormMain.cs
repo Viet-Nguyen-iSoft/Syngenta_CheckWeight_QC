@@ -126,6 +126,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.btnSynthetic.ForeColor = NoSelect;
       this.btnReport.ForeColor = NoSelect;
       this.btnSetting.ForeColor = NoSelect;
+      this.btnMasterData.ForeColor = NoSelect;
 
       switch (button)
       {
@@ -148,6 +149,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
         case AppModulSupport.Setting:
           this.btnSetting.ForeColor = Select;
           OpenChildForm(AppModulSupport.Setting, FrmSettings.Instance);
+          break;
+        case AppModulSupport.MasterData:
+          this.btnMasterData.ForeColor = Select;
+          OpenChildForm(AppModulSupport.Setting, FrmMasterdata.Instance);
           break;
       }
     }
@@ -206,6 +211,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void btnReport_Click(object sender, EventArgs e)
     {
       ChangePage(AppModulSupport.ReportExcel);
+    }
+
+    private void btnMasterData_Click(object sender, EventArgs e)
+    {
+      ChangePage(AppModulSupport.MasterData);
     }
 
     private void btnSetting_Click(object sender, EventArgs e)

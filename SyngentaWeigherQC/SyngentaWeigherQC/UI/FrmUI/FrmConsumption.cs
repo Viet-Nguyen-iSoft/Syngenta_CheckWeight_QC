@@ -215,9 +215,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
         else return; //huy report neu chon cancel
       }
 
-      //FrmReportAutoPdf frmReportAutoPdf = new FrmReportAutoPdf(_weightList, path);
-      //frmReportAutoPdf.ShowDialog();
-      //string path = "";
+      FrmReportAutoPdf frmReportAutoPdf = new FrmReportAutoPdf(_weightList, path, "Test Report");
+      frmReportAutoPdf.ShowDialog();
+
       //using (var saveFD = new SaveFileDialog())
       //{
       //  saveFD.Filter = "Excel|*.xlsx|All files|*.*";
@@ -229,10 +229,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
       //  else return; //huy report neu chon cancel
       //}
 
-      //this.lbTitleHome.Visible = true;
-      //this.tablelayoutFilter.Visible = false;
+      ////this.lbTitleHome.Visible = true;
+      ////this.tablelayoutFilter.Visible = false;
 
-      //ExportToPdf(path);
+      ////ExportToPdf(path);
       //tabControl1.SelectedIndex = 0;
 
       //this.lbTitleHome.Visible = false;

@@ -1,21 +1,16 @@
-﻿using ClosedXML.Excel;
+﻿using Aspose.Cells;
+using ClosedXML.Excel;
 using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.DTO;
 using SyngentaWeigherQC.Models;
+using SyngentaWeigherQC.UI.FrmUI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static SyngentaWeigherQC.eNum.enumSoftware;
-using System.Windows.Forms;
-using SyngentaWeigherQC.DTO;
-using DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
-using Org.BouncyCastle.Bcpg.OpenPgp;
-using SQLitePCL;
-using DocumentFormat.OpenXml.Drawing;
-using DocumentFormat.OpenXml.Spreadsheet;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using static SyngentaWeigherQC.eNum.enumSoftware;
+using Worksheet = Aspose.Cells.Worksheet;
 
 namespace SyngentaWeigherQC.Helper
 {
@@ -75,12 +70,12 @@ namespace SyngentaWeigherQC.Helper
             int stt_by_shift = 1;
             int indexRowAverageByShiftFrom = 70;
             int indexRowAverageByShiftEnd = 70;
-            if (dataByProductionByShifts.Count>0)
+            if (dataByProductionByShifts.Count > 0)
             {
               dataByProductionByShifts = dataByProductionByShifts.OrderBy(x => x.Shift.Id).ToList();
-            }  
+            }
 
-            foreach ( var item in dataByProductionByShifts)
+            foreach (var item in dataByProductionByShifts)
             {
               stt_by_shift = 1;
               Shift shift = item.Shift;
@@ -95,13 +90,13 @@ namespace SyngentaWeigherQC.Helper
                 worksheet.Cell($"D{rowStart}").Value = stt_by_shift++;
                 worksheet.Cell($"E{rowStart}").Value = raw.DateTime;
                 //worksheet.Cell($"AC{rowStart}").Value = datalog_by_shift[i].Id;
-                
+
                 worksheet.Cell($"R{rowStart}").FormulaA1 = $"ROUND(AVERAGE(Q{indexRowAverageByShiftFrom}:Q{indexRowAverageByShiftEnd}), 3)";// $"AVERAGE(Q{indexRowAverageByShiftFrom} : Q{indexRowAverageByShiftEnd})";
                 worksheet.Cell($"U{rowStart}").FormulaA1 = $"ROUND(STDEV(G{indexRowAverageByShiftFrom} : P{indexRowAverageByShiftEnd}),3)";
-                
+
                 for (var i = 0; i < 10; i++)
                 {
-                  if (i< raw.DatalogWeights.Count)
+                  if (i < raw.DatalogWeights.Count)
                   {
                     SetColor(worksheet, raw.DatalogWeights[i], production, $"{ChartColTable[i]}{rowStart}");
                     if (raw.DatalogWeights[i].IsChange)
@@ -112,7 +107,7 @@ namespace SyngentaWeigherQC.Helper
                   else
                   {
                     SetColor(worksheet, null, null, $"{ChartColTable[i]}{rowStart}");
-                  }  
+                  }
                 }
                 rowStart++;
               }
@@ -129,7 +124,7 @@ namespace SyngentaWeigherQC.Helper
 
               worksheet.Cell($"G{index}").FormulaA1 = $"ROUND((I8-E{index})/(3*D{index}),3)";
               worksheet.Cell($"I{index}").FormulaA1 = $"ROUND((E{index} - I9)/(3*D{index}),3)";
-              
+
               worksheet.Cell($"K{index}").FormulaA1 = $"MIN(G{index},I{index})";
 
               worksheet.Cell($"O{index}").FormulaA1 = $"COUNTA(G{indexRowAverageByShiftFrom} : P{indexRowAverageByShiftEnd})";
@@ -139,7 +134,7 @@ namespace SyngentaWeigherQC.Helper
               indexRowAverageByShiftFrom = indexRowAverageByShiftEnd + 1;
             }
 
-           
+
 
 
 
@@ -217,9 +212,10 @@ namespace SyngentaWeigherQC.Helper
       else
       {
         worksheet.Cell(location).Value = datalogWeight.ValuePrevious;
-      }  
+      }
     }
 
 
+   
   }
 }

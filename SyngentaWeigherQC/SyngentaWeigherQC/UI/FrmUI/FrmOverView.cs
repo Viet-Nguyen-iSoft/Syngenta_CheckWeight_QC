@@ -75,7 +75,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       LoadLine();
     }
 
-    private Size _Size = new Size(838, 540);
+    private Size _Size = new Size(830, 540);
     private void LoadLine()
     {
       try

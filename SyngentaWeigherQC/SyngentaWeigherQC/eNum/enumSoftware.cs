@@ -16,10 +16,13 @@ namespace SyngentaWeigherQC.eNum
       ReportExcel,
       Synthetic,
       Setting,
+      MasterData,
+
+
 
       SettingProducts,
       
-      MasterData,
+      
       About,
       Exit, 
       SettingGeneral,

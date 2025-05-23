@@ -109,6 +109,8 @@ namespace SyngentaWeigherQC.Control
       StartShowUI();
     }
 
+
+
     public void ConnectDataWeight()
     {
       if (eModeCommunication == eModeCommunication.Serial)
@@ -155,7 +157,7 @@ namespace SyngentaWeigherQC.Control
     public Roles _roleCurrent = new Roles();
 
 
-    public List<Production> _listAllProductsBelongLine { get; set; } = new List<Production>();
+    public List<Production> _listProductsForStation { get; set; } = new List<Production>();
     public List<InforLine> _listInforLine { get; set; } = new List<InforLine>();
     public List<DatalogWeight> _listDatalogWeight { get; set; } = new List<DatalogWeight>();
     public ConfigSoftware _configSoftware { get; set; } = new ConfigSoftware();
@@ -172,10 +174,19 @@ namespace SyngentaWeigherQC.Control
         _listShift = await LoadShifts();
 
         //Shift leader list
-        _listShiftLeader = await LoadAllShiftLeader();
+        _listShiftLeader = await GetList();
 
-        //Load Product
-        _listAllProductsBelongLine = await LoadAllProducts();
+        //Load Product //Chỉ lấy data của Line hiện tại 
+        _listProductsForStation = await LoadAllProducts();
+        _listProductsForStation = _listProductsForStation
+                                .Where(p => _listInforLine.Select(x => x.Id).ToList()
+                                .Contains((int)p.InforLineId))
+                                .ToList();
+
+
+
+
+
 
         // Datalog 
         _listDatalogWeight = await AppCore.Ins.LoadAllDatalogWeight(0, DateTime.Now, DateTime.Now, 0);
@@ -599,7 +610,7 @@ namespace SyngentaWeigherQC.Control
 
 
     //DB Data
-    public List<Production> _listAllProductsContainIsDelete { get; set; } = new List<Production>();
+
     public List<HistoricalChangeMasterData> _listChangeProductsLogging { get; set; } = new List<HistoricalChangeMasterData>();
 
 
@@ -661,23 +672,6 @@ namespace SyngentaWeigherQC.Control
     {
       _listShift = await LoadShifts();
     }
-
-
-    private async Task LoadProduct()
-    {
-      _listAllProductsContainIsDelete = await LoadAllProducts();
-      _listAllProductsBelongLine = _listAllProductsContainIsDelete?.Where(x => x.IsDelete == false).ToList();
-
-      if (_stationCurrent != null && _listAllProductsBelongLine.Count > 0)
-      {
-        _listProductsWithStation = _listAllProductsBelongLine?.Where(x => x.LineCode == _stationCurrent.Name).ToList();
-        if (_listProductsWithStation.Count > 0)
-        {
-          _currentProduct = _listProductsWithStation?.FirstOrDefault();
-        }
-      }
-    }
-
 
 
     private Shift GetNameShift(int codeShiftType)
@@ -888,9 +882,6 @@ namespace SyngentaWeigherQC.Control
         var repo = new GenericRepository<Production, ConfigDBContext>(context);
         await repo.Add(productions);
       }
-
-      //ReLoad Product
-      LoadProduct().Wait();
     }
 
     public async Task UpdateProduct(Production productions)
@@ -900,9 +891,6 @@ namespace SyngentaWeigherQC.Control
         var repo = new GenericRepository<Production, ConfigDBContext>(context);
         await repo.Update(productions);
       }
-
-      //ReLoad Product
-      LoadProduct().Wait();
     }
 
 
@@ -991,14 +979,7 @@ namespace SyngentaWeigherQC.Control
     }
 
     //role
-    public async Task UpdateRange(List<Roles> roles)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        GenericRepository<Roles, ConfigDBContext> repo = new ResponsitoryRoles(context);
-        await repo.UpdateRange(roles);
-      }
-    }
+
 
     //Shift Type
     public async Task UpdateShiftTypeChoose(List<ShiftType> shiftTypes)
@@ -1028,22 +1009,6 @@ namespace SyngentaWeigherQC.Control
       {
         var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
         await repo.Add(user);
-      }
-    }
-    public async Task AddRangeUsers(List<ShiftLeader> users)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
-        await repo.AddRange(users);
-      }
-    }
-    public async Task UpdateRangeUsers(List<ShiftLeader> users)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
-        await repo.UpdateRange(users);
       }
     }
 

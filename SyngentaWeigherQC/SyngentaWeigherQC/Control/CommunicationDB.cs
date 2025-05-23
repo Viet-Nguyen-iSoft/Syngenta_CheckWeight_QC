@@ -1,10 +1,12 @@
-﻿using SyngentaWeigherQC.Models;
+﻿using Irony.Parsing;
+using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Production = SyngentaWeigherQC.Models.Production;
 
 namespace SyngentaWeigherQC.Control
 {
@@ -33,12 +35,32 @@ namespace SyngentaWeigherQC.Control
         return await repo.Update(production);
       }
     }
+
+    
     public async Task<bool> UpdateRange(List<Production> productions)
     {
       using (var context = new ConfigDBContext())
       {
         var repo = new GenericRepository<Production, ConfigDBContext>(context);
         return await repo.UpdateRange(productions);
+      }
+    }
+
+    public async Task AddRange(List<Production> productions)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<Production, ConfigDBContext>(context);
+        await repo.AddRange(productions);
+      }
+    }
+
+    public async Task AddRange(List<ShiftLeader> shiftLeaders)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
+        await repo.AddRange(shiftLeaders);
       }
     }
 
@@ -112,12 +134,28 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    public async Task<List<ShiftLeader>> LoadAllShiftLeader()
+    public async Task<List<ShiftLeader>> GetList(bool contain_isDelete=false)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryShiftLeader(context);
+        return await repo.GetList(contain_isDelete);
+      }
+    }
+    public async Task<bool> Update(ShiftLeader shiftLeader)
     {
       using (var context = new ConfigDBContext())
       {
         var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
-        return await repo.GetAllAsync();
+        return await repo.Update(shiftLeader);
+      }
+    }
+    public async Task<ShiftLeader> Add(ShiftLeader shiftLeader)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
+        return await repo.Add(shiftLeader);
       }
     }
 
@@ -130,12 +168,12 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public async Task<List<Production>> LoadAllProducts()
+    public async Task<List<Production>> LoadAllProducts(bool is_contain_isDelete=false)
     {
       using (var context = new ConfigDBContext())
       {
         var repo = new ResponsitoryProducts(context);
-        return await repo.GetAllAsync();
+        return await repo.GetList(is_contain_isDelete);
       }
     }
 
@@ -158,5 +196,23 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
+    public async Task UpdateRange(List<Roles> roles)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        GenericRepository<Roles, ConfigDBContext> repo = new ResponsitoryRoles(context);
+        await repo.UpdateRange(roles);
+      }
+    }
+
+
+    public async Task UpdateRange(List<ShiftLeader> shiftLeaders)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
+        await repo.UpdateRange(shiftLeaders);
+      }
+    }
   }
 }

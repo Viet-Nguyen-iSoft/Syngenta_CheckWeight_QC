@@ -79,7 +79,7 @@ namespace SyngentaWeigherQC.Control
         int totalGroups = (int)Math.Ceiling((double)items.Count / groupSize);
 
         int productId = (int)(items.FirstOrDefault()?.ProductionId ?? 0);
-        Production production = _listAllProductsBelongLine?.FirstOrDefault(x => x.Id == productId);
+        Production production = _listProductsForStation?.FirstOrDefault(x => x.Id == productId);
 
         for (int i = 0; i < totalGroups; i++)
         {

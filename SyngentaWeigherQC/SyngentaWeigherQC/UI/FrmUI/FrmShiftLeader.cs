@@ -1,24 +1,20 @@
-﻿using Aspose.Cells;
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.enumSoftware;
-using Workbook = Aspose.Cells.Workbook;
-using Worksheet = Aspose.Cells.Worksheet;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmShiftLeader : Form
   {
-    public delegate void SendChangeLine();
-    public event SendChangeLine OnSendChangeLine;
+    public delegate void SendChangeListShiftLeader();
+    public event SendChangeListShiftLeader OnSendChangeListShiftLeader;
 
     public FrmShiftLeader()
     {
@@ -41,12 +37,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     #endregion
 
+    private string file_name = "";
     private void FrmUser_Load(object sender, EventArgs e)
-    {
-      UpdateDataUI(AppCore.Ins._listShiftLeader);
-    }
-
-    private void Instance_OnSendAddNewUser()
     {
       UpdateDataUI(AppCore.Ins._listShiftLeader);
     }
@@ -77,7 +69,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
-    private ShiftLeader user = new ShiftLeader();
+    private ShiftLeader user_choose = new ShiftLeader();
     private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
     {
       int rowIndex = e.RowIndex;
@@ -88,8 +80,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         var data = dataGridView2.Rows[rowIndex];
         string nameUser = data.Cells[1].Value.ToString();
-        user = AppCore.Ins._listShiftLeader.Where(x => x.UserName == nameUser).FirstOrDefault();
-        if (user != null)
+        user_choose = AppCore.Ins._listShiftLeader.Where(x => x.UserName == nameUser).FirstOrDefault();
+        if (user_choose != null)
         {
           if (colmnIndex == 2)//Edit
           {
@@ -99,9 +91,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
               return;
             }
 
-            FrmAddNewUser frmAddNewUser = new FrmAddNewUser("Cập nhật tên người dùng", user, eEditUser.ChangeUser);
-            frmAddNewUser.OnSendOKClicked += FrmAddNewUser_OnSendOKClicked;
-            frmAddNewUser.ShowDialog();
+            FrmAddNewShiftLeader frmUpdateUser = new FrmAddNewShiftLeader("Cập nhật tên người dùng", user_choose);
+            frmUpdateUser.OnSendOKClicked += FrmUpdateUser_OnSendOKClicked;
+            frmUpdateUser.ShowDialog();
           }
           else if (colmnIndex == 3)//Remove
           {
@@ -111,10 +103,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
               return;
             }
 
-            string content = $"Tên User: {user.UserName} \r\nSẽ được xóa khỏi danh sách vĩnh viễn ?";
-            //FrmConfirmV2 frmConfirm = new FrmConfirmV2(content, eMsgType.Warning);
-            //frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
-            //frmConfirm.ShowDialog();
+            string content = $"Tên: {user_choose.UserName} \r\nSẽ được xóa khỏi danh sách vĩnh viễn ?";
+            FrmConfirm frmConfirm = new FrmConfirm(content, eMsgType.Warning);
+            frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+            frmConfirm.ShowDialog();
           }
         }
       }
@@ -124,16 +116,36 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-
-
-    private void FrmAddNewUser_OnSendOKClicked(ShiftLeader user)
+    private async void FrmConfirm_OnSendOKClicked()
     {
-      //await AppCore.Ins.UpdateUser(user);
-      //UpdateDataUI(AppCore.Ins._listShiftLeader);
-      //OnSendUpdateUser?.Invoke();
+      //Cập nhật
+      user_choose.IsDelete = true;
+      user_choose.UpdatedAt = DateTime.Now;
+      await AppCore.Ins.Update(user_choose);
+
+      //Load lại
+      AppCore.Ins._listShiftLeader = await AppCore.Ins.GetList();
+      UpdateDataUI(AppCore.Ins._listShiftLeader);
     }
 
+    private async void FrmUpdateUser_OnSendOKClicked()
+    {
+      AppCore.Ins._listShiftLeader = await AppCore.Ins.GetList();
+      UpdateDataUI(AppCore.Ins._listShiftLeader);
+    }
 
+    private void btnAddNew_Click(object sender, EventArgs e)
+    {
+      FrmAddNewShiftLeader frmAddUser = new FrmAddNewShiftLeader("Thêm tên người dùng");
+      frmAddUser.OnSendOKClicked += FrmAddUser_OnSendOKClicked;
+      frmAddUser.ShowDialog();
+    }
+
+    private async void FrmAddUser_OnSendOKClicked()
+    {
+      AppCore.Ins._listShiftLeader = await AppCore.Ins.GetList();
+      UpdateDataUI(AppCore.Ins._listShiftLeader);
+    }
 
     private void btnImport_Click(object sender, EventArgs e)
     {
@@ -147,45 +159,38 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-    private async void btnSave_Click(object sender, EventArgs e)
-    {
-      if (listUserExcel.Count > 0)
-      {
-        RemoveUserOld();
-        await AppCore.Ins.AddRangeUsers(listUserExcel);
-        VisibleSave(false);
-        AppCore.Ins._listShiftLeader = listUserExcel;
-        new FrmNotification().ShowMessage("Lưu thành công", eMsgType.Info);
-      }
-    }
-
-    private async void RemoveUserOld()
-    {
-      if (AppCore.Ins._listShiftLeader.Count > 0)
-      {
-        for (int i = 0; i < AppCore.Ins._listShiftLeader.Count; i++)
-        {
-          AppCore.Ins._listShiftLeader[i].IsDelete = true;
-        }
-
-        await AppCore.Ins.UpdateRangeUsers(AppCore.Ins._listShiftLeader);
-      }
-
-    }
-
-    private string file_name = "";
     private void openFileDialogImport_FileOk(object sender, CancelEventArgs e)
     {
       file_name = openFileDialogImport.FileName;
     }
 
-
     private List<ShiftLeader> listUserExcel = new List<ShiftLeader> { new ShiftLeader() };
-    private void backgroundWorkerImport_DoWork(object sender, DoWorkEventArgs e)
+    private List<ShiftLeader> shiftLeaders_New = new List<ShiftLeader>();
+    private List<ShiftLeader> shiftLeaders_ExitsDb = new List<ShiftLeader>();
+    private List<ShiftLeader> shiftLeaders_Db_Old = new List<ShiftLeader>();
+    private async void backgroundWorkerImport_DoWork(object sender, DoWorkEventArgs e)
     {
       try
       {
-        listUserExcel = PareXlsxByAspose(file_name);
+        listUserExcel = HelperImportExcel.PareXlsxByAspose_ShiftLeader(file_name);
+
+        shiftLeaders_ExitsDb = new List<ShiftLeader>();
+        shiftLeaders_New = new List<ShiftLeader>();
+        if (listUserExcel.Count > 0)
+        {
+          shiftLeaders_Db_Old = await AppCore.Ins.GetList();
+          foreach (ShiftLeader shiftLeader in listUserExcel)
+          {
+            if (shiftLeaders_Db_Old.Any(x => x.UserName == shiftLeader.UserName))
+            {
+              shiftLeaders_ExitsDb.Add(shiftLeader);
+            }
+            else
+            {
+              shiftLeaders_New.Add(shiftLeader);
+            }
+          }
+        }
       }
       catch (Exception ex)
       {
@@ -199,7 +204,53 @@ namespace SyngentaWeigherQC.UI.FrmUI
       if (listUserExcel.Count > 0)
       {
         UpdateDataUI(listUserExcel);
-        VisibleSave(true);
+        VisibleSave(shiftLeaders_New.Count() > 0);
+
+        new FrmNotification().ShowMessage($"Có {shiftLeaders_New.Count()} dữ liệu mới\r\nCó {shiftLeaders_ExitsDb.Count()} dữ liệu cập nhật", eMsgType.Info);
+      }
+      else
+      {
+        new FrmNotification().ShowMessage("Không có dữ liệu !", eMsgType.Info);
+      }
+    }
+
+    private async void btnSave_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        if (shiftLeaders_Db_Old.Count > 0)
+        {
+          foreach (var shiftLeader in shiftLeaders_Db_Old)
+          {
+            if (shiftLeaders_ExitsDb.Any(x => x.UserName == shiftLeader.UserName))
+            {
+              shiftLeader.UpdatedAt = DateTime.Now;
+            }
+            else
+            {
+              shiftLeader.IsDelete = true;
+              shiftLeader.UpdatedAt = DateTime.Now;
+            }
+          }
+
+          await AppCore.Ins.UpdateRange(shiftLeaders_Db_Old);
+        }
+
+        if (shiftLeaders_New.Count() > 0)
+        {
+          shiftLeaders_New.ForEach(x => x.CreatedAt = DateTime.Now);
+          await AppCore.Ins.AddRange(shiftLeaders_New);
+        }
+
+        new FrmNotification().ShowMessage("Cập nhật thành công", eMsgType.Info);
+      }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex);
+      }
+      finally
+      {
+        VisibleSave(false);
       }
     }
 
@@ -216,73 +267,5 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       this.btnSave.Visible = isVisible;
     }
-
-
-
-    public List<ShiftLeader> PareXlsxByAspose(string file_path)
-    {
-      try
-      {
-        FileInfo dest_file_info = new FileInfo(file_path);
-        Workbook wb = new Workbook(dest_file_info.FullName);
-        WorksheetCollection collection = wb.Worksheets;
-        bool is_exit_loop = false;
-        int max_rows = 0; int max_cols = 0;
-
-        List<ShiftLeader> users = new List<ShiftLeader>();
-        for (int worksheetIndex = 0; worksheetIndex < collection.Count && is_exit_loop == false; worksheetIndex++)
-        {
-          Worksheet worksheet = collection[worksheetIndex];
-          if (worksheetIndex == 0)
-          {
-            max_rows = worksheet.Cells.MaxDataRow;
-            max_cols = worksheet.Cells.MaxDataColumn;
-
-            for (int row = 1; row <= max_rows; row++)
-            {
-              ShiftLeader user = new ShiftLeader();
-
-              user.UserName = GetText(worksheet, row, 1);
-              user.Passwords = "";
-              user.RoleId = 4;
-              user.IsEnable = false;
-              user.CreatedAt = DateTime.Now;
-              user.UpdatedAt = DateTime.Now;
-
-              if (!string.IsNullOrEmpty(user.UserName)) users.Add(user);
-            }
-          }
-        }
-
-        return users;
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex);
-        new FrmNotification().ShowMessage("File excel load thất bại !", eMsgType.Warning);
-        return null;
-      }
-    }
-
-    private string GetText(Worksheet worksheet, int row, int column)
-    {
-      string ret = "";
-      try
-      {
-        object textObj = worksheet.Cells[row, column].Value;
-        if (textObj != null)
-        {
-          ret = textObj.ToString().Trim();
-        }
-
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex);
-      }
-      return ret;
-    }
-
-
   }
 }

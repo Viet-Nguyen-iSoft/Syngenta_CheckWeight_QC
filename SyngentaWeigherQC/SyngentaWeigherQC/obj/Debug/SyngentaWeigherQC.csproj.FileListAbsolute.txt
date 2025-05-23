@@ -1325,11 +1325,7 @@ C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\Syngenta
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.Filter.FrmFilterDate.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.Filter.FrmFilterShift.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.Filter.FrmFilterWeek.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmAddProduct.FrmAddProductCup.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmAddProduct.FrmAddProductGN_Sachet.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmAddProduct.FrmAddProductKL.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FormMain.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmAddNewUser.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmChangeLine.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSettingUser.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmChangeSettingLine.resources
@@ -1351,13 +1347,11 @@ C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\Syngenta
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSettingConfigSoftware.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSettingGeneral.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSettingLine.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSettingProducts.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SynCheckWeigherLoggerApp.SettingsViews.FrmSettings.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmHome.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SynCheckWeigherLoggerApp.DashboardViews.FrmSampleRework.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmTare.resources
+C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmStartup.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmShiftLeader.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmWaiting.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmFilterMonth.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmReportAutoPdf.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SynCheckWeigherLoggerApp.DashboardViews.DataInfor.resources
@@ -1383,4 +1377,6 @@ C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\Syngenta
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\Syngenta.8286281A.Up2Date
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.exe
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.pdb
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmStartup.resources
+C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmAddNewShiftLeader.resources
+C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmMasterdata.resources
+C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmAddProduct.FrmAddProduct.resources

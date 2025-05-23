@@ -53,7 +53,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       TypeTare = this._inforLine.eModeTare;
 
       //Check Chọn Product
-      var listProducts = this._inforLine.Productions.ToList();
+      var listProducts = this._inforLine.Productions.Where(x=>x.IsDelete==false).ToList();
       ListProduction = listProducts;
 
       //Check Last Product 
