@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 using DateTime = System.DateTime;
@@ -109,6 +110,7 @@ namespace SyngentaWeigherQC.Control
       StartShowUI();
     }
 
+    
 
 
     public void ConnectDataWeight()

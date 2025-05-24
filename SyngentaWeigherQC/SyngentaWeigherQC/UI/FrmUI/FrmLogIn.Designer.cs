@@ -61,6 +61,7 @@
       // cbAccount
       // 
       this.cbAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.cbAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cbAccount.FormattingEnabled = true;
       this.cbAccount.Location = new System.Drawing.Point(150, 8);
@@ -116,11 +117,11 @@
       this.btnCancel.BorderSize = 0;
       this.btnCancel.FlatAppearance.BorderSize = 0;
       this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(109, 7);
+      this.btnCancel.Location = new System.Drawing.Point(179, 7);
       this.btnCancel.Name = "btnCancel";
-      this.btnCancel.Size = new System.Drawing.Size(172, 46);
+      this.btnCancel.Size = new System.Drawing.Size(137, 46);
       this.btnCancel.TabIndex = 4;
       this.btnCancel.Text = "Hủy";
       this.btnCancel.TextColor = System.Drawing.Color.White;
@@ -137,11 +138,11 @@
       this.btnLogin.BorderSize = 0;
       this.btnLogin.FlatAppearance.BorderSize = 0;
       this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnLogin.ForeColor = System.Drawing.Color.White;
-      this.btnLogin.Location = new System.Drawing.Point(287, 7);
+      this.btnLogin.Location = new System.Drawing.Point(322, 7);
       this.btnLogin.Name = "btnLogin";
-      this.btnLogin.Size = new System.Drawing.Size(172, 46);
+      this.btnLogin.Size = new System.Drawing.Size(137, 46);
       this.btnLogin.TabIndex = 1;
       this.btnLogin.Text = "Đăng nhập";
       this.btnLogin.TextColor = System.Drawing.Color.White;

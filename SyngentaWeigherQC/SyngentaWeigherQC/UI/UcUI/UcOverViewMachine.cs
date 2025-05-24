@@ -492,7 +492,7 @@ namespace SyngentaWeigherQC.UI.UcUI
 
             if (statisticalData.eEvaluate == eEvaluate.Pass)
             {
-              this.lbResult_3.ForeColor = Color.Green;
+              this.lbResult_3.ForeColor = Color.FromArgb(0, 192, 0);
             }
             else
             {

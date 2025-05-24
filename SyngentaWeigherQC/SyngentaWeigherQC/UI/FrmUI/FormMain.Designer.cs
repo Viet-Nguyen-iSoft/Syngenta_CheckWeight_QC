@@ -62,6 +62,8 @@
       this.btnSynthetic = new CustomControls.RJControls.RJButton();
       this.btnHome = new CustomControls.RJControls.RJButton();
       this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
+      this.panel6 = new System.Windows.Forms.Panel();
+      this.btnRestartApp = new CustomControls.RJControls.RJButton();
       this.tableLayoutPanel5.SuspendLayout();
       this.tableLayoutPanel7.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
@@ -174,6 +176,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(17)))), ((int)(((byte)(70)))));
+      this.panelMenu.Controls.Add(this.btnRestartApp);
+      this.panelMenu.Controls.Add(this.panel6);
       this.panelMenu.Controls.Add(this.btnSetting);
       this.panelMenu.Controls.Add(this.panel7);
       this.panelMenu.Controls.Add(this.btnMasterData);
@@ -590,6 +594,40 @@
       this.elipseControl1.CornerRadius = 15;
       this.elipseControl1.TargetControl = this.pictureBox1;
       // 
+      // panel6
+      // 
+      this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel6.Location = new System.Drawing.Point(10, 308);
+      this.panel6.Margin = new System.Windows.Forms.Padding(0);
+      this.panel6.Name = "panel6";
+      this.panel6.Size = new System.Drawing.Size(170, 12);
+      this.panel6.TabIndex = 35;
+      // 
+      // btnRestartApp
+      // 
+      this.btnRestartApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnRestartApp.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(93)))), ((int)(((byte)(125)))));
+      this.btnRestartApp.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnRestartApp.BorderRadius = 8;
+      this.btnRestartApp.BorderSize = 0;
+      this.btnRestartApp.Dock = System.Windows.Forms.DockStyle.Top;
+      this.btnRestartApp.FlatAppearance.BorderSize = 0;
+      this.btnRestartApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnRestartApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnRestartApp.ForeColor = System.Drawing.Color.White;
+      this.btnRestartApp.Image = ((System.Drawing.Image)(resources.GetObject("btnRestartApp.Image")));
+      this.btnRestartApp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnRestartApp.Location = new System.Drawing.Point(10, 320);
+      this.btnRestartApp.Name = "btnRestartApp";
+      this.btnRestartApp.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+      this.btnRestartApp.Size = new System.Drawing.Size(170, 50);
+      this.btnRestartApp.TabIndex = 36;
+      this.btnRestartApp.Text = "        Restart";
+      this.btnRestartApp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnRestartApp.TextColor = System.Drawing.Color.White;
+      this.btnRestartApp.UseVisualStyleBackColor = false;
+      this.btnRestartApp.Click += new System.EventHandler(this.btnRestartApp_Click);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -656,5 +694,7 @@
     private System.Windows.Forms.Panel panel7;
     private CustomControls.RJControls.RJButton btnMasterData;
     private System.Windows.Forms.Panel panel5;
+    private CustomControls.RJControls.RJButton btnRestartApp;
+    private System.Windows.Forms.Panel panel6;
   }
 }

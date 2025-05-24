@@ -28,22 +28,22 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMasterdata));
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMasterdata));
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.label2 = new System.Windows.Forms.Label();
+      this.dgvMasterData = new System.Windows.Forms.DataGridView();
+      this.openFileDialogImport = new System.Windows.Forms.OpenFileDialog();
+      this.backgroundWorkerImport = new System.ComponentModel.BackgroundWorker();
       this.btnCheckHistorical = new CustomControls.RJControls.RJButton();
       this.btnSaveChange = new CustomControls.RJControls.RJButton();
       this.btnImportExcel = new CustomControls.RJControls.RJButton();
       this.btnAdd = new CustomControls.RJControls.RJButton();
       this.btnSearch = new CustomControls.RJControls.RJButton();
       this.txtSearch = new CustomControls.RJControls.RJTextBox();
-      this.dgvMasterData = new System.Windows.Forms.DataGridView();
-      this.openFileDialogImport = new System.Windows.Forms.OpenFileDialog();
-      this.backgroundWorkerImport = new System.ComponentModel.BackgroundWorker();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvMasterData)).BeginInit();
@@ -114,6 +114,63 @@
       this.label2.Text = "Tìm kiếm:";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
+      // dgvMasterData
+      // 
+      this.dgvMasterData.AllowUserToResizeRows = false;
+      this.dgvMasterData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.dgvMasterData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+      this.dgvMasterData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvMasterData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      this.dgvMasterData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgvMasterData.DefaultCellStyle = dataGridViewCellStyle2;
+      this.dgvMasterData.EnableHeadersVisualStyles = false;
+      this.dgvMasterData.Location = new System.Drawing.Point(3, 69);
+      this.dgvMasterData.Name = "dgvMasterData";
+      this.dgvMasterData.ReadOnly = true;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvMasterData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+      this.dgvMasterData.RowHeadersVisible = false;
+      this.dgvMasterData.RowHeadersWidth = 60;
+      this.dgvMasterData.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
+      this.dgvMasterData.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+      this.dgvMasterData.RowTemplate.Height = 40;
+      this.dgvMasterData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.dgvMasterData.Size = new System.Drawing.Size(1318, 573);
+      this.dgvMasterData.TabIndex = 1;
+      this.dgvMasterData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMasterData_CellDoubleClick);
+      // 
+      // openFileDialogImport
+      // 
+      this.openFileDialogImport.FileName = "openFileDialog1";
+      this.openFileDialogImport.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogImport_FileOk);
+      // 
+      // backgroundWorkerImport
+      // 
+      this.backgroundWorkerImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerImport_DoWork);
+      this.backgroundWorkerImport.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerImport_RunWorkerCompleted);
+      // 
       // btnCheckHistorical
       // 
       this.btnCheckHistorical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -154,6 +211,7 @@
       this.btnSaveChange.Text = "Lưu thay đổi";
       this.btnSaveChange.TextColor = System.Drawing.Color.White;
       this.btnSaveChange.UseVisualStyleBackColor = false;
+      this.btnSaveChange.Visible = false;
       this.btnSaveChange.Click += new System.EventHandler(this.btnSaveChange_Click);
       // 
       // btnImportExcel
@@ -240,64 +298,6 @@
       this.txtSearch.TabIndex = 19;
       this.txtSearch.Texts = "";
       this.txtSearch.UnderlinedStyle = false;
-      // 
-      // dgvMasterData
-      // 
-      this.dgvMasterData.AllowUserToResizeRows = false;
-      this.dgvMasterData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.dgvMasterData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-      this.dgvMasterData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvMasterData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-      this.dgvMasterData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dgvMasterData.DefaultCellStyle = dataGridViewCellStyle2;
-      this.dgvMasterData.EnableHeadersVisualStyles = false;
-      this.dgvMasterData.Location = new System.Drawing.Point(3, 69);
-      this.dgvMasterData.Name = "dgvMasterData";
-      this.dgvMasterData.ReadOnly = true;
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvMasterData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-      this.dgvMasterData.RowHeadersVisible = false;
-      this.dgvMasterData.RowHeadersWidth = 60;
-      this.dgvMasterData.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
-      this.dgvMasterData.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-      this.dgvMasterData.RowTemplate.Height = 40;
-      this.dgvMasterData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvMasterData.Size = new System.Drawing.Size(1318, 573);
-      this.dgvMasterData.TabIndex = 1;
-      this.dgvMasterData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMasterData_CellDoubleClick);
-      this.dgvMasterData.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvMasterData_Scroll);
-      // 
-      // openFileDialogImport
-      // 
-      this.openFileDialogImport.FileName = "openFileDialog1";
-      this.openFileDialogImport.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogImport_FileOk);
-      // 
-      // backgroundWorkerImport
-      // 
-      this.backgroundWorkerImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerImport_DoWork);
-      this.backgroundWorkerImport.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerImport_RunWorkerCompleted);
       // 
       // FrmMasterdata
       // 

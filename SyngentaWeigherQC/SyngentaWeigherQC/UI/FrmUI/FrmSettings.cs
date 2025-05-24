@@ -104,11 +104,6 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
       OpenChildForm(AppModulSupport.SettingGeneral, FrmSettingGeneral.Instance);
     }
 
-    private void btnImportProducts_Click(object sender, EventArgs e)
-    {
-      OpenChildForm(AppModulSupport.SettingProducts, FrmMasterdata.Instance);
-    }
-
     private void btnSettingDevice_Click(object sender, EventArgs e)
     {
       OpenChildForm(AppModulSupport.DeviceSetting, FrmSettingConfigSoftware.Instance);
@@ -136,7 +131,6 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
     {
       btnSettingLine.BackColor = colorNoSelect;
       btnShiftReport.BackColor = colorNoSelect;
-      btnImportProducts.BackColor = colorNoSelect;
       btnSettingDevice.BackColor = colorNoSelect;
       btnSettingUser.BackColor = colorNoSelect;
       btnDecentralization.BackColor = colorNoSelect;
@@ -149,10 +143,6 @@ namespace SynCheckWeigherLoggerApp.SettingsViews
       if (appModul == AppModulSupport.LineSetting)
       {
         btnSettingLine.BackColor = colorSelect;
-      }
-      else if (appModul == AppModulSupport.SettingProducts)
-      {
-        btnImportProducts.BackColor = colorSelect;
       }
       else if (appModul == AppModulSupport.DeviceSetting)
       {

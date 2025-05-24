@@ -12,6 +12,8 @@ namespace SyngentaWeigherQC.Helper
   {
     public static string GetDescription(Enum value)
     {
+      if (value == null) return "N/A";
+
       FieldInfo field = value.GetType().GetField(value.ToString());
 
       if (field != null)

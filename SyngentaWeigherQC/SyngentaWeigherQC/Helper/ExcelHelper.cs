@@ -53,7 +53,7 @@ namespace SyngentaWeigherQC.Helper
 
             int rowStartUnit1 = 3;
             worksheet.Cell($"I{rowStartUnit1++}").Value = nameLine;
-            worksheet.Cell($"I{rowStartUnit1++}").Value = eNumHelper.GetDescription(datalogWeight.DatalogTare.eModeTare);
+            worksheet.Cell($"I{rowStartUnit1++}").Value = eNumHelper.GetDescription(datalogWeight?.eModeTare);
             worksheet.Cell($"I{rowStartUnit1++}").Value = production?.Name;
             worksheet.Cell($"I{rowStartUnit1++}").Value = production?.PackSize;
             worksheet.Cell($"I{rowStartUnit1++}").Value = production?.StandardFinal;
@@ -123,9 +123,8 @@ namespace SyngentaWeigherQC.Helper
               worksheet.Cell($"E{index}").FormulaA1 = $"ROUND(AVERAGE(Q{indexRowAverageByShiftFrom}:Q{indexRowAverageByShiftEnd}), 3)";
 
               worksheet.Cell($"G{index}").FormulaA1 = $"ROUND((I8-E{index})/(3*D{index}),3)";
-              worksheet.Cell($"I{index}").FormulaA1 = $"ROUND((E{index} - I9)/(3*D{index}),3)";
-
-              worksheet.Cell($"K{index}").FormulaA1 = $"MIN(G{index},I{index})";
+              worksheet.Cell($"H{index}").FormulaA1 = $"ROUND((E{index} - I9)/(3*D{index}),3)";
+              worksheet.Cell($"I{index}").FormulaA1 = $"MIN(G{index},H{index})";
 
               worksheet.Cell($"O{index}").FormulaA1 = $"COUNTA(G{indexRowAverageByShiftFrom} : P{indexRowAverageByShiftEnd})";
               worksheet.Cell($"Q{index}").FormulaA1 = $"COUNTIF(G{indexRowAverageByShiftFrom} : P{indexRowAverageByShiftEnd}, \"<\" & I9)";

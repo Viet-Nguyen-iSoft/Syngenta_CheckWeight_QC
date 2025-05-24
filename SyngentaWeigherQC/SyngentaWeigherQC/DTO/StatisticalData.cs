@@ -11,9 +11,11 @@ namespace SyngentaWeigherQC.Responsitory
   {
     public int Index { get; set; }
     public string Shift { get; set; }
-    public double Stdev { get; set; }
     public double Average { get; set; }
     public double Target { get; set; }
+    public double Stdev { get; set; }
+    public double Cpk { get; set; }
+    public double Sigma { get; set; }
     public eEvaluate eEvaluate { get; set; }
     public int TotalSample { get; set; }
     public int NumberSampleOver { get; set; }

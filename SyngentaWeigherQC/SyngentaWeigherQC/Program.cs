@@ -20,5 +20,20 @@ namespace SyngentaWeigherQC
       //Application.Run(new FrmMain());
       AppCore.Ins.Init();
     }
+
+    public static void RestartApp()
+    {
+      try
+      {
+        //MessageBox.Show("Restart");
+        Application.Restart();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+        throw;
+      }
+      
+    }
   }
 }

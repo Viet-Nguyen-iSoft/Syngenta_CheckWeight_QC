@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-      System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-      System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+      System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+      System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+      System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcOverViewMachine));
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -689,24 +689,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.chartPie.BorderlineColor = System.Drawing.Color.Transparent;
-      chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      chartArea2.Name = "ChartArea1";
-      this.chartPie.ChartAreas.Add(chartArea2);
-      legend2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      legend2.ForeColor = System.Drawing.Color.White;
-      legend2.IsTextAutoFit = false;
-      legend2.Name = "Legend1";
-      this.chartPie.Legends.Add(legend2);
+      chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      chartArea1.Name = "ChartArea1";
+      this.chartPie.ChartAreas.Add(chartArea1);
+      legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      legend1.ForeColor = System.Drawing.Color.White;
+      legend1.IsTextAutoFit = false;
+      legend1.Name = "Legend1";
+      this.chartPie.Legends.Add(legend1);
       this.chartPie.Location = new System.Drawing.Point(527, 0);
       this.chartPie.Margin = new System.Windows.Forms.Padding(0);
       this.chartPie.Name = "chartPie";
-      series2.ChartArea = "ChartArea1";
-      series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-      series2.CustomProperties = "PieStartAngle=270";
-      series2.Legend = "Legend1";
-      series2.Name = "Series1";
-      this.chartPie.Series.Add(series2);
+      series1.ChartArea = "ChartArea1";
+      series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+      series1.CustomProperties = "PieStartAngle=270";
+      series1.Legend = "Legend1";
+      series1.Name = "Series1";
+      this.chartPie.Series.Add(series1);
       this.chartPie.Size = new System.Drawing.Size(300, 228);
       this.chartPie.TabIndex = 2;
       this.chartPie.Text = "chart1";
@@ -761,7 +761,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbResult_3.AutoSize = true;
       this.lbResult_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbResult_3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbResult_3.ForeColor = System.Drawing.Color.White;
       this.lbResult_3.Location = new System.Drawing.Point(410, 171);
       this.lbResult_3.Margin = new System.Windows.Forms.Padding(0);
@@ -795,7 +795,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbResult_2.AutoSize = true;
       this.lbResult_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.lbResult_2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbResult_2.ForeColor = System.Drawing.Color.White;
       this.lbResult_2.Location = new System.Drawing.Point(410, 114);
       this.lbResult_2.Margin = new System.Windows.Forms.Padding(0);
@@ -829,7 +829,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbResult_1.AutoSize = true;
       this.lbResult_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.lbResult_1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbResult_1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbResult_1.ForeColor = System.Drawing.Color.White;
       this.lbResult_1.Location = new System.Drawing.Point(410, 57);
       this.lbResult_1.Margin = new System.Windows.Forms.Padding(0);

@@ -3,6 +3,8 @@ using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Logs;
 using SyngentaWeigherQC.Models;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
@@ -152,7 +154,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
           break;
         case AppModulSupport.MasterData:
           this.btnMasterData.ForeColor = Select;
-          OpenChildForm(AppModulSupport.Setting, FrmMasterdata.Instance);
+          OpenChildForm(AppModulSupport.MasterData, FrmMasterdata.Instance);
           break;
       }
     }
@@ -202,9 +204,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnSynthetic_Click(object sender, EventArgs e)
     {
-      //new FrmNotification().ShowMessage("Tính năng đang phát triển !", eMsgType.Info);
-      //return;
-
       ChangePage(AppModulSupport.Synthetic);
     }
 
@@ -300,6 +299,17 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.lbAccount.Text = accountName;
     }
 
-   
+
+    private void btnRestartApp_Click(object sender, EventArgs e)
+    {
+      FrmConfirm frmConfirm = new FrmConfirm($"Xác nhận khởi động lại phần mềm ?", eMsgType.Question);
+      frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+      frmConfirm.ShowDialog();
+    }
+
+    private void FrmConfirm_OnSendOKClicked()
+    {
+      Program.RestartApp();
+    }
   }
 }

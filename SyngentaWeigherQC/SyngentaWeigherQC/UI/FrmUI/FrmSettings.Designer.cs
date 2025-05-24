@@ -32,7 +32,6 @@
       this.btnDecentralization = new CustomControls.RJControls.RJButton();
       this.btnSettingUser = new CustomControls.RJControls.RJButton();
       this.btnSettingDevice = new CustomControls.RJControls.RJButton();
-      this.btnImportProducts = new CustomControls.RJControls.RJButton();
       this.btnShiftReport = new CustomControls.RJControls.RJButton();
       this.pnBody = new System.Windows.Forms.Panel();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,7 +55,7 @@
       this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnChangePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnChangePass.ForeColor = System.Drawing.Color.White;
-      this.btnChangePass.Location = new System.Drawing.Point(560, 0);
+      this.btnChangePass.Location = new System.Drawing.Point(375, 0);
       this.btnChangePass.Margin = new System.Windows.Forms.Padding(0);
       this.btnChangePass.Name = "btnChangePass";
       this.btnChangePass.Size = new System.Drawing.Size(180, 70);
@@ -80,7 +79,7 @@
       this.btnDecentralization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnDecentralization.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnDecentralization.ForeColor = System.Drawing.Color.White;
-      this.btnDecentralization.Location = new System.Drawing.Point(930, 0);
+      this.btnDecentralization.Location = new System.Drawing.Point(745, 0);
       this.btnDecentralization.Margin = new System.Windows.Forms.Padding(0);
       this.btnDecentralization.Name = "btnDecentralization";
       this.btnDecentralization.Size = new System.Drawing.Size(180, 70);
@@ -104,7 +103,7 @@
       this.btnSettingUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSettingUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSettingUser.ForeColor = System.Drawing.Color.White;
-      this.btnSettingUser.Location = new System.Drawing.Point(745, 0);
+      this.btnSettingUser.Location = new System.Drawing.Point(560, 0);
       this.btnSettingUser.Margin = new System.Windows.Forms.Padding(0);
       this.btnSettingUser.Name = "btnSettingUser";
       this.btnSettingUser.Size = new System.Drawing.Size(180, 70);
@@ -128,7 +127,7 @@
       this.btnSettingDevice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSettingDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSettingDevice.ForeColor = System.Drawing.Color.White;
-      this.btnSettingDevice.Location = new System.Drawing.Point(1115, 0);
+      this.btnSettingDevice.Location = new System.Drawing.Point(930, 0);
       this.btnSettingDevice.Margin = new System.Windows.Forms.Padding(0);
       this.btnSettingDevice.Name = "btnSettingDevice";
       this.btnSettingDevice.Size = new System.Drawing.Size(180, 70);
@@ -137,30 +136,6 @@
       this.btnSettingDevice.TextColor = System.Drawing.Color.White;
       this.btnSettingDevice.UseVisualStyleBackColor = false;
       this.btnSettingDevice.Click += new System.EventHandler(this.btnSettingDevice_Click);
-      // 
-      // btnImportProducts
-      // 
-      this.btnImportProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnImportProducts.BackColor = System.Drawing.Color.CornflowerBlue;
-      this.btnImportProducts.BackgroundColor = System.Drawing.Color.CornflowerBlue;
-      this.btnImportProducts.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnImportProducts.BorderRadius = 8;
-      this.btnImportProducts.BorderSize = 0;
-      this.btnImportProducts.FlatAppearance.BorderSize = 0;
-      this.btnImportProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnImportProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnImportProducts.ForeColor = System.Drawing.Color.White;
-      this.btnImportProducts.Location = new System.Drawing.Point(375, 0);
-      this.btnImportProducts.Margin = new System.Windows.Forms.Padding(0);
-      this.btnImportProducts.Name = "btnImportProducts";
-      this.btnImportProducts.Size = new System.Drawing.Size(180, 70);
-      this.btnImportProducts.TabIndex = 7;
-      this.btnImportProducts.Text = "Cài đặt quy cách sản phẩm";
-      this.btnImportProducts.TextColor = System.Drawing.Color.White;
-      this.btnImportProducts.UseVisualStyleBackColor = false;
-      this.btnImportProducts.Click += new System.EventHandler(this.btnImportProducts_Click);
       // 
       // btnShiftReport
       // 
@@ -219,9 +194,7 @@
       this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel2.ColumnCount = 16;
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+      this.tableLayoutPanel2.ColumnCount = 14;
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
@@ -236,12 +209,13 @@
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel2.Controls.Add(this.btnShiftReport, 3, 0);
-      this.tableLayoutPanel2.Controls.Add(this.btnDecentralization, 11, 0);
-      this.tableLayoutPanel2.Controls.Add(this.btnImportProducts, 5, 0);
-      this.tableLayoutPanel2.Controls.Add(this.btnSettingUser, 9, 0);
-      this.tableLayoutPanel2.Controls.Add(this.btnChangePass, 7, 0);
-      this.tableLayoutPanel2.Controls.Add(this.btnSettingDevice, 13, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnDecentralization, 9, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnSettingUser, 7, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnChangePass, 5, 0);
+      this.tableLayoutPanel2.Controls.Add(this.btnSettingDevice, 11, 0);
       this.tableLayoutPanel2.Controls.Add(this.btnSettingLine, 1, 0);
       this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 5);
       this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -296,7 +270,6 @@
     private CustomControls.RJControls.RJButton btnDecentralization;
     private CustomControls.RJControls.RJButton btnSettingUser;
     private CustomControls.RJControls.RJButton btnSettingDevice;
-    private CustomControls.RJControls.RJButton btnImportProducts;
     private CustomControls.RJControls.RJButton btnShiftReport;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

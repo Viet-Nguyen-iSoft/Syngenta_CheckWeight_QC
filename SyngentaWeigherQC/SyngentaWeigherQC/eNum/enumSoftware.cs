@@ -20,7 +20,6 @@ namespace SyngentaWeigherQC.eNum
 
 
 
-      SettingProducts,
       
       
       About,

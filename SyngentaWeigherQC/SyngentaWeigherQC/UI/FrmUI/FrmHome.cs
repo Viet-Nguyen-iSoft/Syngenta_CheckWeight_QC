@@ -68,9 +68,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmHome_Load(object sender, EventArgs e)
     {
       this.uCinforDataShift.SetTitle = "Ca";
-      this.uCinforDataStd.SetTitle = "STDEV";
       this.uCinforDataAverage.SetTitle = "TB(Ca)";
       this.uCinforDataStardard.SetTitle = "Tiêu chuẩn";
+      this.uCinforDataStd.SetTitle = "STDEV";
+      this.dataInforCpk.SetTitle = "Cpk";
+      this.dataInforSigma.SetTitle = "Sigma";
+
       this.uCinforDataResult.SetTitle = "Kết quả";
       this.uCinforDataSample.SetTitle = "Tổng mẫu KT";
       this.uCinforDataErrorLower.SetTitle = "Lỗi TL thấp";
@@ -84,7 +87,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       //Set kiểu Tare
       TypeTare(_inforLine);
-
 
       SetInforLine();
 
@@ -464,6 +466,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         this.uCinforDataShift.SetText(statisticalData.Index, statisticalData.Shift);
         this.uCinforDataStd.SetText(statisticalData.Index, statisticalData.Stdev.ToString());
+        this.dataInforCpk.SetText(statisticalData.Index, statisticalData.Cpk.ToString());
+        this.dataInforSigma.SetText(statisticalData.Index, statisticalData.Sigma.ToString());
         this.uCinforDataAverage.SetText(statisticalData.Index, statisticalData.Average.ToString());
         this.uCinforDataStardard.SetText(statisticalData.Index, statisticalData.Target.ToString());
         this.uCinforDataResult.SetText(statisticalData.Index, eNumHelper.GetDescription(statisticalData.eEvaluate));
@@ -488,6 +492,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         this.uCinforDataShift.SetText(statisticalData.Index, "");
         this.uCinforDataStd.SetText(statisticalData.Index, "");
+        this.dataInforCpk.SetText(statisticalData.Index, "");
+        this.dataInforSigma.SetText(statisticalData.Index, "");
         this.uCinforDataAverage.SetText(statisticalData.Index, "");
         this.uCinforDataStardard.SetText(statisticalData.Index, "");
         this.uCinforDataResult.SetText(statisticalData.Index, "");
@@ -667,10 +673,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         LoadUiWhenAddData();
       }
     }
-
-
-
-
 
     #region Custom Get Set Data
     public List<Production> ListProduction

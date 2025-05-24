@@ -159,6 +159,15 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
+    public async Task<HistoricalChangeMasterData> Add(HistoricalChangeMasterData historicalChangeMasterData)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<HistoricalChangeMasterData, ConfigDBContext>(context);
+        return await repo.Add(historicalChangeMasterData);
+      }
+    }
+
     public async Task<List<Roles>> LoadAllRole()
     {
       using (var context = new ConfigDBContext())

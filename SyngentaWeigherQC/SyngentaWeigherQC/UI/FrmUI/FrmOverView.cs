@@ -28,10 +28,23 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       InitializeComponent();
       this.Shown += FrmOverView_Shown;
+      FrmMasterdata.Instance.OnSendChangeMasterData += Instance_OnSendChangeMasterData;
+    }
+
+    private void Instance_OnSendChangeMasterData()
+    {
+      ReloadUI();
     }
 
     private void FrmOverView_Shown(object sender, EventArgs e)
     {
+      LoadLine();
+    }
+
+    private async void ReloadUI()
+    {
+      //Line
+      AppCore.Ins._listInforLine = await AppCore.Ins.LoadInforLines();
       LoadLine();
     }
 

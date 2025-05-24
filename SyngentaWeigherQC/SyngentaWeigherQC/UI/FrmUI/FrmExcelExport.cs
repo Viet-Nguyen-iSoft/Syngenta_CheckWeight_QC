@@ -208,7 +208,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         //Thông tin report
         ExcelClassInforProduct excelClassInforProduct = new ExcelClassInforProduct();
         excelClassInforProduct.NameLine = production.InforLine.Name;
-        excelClassInforProduct.ModeTare = eNumHelper.GetDescription(datalogWeight.DatalogTare.eModeTare);
+        excelClassInforProduct.ModeTare = eNumHelper.GetDescription(datalogWeight?.eModeTare);
         excelClassInforProduct.ProductName = production.Name;
         excelClassInforProduct.PackSize = production.PackSize;
         excelClassInforProduct.Standard = production.StandardFinal;

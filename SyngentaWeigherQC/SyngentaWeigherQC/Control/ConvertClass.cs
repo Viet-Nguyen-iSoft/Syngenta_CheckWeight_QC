@@ -37,10 +37,19 @@ namespace SyngentaWeigherQC.Control
 
         double rateLoss = (average > target) ? Math.Round((((average - target) * 100) / target), 2) : 0;
 
+        double Cpk_min = Math.Round( (average - min) / (3 * stdev),3);
+        double Cpk_max = Math.Round((max - average) / (3 * stdev), 3);
+        double Cpk = Math.Min(Cpk_min, Cpk_max);
+
+        double Sigma = 3 * Cpk;
+        Sigma = Sigma < 0 ? 0 : Sigma > 6 ? 6 : Sigma;
+
         StatisticalData statisticalData = new StatisticalData()
         {
           Shift = datalogWeights.FirstOrDefault().Shift.Name,
           Stdev = stdev,
+          Cpk = Cpk,
+          Sigma = Sigma,
           Average = average,
           Target = production.StandardFinal,
           eEvaluate = eEvaluate,

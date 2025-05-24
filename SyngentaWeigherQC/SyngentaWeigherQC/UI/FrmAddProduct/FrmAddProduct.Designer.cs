@@ -41,25 +41,26 @@
       this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
       this.txtTareMinWithLabel = new System.Windows.Forms.TextBox();
-      this.txtTareMaxWithLabel = new System.Windows.Forms.TextBox();
-      this.txtTareTargetWithLabel = new System.Windows.Forms.TextBox();
       this.label12 = new System.Windows.Forms.Label();
+      this.txtTareTargetWithLabel = new System.Windows.Forms.TextBox();
       this.label13 = new System.Windows.Forms.Label();
       this.label21 = new System.Windows.Forms.Label();
+      this.txtTareMaxWithLabel = new System.Windows.Forms.TextBox();
       this.label11 = new System.Windows.Forms.Label();
       this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
       this.label3 = new System.Windows.Forms.Label();
       this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
       this.txtTareMinNoLabel = new System.Windows.Forms.TextBox();
-      this.txtTareMaxNoLabel = new System.Windows.Forms.TextBox();
       this.txtTareTargetNoLabel = new System.Windows.Forms.TextBox();
-      this.label10 = new System.Windows.Forms.Label();
-      this.label8 = new System.Windows.Forms.Label();
       this.label20 = new System.Windows.Forms.Label();
+      this.label8 = new System.Windows.Forms.Label();
+      this.txtTareMaxNoLabel = new System.Windows.Forms.TextBox();
+      this.label10 = new System.Windows.Forms.Label();
       this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
       this.txtDensityProduct = new System.Windows.Forms.TextBox();
       this.label16 = new System.Windows.Forms.Label();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      this.txtNameProduct = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
       this.btnAdd = new CustomControls.RJControls.RJButton();
@@ -70,7 +71,6 @@
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.label4 = new System.Windows.Forms.Label();
       this.cbbLine = new System.Windows.Forms.ComboBox();
-      this.txtNameProduct = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel23.SuspendLayout();
       this.tableLayoutPanel24.SuspendLayout();
@@ -143,11 +143,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label15.AutoSize = true;
+      this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label15.ForeColor = System.Drawing.Color.White;
-      this.label15.Location = new System.Drawing.Point(3, 0);
+      this.label15.Location = new System.Drawing.Point(0, 0);
+      this.label15.Margin = new System.Windows.Forms.Padding(0);
       this.label15.Name = "label15";
-      this.label15.Size = new System.Drawing.Size(177, 150);
+      this.label15.Size = new System.Drawing.Size(183, 150);
       this.label15.TabIndex = 0;
       this.label15.Text = "Khối lượng thuốc (Sau khi Tare)";
       this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,10 +182,10 @@
       // txtFinalMin
       // 
       this.txtFinalMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtFinalMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtFinalMin.Location = new System.Drawing.Point(223, 109);
+      this.txtFinalMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtFinalMin.Location = new System.Drawing.Point(223, 106);
       this.txtFinalMin.Name = "txtFinalMin";
-      this.txtFinalMin.Size = new System.Drawing.Size(273, 29);
+      this.txtFinalMin.Size = new System.Drawing.Size(273, 35);
       this.txtFinalMin.TabIndex = 10;
       this.txtFinalMin.Text = "0";
       this.txtFinalMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -191,10 +193,10 @@
       // txtFinalTarget
       // 
       this.txtFinalTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtFinalTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtFinalTarget.Location = new System.Drawing.Point(223, 59);
+      this.txtFinalTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtFinalTarget.Location = new System.Drawing.Point(223, 56);
       this.txtFinalTarget.Name = "txtFinalTarget";
-      this.txtFinalTarget.Size = new System.Drawing.Size(273, 29);
+      this.txtFinalTarget.Size = new System.Drawing.Size(273, 35);
       this.txtFinalTarget.TabIndex = 9;
       this.txtFinalTarget.Text = "0";
       this.txtFinalTarget.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -202,10 +204,10 @@
       // txtFinalMax
       // 
       this.txtFinalMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtFinalMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtFinalMax.Location = new System.Drawing.Point(223, 10);
+      this.txtFinalMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtFinalMax.Location = new System.Drawing.Point(223, 7);
       this.txtFinalMax.Name = "txtFinalMax";
-      this.txtFinalMax.Size = new System.Drawing.Size(273, 29);
+      this.txtFinalMax.Size = new System.Drawing.Size(273, 35);
       this.txtFinalMax.TabIndex = 8;
       this.txtFinalMax.Text = "0";
       this.txtFinalMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -216,11 +218,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label17.AutoSize = true;
+      this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label17.ForeColor = System.Drawing.Color.White;
-      this.label17.Location = new System.Drawing.Point(3, 98);
+      this.label17.Location = new System.Drawing.Point(0, 98);
+      this.label17.Margin = new System.Windows.Forms.Padding(0);
       this.label17.Name = "label17";
-      this.label17.Size = new System.Drawing.Size(214, 52);
+      this.label17.Size = new System.Drawing.Size(220, 52);
       this.label17.TabIndex = 3;
       this.label17.Text = "Giới hạn dưới (g):";
       this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -231,11 +235,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label18.AutoSize = true;
+      this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label18.ForeColor = System.Drawing.Color.White;
-      this.label18.Location = new System.Drawing.Point(3, 0);
+      this.label18.Location = new System.Drawing.Point(0, 0);
+      this.label18.Margin = new System.Windows.Forms.Padding(0);
       this.label18.Name = "label18";
-      this.label18.Size = new System.Drawing.Size(214, 49);
+      this.label18.Size = new System.Drawing.Size(220, 49);
       this.label18.TabIndex = 1;
       this.label18.Text = "Giới hạn trên (g):";
       this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -246,11 +252,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label19.AutoSize = true;
+      this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label19.ForeColor = System.Drawing.Color.White;
-      this.label19.Location = new System.Drawing.Point(3, 49);
+      this.label19.Location = new System.Drawing.Point(0, 49);
+      this.label19.Margin = new System.Windows.Forms.Padding(0);
       this.label19.Name = "label19";
-      this.label19.Size = new System.Drawing.Size(214, 49);
+      this.label19.Size = new System.Drawing.Size(220, 49);
       this.label19.TabIndex = 2;
       this.label19.Text = "Chuẩn (g):";
       this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -303,35 +311,13 @@
       // txtTareMinWithLabel
       // 
       this.txtTareMinWithLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtTareMinWithLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtTareMinWithLabel.Location = new System.Drawing.Point(222, 110);
+      this.txtTareMinWithLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtTareMinWithLabel.Location = new System.Drawing.Point(222, 106);
       this.txtTareMinWithLabel.Name = "txtTareMinWithLabel";
-      this.txtTareMinWithLabel.Size = new System.Drawing.Size(274, 29);
+      this.txtTareMinWithLabel.Size = new System.Drawing.Size(274, 35);
       this.txtTareMinWithLabel.TabIndex = 12;
       this.txtTareMinWithLabel.Text = "0";
       this.txtTareMinWithLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // txtTareMaxWithLabel
-      // 
-      this.txtTareMaxWithLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtTareMaxWithLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtTareMaxWithLabel.Location = new System.Drawing.Point(222, 10);
-      this.txtTareMaxWithLabel.Name = "txtTareMaxWithLabel";
-      this.txtTareMaxWithLabel.Size = new System.Drawing.Size(274, 29);
-      this.txtTareMaxWithLabel.TabIndex = 11;
-      this.txtTareMaxWithLabel.Text = "0";
-      this.txtTareMaxWithLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // txtTareTargetWithLabel
-      // 
-      this.txtTareTargetWithLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtTareTargetWithLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtTareTargetWithLabel.Location = new System.Drawing.Point(222, 60);
-      this.txtTareTargetWithLabel.Name = "txtTareTargetWithLabel";
-      this.txtTareTargetWithLabel.Size = new System.Drawing.Size(274, 29);
-      this.txtTareTargetWithLabel.TabIndex = 9;
-      this.txtTareTargetWithLabel.Text = "0";
-      this.txtTareTargetWithLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
       // label12
       // 
@@ -339,14 +325,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label12.AutoSize = true;
+      this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label12.ForeColor = System.Drawing.Color.White;
-      this.label12.Location = new System.Drawing.Point(3, 50);
+      this.label12.Location = new System.Drawing.Point(0, 49);
+      this.label12.Margin = new System.Windows.Forms.Padding(0);
       this.label12.Name = "label12";
-      this.label12.Size = new System.Drawing.Size(213, 50);
+      this.label12.Size = new System.Drawing.Size(219, 49);
       this.label12.TabIndex = 2;
       this.label12.Text = "Chuẩn (g):";
       this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtTareTargetWithLabel
+      // 
+      this.txtTareTargetWithLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtTareTargetWithLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtTareTargetWithLabel.Location = new System.Drawing.Point(222, 56);
+      this.txtTareTargetWithLabel.Name = "txtTareTargetWithLabel";
+      this.txtTareTargetWithLabel.Size = new System.Drawing.Size(274, 35);
+      this.txtTareTargetWithLabel.TabIndex = 9;
+      this.txtTareTargetWithLabel.Text = "0";
+      this.txtTareTargetWithLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
       // label13
       // 
@@ -354,11 +353,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label13.AutoSize = true;
+      this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label13.ForeColor = System.Drawing.Color.White;
-      this.label13.Location = new System.Drawing.Point(3, 100);
+      this.label13.Location = new System.Drawing.Point(0, 98);
+      this.label13.Margin = new System.Windows.Forms.Padding(0);
       this.label13.Name = "label13";
-      this.label13.Size = new System.Drawing.Size(213, 50);
+      this.label13.Size = new System.Drawing.Size(219, 52);
       this.label13.TabIndex = 3;
       this.label13.Text = "Giới hạn dưới (g):";
       this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -369,14 +370,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label21.AutoSize = true;
+      this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label21.ForeColor = System.Drawing.Color.White;
-      this.label21.Location = new System.Drawing.Point(3, 0);
+      this.label21.Location = new System.Drawing.Point(0, 0);
+      this.label21.Margin = new System.Windows.Forms.Padding(0);
       this.label21.Name = "label21";
-      this.label21.Size = new System.Drawing.Size(213, 50);
+      this.label21.Size = new System.Drawing.Size(219, 49);
       this.label21.TabIndex = 8;
       this.label21.Text = "Giới hạn trên (g):";
       this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtTareMaxWithLabel
+      // 
+      this.txtTareMaxWithLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtTareMaxWithLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtTareMaxWithLabel.Location = new System.Drawing.Point(222, 7);
+      this.txtTareMaxWithLabel.Name = "txtTareMaxWithLabel";
+      this.txtTareMaxWithLabel.Size = new System.Drawing.Size(274, 35);
+      this.txtTareMaxWithLabel.TabIndex = 11;
+      this.txtTareMaxWithLabel.Text = "0";
+      this.txtTareMaxWithLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
       // label11
       // 
@@ -384,11 +398,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label11.AutoSize = true;
+      this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label11.ForeColor = System.Drawing.Color.White;
-      this.label11.Location = new System.Drawing.Point(3, 0);
+      this.label11.Location = new System.Drawing.Point(0, 0);
+      this.label11.Margin = new System.Windows.Forms.Padding(0);
       this.label11.Name = "label11";
-      this.label11.Size = new System.Drawing.Size(177, 150);
+      this.label11.Size = new System.Drawing.Size(183, 150);
       this.label11.TabIndex = 0;
       this.label11.Text = "Trong lượng Tare (Có nhãn)";
       this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -418,11 +434,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label3.AutoSize = true;
+      this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.ForeColor = System.Drawing.Color.White;
-      this.label3.Location = new System.Drawing.Point(3, 0);
+      this.label3.Location = new System.Drawing.Point(0, 0);
+      this.label3.Margin = new System.Windows.Forms.Padding(0);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(177, 150);
+      this.label3.Size = new System.Drawing.Size(183, 150);
       this.label3.TabIndex = 0;
       this.label3.Text = "Trong lượng Tare (Không nhãn)";
       this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -455,65 +473,24 @@
       // txtTareMinNoLabel
       // 
       this.txtTareMinNoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtTareMinNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtTareMinNoLabel.Location = new System.Drawing.Point(222, 110);
+      this.txtTareMinNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtTareMinNoLabel.Location = new System.Drawing.Point(222, 106);
       this.txtTareMinNoLabel.Name = "txtTareMinNoLabel";
-      this.txtTareMinNoLabel.Size = new System.Drawing.Size(274, 29);
+      this.txtTareMinNoLabel.Size = new System.Drawing.Size(274, 35);
       this.txtTareMinNoLabel.TabIndex = 12;
       this.txtTareMinNoLabel.Text = "0";
       this.txtTareMinNoLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
-      // txtTareMaxNoLabel
-      // 
-      this.txtTareMaxNoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtTareMaxNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtTareMaxNoLabel.Location = new System.Drawing.Point(222, 10);
-      this.txtTareMaxNoLabel.Name = "txtTareMaxNoLabel";
-      this.txtTareMaxNoLabel.Size = new System.Drawing.Size(274, 29);
-      this.txtTareMaxNoLabel.TabIndex = 11;
-      this.txtTareMaxNoLabel.Text = "0";
-      this.txtTareMaxNoLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
       // txtTareTargetNoLabel
       // 
       this.txtTareTargetNoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtTareTargetNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtTareTargetNoLabel.Location = new System.Drawing.Point(222, 60);
+      this.txtTareTargetNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtTareTargetNoLabel.Location = new System.Drawing.Point(222, 56);
       this.txtTareTargetNoLabel.Name = "txtTareTargetNoLabel";
-      this.txtTareTargetNoLabel.Size = new System.Drawing.Size(274, 29);
+      this.txtTareTargetNoLabel.Size = new System.Drawing.Size(274, 35);
       this.txtTareTargetNoLabel.TabIndex = 9;
       this.txtTareTargetNoLabel.Text = "0";
       this.txtTareTargetNoLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // label10
-      // 
-      this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label10.AutoSize = true;
-      this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label10.ForeColor = System.Drawing.Color.White;
-      this.label10.Location = new System.Drawing.Point(3, 50);
-      this.label10.Name = "label10";
-      this.label10.Size = new System.Drawing.Size(213, 50);
-      this.label10.TabIndex = 2;
-      this.label10.Text = "Chuẩn (g):";
-      this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label8
-      // 
-      this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label8.AutoSize = true;
-      this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label8.ForeColor = System.Drawing.Color.White;
-      this.label8.Location = new System.Drawing.Point(3, 100);
-      this.label8.Name = "label8";
-      this.label8.Size = new System.Drawing.Size(213, 50);
-      this.label8.TabIndex = 3;
-      this.label8.Text = "Giới hạn dưới (g):";
-      this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label20
       // 
@@ -521,14 +498,61 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label20.AutoSize = true;
+      this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label20.ForeColor = System.Drawing.Color.White;
-      this.label20.Location = new System.Drawing.Point(3, 0);
+      this.label20.Location = new System.Drawing.Point(0, 0);
+      this.label20.Margin = new System.Windows.Forms.Padding(0);
       this.label20.Name = "label20";
-      this.label20.Size = new System.Drawing.Size(213, 50);
+      this.label20.Size = new System.Drawing.Size(219, 49);
       this.label20.TabIndex = 8;
       this.label20.Text = "Giới hạn trên (g):";
       this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // label8
+      // 
+      this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label8.AutoSize = true;
+      this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label8.ForeColor = System.Drawing.Color.White;
+      this.label8.Location = new System.Drawing.Point(0, 98);
+      this.label8.Margin = new System.Windows.Forms.Padding(0);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(219, 52);
+      this.label8.TabIndex = 3;
+      this.label8.Text = "Giới hạn dưới (g):";
+      this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtTareMaxNoLabel
+      // 
+      this.txtTareMaxNoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtTareMaxNoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtTareMaxNoLabel.Location = new System.Drawing.Point(222, 7);
+      this.txtTareMaxNoLabel.Name = "txtTareMaxNoLabel";
+      this.txtTareMaxNoLabel.Size = new System.Drawing.Size(274, 35);
+      this.txtTareMaxNoLabel.TabIndex = 11;
+      this.txtTareMaxNoLabel.Text = "0";
+      this.txtTareMaxNoLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      // 
+      // label10
+      // 
+      this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label10.AutoSize = true;
+      this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label10.ForeColor = System.Drawing.Color.White;
+      this.label10.Location = new System.Drawing.Point(0, 49);
+      this.label10.Margin = new System.Windows.Forms.Padding(0);
+      this.label10.Name = "label10";
+      this.label10.Size = new System.Drawing.Size(219, 49);
+      this.label10.TabIndex = 2;
+      this.label10.Text = "Chuẩn (g):";
+      this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // tableLayoutPanel5
       // 
@@ -552,10 +576,10 @@
       // txtDensityProduct
       // 
       this.txtDensityProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtDensityProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtDensityProduct.Location = new System.Drawing.Point(405, 10);
+      this.txtDensityProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtDensityProduct.Location = new System.Drawing.Point(405, 7);
       this.txtDensityProduct.Name = "txtDensityProduct";
-      this.txtDensityProduct.Size = new System.Drawing.Size(274, 29);
+      this.txtDensityProduct.Size = new System.Drawing.Size(274, 35);
       this.txtDensityProduct.TabIndex = 1;
       this.txtDensityProduct.Text = "0";
       this.txtDensityProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -566,11 +590,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label16.AutoSize = true;
+      this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label16.ForeColor = System.Drawing.Color.White;
-      this.label16.Location = new System.Drawing.Point(3, 0);
+      this.label16.Location = new System.Drawing.Point(0, 0);
+      this.label16.Margin = new System.Windows.Forms.Padding(0);
       this.label16.Name = "label16";
-      this.label16.Size = new System.Drawing.Size(396, 50);
+      this.label16.Size = new System.Drawing.Size(402, 50);
       this.label16.TabIndex = 0;
       this.label16.Text = "Tỷ trọng:";
       this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -594,17 +620,28 @@
       this.tableLayoutPanel3.Size = new System.Drawing.Size(682, 50);
       this.tableLayoutPanel3.TabIndex = 16;
       // 
+      // txtNameProduct
+      // 
+      this.txtNameProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtNameProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtNameProduct.Location = new System.Drawing.Point(146, 10);
+      this.txtNameProduct.Name = "txtNameProduct";
+      this.txtNameProduct.Size = new System.Drawing.Size(533, 29);
+      this.txtNameProduct.TabIndex = 1;
+      // 
       // label1
       // 
       this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label1.AutoSize = true;
+      this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.ForeColor = System.Drawing.Color.White;
-      this.label1.Location = new System.Drawing.Point(3, 0);
+      this.label1.Location = new System.Drawing.Point(0, 0);
+      this.label1.Margin = new System.Windows.Forms.Padding(0);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(137, 50);
+      this.label1.Size = new System.Drawing.Size(143, 50);
       this.label1.TabIndex = 0;
       this.label1.Text = "Tên sản phẩm:";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -679,7 +716,7 @@
       this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel4.BackColor = System.Drawing.Color.SteelBlue;
+      this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
       this.tableLayoutPanel4.ColumnCount = 2;
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.95954F));
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.04046F));
@@ -696,10 +733,10 @@
       // txtPackSize
       // 
       this.txtPackSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtPackSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtPackSize.Location = new System.Drawing.Point(405, 10);
+      this.txtPackSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtPackSize.Location = new System.Drawing.Point(405, 7);
       this.txtPackSize.Name = "txtPackSize";
-      this.txtPackSize.Size = new System.Drawing.Size(274, 29);
+      this.txtPackSize.Size = new System.Drawing.Size(274, 35);
       this.txtPackSize.TabIndex = 1;
       this.txtPackSize.Text = "0";
       this.txtPackSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -710,11 +747,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label2.AutoSize = true;
+      this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.ForeColor = System.Drawing.Color.White;
-      this.label2.Location = new System.Drawing.Point(3, 0);
+      this.label2.Location = new System.Drawing.Point(0, 0);
+      this.label2.Margin = new System.Windows.Forms.Padding(0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(396, 50);
+      this.label2.Size = new System.Drawing.Size(402, 50);
       this.label2.TabIndex = 0;
       this.label2.Text = "Packsize:";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -744,11 +783,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.label4.AutoSize = true;
+      this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label4.ForeColor = System.Drawing.Color.White;
-      this.label4.Location = new System.Drawing.Point(3, 0);
+      this.label4.Location = new System.Drawing.Point(0, 0);
+      this.label4.Margin = new System.Windows.Forms.Padding(0);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(396, 50);
+      this.label4.Size = new System.Drawing.Size(402, 50);
       this.label4.TabIndex = 0;
       this.label4.Text = "Chuyền:";
       this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -763,15 +804,6 @@
       this.cbbLine.Name = "cbbLine";
       this.cbbLine.Size = new System.Drawing.Size(274, 32);
       this.cbbLine.TabIndex = 1;
-      // 
-      // txtNameProduct
-      // 
-      this.txtNameProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtNameProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNameProduct.Location = new System.Drawing.Point(146, 10);
-      this.txtNameProduct.Name = "txtNameProduct";
-      this.txtNameProduct.Size = new System.Drawing.Size(533, 29);
-      this.txtNameProduct.TabIndex = 1;
       // 
       // FrmAddProduct
       // 

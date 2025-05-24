@@ -19,6 +19,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmMasterdata : Form
   {
+    public delegate void SendChangeMasterData();
+    public event SendChangeMasterData OnSendChangeMasterData;
     public FrmMasterdata()
     {
       InitializeComponent();
@@ -48,11 +50,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     #endregion
 
-
-    private List<ProductionDTO> _productionDTOs = new List<ProductionDTO>();
     private List<Production> _products = new List<Production>();
     private List<Production> _productsSearch = new List<Production>();
-
 
     private List<ProductionDTO> _productionExcels = new List<ProductionDTO>();
     private List<ProductionDTO> _production_ExitsDb = new List<ProductionDTO>();
@@ -83,19 +82,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
         SetDatagridview(dataDTO_AfterFilter);
       }  
-    }
-
-    private void dgvMasterData_Scroll(object sender, ScrollEventArgs e)
-    {
-      if (e.ScrollOrientation == ScrollOrientation.HorizontalScroll)
-      {
-        if (e.NewValue != e.OldValue)
-        {
-          dgvMasterData.Columns[0].Frozen = true;
-          dgvMasterData.HorizontalScrollingOffset = e.NewValue;
-          dgvMasterData.Columns[0].DisplayIndex = 0;
-        }
-      }
     }
 
     private List<ProductionDTO> SearchData(List<ProductionDTO> productionDTOs, string textSearch)
@@ -210,8 +196,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.btnSaveChange.Visible = isVis;
     }
 
-
-
     private void SetDatagridview(List<ProductionDTO> productionDTOs)
     {
       if (this.InvokeRequired)
@@ -253,42 +237,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
             data.PackSize == data_new.PackSize;
     }
 
-
-
-
-
-    private bool isCreateOrUpdateIfExits(List<Production> listProductsOld, Production production)
-    {
-      try
-      {
-        bool isChange = false;
-        if (listProductsOld == null) return true;
-        if (listProductsOld?.Count <= 0) return true;
-        var data = listProductsOld?.Where(x => x.Name == production.Name).FirstOrDefault();
-        if (data == null) return true;
-
-        isChange = (data.PackSize != production.PackSize) ||
-                        (data.Density != production.Density) ||
-                        (data.Tare_no_label_lowerlimit != production.Tare_no_label_lowerlimit) ||
-                        (data.Tare_no_label_standard != production.Tare_no_label_standard) ||
-                        (data.Tare_no_label_upperlimit != production.Tare_no_label_upperlimit) ||
-                        (data.Tare_with_label_lowerlimit != production.Tare_with_label_lowerlimit) ||
-                        (data.Tare_with_label_standard != production.Tare_with_label_standard) ||
-                        (data.Tare_with_label_upperlimit != production.Tare_with_label_upperlimit) ||
-                        (data.LowerLimitFinal != production.LowerLimitFinal) ||
-                        (data.StandardFinal != production.StandardFinal) ||
-                        (data.UpperLimitFinal != production.UpperLimitFinal);
-
-        return isChange;
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex);
-        return false;
-      }
-    }
-
-
     private void btnSaveChange_Click(object sender, EventArgs e)
     {
       FrmConfirmChangeMasterData frmConfirmChangeMasterData = new FrmConfirmChangeMasterData();
@@ -323,7 +271,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
         {
           var productNew = CvtClassDTO.ConvertToProductionList(_production_New);
           await AppCore.Ins.AddRange(productNew);
-        }  
+        }
+
+        OnSendChangeMasterData?.Invoke();
       }
       catch (Exception)
       {
@@ -334,6 +284,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         VisibleSave(false);
         LoadProducts();
         new FrmNotification().ShowMessage("Cập nhật dữ liệu thành công !", eMsgType.Warning);
+        
       }
     }
 
@@ -350,8 +301,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
         new FrmNotification().ShowMessage("Tài khoản không có quyền xem lịch sử thay đổi dữ liệu !", eMsgType.Warning);
       }
     }
-
-    
 
     private void btnAdd_Click(object sender, EventArgs e)
     {
@@ -404,6 +353,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmEditProduct_OnSendDoneChange()
     {
       LoadProducts();
+      OnSendChangeMasterData?.Invoke();
     }
   }
 }
