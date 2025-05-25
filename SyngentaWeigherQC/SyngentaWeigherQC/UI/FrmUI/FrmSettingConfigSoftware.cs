@@ -10,9 +10,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmSettingConfigSoftware : Form
   {
-    public delegate void SendChangeNameStation(ConfigSoftware configSoftware);
-    public event SendChangeNameStation OnSendChangeNameStation;
-
     public delegate void SendChangeConnection(ConfigSoftware configSoftware);
     public event SendChangeConnection OnSendChangeConnection;
 
@@ -58,13 +55,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
         {
           txtIp.Texts = configSoftware.IpTcp;
           txtPort.Texts = configSoftware.PortTcp.ToString();
-          txtNameStation.Texts = configSoftware.NameStation.ToString();
         }
         else
         {
           txtIp.Texts = string.Empty;
           txtPort.Texts = string.Empty;
-          txtNameStation.Texts = string.Empty;
         }
       }
       catch (Exception ex)
@@ -106,23 +101,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     }
 
-    private async void btnSaveStationName_Click(object sender, EventArgs e)
-    {
-      try
-      {
-        AppCore.Ins._configSoftware.NameStation = txtNameStation.Texts.Trim();
-        await AppCore.Ins.Update(AppCore.Ins._configSoftware);
-
-        new FrmNotification().ShowMessage("Lưu thành công.", eMsgType.Info);
-        OnSendChangeNameStation?.Invoke(AppCore.Ins._configSoftware);
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex);
-        new FrmNotification().ShowMessage("Lưu thất bại.", eMsgType.Warning);
-      }
-    }
-
+ 
 
   }
 }

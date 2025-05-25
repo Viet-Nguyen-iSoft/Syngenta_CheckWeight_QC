@@ -13,6 +13,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FormMain : Form
   {
+    public delegate void SendLogInChange(Roles account);
+    public event SendLogInChange OnSendLogInChange;
+
     public FormMain()
     {
       InitializeComponent();
@@ -22,7 +25,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       this.lbStation.Text = $"PHẦN MỀM THU THẬP DỮ LIỆU CÂN  -  {AppCore.Ins._configSoftware?.NameStation}";
       this.Shown += FormMain_Shown;
-      FrmSettingConfigSoftware.Instance.OnSendChangeNameStation += Instance_OnSendChangeNameStation;
+      FrmSettingGeneral.Instance.OnSendChangeNameStation += Instance_OnSendChangeNameStation;
       AppCore.Ins.OnSendTimeoutPage += Ins_OnSendTimeoutPage;
     }
 
@@ -276,13 +279,16 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void FrmConfirmLogout_OnSendOKClicked()
     {
+      AppCore.Ins._roleCurrent = null;
       SetInforAccount("Đăng nhập");
+      OnSendLogInChange?.Invoke(AppCore.Ins._roleCurrent);
     }
 
 
     private void FrmLogIn_OnSendLogInOK(Roles roles)
     {
       SetInforAccount(roles?.Name);
+      OnSendLogInChange?.Invoke(roles);
     }
 
 
@@ -315,8 +321,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void lbStation_Click(object sender, EventArgs e)
     {
-      AppCore.Ins.ReportAutoMonthly(2025, 5);
-      AppCore.Ins.ReportAutoWeekly(2025, 18);
+      //AppCore.Ins.ReportAutoMonthly(2025, 5);
+      //AppCore.Ins.ReportAutoWeekly(2025, 18);
     }
   }
 }

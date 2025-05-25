@@ -86,14 +86,14 @@ namespace SyngentaWeigherQC.UI.UcUI
 
     private void btnHidePass_Click(object sender, EventArgs e)
     {
-      if (AppCore.Ins.CheckRole(ePermit.Role_Setting_User) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      if (AppCore.Ins.CheckRole(ePermit.SettingAccount))
       {
         this.txtPass.PasswordChar = !this.txtPass.PasswordChar;
         this.btnHidePass.Image = (this.txtPass.PasswordChar) ? Properties.Resources.passDisable32px : Properties.Resources.passEnable32px;
       }
       else
       {
-        new FrmNotification().ShowMessage("Tài khoản không có quyền xem mật khẩu các Account!", eMsgType.Warning);
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
       }
       
     }

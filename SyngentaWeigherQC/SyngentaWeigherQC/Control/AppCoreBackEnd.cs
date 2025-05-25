@@ -1,5 +1,4 @@
-﻿using ClosedXML.Excel;
-using SyngentaWeigherQC.DTO;
+﻿using SyngentaWeigherQC.DTO;
 using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Models.NewFolder1;
@@ -69,14 +68,11 @@ namespace SyngentaWeigherQC.Control
     public eStatusModeWeight eStatusModeWeight = eStatusModeWeight.OverView;
     public InforLine inforLineOperation;
 
-
     public eWeigherMode _eWeigherMode = eWeigherMode.Normal;
     public eWeigherMode _eWeigherModeLast = eWeigherMode.Normal;
     public string[] _listPortPC = new string[100];
 
     public Shift _shiftIdCurrent = null;
-    public Shift _shiftIdPrevious = null;
-
     public AppModulSupport _pageCurrent = AppModulSupport.OverView;
 
     //public string ip_tcp_mettler = "192.168.2.100"; //Sachet //"147.167.40.239";
@@ -86,21 +82,40 @@ namespace SyngentaWeigherQC.Control
 
     public string ip_tcp_mettler = "127.0.0.1"; //GN
     public int port_tcp_mettler = 8080; //2305;
-
     private eModeCommunication eModeCommunication = eModeCommunication.TcpClient;
-
-    public int _numberDataEachRow = 10;
-
     public List<Roles> _listRoles { get; set; } = new List<Roles>();
 
     public string Version = "V1.0.1";
+
+    public bool _isPermitDev = false;
+    private int dayCurrent = 0;
+    private int dayLast = 0;
+
+    public eModeUseApp _modeUseApp = eModeUseApp.OFF;
+    public eReadyReceidDataTare _readyReceidDataTare = eReadyReceidDataTare.No;
+    public eReadyReceidWeigher _readyReceidDataWeigher = eReadyReceidWeigher.No;
+
+    public Roles _roleCurrent = new Roles();
+
+
+    public List<Production> _listProductsForStation { get; set; } = new List<Production>();
+    public List<InforLine> _listInforLine { get; set; } = new List<InforLine>();
+    public List<DatalogWeight> _listDatalogWeight { get; set; } = new List<DatalogWeight>();
+    public ConfigSoftware _configSoftware { get; set; } = new ConfigSoftware();
+
+    public List<ShiftType> _listShiftType { get; set; } = new List<ShiftType>();
+    public List<Shift> _listShift { get; set; } = new List<Shift>();
+    public List<ShiftLeader> _listShiftLeader { get; set; } = new List<ShiftLeader>();
+
+    public int _timeTimeoutCurrent = 0;
+
     public void Init()
     {
       InitDB();
 
       LoadDataLine().Wait();
 
-      InformationDeviceDev();
+      LoadInternalVariables();
 
       InitEvent();
 
@@ -109,6 +124,17 @@ namespace SyngentaWeigherQC.Control
       LoggerHelper.LogErrorToFileLog("Start App");
 
       StartShowUI();
+    }
+
+
+    
+    private void LoadInternalVariables()
+    {
+      dayCurrent = dayLast = DateTime.Now.Day;
+
+
+      string computerName = Environment.MachineName;
+      //_isPermitDev = (computerName == "DESKTOP-VIPBB6Qx");
     }
 
     private void CreateFolderReport()
@@ -161,27 +187,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public Bitmap ByteArrayToBitmap(byte[] byteArray)
-    {
-      using (MemoryStream ms = new MemoryStream(byteArray))
-      {
-        return new Bitmap(ms);
-      }
-    }
 
-    //Current Data
-
-    public eModeUseApp _modeUseApp = eModeUseApp.OFF;
-    public eReadyReceidDataTare _readyReceidDataTare = eReadyReceidDataTare.No;
-    public eReadyReceidWeigher _readyReceidDataWeigher = eReadyReceidWeigher.No;
-
-    public Roles _roleCurrent = new Roles();
-
-
-    public List<Production> _listProductsForStation { get; set; } = new List<Production>();
-    public List<InforLine> _listInforLine { get; set; } = new List<InforLine>();
-    public List<DatalogWeight> _listDatalogWeight { get; set; } = new List<DatalogWeight>();
-    public ConfigSoftware _configSoftware { get; set; } = new ConfigSoftware();
     public async Task LoadDataLine()
     {
       try
@@ -233,8 +239,6 @@ namespace SyngentaWeigherQC.Control
       var dateTimeSearch = DatetimeHelper.GetRangeDateCurrent(DateTime.Now);
       _listDatalogWeight = await AppCore.Ins.LoadAllDatalogWeight(0, dateTimeSearch.StartDate, dateTimeSearch.EndDate);
     }
-
-
 
     public eEvaluate EvaluateData(double avgRaw, Production production)
     {
@@ -291,7 +295,6 @@ namespace SyngentaWeigherQC.Control
       }
       return null;
     }
-
 
     public List<StatisticalData> SumaryDTO(List<DatalogWeight> listDatalogByLine)
     {
@@ -363,37 +366,6 @@ namespace SyngentaWeigherQC.Control
     {
       if (datalogWeights == null)
         return new List<DataReportExcel>();
-
-      //return datalogWeights
-      //.GroupBy(dw => ((DateTime)dw.CreatedAt).Date)
-      //.Select(dateGroup => new DataReportExcel
-      //{
-      //  DateTime = dateGroup.Key,
-      //  DataByDates = dateGroup
-      //        .GroupBy(dw => dw.ShiftType)
-      //        .Select(shiftTypeGroup => new DataByShiftType
-      //        {
-      //          ShiftType = shiftTypeGroup.Key,
-      //          DataByProducts = shiftTypeGroup
-      //                .GroupBy(dw => dw.Production)
-      //                .Select(prodGroup => new DataByProduction
-      //                {
-      //                  Production = prodGroup.Key,
-      //                  DataByProductionByShifts = prodGroup
-      //                        .GroupBy(dw => dw.Shift)
-      //                        .Select(shiftGroup => new DataByProductionByShift
-      //                        {
-      //                          Shift = shiftGroup.Key,
-      //                          DatalogWeights = shiftGroup.ToList()
-      //                        })
-      //                        .ToList()
-      //                })
-      //                .ToList()
-      //        })
-      //        .ToList()
-      //})
-      //.ToList();
-
 
       return datalogWeights
         .GroupBy(dw =>
@@ -563,49 +535,6 @@ namespace SyngentaWeigherQC.Control
       return consumptionTables;
     }
 
-
-    /// <summary>
-    /// ///////////////////////////////////////////////////////
-    /// </summary>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public bool _isPermitDev = false;
-    private void InformationDeviceDev()
-    {
-      string computerName = Environment.MachineName;
-      _isPermitDev = (computerName == "DESKTOP-VIPBB6Qx");
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void InitDB()
     {
       try
@@ -620,72 +549,10 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-
-
-    //DB Data
-
-    public List<HistoricalChangeMasterData> _listChangeProductsLogging { get; set; } = new List<HistoricalChangeMasterData>();
-
-
-    public List<ShiftType> _listShiftType { get; set; } = new List<ShiftType>();
-    public ShiftType _shiftTypeCurrent { get; set; } = new ShiftType();
-    public List<Shift> _listShift { get; set; } = new List<Shift>();
-
-    public List<ShiftLeader> _listShiftLeader { get; set; } = new List<ShiftLeader>();
-
-
-    public List<Sample> _listSamplesCurrent { get; set; } = new List<Sample>();
-    public List<Sample> _listDataSamples { get; set; } = new List<Sample>();
-
-    public List<DatalogWeight> _listDatalogs { get; set; } = new List<DatalogWeight>();
-    public DatalogWeight _datalogsRowNew { get; set; } = new DatalogWeight();
-    public int groupId_DB { get; set; } = 1;
-    public int stt_Datalog_DB { get; set; } = 0;
-    public int datalogId_Sample_DB { get; set; } = 0;
-
-
-    public List<Tare> _listTares { get; set; } = new List<Tare>();
-    public int _groupIdCurrentTare { get; set; } = new int();
-
-
-
-
-
-    public DateTime GetDataTimeFileDB(DateTime dateTimeCurent)
-    {
-      if (dateTimeCurent.Hour >= 0 && dateTimeCurent.Hour < 6)
-      {
-        return dateTimeCurent.AddDays(-1);
-      }
-      return dateTimeCurent;
-    }
-
-    public void CreateFolderReportAuto(string folderReport)
-    {
-      if (folderReport == null) return;
-      if (folderReport == "") return;
-      string folderByMonths = folderReport + "\\Months";
-      if (!Directory.Exists(folderByMonths))
-      {
-        Directory.CreateDirectory(folderByMonths);
-      }
-      string folderByWeeks = folderReport + "\\Weeks";
-      if (!Directory.Exists(folderByWeeks))
-      {
-        Directory.CreateDirectory(folderByWeeks);
-      }
-      string folderByDailys = folderReport + "\\Dailys";
-      if (!Directory.Exists(folderByDailys))
-      {
-        Directory.CreateDirectory(folderByDailys);
-      }
-    }
-
     public async Task ReloadShift()
     {
       _listShift = await LoadShifts();
     }
-
 
     private Shift GetNameShift(int codeShiftType)
     {
@@ -716,8 +583,6 @@ namespace SyngentaWeigherQC.Control
       return null;
     }
 
-
-
     public void InitEvent()
     {
       try
@@ -738,9 +603,6 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-
-
-    public int _timeTimeoutCurrent = 0;
     private void _timerCheckTimeout_Elapsed(object sender, ElapsedEventArgs e)
     {
       try
@@ -776,61 +638,47 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-  
-
-
-    private bool isStartApp = true;
-    private int dayCurrent = 0;
-    private int dayLast = 0;
     private void _timerRealTimeCheckChangeDay_Elapsed(object sender, ElapsedEventArgs e)
     {
       _timerRealTimeCheckChangeDay.Stop();
       try
       {
         DateTime dt = DateTime.Now.AddHours(-6);
-        if (!isStartApp)
+
+        dayCurrent = dt.Day;
+        if (dayLast != dayCurrent)
         {
-          dayCurrent = dt.Day;
-          if (dayLast != dayCurrent)
+          //Report Auto Ngày
+          ReportAutoDailys(DateTime.Now.AddDays(-1));
+
+          //Report Tháng
+          DateTime dt_current = DateTime.Now;
+          int year = dt_current.Year;
+          int month = dt_current.Month;
+          if (month == 1)
           {
-            ReloadDataChangeDate();
-            OnSendChangeDate?.Invoke();
-            //Check Xuất report auto theo tháng, tuần
-            //ExportAutoMonthOrWeek();
-
-            //Report Auto Dailys
-            ReportAutoDailys(DateTime.Now.AddDays(-1));
-
-            //Report Tháng
-            DateTime dt_current = DateTime.Now;
-            int year = dt_current.Year;
-            int month = dt_current.Month;
-            if (month == 1)
-            {
-              year -= 1;
-              month = 12;
-            }
-            else
-            {
-              month -= 1;
-            }
-            ReportAutoMonthly(year, month);
-
-            //Báo cáo Tuần
-            CultureInfo cul = CultureInfo.CurrentCulture;
-            int week = cul.Calendar.GetWeekOfYear(dt_current, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-            if (week > 1) week -= 1;
-            AppCore.Ins.ReportAutoWeekly(year, week);
-
-
-
-            dayLast = dayCurrent;
+            year -= 1;
+            month = 12;
           }
-        }
-        else
-        {
-          dayCurrent = dayLast = dt.Day;
-          isStartApp = false;
+          else
+          {
+            month -= 1;
+          }
+          ReportAutoMonthly(year, month);
+
+          //Báo cáo Tuần
+          CultureInfo cul = CultureInfo.CurrentCulture;
+          int week = cul.Calendar.GetWeekOfYear(dt_current, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+          if (week > 1) week -= 1;
+          AppCore.Ins.ReportAutoWeekly(year, week);
+
+
+          //Load lại Data
+          ReloadDataChangeDate();
+          OnSendChangeDate?.Invoke();
+
+          //Cập nhật
+          dayLast = dayCurrent;
         }
       }
       catch (Exception ex)
@@ -840,38 +688,13 @@ namespace SyngentaWeigherQC.Control
       finally { _timerRealTimeCheckChangeDay.Start(); }
     }
 
-    public void ExportAutoMonthOrWeek()
-    {
-      try
-      {
-        //DateTime dt = DateTime.Now;
-        //int year = dt.Year;
-        //int month = dt.Month;
-        //CultureInfo cul = CultureInfo.CurrentCulture;
-        //int weekCurrent = cul.Calendar.GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-
-        //string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
-        //string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
-        //string nameStation = AppCore.Ins._stationCurrent.Name;
-        //FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(year, month - 1, weekCurrent - 1, pathLocal, pathOneDrive, nameStation);
-        //frmReportAutoPdfMonth.ShowDialog();
-      }
-      catch (Exception ex)
-      {
-        LoggerHelper.LogErrorToFileLog(ex);
-      }
-    }
-
-
-
     public bool CheckRole(ePermit permit)
     {
-      return true;
       if (AppCore.Ins._isPermitDev) return true;
-      string roleStr = _roleCurrent.Permission;
+      string roleStr = _roleCurrent?.Permission;
       if (!string.IsNullOrEmpty(roleStr))
       {
-        return roleStr.Contains(permit.ToString()) || AppCore.Ins._roleCurrent?.Name == "iSOFT";
+        return roleStr.Contains(permit.ToString());
       }
       return false;
     }
@@ -885,356 +708,21 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    //DB
-
-
-    public async Task AddProduct(Production productions)
+    public string RoleUserAdmin()
     {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Production, ConfigDBContext>(context);
-        await repo.Add(productions);
-      }
+      string role = "";
+      role += (true) ? $"{ePermit.ReportConsumption}" : "";
+      role += (true) ? $"_{ePermit.ReportExcel}" : "";
+      role += (true) ? $"_{ePermit.AddProduct}" : "";
+      role += (true) ? $"_{ePermit.EditProduct}" : "";
+      role += (true) ? $"_{ePermit.SeeHistoricalAddProduct}" : "";
+      role += (true) ? $"_{ePermit.SettingInformationLine}" : "";
+      role += (true) ? $"_{ePermit.SettingGeneral}" : "";
+      role += (true) ? $"_{ePermit.SettingAccount}" : "";
+      role += (true) ? $"_{ePermit.SettingShiftLeader}" : "";
+      role += (true) ? $"_{ePermit.SettingDevice}" : "";
+      return role;
     }
-
-    public async Task UpdateProduct(Production productions)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Production, ConfigDBContext>(context);
-        await repo.Update(productions);
-      }
-    }
-
-
-
-    public async Task<List<HistoricalChangeMasterData>> LoadHistoricalChangeMasterData()
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryHistoricalChangeMasterData(context);
-        return await repo.GetAllAsync();
-      }
-    }
-
-
-    //Load Infor Setting Value
-    public async Task<ConfigSoftware> LoadValueSetting()
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryConfigSoftware(context);
-        return await repo.GetAsync();
-      }
-    }
-
-    public async Task UpdateValueSetting(ConfigSoftware inforValueSettingStation)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryConfigSoftware(context);
-        await repo.Update(inforValueSettingStation);
-      }
-    }
-
-
-    public async Task UpdateStation(List<InforLine> stations)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryInforLines(context);
-        await repo.UpdateRange(stations);
-      }
-    }
-
-
-
-
-
-
-
-    public async Task<List<ShiftType>> LoadShiftTypes()
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryShiftTypes(context);
-        return await repo.GetAllAsync();
-      }
-    }
-
-    public async Task<List<Shift>> LoadShifts()
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryShifts(context);
-        return await repo.GetAllAsync();
-      }
-    }
-
-
-
-    public async Task UpdateRole(Roles role)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Roles, ConfigDBContext>(context);
-        await repo.Update(role);
-      }
-    }
-
-    public async Task UpdateRangeProduct(List<Production> productions)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Production, ConfigDBContext>(context);
-        await repo.UpdateRange(productions);
-      }
-    }
-
-    //role
-
-
-    //Shift Type
-    public async Task UpdateShiftTypeChoose(List<ShiftType> shiftTypes)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        GenericRepository<ShiftType, ConfigDBContext> repo = new ResponsitoryShiftTypes(context);
-        await repo.UpdateShiftTypesChoose(shiftTypes);
-      }
-    }
-
-    //Shift
-    public async Task UpdateInforShift(Shift shift)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryShifts(context);
-        await repo.Update(shift);
-      }
-    }
-
-
-    //User
-    public async Task AddUser(ShiftLeader user)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
-        await repo.Add(user);
-      }
-    }
-
-
-    public async Task UpdateProductChoose(List<ShiftLeader> users)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        GenericRepository<ShiftLeader, ConfigDBContext> repo = new ResponsitoryUser(context);
-        await repo.UpdateUserChoose(users);
-      }
-    }
-
-    //User
-    public async Task UpdateUser(ShiftLeader user)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
-        await repo.Update(user);
-      }
-    }
-    public async Task RemoveUser(ShiftLeader user)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<ShiftLeader, ConfigDBContext>(context);
-        await repo.Remove(user);
-      }
-    }
-
-
-
-    public async Task AddSample(List<Sample> samples, DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Sample, ConfigDBContext>(context);
-        await repo.AddRange(samples);
-      }
-    }
-
-    public async Task<List<Sample>> LoadAllSamples(DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Sample, ConfigDBContext>(context);
-        var data = await repo.GetAllAsync();
-        return data?.Where(x => x.isHasValue == true && x.isEnable == true).ToList();
-      }
-    }
-    public async Task<List<Sample>> LoadAllSamplesContainZero(DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Sample, ConfigDBContext>(context);
-        return await repo.GetAllAsync();
-      }
-    }
-
-    public async Task<List<Sample>> LoadAllSamplesByDatalogId(List<int> listIdDatalog, DateTime dt)
-    {
-
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitorySamples(context);
-        return await repo.LoadAllSamplesByDatalogId(listIdDatalog);
-      }
-    }
-
-
-    public async Task Update(Sample sample, DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitorySamples(context);
-        await repo.Update(sample);
-      }
-    }
-
-    public async Task UpdateRangeSample(List<Sample> sample)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitorySamples(context);
-        await repo.UpdateRange(sample);
-      }
-    }
-
-
-
-
-    //Datalog
-    public async Task<List<DatalogWeight>> LoadAllDatalogs(DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<DatalogWeight, ConfigDBContext>(context);
-        return await repo.GetAllAsync();
-      }
-    }
-
-
-    public async Task<List<DatalogWeight>> LoadAllDatalogsByProductId(int productId, DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryDatalogWeight(context);
-        return await repo.LoadAllDatalogsByProductId(productId);
-      }
-    }
-
-
-
-
-    //Tare
-    public async Task<List<Tare>> LoadAllTare(DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Tare, ConfigDBContext>(context);
-        return await repo.GetAllAsync();
-      }
-    }
-
-    public async Task AddRangeTare(List<Tare> tares)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<Tare, ConfigDBContext>(context);
-        await repo.AddRange(tares);
-      }
-    }
-
-    //Nội dung Change MasterData
-
-    public async Task SaveContentChangeMasterData(string content)
-    {
-      HistoricalChangeMasterData data = new HistoricalChangeMasterData();
-      data.Reason = content;
-      data.CreatedAt = DateTime.Now;
-      data.UpdatedAt = DateTime.Now;
-
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new GenericRepository<HistoricalChangeMasterData, ConfigDBContext>(context);
-        await repo.Add(data);
-      }
-    }
-
-
-
-    public async Task UpdateMasterDataOld(List<Production> data)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        GenericRepository<Production, ConfigDBContext> repo = new ResponsitoryProducts(context);
-        await repo.UpdateRangeByIsDelete(data);
-      }
-    }
-
-
-    //SerialControl
-
-    //Excel Report
-    public async Task<List<DatalogWeight>> GetDatalogReport(DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitoryDatalogWeight(context);
-        return await repo.GetAllAsync();
-      }
-    }
-    public async Task<List<Sample>> GetSampleReport(DateTime dt)
-    {
-      using (var context = new ConfigDBContext())
-      {
-        var repo = new ResponsitorySamples(context);
-        return await repo.GetAllAsync();
-      }
-    }
-
-
-    public List<Sample> GetDataSampleByListIdDatalog(List<Sample> listSamples, List<int> listIdDatalogs)
-    {
-      List<Sample> rs = new List<Sample>();
-
-      foreach (var id in listIdDatalogs)
-      {
-        List<Sample> samples = listSamples?.Where(x => x.DatalogId == id).ToList();
-        rs.AddRange(samples);
-      }
-      return rs;
-    }
-
-
-
-    public void SetColor(IXLWorksheet worksheet, Sample sample, string location)
-    {
-      if (sample != null)
-      {
-        if (sample.isEdited)
-        {
-          worksheet.Cell(location).Value = sample.PreviouValue;
-        }
-      }
-    }
-
-
-
-
-
-
 
 
 

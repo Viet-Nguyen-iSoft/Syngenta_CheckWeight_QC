@@ -34,9 +34,8 @@
       this.label2 = new System.Windows.Forms.Label();
       this.progressBarOpenning = new System.Windows.Forms.ProgressBar();
       this.lbMessage = new System.Windows.Forms.Label();
-      this.lbAuthor = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
-      this.lbVersion = new System.Windows.Forms.Label();
+      this.lbAuthor = new System.Windows.Forms.Label();
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.SuspendLayout();
@@ -51,7 +50,6 @@
       this.tableLayoutPanel1.Controls.Add(this.lbMessage, 0, 9);
       this.tableLayoutPanel1.Controls.Add(this.lbAuthor, 0, 11);
       this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 4);
-      this.tableLayoutPanel1.Controls.Add(this.lbVersion, 0, 12);
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -127,6 +125,17 @@
       this.lbMessage.Text = "...";
       this.lbMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
+      // pictureBox1
+      // 
+      this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+      this.pictureBox1.Location = new System.Drawing.Point(420, 255);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(305, 134);
+      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.pictureBox1.TabIndex = 2;
+      this.pictureBox1.TabStop = false;
+      // 
       // lbAuthor
       // 
       this.lbAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -141,31 +150,6 @@
       this.lbAuthor.TabIndex = 5;
       this.lbAuthor.Text = "...";
       this.lbAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-      this.pictureBox1.Location = new System.Drawing.Point(420, 255);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(305, 134);
-      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-      this.pictureBox1.TabIndex = 2;
-      this.pictureBox1.TabStop = false;
-      // 
-      // lbVersion
-      // 
-      this.lbVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbVersion.AutoSize = true;
-      this.lbVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbVersion.ForeColor = System.Drawing.Color.White;
-      this.lbVersion.Location = new System.Drawing.Point(3, 587);
-      this.lbVersion.Name = "lbVersion";
-      this.lbVersion.Size = new System.Drawing.Size(1140, 25);
-      this.lbVersion.TabIndex = 6;
-      this.lbVersion.Text = "Version";
-      this.lbVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // FrmStartup
       // 
@@ -193,8 +177,7 @@
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.ProgressBar progressBarOpenning;
     private System.Windows.Forms.Label lbMessage;
-    private System.Windows.Forms.Label lbAuthor;
     private System.Windows.Forms.PictureBox pictureBox1;
-    private System.Windows.Forms.Label lbVersion;
+    private System.Windows.Forms.Label lbAuthor;
   }
 }

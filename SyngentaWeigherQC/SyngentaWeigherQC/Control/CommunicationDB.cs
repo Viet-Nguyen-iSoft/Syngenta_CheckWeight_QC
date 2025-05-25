@@ -240,5 +240,68 @@ namespace SyngentaWeigherQC.Control
         await repo.UpdateRange(shiftLeaders);
       }
     }
+
+    public async Task AddProduct(Production productions)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<Production, ConfigDBContext>(context);
+        await repo.Add(productions);
+      }
+    }
+
+    public async Task<List<HistoricalChangeMasterData>> LoadHistoricalChangeMasterData()
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryHistoricalChangeMasterData(context);
+        return await repo.GetAllAsync();
+      }
+    }
+
+    public async Task<List<ShiftType>> LoadShiftTypes()
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryShiftTypes(context);
+        return await repo.GetAllAsync();
+      }
+    }
+
+    public async Task<List<Shift>> LoadShifts()
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryShifts(context);
+        return await repo.GetAllAsync();
+      }
+    }
+
+    public async Task UpdateRole(Roles role)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new GenericRepository<Roles, ConfigDBContext>(context);
+        await repo.Update(role);
+      }
+    }
+
+    public async Task UpdateInforShift(Shift shift)
+    {
+      using (var context = new ConfigDBContext())
+      {
+        var repo = new ResponsitoryShifts(context);
+        await repo.Update(shift);
+      }
+    }
+
+
+
+
+
+
+
+
+
   }
 }

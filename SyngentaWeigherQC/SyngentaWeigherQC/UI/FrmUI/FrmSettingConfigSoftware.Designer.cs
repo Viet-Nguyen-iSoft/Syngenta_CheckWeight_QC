@@ -38,20 +38,12 @@
       this.txtPort = new CustomControls.RJControls.RJTextBox();
       this.btnSave = new CustomControls.RJControls.RJButton();
       this.label2 = new System.Windows.Forms.Label();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-      this.label5 = new System.Windows.Forms.Label();
-      this.txtNameStation = new CustomControls.RJControls.RJTextBox();
-      this.btnSaveStationName = new CustomControls.RJControls.RJButton();
-      this.label6 = new System.Windows.Forms.Label();
       this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.elipseControl2 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.tableLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel4.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
       this.tableLayoutPanel7.SuspendLayout();
-      this.tableLayoutPanel1.SuspendLayout();
-      this.tableLayoutPanel5.SuspendLayout();
       this.SuspendLayout();
       // 
       // tableLayoutPanel2
@@ -79,17 +71,16 @@
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 1, 3);
-      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel1, 1, 1);
+      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 1, 1);
       this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-      this.tableLayoutPanel4.RowCount = 5;
+      this.tableLayoutPanel4.RowCount = 3;
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel4.Size = new System.Drawing.Size(1325, 769);
       this.tableLayoutPanel4.TabIndex = 3;
       // 
@@ -103,7 +94,7 @@
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel7, 0, 1);
       this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 150);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 10);
       this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel3.Name = "tableLayoutPanel3";
       this.tableLayoutPanel3.RowCount = 2;
@@ -256,125 +247,6 @@
       this.label2.Text = "Cài đặt truyền thông cân";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // tableLayoutPanel1
-      // 
-      this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(31)))), ((int)(((byte)(74)))));
-      this.tableLayoutPanel1.ColumnCount = 1;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 1);
-      this.tableLayoutPanel1.Controls.Add(this.label6, 0, 0);
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
-      this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(1305, 120);
-      this.tableLayoutPanel1.TabIndex = 1;
-      // 
-      // tableLayoutPanel5
-      // 
-      this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.tableLayoutPanel5.ColumnCount = 5;
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
-      this.tableLayoutPanel5.Controls.Add(this.txtNameStation, 1, 0);
-      this.tableLayoutPanel5.Controls.Add(this.btnSaveStationName, 3, 0);
-      this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 53);
-      this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-      this.tableLayoutPanel5.RowCount = 1;
-      this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel5.Size = new System.Drawing.Size(1299, 64);
-      this.tableLayoutPanel5.TabIndex = 1;
-      // 
-      // label5
-      // 
-      this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label5.AutoSize = true;
-      this.label5.BackColor = System.Drawing.Color.Transparent;
-      this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label5.ForeColor = System.Drawing.Color.White;
-      this.label5.Location = new System.Drawing.Point(3, 0);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(184, 64);
-      this.label5.TabIndex = 1;
-      this.label5.Text = "Tên trạm:";
-      this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // txtNameStation
-      // 
-      this.txtNameStation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtNameStation.BackColor = System.Drawing.SystemColors.Window;
-      this.txtNameStation.BorderColor = System.Drawing.Color.MediumSlateBlue;
-      this.txtNameStation.BorderFocusColor = System.Drawing.Color.HotPink;
-      this.txtNameStation.BorderRadius = 5;
-      this.txtNameStation.BorderSize = 2;
-      this.txtNameStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNameStation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-      this.txtNameStation.Location = new System.Drawing.Point(190, 12);
-      this.txtNameStation.Margin = new System.Windows.Forms.Padding(0);
-      this.txtNameStation.Multiline = false;
-      this.txtNameStation.Name = "txtNameStation";
-      this.txtNameStation.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-      this.txtNameStation.PasswordChar = false;
-      this.txtNameStation.PlaceholderColor = System.Drawing.Color.DarkGray;
-      this.txtNameStation.PlaceholderText = "";
-      this.txtNameStation.Size = new System.Drawing.Size(320, 39);
-      this.txtNameStation.TabIndex = 14;
-      this.txtNameStation.Texts = "";
-      this.txtNameStation.UnderlinedStyle = false;
-      // 
-      // btnSaveStationName
-      // 
-      this.btnSaveStationName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnSaveStationName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-      this.btnSaveStationName.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-      this.btnSaveStationName.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSaveStationName.BorderRadius = 5;
-      this.btnSaveStationName.BorderSize = 0;
-      this.btnSaveStationName.FlatAppearance.BorderSize = 0;
-      this.btnSaveStationName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSaveStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSaveStationName.ForeColor = System.Drawing.Color.White;
-      this.btnSaveStationName.Location = new System.Drawing.Point(535, 12);
-      this.btnSaveStationName.Margin = new System.Windows.Forms.Padding(5, 3, 10, 3);
-      this.btnSaveStationName.Name = "btnSaveStationName";
-      this.btnSaveStationName.Size = new System.Drawing.Size(146, 40);
-      this.btnSaveStationName.TabIndex = 2;
-      this.btnSaveStationName.Text = "Lưu thay đổi";
-      this.btnSaveStationName.TextColor = System.Drawing.Color.White;
-      this.btnSaveStationName.UseVisualStyleBackColor = false;
-      this.btnSaveStationName.Click += new System.EventHandler(this.btnSaveStationName_Click);
-      // 
-      // label6
-      // 
-      this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label6.AutoSize = true;
-      this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
-      this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label6.ForeColor = System.Drawing.Color.White;
-      this.label6.Location = new System.Drawing.Point(0, 0);
-      this.label6.Margin = new System.Windows.Forms.Padding(0);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(1305, 50);
-      this.label6.TabIndex = 0;
-      this.label6.Text = "Thông tin";
-      this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
       // elipseControl1
       // 
       this.elipseControl1.CornerRadius = 20;
@@ -383,7 +255,6 @@
       // elipseControl2
       // 
       this.elipseControl2.CornerRadius = 20;
-      this.elipseControl2.TargetControl = this.tableLayoutPanel1;
       // 
       // FrmSettingConfigSoftware
       // 
@@ -400,10 +271,6 @@
       this.tableLayoutPanel3.PerformLayout();
       this.tableLayoutPanel7.ResumeLayout(false);
       this.tableLayoutPanel7.PerformLayout();
-      this.tableLayoutPanel1.ResumeLayout(false);
-      this.tableLayoutPanel1.PerformLayout();
-      this.tableLayoutPanel5.ResumeLayout(false);
-      this.tableLayoutPanel5.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -421,12 +288,6 @@
     private CustomControls.RJControls.RJTextBox txtIp;
     private System.Windows.Forms.Label label1;
     private CustomControls.RJControls.RJTextBox txtPort;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-    private System.Windows.Forms.Label label5;
-    private CustomControls.RJControls.RJTextBox txtNameStation;
-    private CustomControls.RJControls.RJButton btnSaveStationName;
-    private System.Windows.Forms.Label label6;
     private ItemControls.ElipseControl elipseControl2;
   }
 }

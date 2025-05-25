@@ -1341,7 +1341,6 @@ C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\Syngenta
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmLogIn.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmNotification.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmOverView.resources
-C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmReportAutoExcel.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSeeHistoricalChangeMasterData.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSeeHistoricalReweigher.resources
 C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\obj\Debug\SyngentaWeigherQC.UI.FrmUI.FrmSettingConfigSoftware.resources

@@ -80,13 +80,13 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
     private bool CheckRoleEditShiftInfor()
     {
-      return (AppCore.Ins.CheckRole(ePermit.Role_Setting_User) || AppCore.Ins._roleCurrent.Name == "iSOFT");
+      return (AppCore.Ins.CheckRole(ePermit.SettingAccount));
     }
     
 
     private async void Save(eRole eRole)
     {
-      if (AppCore.Ins.CheckRole(ePermit.Role_Setting_User) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      if (AppCore.Ins.CheckRole(ePermit.SettingAccount))
       {
         string pass = "";
         switch (eRole)
@@ -118,7 +118,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       else
       {
-        new FrmNotification().ShowMessage("Tài khoản không có quyền thay đổi mật khẩu các Account!", eMsgType.Warning);
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
       }
 
 

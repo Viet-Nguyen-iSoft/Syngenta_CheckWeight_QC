@@ -132,7 +132,7 @@
       this.btnSettingDevice.Name = "btnSettingDevice";
       this.btnSettingDevice.Size = new System.Drawing.Size(180, 70);
       this.btnSettingDevice.TabIndex = 8;
-      this.btnSettingDevice.Text = "Cài đặt trạm";
+      this.btnSettingDevice.Text = "Cài đặt thiết bị";
       this.btnSettingDevice.TextColor = System.Drawing.Color.White;
       this.btnSettingDevice.UseVisualStyleBackColor = false;
       this.btnSettingDevice.Click += new System.EventHandler(this.btnSettingDevice_Click);
@@ -244,7 +244,7 @@
       this.btnSettingLine.Name = "btnSettingLine";
       this.btnSettingLine.Size = new System.Drawing.Size(180, 70);
       this.btnSettingLine.TabIndex = 12;
-      this.btnSettingLine.Text = "Cài đặt Line";
+      this.btnSettingLine.Text = "Cài đặt chuyền";
       this.btnSettingLine.TextColor = System.Drawing.Color.White;
       this.btnSettingLine.UseVisualStyleBackColor = false;
       this.btnSettingLine.Click += new System.EventHandler(this.btnSettingLine_Click);

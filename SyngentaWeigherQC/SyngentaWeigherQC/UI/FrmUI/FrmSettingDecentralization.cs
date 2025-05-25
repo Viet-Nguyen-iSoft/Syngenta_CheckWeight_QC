@@ -72,15 +72,16 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmDecentralization_Load(object sender, EventArgs e)
     {
       List<ePermit> ePermits = new List<ePermit>();
-      ePermits.Add(ePermit.Role_Setting_Line);
-      ePermits.Add(ePermit.Role_Setting_SettingGeneral);
-      ePermits.Add(ePermit.Role_Setting_Product);
-      ePermits.Add(ePermit.Role_Setting_User);
-      ePermits.Add(ePermit.Role_Setting_ShiftLeader);
-      ePermits.Add(ePermit.Role_Setting_Decentralization);
-      ePermits.Add(ePermit.Role_Setting_Connection);
-      ePermits.Add(ePermit.Role_Excel);
-      ePermits.Add(ePermit.Role_Consumption);
+      ePermits.Add(ePermit.ReportConsumption);
+      ePermits.Add(ePermit.ReportExcel);
+      ePermits.Add(ePermit.AddProduct);
+      ePermits.Add(ePermit.EditProduct);
+      ePermits.Add(ePermit.SeeHistoricalAddProduct);
+      ePermits.Add(ePermit.SettingInformationLine);
+      ePermits.Add(ePermit.SettingGeneral);
+      ePermits.Add(ePermit.SettingAccount);
+      ePermits.Add(ePermit.SettingShiftLeader);
+      ePermits.Add(ePermit.SettingDevice);
 
       List<string> role = AppCore.Ins._listRoles?.OrderBy(x => x.Id).Select(x => x.Permission).ToList();
 
@@ -93,17 +94,19 @@ namespace SyngentaWeigherQC.UI.FrmUI
         ucCheckBoxs5.SetRoleUser(role[4], ePermits);
       }
 
-      Instance_OnSendChangeLogin();
+      this.btnSave.Visible = CheckAccountAdmin();
+
+      FormMain.Instance.OnSendLogInChange += Instance_OnSendLogInChange;
     }
 
-    private void Instance_OnSendChangeLogin()
+    private void Instance_OnSendLogInChange(Roles account)
     {
-      //this.btnSave.Visible = CheckRoleEditShiftInfor();
+      this.btnSave.Visible = CheckAccountAdmin();
     }
 
-    private bool CheckRoleEditShiftInfor()
+    private bool CheckAccountAdmin()
     {
-      return (AppCore.Ins.CheckRole(ePermit.Role_Setting_Decentralization));
+      return AppCore.Ins._roleCurrent?.Name == "Admin";
     }
 
     private void FrmDecentralization_KeyUp(object sender, KeyEventArgs e)

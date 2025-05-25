@@ -36,6 +36,9 @@
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+      this.btnHanhChinh = new CustomControls.RJControls.RJButton();
+      this.btnGianCa = new CustomControls.RJControls.RJButton();
+      this.btn3Ca = new CustomControls.RJControls.RJButton();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,22 +47,26 @@
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+      this.btnSaveTimeout = new CustomControls.RJControls.RJButton();
       this.label3 = new System.Windows.Forms.Label();
       this.numericUpDownTimeout = new System.Windows.Forms.NumericUpDown();
       this.label2 = new System.Windows.Forms.Label();
       this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+      this.btnSaveChangeNumberChange = new CustomControls.RJControls.RJButton();
       this.label4 = new System.Windows.Forms.Label();
       this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
       this.label5 = new System.Windows.Forms.Label();
-      this.btnHanhChinh = new CustomControls.RJControls.RJButton();
-      this.btnGianCa = new CustomControls.RJControls.RJButton();
-      this.btn3Ca = new CustomControls.RJControls.RJButton();
-      this.btnSaveTimeout = new CustomControls.RJControls.RJButton();
-      this.btnSaveChangeNumberChange = new CustomControls.RJControls.RJButton();
+      this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+      this.label6 = new System.Windows.Forms.Label();
+      this.txtNameStation = new CustomControls.RJControls.RJTextBox();
+      this.btnSaveStationName = new CustomControls.RJControls.RJButton();
+      this.label7 = new System.Windows.Forms.Label();
       this.elipseControl1 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.elipseControl2 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.elipseControl3 = new SyngentaWeigherQC.ItemControls.ElipseControl();
+      this.elipseControl4 = new SyngentaWeigherQC.ItemControls.ElipseControl();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
       this.tableLayoutPanel5.SuspendLayout();
@@ -71,6 +78,8 @@
       this.tableLayoutPanel7.SuspendLayout();
       this.tableLayoutPanel8.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+      this.tableLayoutPanel9.SuspendLayout();
+      this.tableLayoutPanel10.SuspendLayout();
       this.SuspendLayout();
       // 
       // tableLayoutPanel1
@@ -80,14 +89,17 @@
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
-      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
-      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 1, 5);
+      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 3);
+      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 5);
+      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 1, 7);
+      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 1, 1);
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 9;
+      this.tableLayoutPanel1.RowCount = 11;
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
@@ -96,8 +108,6 @@
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel1.Size = new System.Drawing.Size(1243, 1081);
       this.tableLayoutPanel1.TabIndex = 0;
       // 
@@ -111,7 +121,7 @@
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 1);
       this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 10);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 140);
       this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel3.Name = "tableLayoutPanel3";
       this.tableLayoutPanel3.RowCount = 2;
@@ -163,6 +173,75 @@
       this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
       this.tableLayoutPanel6.Size = new System.Drawing.Size(200, 200);
       this.tableLayoutPanel6.TabIndex = 0;
+      // 
+      // btnHanhChinh
+      // 
+      this.btnHanhChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnHanhChinh.BackColor = System.Drawing.Color.MediumSlateBlue;
+      this.btnHanhChinh.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+      this.btnHanhChinh.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnHanhChinh.BorderRadius = 10;
+      this.btnHanhChinh.BorderSize = 0;
+      this.btnHanhChinh.FlatAppearance.BorderSize = 0;
+      this.btnHanhChinh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnHanhChinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnHanhChinh.ForeColor = System.Drawing.Color.White;
+      this.btnHanhChinh.Location = new System.Drawing.Point(3, 140);
+      this.btnHanhChinh.Name = "btnHanhChinh";
+      this.btnHanhChinh.Size = new System.Drawing.Size(194, 50);
+      this.btnHanhChinh.TabIndex = 2;
+      this.btnHanhChinh.Text = "Hành chính";
+      this.btnHanhChinh.TextColor = System.Drawing.Color.White;
+      this.btnHanhChinh.UseVisualStyleBackColor = false;
+      this.btnHanhChinh.Click += new System.EventHandler(this.btnHanhChinh_Click);
+      // 
+      // btnGianCa
+      // 
+      this.btnGianCa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnGianCa.BackColor = System.Drawing.Color.MediumPurple;
+      this.btnGianCa.BackgroundColor = System.Drawing.Color.MediumPurple;
+      this.btnGianCa.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnGianCa.BorderRadius = 10;
+      this.btnGianCa.BorderSize = 0;
+      this.btnGianCa.FlatAppearance.BorderSize = 0;
+      this.btnGianCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnGianCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnGianCa.ForeColor = System.Drawing.Color.White;
+      this.btnGianCa.Location = new System.Drawing.Point(3, 74);
+      this.btnGianCa.Name = "btnGianCa";
+      this.btnGianCa.Size = new System.Drawing.Size(194, 50);
+      this.btnGianCa.TabIndex = 1;
+      this.btnGianCa.Text = "Giãn Ca";
+      this.btnGianCa.TextColor = System.Drawing.Color.White;
+      this.btnGianCa.UseVisualStyleBackColor = false;
+      this.btnGianCa.Click += new System.EventHandler(this.btnGianCa_Click);
+      // 
+      // btn3Ca
+      // 
+      this.btn3Ca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btn3Ca.BackColor = System.Drawing.Color.DarkSlateBlue;
+      this.btn3Ca.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
+      this.btn3Ca.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btn3Ca.BorderRadius = 10;
+      this.btn3Ca.BorderSize = 0;
+      this.btn3Ca.FlatAppearance.BorderSize = 0;
+      this.btn3Ca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btn3Ca.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btn3Ca.ForeColor = System.Drawing.Color.White;
+      this.btn3Ca.Location = new System.Drawing.Point(3, 8);
+      this.btn3Ca.Name = "btn3Ca";
+      this.btn3Ca.Size = new System.Drawing.Size(194, 50);
+      this.btn3Ca.TabIndex = 0;
+      this.btn3Ca.Text = "3 Ca";
+      this.btn3Ca.TextColor = System.Drawing.Color.White;
+      this.btn3Ca.UseVisualStyleBackColor = false;
+      this.btn3Ca.Click += new System.EventHandler(this.btn3Ca_Click);
       // 
       // dataGridView1
       // 
@@ -272,7 +351,7 @@
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 1);
       this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 280);
+      this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 410);
       this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 2;
@@ -302,6 +381,27 @@
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.Size = new System.Drawing.Size(1223, 60);
       this.tableLayoutPanel4.TabIndex = 1;
+      // 
+      // btnSaveTimeout
+      // 
+      this.btnSaveTimeout.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.btnSaveTimeout.BackColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveTimeout.BackgroundColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveTimeout.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSaveTimeout.BorderRadius = 5;
+      this.btnSaveTimeout.BorderSize = 0;
+      this.btnSaveTimeout.FlatAppearance.BorderSize = 0;
+      this.btnSaveTimeout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSaveTimeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSaveTimeout.ForeColor = System.Drawing.Color.White;
+      this.btnSaveTimeout.Location = new System.Drawing.Point(339, 9);
+      this.btnSaveTimeout.Name = "btnSaveTimeout";
+      this.btnSaveTimeout.Size = new System.Drawing.Size(162, 41);
+      this.btnSaveTimeout.TabIndex = 12;
+      this.btnSaveTimeout.Text = "Lưu thay đổi";
+      this.btnSaveTimeout.TextColor = System.Drawing.Color.White;
+      this.btnSaveTimeout.UseVisualStyleBackColor = false;
+      this.btnSaveTimeout.Click += new System.EventHandler(this.btnSaveTimeout_Click);
       // 
       // label3
       // 
@@ -366,7 +466,7 @@
       this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 1);
       this.tableLayoutPanel7.Controls.Add(this.label5, 0, 0);
-      this.tableLayoutPanel7.Location = new System.Drawing.Point(10, 410);
+      this.tableLayoutPanel7.Location = new System.Drawing.Point(10, 540);
       this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel7.Name = "tableLayoutPanel7";
       this.tableLayoutPanel7.RowCount = 2;
@@ -396,6 +496,27 @@
       this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel8.Size = new System.Drawing.Size(1223, 60);
       this.tableLayoutPanel8.TabIndex = 1;
+      // 
+      // btnSaveChangeNumberChange
+      // 
+      this.btnSaveChangeNumberChange.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.btnSaveChangeNumberChange.BackColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveChangeNumberChange.BackgroundColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveChangeNumberChange.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSaveChangeNumberChange.BorderRadius = 5;
+      this.btnSaveChangeNumberChange.BorderSize = 0;
+      this.btnSaveChangeNumberChange.FlatAppearance.BorderSize = 0;
+      this.btnSaveChangeNumberChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSaveChangeNumberChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSaveChangeNumberChange.ForeColor = System.Drawing.Color.White;
+      this.btnSaveChangeNumberChange.Location = new System.Drawing.Point(339, 6);
+      this.btnSaveChangeNumberChange.Name = "btnSaveChangeNumberChange";
+      this.btnSaveChangeNumberChange.Size = new System.Drawing.Size(162, 48);
+      this.btnSaveChangeNumberChange.TabIndex = 12;
+      this.btnSaveChangeNumberChange.Text = "Lưu thay đổi";
+      this.btnSaveChangeNumberChange.TextColor = System.Drawing.Color.White;
+      this.btnSaveChangeNumberChange.UseVisualStyleBackColor = false;
+      this.btnSaveChangeNumberChange.Click += new System.EventHandler(this.btnSaveChangeNumberChange_Click);
       // 
       // label4
       // 
@@ -445,116 +566,124 @@
       this.label5.Text = "Số lần cân tối đa:";
       this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // btnHanhChinh
+      // tableLayoutPanel9
       // 
-      this.btnHanhChinh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnHanhChinh.BackColor = System.Drawing.Color.MediumSlateBlue;
-      this.btnHanhChinh.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-      this.btnHanhChinh.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnHanhChinh.BorderRadius = 10;
-      this.btnHanhChinh.BorderSize = 0;
-      this.btnHanhChinh.FlatAppearance.BorderSize = 0;
-      this.btnHanhChinh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnHanhChinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnHanhChinh.ForeColor = System.Drawing.Color.White;
-      this.btnHanhChinh.Location = new System.Drawing.Point(3, 140);
-      this.btnHanhChinh.Name = "btnHanhChinh";
-      this.btnHanhChinh.Size = new System.Drawing.Size(194, 50);
-      this.btnHanhChinh.TabIndex = 2;
-      this.btnHanhChinh.Text = "Hành chính";
-      this.btnHanhChinh.TextColor = System.Drawing.Color.White;
-      this.btnHanhChinh.UseVisualStyleBackColor = false;
-      this.btnHanhChinh.Click += new System.EventHandler(this.btnHanhChinh_Click);
+      this.tableLayoutPanel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(31)))), ((int)(((byte)(74)))));
+      this.tableLayoutPanel9.ColumnCount = 1;
+      this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 0, 1);
+      this.tableLayoutPanel9.Controls.Add(this.label7, 0, 0);
+      this.tableLayoutPanel9.Location = new System.Drawing.Point(10, 10);
+      this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+      this.tableLayoutPanel9.RowCount = 2;
+      this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+      this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel9.Size = new System.Drawing.Size(1223, 110);
+      this.tableLayoutPanel9.TabIndex = 5;
       // 
-      // btnGianCa
+      // tableLayoutPanel10
       // 
-      this.btnGianCa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnGianCa.BackColor = System.Drawing.Color.MediumPurple;
-      this.btnGianCa.BackgroundColor = System.Drawing.Color.MediumPurple;
-      this.btnGianCa.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnGianCa.BorderRadius = 10;
-      this.btnGianCa.BorderSize = 0;
-      this.btnGianCa.FlatAppearance.BorderSize = 0;
-      this.btnGianCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnGianCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnGianCa.ForeColor = System.Drawing.Color.White;
-      this.btnGianCa.Location = new System.Drawing.Point(3, 74);
-      this.btnGianCa.Name = "btnGianCa";
-      this.btnGianCa.Size = new System.Drawing.Size(194, 50);
-      this.btnGianCa.TabIndex = 1;
-      this.btnGianCa.Text = "Giãn Ca";
-      this.btnGianCa.TextColor = System.Drawing.Color.White;
-      this.btnGianCa.UseVisualStyleBackColor = false;
-      this.btnGianCa.Click += new System.EventHandler(this.btnGianCa_Click);
+      this.tableLayoutPanel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.tableLayoutPanel10.ColumnCount = 5;
+      this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+      this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+      this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel10.Controls.Add(this.label6, 0, 0);
+      this.tableLayoutPanel10.Controls.Add(this.txtNameStation, 1, 0);
+      this.tableLayoutPanel10.Controls.Add(this.btnSaveStationName, 3, 0);
+      this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 53);
+      this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+      this.tableLayoutPanel10.RowCount = 1;
+      this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel10.Size = new System.Drawing.Size(1217, 54);
+      this.tableLayoutPanel10.TabIndex = 1;
       // 
-      // btn3Ca
+      // label6
       // 
-      this.btn3Ca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.btn3Ca.BackColor = System.Drawing.Color.DarkSlateBlue;
-      this.btn3Ca.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
-      this.btn3Ca.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btn3Ca.BorderRadius = 10;
-      this.btn3Ca.BorderSize = 0;
-      this.btn3Ca.FlatAppearance.BorderSize = 0;
-      this.btn3Ca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btn3Ca.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btn3Ca.ForeColor = System.Drawing.Color.White;
-      this.btn3Ca.Location = new System.Drawing.Point(3, 8);
-      this.btn3Ca.Name = "btn3Ca";
-      this.btn3Ca.Size = new System.Drawing.Size(194, 50);
-      this.btn3Ca.TabIndex = 0;
-      this.btn3Ca.Text = "3 Ca";
-      this.btn3Ca.TextColor = System.Drawing.Color.White;
-      this.btn3Ca.UseVisualStyleBackColor = false;
-      this.btn3Ca.Click += new System.EventHandler(this.btn3Ca_Click);
+      this.label6.AutoSize = true;
+      this.label6.BackColor = System.Drawing.Color.Transparent;
+      this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label6.ForeColor = System.Drawing.Color.White;
+      this.label6.Location = new System.Drawing.Point(3, 0);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(184, 54);
+      this.label6.TabIndex = 1;
+      this.label6.Text = "Tên trạm:";
+      this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // btnSaveTimeout
+      // txtNameStation
       // 
-      this.btnSaveTimeout.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.btnSaveTimeout.BackColor = System.Drawing.Color.DarkGreen;
-      this.btnSaveTimeout.BackgroundColor = System.Drawing.Color.DarkGreen;
-      this.btnSaveTimeout.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSaveTimeout.BorderRadius = 5;
-      this.btnSaveTimeout.BorderSize = 0;
-      this.btnSaveTimeout.FlatAppearance.BorderSize = 0;
-      this.btnSaveTimeout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSaveTimeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSaveTimeout.ForeColor = System.Drawing.Color.White;
-      this.btnSaveTimeout.Location = new System.Drawing.Point(339, 6);
-      this.btnSaveTimeout.Name = "btnSaveTimeout";
-      this.btnSaveTimeout.Size = new System.Drawing.Size(162, 48);
-      this.btnSaveTimeout.TabIndex = 12;
-      this.btnSaveTimeout.Text = "Lưu thay đổi";
-      this.btnSaveTimeout.TextColor = System.Drawing.Color.White;
-      this.btnSaveTimeout.UseVisualStyleBackColor = false;
-      this.btnSaveTimeout.Click += new System.EventHandler(this.btnSaveTimeout_Click);
+      this.txtNameStation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtNameStation.BackColor = System.Drawing.SystemColors.Window;
+      this.txtNameStation.BorderColor = System.Drawing.Color.MediumSlateBlue;
+      this.txtNameStation.BorderFocusColor = System.Drawing.Color.HotPink;
+      this.txtNameStation.BorderRadius = 5;
+      this.txtNameStation.BorderSize = 2;
+      this.txtNameStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtNameStation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+      this.txtNameStation.Location = new System.Drawing.Point(190, 7);
+      this.txtNameStation.Margin = new System.Windows.Forms.Padding(0);
+      this.txtNameStation.Multiline = false;
+      this.txtNameStation.Name = "txtNameStation";
+      this.txtNameStation.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+      this.txtNameStation.PasswordChar = false;
+      this.txtNameStation.PlaceholderColor = System.Drawing.Color.DarkGray;
+      this.txtNameStation.PlaceholderText = "";
+      this.txtNameStation.Size = new System.Drawing.Size(320, 39);
+      this.txtNameStation.TabIndex = 14;
+      this.txtNameStation.Texts = "";
+      this.txtNameStation.UnderlinedStyle = false;
       // 
-      // btnSaveChangeNumberChange
+      // btnSaveStationName
       // 
-      this.btnSaveChangeNumberChange.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.btnSaveChangeNumberChange.BackColor = System.Drawing.Color.DarkGreen;
-      this.btnSaveChangeNumberChange.BackgroundColor = System.Drawing.Color.DarkGreen;
-      this.btnSaveChangeNumberChange.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnSaveChangeNumberChange.BorderRadius = 5;
-      this.btnSaveChangeNumberChange.BorderSize = 0;
-      this.btnSaveChangeNumberChange.FlatAppearance.BorderSize = 0;
-      this.btnSaveChangeNumberChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSaveChangeNumberChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSaveChangeNumberChange.ForeColor = System.Drawing.Color.White;
-      this.btnSaveChangeNumberChange.Location = new System.Drawing.Point(339, 6);
-      this.btnSaveChangeNumberChange.Name = "btnSaveChangeNumberChange";
-      this.btnSaveChangeNumberChange.Size = new System.Drawing.Size(162, 48);
-      this.btnSaveChangeNumberChange.TabIndex = 12;
-      this.btnSaveChangeNumberChange.Text = "Lưu thay đổi";
-      this.btnSaveChangeNumberChange.TextColor = System.Drawing.Color.White;
-      this.btnSaveChangeNumberChange.UseVisualStyleBackColor = false;
-      this.btnSaveChangeNumberChange.Click += new System.EventHandler(this.btnSaveChangeNumberChange_Click);
+      this.btnSaveStationName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnSaveStationName.BackColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveStationName.BackgroundColor = System.Drawing.Color.DarkGreen;
+      this.btnSaveStationName.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnSaveStationName.BorderRadius = 5;
+      this.btnSaveStationName.BorderSize = 0;
+      this.btnSaveStationName.FlatAppearance.BorderSize = 0;
+      this.btnSaveStationName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnSaveStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnSaveStationName.ForeColor = System.Drawing.Color.White;
+      this.btnSaveStationName.Location = new System.Drawing.Point(535, 7);
+      this.btnSaveStationName.Margin = new System.Windows.Forms.Padding(5, 3, 10, 3);
+      this.btnSaveStationName.Name = "btnSaveStationName";
+      this.btnSaveStationName.Size = new System.Drawing.Size(146, 40);
+      this.btnSaveStationName.TabIndex = 2;
+      this.btnSaveStationName.Text = "Lưu thay đổi";
+      this.btnSaveStationName.TextColor = System.Drawing.Color.White;
+      this.btnSaveStationName.UseVisualStyleBackColor = false;
+      this.btnSaveStationName.Click += new System.EventHandler(this.btnSaveStationName_Click);
+      // 
+      // label7
+      // 
+      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label7.AutoSize = true;
+      this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(47)))), ((int)(((byte)(101)))));
+      this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label7.ForeColor = System.Drawing.Color.White;
+      this.label7.Location = new System.Drawing.Point(0, 0);
+      this.label7.Margin = new System.Windows.Forms.Padding(0);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(1223, 50);
+      this.label7.TabIndex = 0;
+      this.label7.Text = "Thông tin";
+      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // elipseControl1
       // 
@@ -570,6 +699,11 @@
       // 
       this.elipseControl3.CornerRadius = 20;
       this.elipseControl3.TargetControl = this.tableLayoutPanel7;
+      // 
+      // elipseControl4
+      // 
+      this.elipseControl4.CornerRadius = 20;
+      this.elipseControl4.TargetControl = this.tableLayoutPanel9;
       // 
       // FrmSettingGeneral
       // 
@@ -596,6 +730,10 @@
       this.tableLayoutPanel8.ResumeLayout(false);
       this.tableLayoutPanel8.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+      this.tableLayoutPanel9.ResumeLayout(false);
+      this.tableLayoutPanel9.PerformLayout();
+      this.tableLayoutPanel10.ResumeLayout(false);
+      this.tableLayoutPanel10.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -630,5 +768,12 @@
     private ItemControls.ElipseControl elipseControl1;
     private ItemControls.ElipseControl elipseControl2;
     private ItemControls.ElipseControl elipseControl3;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+    private System.Windows.Forms.Label label6;
+    private CustomControls.RJControls.RJTextBox txtNameStation;
+    private CustomControls.RJControls.RJButton btnSaveStationName;
+    private System.Windows.Forms.Label label7;
+    private ItemControls.ElipseControl elipseControl4;
   }
 }

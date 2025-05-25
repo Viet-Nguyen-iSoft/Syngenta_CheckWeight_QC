@@ -29,6 +29,7 @@
     private void InitializeComponent()
     {
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.ucCheckbox10 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
       this.ucCheckbox9 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
       this.ucCheckbox8 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
       this.ucCheckbox7 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
@@ -38,9 +39,6 @@
       this.ucCheckbox3 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
       this.ucCheckbox2 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
       this.ucCheckbox1 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
-      this.ucCheckbox10 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
-      this.ucCheckbox11 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
-      this.ucCheckbox12 = new SyngentaWeigherQC.UI.UcUI.UcCheckbox();
       this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -48,8 +46,6 @@
       // 
       this.tableLayoutPanel1.ColumnCount = 1;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Controls.Add(this.ucCheckbox12, 0, 11);
-      this.tableLayoutPanel1.Controls.Add(this.ucCheckbox11, 0, 10);
       this.tableLayoutPanel1.Controls.Add(this.ucCheckbox10, 0, 9);
       this.tableLayoutPanel1.Controls.Add(this.ucCheckbox9, 0, 8);
       this.tableLayoutPanel1.Controls.Add(this.ucCheckbox8, 0, 7);
@@ -63,21 +59,34 @@
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 12;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(120, 720);
+      this.tableLayoutPanel1.RowCount = 10;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999999F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(120, 357);
       this.tableLayoutPanel1.TabIndex = 0;
+      // 
+      // ucCheckbox10
+      // 
+      this.ucCheckbox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.ucCheckbox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
+      this.ucCheckbox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.ucCheckbox10.Location = new System.Drawing.Point(0, 315);
+      this.ucCheckbox10.Margin = new System.Windows.Forms.Padding(0);
+      this.ucCheckbox10.Name = "ucCheckbox10";
+      this.ucCheckbox10.Size = new System.Drawing.Size(120, 42);
+      this.ucCheckbox10.TabIndex = 9;
       // 
       // ucCheckbox9
       // 
@@ -86,10 +95,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox9.Location = new System.Drawing.Point(0, 472);
+      this.ucCheckbox9.Location = new System.Drawing.Point(0, 280);
       this.ucCheckbox9.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox9.Name = "ucCheckbox9";
-      this.ucCheckbox9.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox9.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox9.TabIndex = 8;
       // 
       // ucCheckbox8
@@ -99,10 +108,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox8.Location = new System.Drawing.Point(0, 413);
+      this.ucCheckbox8.Location = new System.Drawing.Point(0, 245);
       this.ucCheckbox8.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox8.Name = "ucCheckbox8";
-      this.ucCheckbox8.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox8.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox8.TabIndex = 7;
       // 
       // ucCheckbox7
@@ -112,10 +121,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox7.Location = new System.Drawing.Point(0, 354);
+      this.ucCheckbox7.Location = new System.Drawing.Point(0, 210);
       this.ucCheckbox7.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox7.Name = "ucCheckbox7";
-      this.ucCheckbox7.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox7.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox7.TabIndex = 6;
       // 
       // ucCheckbox6
@@ -125,10 +134,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox6.Location = new System.Drawing.Point(0, 295);
+      this.ucCheckbox6.Location = new System.Drawing.Point(0, 175);
       this.ucCheckbox6.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox6.Name = "ucCheckbox6";
-      this.ucCheckbox6.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox6.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox6.TabIndex = 5;
       // 
       // ucCheckbox5
@@ -138,10 +147,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox5.Location = new System.Drawing.Point(0, 236);
+      this.ucCheckbox5.Location = new System.Drawing.Point(0, 140);
       this.ucCheckbox5.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox5.Name = "ucCheckbox5";
-      this.ucCheckbox5.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox5.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox5.TabIndex = 4;
       // 
       // ucCheckbox4
@@ -151,10 +160,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox4.Location = new System.Drawing.Point(0, 177);
+      this.ucCheckbox4.Location = new System.Drawing.Point(0, 105);
       this.ucCheckbox4.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox4.Name = "ucCheckbox4";
-      this.ucCheckbox4.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox4.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox4.TabIndex = 3;
       // 
       // ucCheckbox3
@@ -164,10 +173,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox3.Location = new System.Drawing.Point(0, 118);
+      this.ucCheckbox3.Location = new System.Drawing.Point(0, 70);
       this.ucCheckbox3.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox3.Name = "ucCheckbox3";
-      this.ucCheckbox3.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox3.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox3.TabIndex = 2;
       // 
       // ucCheckbox2
@@ -177,10 +186,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucCheckbox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
       this.ucCheckbox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox2.Location = new System.Drawing.Point(0, 59);
+      this.ucCheckbox2.Location = new System.Drawing.Point(0, 35);
       this.ucCheckbox2.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox2.Name = "ucCheckbox2";
-      this.ucCheckbox2.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox2.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox2.TabIndex = 1;
       // 
       // ucCheckbox1
@@ -193,47 +202,8 @@
       this.ucCheckbox1.Location = new System.Drawing.Point(0, 0);
       this.ucCheckbox1.Margin = new System.Windows.Forms.Padding(0);
       this.ucCheckbox1.Name = "ucCheckbox1";
-      this.ucCheckbox1.Size = new System.Drawing.Size(120, 59);
+      this.ucCheckbox1.Size = new System.Drawing.Size(120, 35);
       this.ucCheckbox1.TabIndex = 0;
-      // 
-      // ucCheckbox10
-      // 
-      this.ucCheckbox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucCheckbox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.ucCheckbox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox10.Location = new System.Drawing.Point(0, 531);
-      this.ucCheckbox10.Margin = new System.Windows.Forms.Padding(0);
-      this.ucCheckbox10.Name = "ucCheckbox10";
-      this.ucCheckbox10.Size = new System.Drawing.Size(120, 59);
-      this.ucCheckbox10.TabIndex = 9;
-      // 
-      // ucCheckbox11
-      // 
-      this.ucCheckbox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucCheckbox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.ucCheckbox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox11.Location = new System.Drawing.Point(0, 590);
-      this.ucCheckbox11.Margin = new System.Windows.Forms.Padding(0);
-      this.ucCheckbox11.Name = "ucCheckbox11";
-      this.ucCheckbox11.Size = new System.Drawing.Size(120, 59);
-      this.ucCheckbox11.TabIndex = 10;
-      // 
-      // ucCheckbox12
-      // 
-      this.ucCheckbox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucCheckbox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(33)))), ((int)(((byte)(84)))));
-      this.ucCheckbox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.ucCheckbox12.Location = new System.Drawing.Point(0, 649);
-      this.ucCheckbox12.Margin = new System.Windows.Forms.Padding(0);
-      this.ucCheckbox12.Name = "ucCheckbox12";
-      this.ucCheckbox12.Size = new System.Drawing.Size(120, 71);
-      this.ucCheckbox12.TabIndex = 11;
       // 
       // UcCheckBoxs
       // 
@@ -241,7 +211,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.tableLayoutPanel1);
       this.Name = "UcCheckBoxs";
-      this.Size = new System.Drawing.Size(120, 720);
+      this.Size = new System.Drawing.Size(120, 357);
       this.tableLayoutPanel1.ResumeLayout(false);
       this.ResumeLayout(false);
 
@@ -259,8 +229,6 @@
     private UcCheckbox ucCheckbox1;
     private UcCheckbox ucCheckbox9;
     private UcCheckbox ucCheckbox8;
-    private UcCheckbox ucCheckbox12;
-    private UcCheckbox ucCheckbox11;
     private UcCheckbox ucCheckbox10;
   }
 }

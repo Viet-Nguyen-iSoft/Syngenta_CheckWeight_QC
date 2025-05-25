@@ -497,12 +497,6 @@
     <Compile Include="UI\FrmUI\FrmOverView.Designer.cs">
       <DependentUpon>FrmOverView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmUI\FrmReportAutoExcel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmUI\FrmReportAutoExcel.Designer.cs">
-      <DependentUpon>FrmReportAutoExcel.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\FrmUI\FrmSeeHistoricalChangeMasterData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -764,9 +758,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmOverView.resx">
       <DependentUpon>FrmOverView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmUI\FrmReportAutoExcel.resx">
-      <DependentUpon>FrmReportAutoExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUI\FrmSeeHistoricalChangeMasterData.resx">
       <DependentUpon>FrmSeeHistoricalChangeMasterData.cs</DependentUpon>

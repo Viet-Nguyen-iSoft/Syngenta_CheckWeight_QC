@@ -13,9 +13,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmShiftLeader : Form
   {
-    public delegate void SendChangeListShiftLeader();
-    public event SendChangeListShiftLeader OnSendChangeListShiftLeader;
-
     public FrmShiftLeader()
     {
       InitializeComponent();
@@ -85,9 +82,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
         {
           if (colmnIndex == 2)//Edit
           {
-            if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_ShiftLeader))
+            if (!AppCore.Ins.CheckRole(ePermit.SettingShiftLeader))
             {
-              new FrmNotification().ShowMessage("Tài khoản không có quyền chỉnh sửa User!", eMsgType.Warning);
+              new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
               return;
             }
 
@@ -97,9 +94,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
           }
           else if (colmnIndex == 3)//Remove
           {
-            if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_ShiftLeader))
+            if (!AppCore.Ins.CheckRole(ePermit.SettingShiftLeader))
             {
-              new FrmNotification().ShowMessage("Tài khoản không có quyền xóa User!", eMsgType.Warning);
+              new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
               return;
             }
 
@@ -145,6 +142,23 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       AppCore.Ins._listShiftLeader = await AppCore.Ins.GetList();
       UpdateDataUI(AppCore.Ins._listShiftLeader);
+      ConfirmRestartApp();
+    }
+
+    private void ConfirmRestartApp()
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          ConfirmRestartApp();
+        }));
+        return;
+      }
+
+      FrmConfirm frmConfirmRestartApp = new FrmConfirm($"Cập nhật dữ liệu thành công.\r\nKhởi động lại để cập nhật dữ liệu mới ?", eMsgType.Question);
+      frmConfirmRestartApp.OnSendOKClicked += FrmConfirmRestartApp_OnSendOKClicked;
+      frmConfirmRestartApp.ShowDialog();
     }
 
     private void btnImport_Click(object sender, EventArgs e)
@@ -242,7 +256,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
           await AppCore.Ins.AddRange(shiftLeaders_New);
         }
 
-        new FrmNotification().ShowMessage("Cập nhật thành công", eMsgType.Info);
+        FrmConfirm frmConfirmRestartApp = new FrmConfirm($"Cập nhật dữ liệu thành công.\r\nKhởi động lại để cập nhật dữ liệu mới ?", eMsgType.Question);
+        frmConfirmRestartApp.OnSendOKClicked += FrmConfirmRestartApp_OnSendOKClicked;
+        frmConfirmRestartApp.ShowDialog();
       }
       catch (Exception ex)
       {
@@ -252,6 +268,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         VisibleSave(false);
       }
+    }
+
+    private void FrmConfirmRestartApp_OnSendOKClicked()
+    {
+      Program.RestartApp();
     }
 
     private void VisibleSave(bool isVisible)

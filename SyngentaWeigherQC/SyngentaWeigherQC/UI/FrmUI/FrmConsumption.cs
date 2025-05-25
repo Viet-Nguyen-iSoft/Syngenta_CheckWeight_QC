@@ -166,6 +166,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
     #region Month
     private void btnMonth_Click(object sender, EventArgs e)
     {
+      if (!AppCore.Ins.CheckRole(ePermit.ReportConsumption))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
       FrmFilterMonth frmFilterMonth = new FrmFilterMonth();
       frmFilterMonth.OnSendMonthChoose += FrmFilterMonth_OnSendMonthChoose;
       frmFilterMonth.Location = new System.Drawing.Point(10, 500);
@@ -182,6 +188,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
     #region Week
     private void btnWeek_Click(object sender, EventArgs e)
     {
+      if (!AppCore.Ins.CheckRole(ePermit.ReportConsumption))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
       FrmFilterWeek frmFilterWeek = new FrmFilterWeek();
       frmFilterWeek.OnSendWeekChoose += FrmFilterWeek_OnSendWeekChoose;
       frmFilterWeek.Location = new System.Drawing.Point(100, 210);
@@ -231,6 +243,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnExportPdf_Click(object sender, EventArgs e)
     {
+      if (!AppCore.Ins.CheckRole(ePermit.ReportConsumption))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
       if (_datalogWeights?.Count()<=0)
       {
         new FrmNotification().ShowMessage("Không có dữ liệu xuất Report !", eMsgType.Warning);
@@ -537,6 +555,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void btnExxportPdfByWeek_Click(object sender, EventArgs e)
     {
+      if (!AppCore.Ins.CheckRole(ePermit.ReportConsumption))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
       FrmExportPdfManual frmFilterWeek = new FrmExportPdfManual();
       frmFilterWeek.ShowDialog();
     }

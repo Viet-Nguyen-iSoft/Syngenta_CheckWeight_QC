@@ -107,6 +107,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
     #region Import
     private void btnImportExcel_Click(object sender, EventArgs e)
     {
+      if (!AppCore.Ins.CheckRole(ePermit.AddProduct))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
       DialogResult result = this.openFileDialogImport.ShowDialog();
       if (result == DialogResult.OK)
       {
@@ -274,23 +280,24 @@ namespace SyngentaWeigherQC.UI.FrmUI
         }
 
         OnSendChangeMasterData?.Invoke();
+
+
+        FrmConfirm frmConfirm = new FrmConfirm($"Cập nhật dữ liệu thành công.\r\nKhởi động lại để cập nhật sản phẩm mới ?", eMsgType.Question);
+        frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+        frmConfirm.ShowDialog();
+
+        LoadProducts();
+        VisibleSave(false);
       }
       catch (Exception)
       {
         new FrmNotification().ShowMessage("Cập nhật dữ liệu sản phẩm thất bại !", eMsgType.Warning);
       }
-      finally
-      {
-        VisibleSave(false);
-        LoadProducts();
-        new FrmNotification().ShowMessage("Cập nhật dữ liệu thành công !", eMsgType.Warning);
-        
-      }
     }
 
     private async void btnCheckHistorical_Click(object sender, EventArgs e)
     {
-      if (AppCore.Ins.CheckRole(ePermit.Role_Setting_Product) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      if (AppCore.Ins.CheckRole(ePermit.SeeHistoricalAddProduct))
       {
         List<HistoricalChangeMasterData> dataHistorical = await AppCore.Ins.LoadHistoricalChangeMasterData();
         FrmSeeHistoricalChangeMasterData frmSeeHistoricalChangeMasterData = new FrmSeeHistoricalChangeMasterData(dataHistorical);
@@ -298,15 +305,15 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       else
       {
-        new FrmNotification().ShowMessage("Tài khoản không có quyền xem lịch sử thay đổi dữ liệu !", eMsgType.Warning);
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
       }
     }
 
     private void btnAdd_Click(object sender, EventArgs e)
     {
-      if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_Product))
+      if (!AppCore.Ins.CheckRole(ePermit.AddProduct))
       {
-        new FrmNotification().ShowMessage("Tài khoản không có quyền thêm dữ liệu sản phẩm !", eMsgType.Warning);
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
         return;
       }
 
@@ -318,15 +325,24 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private void FrmAddProductKL_OnSendDoneChange()
     {
       LoadProducts();
+
+      FrmConfirm frmConfirm = new FrmConfirm($"Khởi động lại phần mềm để cập nhật sản phẩm mới ?", eMsgType.Question);
+      frmConfirm.OnSendOKClicked += FrmConfirm_OnSendOKClicked;
+      frmConfirm.ShowDialog();
+    }
+
+    private void FrmConfirm_OnSendOKClicked()
+    {
+      Program.RestartApp();
     }
 
     private void dgvMasterData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
       if (!(e.RowIndex >= 0)) return;
 
-      if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_Product))
+      if (!AppCore.Ins.CheckRole(ePermit.EditProduct))
       {
-        new FrmNotification().ShowMessage("Tài khoản không có quyền sửa dữ liệu sản phẩm !", eMsgType.Warning);
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
         return;
       }
 

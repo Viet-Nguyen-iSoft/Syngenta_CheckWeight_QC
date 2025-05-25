@@ -65,7 +65,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public FrmStartup()
     {
       InitializeComponent();
-      this.lbVersion.Text = $"Version: {AppCore.Ins.Version}";
       this.FormClosing += FrmStartup_FormClosing;
     }
 
@@ -77,7 +76,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
 
     private System.Timers.Timer timerCheckDelay = new System.Timers.Timer();
-    private int max_cycle = 5;
+    private int max_cycle = 10;
     private int current_cycle = 0;
 
     private void FrmStartup_Load(object sender, EventArgs e)
@@ -145,7 +144,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
 
       this.lbMessage.Text = $"\"{content}\"";
-      this.lbAuthor.Text = $"- {author} -"; ;
+      this.lbAuthor.Text = $" {author} ";
     }
   }
 }

@@ -53,7 +53,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       if (dataGridView1.Columns[e.ColumnIndex].Name == "col6")
       {
-        if (!AppCore.Ins.CheckRole(ePermit.Role_Setting_Line))
+        if (!AppCore.Ins.CheckRole(ePermit.SettingInformationLine))
         {
           new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
           return;

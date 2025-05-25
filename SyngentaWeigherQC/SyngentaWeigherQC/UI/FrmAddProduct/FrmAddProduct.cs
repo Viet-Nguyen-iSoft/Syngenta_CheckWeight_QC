@@ -141,7 +141,7 @@ namespace SyngentaWeigherQC.UI.FrmAddProduct
         _production.UpdatedAt = DateTime.Now;
 
         if (_production != null)
-          await AppCore.Ins.UpdateProduct(_production);
+          await AppCore.Ins.Update(_production);
 
         OnSendDoneChange?.Invoke();
         this.Close();

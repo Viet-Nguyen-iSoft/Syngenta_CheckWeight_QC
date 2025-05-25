@@ -1,4 +1,5 @@
-﻿using SyngentaWeigherQC.Models;
+﻿using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,7 +16,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       InitializeComponent();
     }
-
     private List<Roles> _roles = new List<Roles>();
     public FrmLogIn(List<Roles> roles) : this()
     {
@@ -36,36 +36,20 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       string nameAccount = this.cbAccount.Text;
 
-      if (nameAccount == "iSOFT")
+      Roles role = _roles?.Where(x => x.Name == nameAccount).FirstOrDefault();
+      string pass = (role != null) ? role.Passwords : "";
+
+      if (this.txtPassword.Text == pass)
       {
-        if (this.txtPassword.Text == "058200005781")
-        {
-          //Thành công
-          //OnSendLogInOK?.Invoke(this, nameAccount);
-          this.Close();
-        }
-        else
-        {
-          this.lbInfor.Text = "Mật khẩu không chính xác !";
-          this.lbInfor.Visible = true;
-        }
+        //Thành công
+        AppCore.Ins._roleCurrent = role;
+        OnSendLogInOK?.Invoke(role);
+        this.Close();
       }
       else
       {
-        Roles role = _roles?.Where(x => x.Name == nameAccount).FirstOrDefault();
-        string pass = (role != null) ? role.Passwords : "";
-
-        if (this.txtPassword.Text == pass)
-        {
-          //Thành công
-          OnSendLogInOK?.Invoke(role);
-          this.Close();
-        }
-        else
-        {
-          this.lbInfor.Text = "Mật khẩu không chính xác !";
-          this.lbInfor.Visible = true;
-        }
+        this.lbInfor.Text = "Mật khẩu không chính xác !";
+        this.lbInfor.Visible = true;
       }
     }
 

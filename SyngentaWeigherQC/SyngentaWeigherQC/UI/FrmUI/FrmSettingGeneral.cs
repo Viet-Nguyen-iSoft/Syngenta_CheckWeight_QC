@@ -1,17 +1,10 @@
-﻿using Aspose.Cells;
-using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Spreadsheet;
-using SQLitePCL;
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
@@ -20,12 +13,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmSettingGeneral : Form
   {
-    public delegate void SendModeOnOffApp(bool isOn);
-    public event SendModeOnOffApp OnSendModeOnOffApp;
-
-    public delegate void SendSettingNumberTimeOut(int timerNumber);
-    public event SendSettingNumberTimeOut OnSendSettingNumberTimeOut;
-
+    public delegate void SendChangeNameStation(ConfigSoftware configSoftware);
+    public event SendChangeNameStation OnSendChangeNameStation;
     public FrmSettingGeneral()
     {
       InitializeComponent();
@@ -52,7 +41,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void FrmSettingLine_Load(object sender, EventArgs e)
     {
-      numericUpDownTimeout.Value = AppCore.Ins._configSoftware.Spare1;
+      LoadData(AppCore.Ins._configSoftware);
 
       listShift = AppCore.Ins._listShift;
 
@@ -60,9 +49,45 @@ namespace SyngentaWeigherQC.UI.FrmUI
       FrmSettingDecentralization.Instance.OnSendChangeDecentralization += Instance_OnSendChangeRole;
 
       this.btn3Ca.PerformClick();
+
+      FormMain.Instance.OnSendLogInChange += Instance_OnSendLogInChange;
     }
 
-    
+    private void Instance_OnSendLogInChange(Roles account)
+    {
+      dataGridView1.Columns[3].Visible = AppCore.Ins.CheckRole(ePermit.SettingGeneral);
+    }
+
+    private void LoadData(ConfigSoftware configSoftware)
+    {
+      if (this.InvokeRequired)
+      {
+        this.Invoke(new Action(() =>
+        {
+          LoadData(configSoftware);
+        }));
+        return;
+      }
+
+      try
+      {
+        if (configSoftware != null)
+        {
+          numericUpDownTimeout.Value = configSoftware.Spare1;
+          txtNameStation.Texts = configSoftware.NameStation.ToString();
+        }
+        else
+        {
+          txtNameStation.Texts = string.Empty;
+        }
+      }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex);
+      }
+    }
+
+
 
     private void UpdateDataShiftUI(eShiftTypes eShiftTypes)
     {
@@ -97,7 +122,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
         }
       }
 
-      dataGridView1.Columns[3].Visible = AppCore.Ins.CheckRole(ePermit.Role_Setting_SettingGeneral);
+      dataGridView1.Columns[3].Visible = AppCore.Ins.CheckRole(ePermit.SettingGeneral);
     }
 
 
@@ -110,14 +135,14 @@ namespace SyngentaWeigherQC.UI.FrmUI
           Instance_OnSendChangeRole();
         }));
         return;
-      } 
+      }
 
-      bool isRoleOK = AppCore.Ins.CheckRole(ePermit.Role_Setting_SettingGeneral);
+      bool isRoleOK = AppCore.Ins.CheckRole(ePermit.SettingGeneral);
 
       this.dataGridView1.Columns[3].Visible = isRoleOK;
     }
 
- 
+
     private void btn3Ca_Click(object sender, EventArgs e)
     {
       UpdateDataShiftUI(eShiftTypes.BaCa);
@@ -147,7 +172,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
           this.btn3Ca.BackColor = colorSelect;
           this.btnGianCa.BackColor = colorNoSelect;
           this.btnHanhChinh.BackColor = colorNoSelect;
-          break; 
+          break;
         case eShiftTypes.GianCa:
           this.btn3Ca.BackColor = colorNoSelect;
           this.btnGianCa.BackColor = colorSelect;
@@ -189,6 +214,12 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private async void btnSaveTimeout_Click(object sender, EventArgs e)
     {
+      if (!AppCore.Ins.CheckRole(ePermit.SettingGeneral))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
       int value = (int)numericUpDownTimeout.Value;
       if (value < 10)
       {
@@ -199,9 +230,39 @@ namespace SyngentaWeigherQC.UI.FrmUI
       await AppCore.Ins.Update(AppCore.Ins._configSoftware);
     }
 
+    private async void btnSaveStationName_Click(object sender, EventArgs e)
+    {
+      if (!AppCore.Ins.CheckRole(ePermit.SettingGeneral))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
+      try
+      {
+        AppCore.Ins._configSoftware.NameStation = txtNameStation.Texts.Trim();
+        await AppCore.Ins.Update(AppCore.Ins._configSoftware);
+
+        new FrmNotification().ShowMessage("Lưu thành công.", eMsgType.Info);
+        OnSendChangeNameStation?.Invoke(AppCore.Ins._configSoftware);
+      }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex);
+        new FrmNotification().ShowMessage("Lưu thất bại.", eMsgType.Warning);
+      }
+    }
+
     private void btnSaveChangeNumberChange_Click(object sender, EventArgs e)
     {
-      
+      if (!AppCore.Ins.CheckRole(ePermit.SettingGeneral))
+      {
+        new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
+        return;
+      }
+
+
+
     }
   }
 }

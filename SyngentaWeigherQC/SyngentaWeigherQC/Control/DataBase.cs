@@ -33,13 +33,14 @@ namespace SyngentaWeigherQC.Control
           //Roles
           if (db.Roles.Count() <= 0)
           {
+            string permission = AppCore.Ins.RoleUserAdmin();
             await db.Roles.AddRangeAsync(new Roles[]
             {
-              new Roles(){ Name="QC", Description="Nhân viên kiểm soát chất lượng", Passwords="11", Permission="", isEnable=false},
+              new Roles(){ Name="QC", Description="Nhân viên kiểm soát chất lượng", Passwords="11",Permission="",isEnable=false},
               new Roles(){ Name="ME", Description="Nhân viên cơ điện", Passwords="22", Permission="", isEnable=false},
               new Roles(){ Name="ShiftLeader", Description="Trưởng ca", Passwords="33", Permission="", isEnable=false},
               new Roles(){ Name="OP", Description="Công nhân vận hành", Passwords="44", Permission="", isEnable=true},
-              new Roles(){ Name="Admin", Description="Admin", Passwords="55", Permission="", isEnable=false},
+              new Roles(){ Name="Admin", Description="Admin", Passwords="55", Permission = permission, isEnable=false},
             });
           }
           await db.SaveChangesAsync();

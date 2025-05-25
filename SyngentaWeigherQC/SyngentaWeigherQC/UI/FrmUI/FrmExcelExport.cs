@@ -80,7 +80,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private List<DataReportExcel> dataReportExcels = new List<DataReportExcel>();
     private async void btnPreview_Click(object sender, EventArgs e)
     {
-      if (AppCore.Ins.CheckRole(ePermit.Role_Excel))
+      if (AppCore.Ins.CheckRole(ePermit.ReportExcel))
       {
         var lineChoose = cbbLine.SelectedItem as InforLine;
         int lineId = (lineChoose != null) ? lineChoose.Id : 0;
@@ -326,7 +326,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       try
       {
-        if (!(AppCore.Ins.CheckRole(ePermit.Role_Excel) || AppCore.Ins._roleCurrent.Name == "iSOFT"))
+        if (!AppCore.Ins.CheckRole(ePermit.ReportExcel))
         {
           new FrmNotification().ShowMessage("Tài khoản không có quyền !", eMsgType.Warning);
           return;
