@@ -82,5 +82,29 @@ namespace SyngentaWeigherQC.Properties {
                 this["NumberChangeRecordForShift"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("540")]
+        public int H {
+            get {
+                return ((int)(this["H"]));
+            }
+            set {
+                this["H"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("830")]
+        public int W {
+            get {
+                return ((int)(this["W"]));
+            }
+            set {
+                this["W"] = value;
+            }
+        }
     }
 }

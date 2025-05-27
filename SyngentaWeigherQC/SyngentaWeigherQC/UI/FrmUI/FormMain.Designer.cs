@@ -635,6 +635,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1197, 763);
       this.Controls.Add(this.tableLayoutPanel5);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.tableLayoutPanel5.ResumeLayout(false);

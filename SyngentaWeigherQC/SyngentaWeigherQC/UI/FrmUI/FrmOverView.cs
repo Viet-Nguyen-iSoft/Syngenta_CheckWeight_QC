@@ -24,9 +24,14 @@ namespace SyngentaWeigherQC.UI.FrmUI
     public delegate void SendChooseTypeShift(InforLine inforLine);
     public event SendChooseTypeShift OnSendChooseTypeShift;
 
+    private Size _Size = new Size(830, 540);
     public FrmOverView()
     {
       InitializeComponent();
+      int H = Properties.Settings.Default.H;
+      int W = Properties.Settings.Default.W;
+      _Size = new Size(W, H);
+
       this.Shown += FrmOverView_Shown;
     }
 
@@ -101,7 +106,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       LoadLine();
     }
 
-    private Size _Size = new Size(830, 540);
+    
     private void LoadLine()
     {
       try

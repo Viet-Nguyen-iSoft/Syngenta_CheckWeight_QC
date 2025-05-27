@@ -17,5 +17,11 @@
     <Setting Name="NumberChangeRecordForShift" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="H" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">540</Value>
+    </Setting>
+    <Setting Name="W" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">830</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

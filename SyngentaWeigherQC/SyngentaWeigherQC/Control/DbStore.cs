@@ -11,19 +11,26 @@ namespace SyngentaWeigherQC.Models
 {
   public class CommonDBContext : DbContext
   {
-    public string Server = "localhost";
-    public int Port = 5433;
-    public string User = "postgres";
-    public string Passwords = "058200005781";
-    public string DbDatalog = "DB_Syngenta_CheckWeight_V2";
-    public bool IsPostgres = true;
+    //public string Server = "localhost";
+    //public int Port = 5433;
+    //public string User = "postgres";
+    //public string Passwords = "058200005781";
+    //public string DbDatalog = "DB_Syngenta_CheckWeight_V2";
+    //public bool IsPostgres = true;
 
     //public string Server = "localhost";
     //public int Port = 5432;
     //public string User = "postgres";
     //public string Passwords = "isoft2025";
-    //public string DbDatalog = "DB_CheckWeightV2";
+    //public string DbDatalog = "DB_CheckWeightQc";
     //public bool IsPostgres = true;
+
+    public string Server = "localhost";
+    public int Port = 5432;
+    public string User = "postgres";
+    public string Passwords = "isoft2025";
+    public string DbDatalog = "DB_CheckWeightV2";
+    public bool IsPostgres = true;
   }
 
 

@@ -43,6 +43,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       LoadData(AppCore.Ins._configSoftware);
 
+      numericUpDownH.Value = Properties.Settings.Default.H;
+      numericUpDownW.Value = Properties.Settings.Default.W;
+
       listShift = AppCore.Ins._listShift;
 
       Instance_OnSendChangeRole();
@@ -263,6 +266,13 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
 
 
+    }
+
+    private void btnSettingWH_Click(object sender, EventArgs e)
+    {
+      Properties.Settings.Default.H = (int)numericUpDownH.Value;
+      Properties.Settings.Default.W = (int)numericUpDownW.Value;
+      Properties.Settings.Default.Save();
     }
   }
 }
