@@ -312,5 +312,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
     {
       Program.RestartApp();
     }
+
+    private void lbStation_Click(object sender, EventArgs e)
+    {
+      AppCore.Ins.ReportAutoMonthly(2025, 5);
+      AppCore.Ins.ReportAutoWeekly(2025, 18);
+    }
   }
 }

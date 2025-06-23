@@ -549,6 +549,7 @@
       this.lbStation.TabIndex = 6;
       this.lbStation.Text = "PHẦN MỀM THU THẬP DỮ LIỆU CÂN";
       this.lbStation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbStation.Click += new System.EventHandler(this.lbStation_Click);
       // 
       // pictureBox1
       // 
