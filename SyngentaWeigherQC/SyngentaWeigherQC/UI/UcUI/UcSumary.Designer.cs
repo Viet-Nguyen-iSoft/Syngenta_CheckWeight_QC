@@ -83,7 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbNumberSamples.AutoSize = true;
       this.lbNumberSamples.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.lbNumberSamples.Font = new System.Drawing.Font("Microsoft Sans Serif", 35.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbNumberSamples.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbNumberSamples.Location = new System.Drawing.Point(149, 55);
       this.lbNumberSamples.Name = "lbNumberSamples";
       this.lbNumberSamples.Size = new System.Drawing.Size(134, 135);
@@ -98,7 +98,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbNumberProduct.AutoSize = true;
       this.lbNumberProduct.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.lbNumberProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 35.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbNumberProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbNumberProduct.Location = new System.Drawing.Point(8, 55);
       this.lbNumberProduct.Name = "lbNumberProduct";
       this.lbNumberProduct.Size = new System.Drawing.Size(134, 135);
@@ -133,7 +133,7 @@
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(134, 50);
       this.label1.TabIndex = 0;
-      this.label1.Text = "Tổng số sản phẩm";
+      this.label1.Text = "Tổng sản phẩm";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label3
@@ -163,7 +163,7 @@
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(134, 50);
       this.label4.TabIndex = 3;
-      this.label4.Text = "Tổng số mẫu trung bình cao";
+      this.label4.Text = "Tổng số mẫu cao";
       this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // tableLayoutPanel2
@@ -191,7 +191,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbNumberSampleValueOverRate.AutoSize = true;
       this.lbNumberSampleValueOverRate.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.lbNumberSampleValueOverRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbNumberSampleValueOverRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbNumberSampleValueOverRate.Location = new System.Drawing.Point(3, 94);
       this.lbNumberSampleValueOverRate.Name = "lbNumberSampleValueOverRate";
       this.lbNumberSampleValueOverRate.Size = new System.Drawing.Size(134, 41);
@@ -206,7 +206,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbNumberSampleValueOver.AutoSize = true;
       this.lbNumberSampleValueOver.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.lbNumberSampleValueOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 35.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbNumberSampleValueOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbNumberSampleValueOver.Location = new System.Drawing.Point(3, 0);
       this.lbNumberSampleValueOver.Name = "lbNumberSampleValueOver";
       this.lbNumberSampleValueOver.Size = new System.Drawing.Size(134, 94);
@@ -239,7 +239,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbNumberErrorRate.AutoSize = true;
       this.lbNumberErrorRate.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.lbNumberErrorRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbNumberErrorRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbNumberErrorRate.Location = new System.Drawing.Point(3, 94);
       this.lbNumberErrorRate.Name = "lbNumberErrorRate";
       this.lbNumberErrorRate.Size = new System.Drawing.Size(134, 41);
@@ -254,7 +254,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.lbNumberError.AutoSize = true;
       this.lbNumberError.BackColor = System.Drawing.SystemColors.AppWorkspace;
-      this.lbNumberError.Font = new System.Drawing.Font("Microsoft Sans Serif", 35.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbNumberError.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbNumberError.Location = new System.Drawing.Point(3, 0);
       this.lbNumberError.Name = "lbNumberError";
       this.lbNumberError.Size = new System.Drawing.Size(134, 94);

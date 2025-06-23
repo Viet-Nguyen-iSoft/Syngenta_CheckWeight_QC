@@ -44,11 +44,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
     private DateTime From
     {
-      get { return dateTimePickerFrom.Value; }
+      get { return dateTimePickerFrom.Value.Date + new TimeSpan(6, 0, 0); }
     }
     private DateTime To
     {
-      get { return dateTimePickerTo.Value; }
+      get { return dateTimePickerTo.Value.Date.AddDays(1) + new TimeSpan(5, 59, 59); }
     }
 
     public List<InforLine> CbbLines
@@ -80,7 +80,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private List<DataReportExcel> dataReportExcels = new List<DataReportExcel>();
     private async void btnPreview_Click(object sender, EventArgs e)
     {
-      if (AppCore.Ins.CheckRole(ePermit.Role_Excel) || AppCore.Ins._roleCurrent.Name == "iSOFT")
+      if (AppCore.Ins.CheckRole(ePermit.Role_Excel))
       {
         var lineChoose = cbbLine.SelectedItem as InforLine;
         int lineId = (lineChoose != null) ? lineChoose.Id : 0;
@@ -109,9 +109,15 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
 
       this.flowLayoutPanelProduct.Controls.Clear();
+      this.flowLayoutPanelProduct.Visible = dataReportExcels?.Count() > 0;
 
       if (dataReportExcels.Count() > 0)
       {
+        double sv = (double)dataReportExcels
+                .SelectMany(report => report.DataByDates)
+                .SelectMany(dataByDate => dataByDate.DataByProducts)
+                .Count();
+        double pv = 0.0;
         //Đi từng ngày
         foreach (var dataReportExcel in dataReportExcels)
         {
@@ -126,6 +132,8 @@ namespace SyngentaWeigherQC.UI.FrmUI
                                   data_by_product.Production.Name;
 
               CreateButtonWithDataProduction(textButton, data_by_product);
+              pv++;
+              Progress((int)(pv * 100.0 / sv));
             }
           }
         }
@@ -385,9 +393,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       value = value > 100 ? 100 : value;
       this.progressBar1.Value = value;
     }
-
-
-
 
   }
 }

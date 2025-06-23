@@ -48,7 +48,7 @@ namespace SyngentaWeigherQC.UI.UcUI
       chart1.Series[0].Points[2].Color = Color.Green;
 
       chart1.Series[0].Points[0].LegendText = $"% Mẫu lỗi: {rateError}%";
-      chart1.Series[0].Points[1].LegendText = $"% Mẫu trug bình cao: {rateOver}%";
+      chart1.Series[0].Points[1].LegendText = $"% Mẫu cao: {rateOver}%";
       chart1.Series[0].Points[2].LegendText = $"% Mẫu tốt: {100 - rateError - rateOver}%";
       chart1.Legends[0].Font = new Font("Arial", 14);
 

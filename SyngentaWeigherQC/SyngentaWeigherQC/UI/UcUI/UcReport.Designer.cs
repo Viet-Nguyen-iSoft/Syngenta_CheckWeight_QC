@@ -35,11 +35,6 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      this.ucChartHistogram1 = new SyngentaWeigherQC.UI.UcUI.UcChartHistogram();
-      this.ucChartLine1 = new SyngentaWeigherQC.UI.UcUI.UcChartLine();
-      this.lbTitle = new System.Windows.Forms.Label();
-      this.ucTemplateExcel1 = new SyngentaWeigherQC.UI.UcUI.UcTemplateExcel();
       this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +51,11 @@
       this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      this.ucChartHistogram1 = new SyngentaWeigherQC.UI.UcUI.UcChartHistogram();
+      this.ucChartLine1 = new SyngentaWeigherQC.UI.UcUI.UcChartLine();
+      this.lbTitle = new System.Windows.Forms.Label();
+      this.ucTemplateExcel1 = new SyngentaWeigherQC.UI.UcUI.UcTemplateExcel();
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel3.SuspendLayout();
@@ -91,7 +91,7 @@
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
       this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-      this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
+      this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
       dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
       dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -148,72 +148,6 @@
       this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
       this.dataGridView1.Size = new System.Drawing.Size(1506, 227);
       this.dataGridView1.TabIndex = 10;
-      // 
-      // tableLayoutPanel3
-      // 
-      this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel3.ColumnCount = 2;
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.Controls.Add(this.ucChartHistogram1, 0, 0);
-      this.tableLayoutPanel3.Controls.Add(this.ucChartLine1, 1, 0);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 386);
-      this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-      this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-      this.tableLayoutPanel3.RowCount = 1;
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(1512, 233);
-      this.tableLayoutPanel3.TabIndex = 3;
-      // 
-      // ucChartHistogram1
-      // 
-      this.ucChartHistogram1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartHistogram1.Location = new System.Drawing.Point(3, 3);
-      this.ucChartHistogram1.Name = "ucChartHistogram1";
-      this.ucChartHistogram1.Size = new System.Drawing.Size(750, 227);
-      this.ucChartHistogram1.TabIndex = 0;
-      // 
-      // ucChartLine1
-      // 
-      this.ucChartLine1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartLine1.Location = new System.Drawing.Point(759, 3);
-      this.ucChartLine1.Name = "ucChartLine1";
-      this.ucChartLine1.Size = new System.Drawing.Size(750, 227);
-      this.ucChartLine1.TabIndex = 1;
-      // 
-      // lbTitle
-      // 
-      this.lbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbTitle.AutoSize = true;
-      this.lbTitle.BackColor = System.Drawing.Color.Black;
-      this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbTitle.ForeColor = System.Drawing.Color.White;
-      this.lbTitle.Location = new System.Drawing.Point(0, 0);
-      this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
-      this.lbTitle.Name = "lbTitle";
-      this.lbTitle.Size = new System.Drawing.Size(1512, 50);
-      this.lbTitle.TabIndex = 9;
-      this.lbTitle.Text = "REPORT";
-      this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // ucTemplateExcel1
-      // 
-      this.ucTemplateExcel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucTemplateExcel1.Location = new System.Drawing.Point(0, 50);
-      this.ucTemplateExcel1.Margin = new System.Windows.Forms.Padding(0);
-      this.ucTemplateExcel1.Name = "ucTemplateExcel1";
-      this.ucTemplateExcel1.Size = new System.Drawing.Size(1512, 336);
-      this.ucTemplateExcel1.TabIndex = 2;
       // 
       // Column1
       // 
@@ -316,6 +250,72 @@
       this.Column15.HeaderText = "Đánh giá";
       this.Column15.Name = "Column15";
       this.Column15.ReadOnly = true;
+      // 
+      // tableLayoutPanel3
+      // 
+      this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tableLayoutPanel3.ColumnCount = 2;
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel3.Controls.Add(this.ucChartHistogram1, 0, 0);
+      this.tableLayoutPanel3.Controls.Add(this.ucChartLine1, 1, 0);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 386);
+      this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+      this.tableLayoutPanel3.RowCount = 1;
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(1512, 233);
+      this.tableLayoutPanel3.TabIndex = 3;
+      // 
+      // ucChartHistogram1
+      // 
+      this.ucChartHistogram1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.ucChartHistogram1.Location = new System.Drawing.Point(3, 3);
+      this.ucChartHistogram1.Name = "ucChartHistogram1";
+      this.ucChartHistogram1.Size = new System.Drawing.Size(750, 227);
+      this.ucChartHistogram1.TabIndex = 0;
+      // 
+      // ucChartLine1
+      // 
+      this.ucChartLine1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.ucChartLine1.Location = new System.Drawing.Point(759, 3);
+      this.ucChartLine1.Name = "ucChartLine1";
+      this.ucChartLine1.Size = new System.Drawing.Size(750, 227);
+      this.ucChartLine1.TabIndex = 1;
+      // 
+      // lbTitle
+      // 
+      this.lbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lbTitle.AutoSize = true;
+      this.lbTitle.BackColor = System.Drawing.Color.Black;
+      this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbTitle.ForeColor = System.Drawing.Color.White;
+      this.lbTitle.Location = new System.Drawing.Point(0, 0);
+      this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
+      this.lbTitle.Name = "lbTitle";
+      this.lbTitle.Size = new System.Drawing.Size(1512, 50);
+      this.lbTitle.TabIndex = 9;
+      this.lbTitle.Text = "REPORT";
+      this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // ucTemplateExcel1
+      // 
+      this.ucTemplateExcel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.ucTemplateExcel1.Location = new System.Drawing.Point(0, 50);
+      this.ucTemplateExcel1.Margin = new System.Windows.Forms.Padding(0);
+      this.ucTemplateExcel1.Name = "ucTemplateExcel1";
+      this.ucTemplateExcel1.Size = new System.Drawing.Size(1512, 336);
+      this.ucTemplateExcel1.TabIndex = 2;
       // 
       // UcReport
       // 

@@ -54,6 +54,7 @@ namespace SyngentaWeigherQC.eNum
     {
       Month,
       Week,
+      Date
     }
 
     public enum eRole

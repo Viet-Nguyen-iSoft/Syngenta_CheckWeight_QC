@@ -212,10 +212,6 @@ namespace SyngentaWeigherQC.Control
 
               OnSendValueDatalogWeight?.Invoke(inforLineOperation, datalogWeightAdd);
             }
-            else if (eStatusModeWeight == eStatusModeWeight.TareForLine)
-            {
-              OnSendValueTare?.Invoke(result.Weight);
-            }
             else
             {
               OnSendValueReweight?.Invoke(result.Weight);

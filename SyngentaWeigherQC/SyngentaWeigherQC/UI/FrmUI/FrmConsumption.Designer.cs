@@ -28,53 +28,61 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSynthetic));
       this.tabPage3 = new System.Windows.Forms.TabPage();
       this.page2 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+      this.chartAgvSigmaWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.label16 = new System.Windows.Forms.Label();
+      this.chartTopSigmaWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
       this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-      this.Chart2WeekCurrentStdev = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartAgvStdevWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.label5 = new System.Windows.Forms.Label();
       this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-      this.Chart2WeekCurrentCpk = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartAgvCpkWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.label6 = new System.Windows.Forms.Label();
       this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-      this.Chart2WeekCurrentLoss = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartAgvLossWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.label7 = new System.Windows.Forms.Label();
       this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-      this.Chart2WeekCurrentError = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartAgvErrorWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.label8 = new System.Windows.Forms.Label();
-      this.Chart1WeekCurrentStdev = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.Chart1WeekCurrentCpk = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.Chart1WeekCurrentLoss = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.Chart2PieWeekCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartPie();
-      this.Chart1WeekCurrentError = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.SumaryWeekCurrent = new SyngentaWeigherQC.UI.UcUI.UcSumary();
-      this.lbTitleReportWeek = new System.Windows.Forms.Label();
+      this.chartTopStdevWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.chartTopCpkWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.chartTopLossWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.chartPieWeek = new SyngentaWeigherQC.UI.UcUI.UcChartPie();
+      this.chartTopErrorWeek = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.sumaryWeek = new SyngentaWeigherQC.UI.UcUI.UcSumary();
+      this.lbTitleWeek = new System.Windows.Forms.Label();
       this.tabPage2 = new System.Windows.Forms.TabPage();
       this.page1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+      this.chartAvgSigmaMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.label15 = new System.Windows.Forms.Label();
+      this.chartTopSigmaMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
       this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-      this.ucChartV2_avgStdevMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartAvgStdevMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.label4 = new System.Windows.Forms.Label();
       this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-      this.ucChartV2_avgCpkMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartAvgCpkMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.label3 = new System.Windows.Forms.Label();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      this.ucChartV2_avgSampleLossMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartAvgLossMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.label2 = new System.Windows.Forms.Label();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
       this.label1 = new System.Windows.Forms.Label();
-      this.ucChartV2_avgSampleErrorMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
-      this.ucChartV1_avgStdevMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.ucChartV1_avgCpkMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.ucChartV1_avgSampleLossMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.ucChartPieMothCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartPie();
-      this.ucChartV1_avgSampleErrorMonthCurrent = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
-      this.ucSumaryMothCurrent = new SyngentaWeigherQC.UI.UcUI.UcSumary();
+      this.chartAvgErrorMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
+      this.chartTopStdevMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.chartTopCpkMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.chartTopLossMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.chartPieMoth = new SyngentaWeigherQC.UI.UcUI.UcChartPie();
+      this.chartTopErrorMonth = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
+      this.sumaryMoth = new SyngentaWeigherQC.UI.UcUI.UcSumary();
       this.lbTitleMonth = new System.Windows.Forms.Label();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -92,6 +100,9 @@
       this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ChartPieHome = new SyngentaWeigherQC.UI.UcUI.UcChartPie();
       this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+      this.label14 = new System.Windows.Forms.Label();
+      this.chartAvgSigmaHome = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
       this.label10 = new System.Windows.Forms.Label();
       this.chartavgLossHome = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
@@ -105,6 +116,7 @@
       this.label9 = new System.Windows.Forms.Label();
       this.chartavgErrorHome = new SyngentaWeigherQC.UI.UcUI.UcChartV2();
       this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+      this.chartSigmaHome = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
       this.chartErrorHome = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
       this.chartLossHome = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
       this.chartCpkHome = new SyngentaWeigherQC.UI.UcUI.UcChartV1();
@@ -116,8 +128,6 @@
       this.btnDay = new CustomControls.RJControls.RJButton();
       this.btnWeek = new CustomControls.RJControls.RJButton();
       this.btnMonth = new CustomControls.RJControls.RJButton();
-      this.btnShift = new CustomControls.RJControls.RJButton();
-      this.btnProduct = new CustomControls.RJControls.RJButton();
       this.btnExportPdf = new CustomControls.RJControls.RJButton();
       this.btnLoad = new CustomControls.RJControls.RJButton();
       this.btnExxportPdfByWeek = new CustomControls.RJControls.RJButton();
@@ -125,6 +135,7 @@
       this.tabPage3.SuspendLayout();
       this.page2.SuspendLayout();
       this.tableLayoutPanel8.SuspendLayout();
+      this.tableLayoutPanel21.SuspendLayout();
       this.tableLayoutPanel9.SuspendLayout();
       this.tableLayoutPanel10.SuspendLayout();
       this.tableLayoutPanel11.SuspendLayout();
@@ -132,6 +143,7 @@
       this.tabPage2.SuspendLayout();
       this.page1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
+      this.tableLayoutPanel20.SuspendLayout();
       this.tableLayoutPanel6.SuspendLayout();
       this.tableLayoutPanel5.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
@@ -141,6 +153,7 @@
       this.tableLayoutPanel17.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTableHome)).BeginInit();
       this.tableLayoutPanel7.SuspendLayout();
+      this.tableLayoutPanel18.SuspendLayout();
       this.tableLayoutPanel14.SuspendLayout();
       this.tableLayoutPanel15.SuspendLayout();
       this.tableLayoutPanel16.SuspendLayout();
@@ -165,7 +178,7 @@
       this.page2.ColumnCount = 1;
       this.page2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.page2.Controls.Add(this.tableLayoutPanel8, 0, 1);
-      this.page2.Controls.Add(this.lbTitleReportWeek, 0, 0);
+      this.page2.Controls.Add(this.lbTitleWeek, 0, 0);
       this.page2.Dock = System.Windows.Forms.DockStyle.Fill;
       this.page2.Location = new System.Drawing.Point(0, 0);
       this.page2.Margin = new System.Windows.Forms.Padding(0);
@@ -183,22 +196,25 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel8.BackColor = System.Drawing.Color.Silver;
-      this.tableLayoutPanel8.ColumnCount = 5;
-      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel8.ColumnCount = 6;
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel21, 5, 1);
+      this.tableLayoutPanel8.Controls.Add(this.chartTopSigmaWeek, 5, 0);
       this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 4, 1);
       this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel10, 3, 1);
       this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel11, 2, 1);
       this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel12, 1, 1);
-      this.tableLayoutPanel8.Controls.Add(this.Chart1WeekCurrentStdev, 4, 0);
-      this.tableLayoutPanel8.Controls.Add(this.Chart1WeekCurrentCpk, 3, 0);
-      this.tableLayoutPanel8.Controls.Add(this.Chart1WeekCurrentLoss, 2, 0);
-      this.tableLayoutPanel8.Controls.Add(this.Chart2PieWeekCurrent, 0, 1);
-      this.tableLayoutPanel8.Controls.Add(this.Chart1WeekCurrentError, 1, 0);
-      this.tableLayoutPanel8.Controls.Add(this.SumaryWeekCurrent, 0, 0);
+      this.tableLayoutPanel8.Controls.Add(this.chartTopStdevWeek, 4, 0);
+      this.tableLayoutPanel8.Controls.Add(this.chartTopCpkWeek, 3, 0);
+      this.tableLayoutPanel8.Controls.Add(this.chartTopLossWeek, 2, 0);
+      this.tableLayoutPanel8.Controls.Add(this.chartPieWeek, 0, 1);
+      this.tableLayoutPanel8.Controls.Add(this.chartTopErrorWeek, 1, 0);
+      this.tableLayoutPanel8.Controls.Add(this.sumaryWeek, 0, 0);
       this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 50);
       this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -208,6 +224,62 @@
       this.tableLayoutPanel8.Size = new System.Drawing.Size(1417, 717);
       this.tableLayoutPanel8.TabIndex = 1;
       // 
+      // tableLayoutPanel21
+      // 
+      this.tableLayoutPanel21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tableLayoutPanel21.ColumnCount = 1;
+      this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel21.Controls.Add(this.chartAgvSigmaWeek, 0, 0);
+      this.tableLayoutPanel21.Controls.Add(this.label16, 0, 1);
+      this.tableLayoutPanel21.Location = new System.Drawing.Point(1180, 358);
+      this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+      this.tableLayoutPanel21.RowCount = 2;
+      this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+      this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel21.Size = new System.Drawing.Size(237, 359);
+      this.tableLayoutPanel21.TabIndex = 16;
+      // 
+      // chartAgvSigmaWeek
+      // 
+      this.chartAgvSigmaWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.chartAgvSigmaWeek.Location = new System.Drawing.Point(3, 3);
+      this.chartAgvSigmaWeek.Name = "chartAgvSigmaWeek";
+      this.chartAgvSigmaWeek.Size = new System.Drawing.Size(231, 323);
+      this.chartAgvSigmaWeek.TabIndex = 6;
+      // 
+      // label16
+      // 
+      this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label16.AutoSize = true;
+      this.label16.BackColor = System.Drawing.Color.DarkSlateGray;
+      this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label16.ForeColor = System.Drawing.Color.White;
+      this.label16.Location = new System.Drawing.Point(3, 329);
+      this.label16.Name = "label16";
+      this.label16.Size = new System.Drawing.Size(231, 30);
+      this.label16.TabIndex = 7;
+      this.label16.Text = "Sigma";
+      this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // chartTopSigmaWeek
+      // 
+      this.chartTopSigmaWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.chartTopSigmaWeek.Location = new System.Drawing.Point(1184, 4);
+      this.chartTopSigmaWeek.Margin = new System.Windows.Forms.Padding(4);
+      this.chartTopSigmaWeek.Name = "chartTopSigmaWeek";
+      this.chartTopSigmaWeek.Size = new System.Drawing.Size(229, 350);
+      this.chartTopSigmaWeek.TabIndex = 15;
+      // 
       // tableLayoutPanel9
       // 
       this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -215,27 +287,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel9.ColumnCount = 1;
       this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel9.Controls.Add(this.Chart2WeekCurrentStdev, 0, 0);
+      this.tableLayoutPanel9.Controls.Add(this.chartAgvStdevWeek, 0, 0);
       this.tableLayoutPanel9.Controls.Add(this.label5, 0, 1);
-      this.tableLayoutPanel9.Location = new System.Drawing.Point(1132, 358);
+      this.tableLayoutPanel9.Location = new System.Drawing.Point(944, 358);
       this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel9.Name = "tableLayoutPanel9";
       this.tableLayoutPanel9.RowCount = 2;
       this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel9.Size = new System.Drawing.Size(285, 359);
+      this.tableLayoutPanel9.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel9.TabIndex = 14;
       // 
-      // Chart2WeekCurrentStdev
+      // chartAgvStdevWeek
       // 
-      this.Chart2WeekCurrentStdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAgvStdevWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart2WeekCurrentStdev.Location = new System.Drawing.Point(3, 3);
-      this.Chart2WeekCurrentStdev.Name = "Chart2WeekCurrentStdev";
-      this.Chart2WeekCurrentStdev.Size = new System.Drawing.Size(279, 323);
-      this.Chart2WeekCurrentStdev.TabIndex = 6;
+      this.chartAgvStdevWeek.Location = new System.Drawing.Point(3, 3);
+      this.chartAgvStdevWeek.Name = "chartAgvStdevWeek";
+      this.chartAgvStdevWeek.Size = new System.Drawing.Size(230, 323);
+      this.chartAgvStdevWeek.TabIndex = 6;
       // 
       // label5
       // 
@@ -248,9 +320,9 @@
       this.label5.ForeColor = System.Drawing.Color.White;
       this.label5.Location = new System.Drawing.Point(3, 329);
       this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(279, 30);
+      this.label5.Size = new System.Drawing.Size(230, 30);
       this.label5.TabIndex = 7;
-      this.label5.Text = "stdev";
+      this.label5.Text = "Stdev";
       this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // tableLayoutPanel10
@@ -260,27 +332,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel10.ColumnCount = 1;
       this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel10.Controls.Add(this.Chart2WeekCurrentCpk, 0, 0);
+      this.tableLayoutPanel10.Controls.Add(this.chartAgvCpkWeek, 0, 0);
       this.tableLayoutPanel10.Controls.Add(this.label6, 0, 1);
-      this.tableLayoutPanel10.Location = new System.Drawing.Point(849, 358);
+      this.tableLayoutPanel10.Location = new System.Drawing.Point(708, 358);
       this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel10.Name = "tableLayoutPanel10";
       this.tableLayoutPanel10.RowCount = 2;
       this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel10.Size = new System.Drawing.Size(283, 359);
+      this.tableLayoutPanel10.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel10.TabIndex = 13;
       // 
-      // Chart2WeekCurrentCpk
+      // chartAgvCpkWeek
       // 
-      this.Chart2WeekCurrentCpk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAgvCpkWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart2WeekCurrentCpk.Location = new System.Drawing.Point(3, 3);
-      this.Chart2WeekCurrentCpk.Name = "Chart2WeekCurrentCpk";
-      this.Chart2WeekCurrentCpk.Size = new System.Drawing.Size(277, 323);
-      this.Chart2WeekCurrentCpk.TabIndex = 6;
+      this.chartAgvCpkWeek.Location = new System.Drawing.Point(3, 3);
+      this.chartAgvCpkWeek.Name = "chartAgvCpkWeek";
+      this.chartAgvCpkWeek.Size = new System.Drawing.Size(230, 323);
+      this.chartAgvCpkWeek.TabIndex = 6;
       // 
       // label6
       // 
@@ -293,7 +365,7 @@
       this.label6.ForeColor = System.Drawing.Color.White;
       this.label6.Location = new System.Drawing.Point(3, 329);
       this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(277, 30);
+      this.label6.Size = new System.Drawing.Size(230, 30);
       this.label6.TabIndex = 7;
       this.label6.Text = "Cpk";
       this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -305,27 +377,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel11.ColumnCount = 1;
       this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel11.Controls.Add(this.Chart2WeekCurrentLoss, 0, 0);
+      this.tableLayoutPanel11.Controls.Add(this.chartAgvLossWeek, 0, 0);
       this.tableLayoutPanel11.Controls.Add(this.label7, 0, 1);
-      this.tableLayoutPanel11.Location = new System.Drawing.Point(566, 358);
+      this.tableLayoutPanel11.Location = new System.Drawing.Point(472, 358);
       this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel11.Name = "tableLayoutPanel11";
       this.tableLayoutPanel11.RowCount = 2;
       this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel11.Size = new System.Drawing.Size(283, 359);
+      this.tableLayoutPanel11.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel11.TabIndex = 12;
       // 
-      // Chart2WeekCurrentLoss
+      // chartAgvLossWeek
       // 
-      this.Chart2WeekCurrentLoss.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAgvLossWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart2WeekCurrentLoss.Location = new System.Drawing.Point(3, 3);
-      this.Chart2WeekCurrentLoss.Name = "Chart2WeekCurrentLoss";
-      this.Chart2WeekCurrentLoss.Size = new System.Drawing.Size(277, 323);
-      this.Chart2WeekCurrentLoss.TabIndex = 6;
+      this.chartAgvLossWeek.Location = new System.Drawing.Point(3, 3);
+      this.chartAgvLossWeek.Name = "chartAgvLossWeek";
+      this.chartAgvLossWeek.Size = new System.Drawing.Size(230, 323);
+      this.chartAgvLossWeek.TabIndex = 6;
       // 
       // label7
       // 
@@ -338,7 +410,7 @@
       this.label7.ForeColor = System.Drawing.Color.White;
       this.label7.Location = new System.Drawing.Point(3, 329);
       this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(277, 30);
+      this.label7.Size = new System.Drawing.Size(230, 30);
       this.label7.TabIndex = 7;
       this.label7.Text = "% Hao hụt";
       this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -350,27 +422,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel12.ColumnCount = 1;
       this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel12.Controls.Add(this.Chart2WeekCurrentError, 0, 0);
+      this.tableLayoutPanel12.Controls.Add(this.chartAgvErrorWeek, 0, 0);
       this.tableLayoutPanel12.Controls.Add(this.label8, 0, 1);
-      this.tableLayoutPanel12.Location = new System.Drawing.Point(283, 358);
+      this.tableLayoutPanel12.Location = new System.Drawing.Point(236, 358);
       this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel12.Name = "tableLayoutPanel12";
       this.tableLayoutPanel12.RowCount = 2;
       this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel12.Size = new System.Drawing.Size(283, 359);
+      this.tableLayoutPanel12.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel12.TabIndex = 11;
       // 
-      // Chart2WeekCurrentError
+      // chartAgvErrorWeek
       // 
-      this.Chart2WeekCurrentError.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAgvErrorWeek.AllowDrop = true;
+      this.chartAgvErrorWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart2WeekCurrentError.Location = new System.Drawing.Point(3, 3);
-      this.Chart2WeekCurrentError.Name = "Chart2WeekCurrentError";
-      this.Chart2WeekCurrentError.Size = new System.Drawing.Size(277, 323);
-      this.Chart2WeekCurrentError.TabIndex = 6;
+      this.chartAgvErrorWeek.Location = new System.Drawing.Point(3, 3);
+      this.chartAgvErrorWeek.Name = "chartAgvErrorWeek";
+      this.chartAgvErrorWeek.Size = new System.Drawing.Size(230, 323);
+      this.chartAgvErrorWeek.TabIndex = 6;
       // 
       // label8
       // 
@@ -383,96 +456,96 @@
       this.label8.ForeColor = System.Drawing.Color.White;
       this.label8.Location = new System.Drawing.Point(3, 329);
       this.label8.Name = "label8";
-      this.label8.Size = new System.Drawing.Size(277, 30);
+      this.label8.Size = new System.Drawing.Size(230, 30);
       this.label8.TabIndex = 7;
       this.label8.Text = "% Mẫu lỗi";
       this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // Chart1WeekCurrentStdev
+      // chartTopStdevWeek
       // 
-      this.Chart1WeekCurrentStdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopStdevWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart1WeekCurrentStdev.Location = new System.Drawing.Point(1135, 3);
-      this.Chart1WeekCurrentStdev.Name = "Chart1WeekCurrentStdev";
-      this.Chart1WeekCurrentStdev.Size = new System.Drawing.Size(279, 352);
-      this.Chart1WeekCurrentStdev.TabIndex = 5;
+      this.chartTopStdevWeek.Location = new System.Drawing.Point(947, 3);
+      this.chartTopStdevWeek.Name = "chartTopStdevWeek";
+      this.chartTopStdevWeek.Size = new System.Drawing.Size(230, 352);
+      this.chartTopStdevWeek.TabIndex = 5;
       // 
-      // Chart1WeekCurrentCpk
+      // chartTopCpkWeek
       // 
-      this.Chart1WeekCurrentCpk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopCpkWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart1WeekCurrentCpk.Location = new System.Drawing.Point(852, 3);
-      this.Chart1WeekCurrentCpk.Name = "Chart1WeekCurrentCpk";
-      this.Chart1WeekCurrentCpk.Size = new System.Drawing.Size(277, 352);
-      this.Chart1WeekCurrentCpk.TabIndex = 4;
+      this.chartTopCpkWeek.Location = new System.Drawing.Point(711, 3);
+      this.chartTopCpkWeek.Name = "chartTopCpkWeek";
+      this.chartTopCpkWeek.Size = new System.Drawing.Size(230, 352);
+      this.chartTopCpkWeek.TabIndex = 4;
       // 
-      // Chart1WeekCurrentLoss
+      // chartTopLossWeek
       // 
-      this.Chart1WeekCurrentLoss.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopLossWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart1WeekCurrentLoss.Location = new System.Drawing.Point(569, 3);
-      this.Chart1WeekCurrentLoss.Name = "Chart1WeekCurrentLoss";
-      this.Chart1WeekCurrentLoss.Size = new System.Drawing.Size(277, 352);
-      this.Chart1WeekCurrentLoss.TabIndex = 3;
+      this.chartTopLossWeek.Location = new System.Drawing.Point(475, 3);
+      this.chartTopLossWeek.Name = "chartTopLossWeek";
+      this.chartTopLossWeek.Size = new System.Drawing.Size(230, 352);
+      this.chartTopLossWeek.TabIndex = 3;
       // 
-      // Chart2PieWeekCurrent
+      // chartPieWeek
       // 
-      this.Chart2PieWeekCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartPieWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart2PieWeekCurrent.BackColor = System.Drawing.Color.White;
-      this.Chart2PieWeekCurrent.Location = new System.Drawing.Point(3, 361);
-      this.Chart2PieWeekCurrent.Name = "Chart2PieWeekCurrent";
-      this.Chart2PieWeekCurrent.Size = new System.Drawing.Size(277, 353);
-      this.Chart2PieWeekCurrent.TabIndex = 1;
+      this.chartPieWeek.BackColor = System.Drawing.Color.White;
+      this.chartPieWeek.Location = new System.Drawing.Point(3, 361);
+      this.chartPieWeek.Name = "chartPieWeek";
+      this.chartPieWeek.Size = new System.Drawing.Size(230, 353);
+      this.chartPieWeek.TabIndex = 1;
       // 
-      // Chart1WeekCurrentError
+      // chartTopErrorWeek
       // 
-      this.Chart1WeekCurrentError.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopErrorWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.Chart1WeekCurrentError.Location = new System.Drawing.Point(286, 3);
-      this.Chart1WeekCurrentError.Name = "Chart1WeekCurrentError";
-      this.Chart1WeekCurrentError.Size = new System.Drawing.Size(277, 352);
-      this.Chart1WeekCurrentError.TabIndex = 2;
+      this.chartTopErrorWeek.Location = new System.Drawing.Point(239, 3);
+      this.chartTopErrorWeek.Name = "chartTopErrorWeek";
+      this.chartTopErrorWeek.Size = new System.Drawing.Size(230, 352);
+      this.chartTopErrorWeek.TabIndex = 2;
       // 
-      // SumaryWeekCurrent
+      // sumaryWeek
       // 
-      this.SumaryWeekCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.sumaryWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.SumaryWeekCurrent.BackColor = System.Drawing.Color.White;
-      this.SumaryWeekCurrent.Location = new System.Drawing.Point(3, 3);
-      this.SumaryWeekCurrent.Name = "SumaryWeekCurrent";
-      this.SumaryWeekCurrent.Size = new System.Drawing.Size(277, 352);
-      this.SumaryWeekCurrent.TabIndex = 0;
+      this.sumaryWeek.BackColor = System.Drawing.Color.White;
+      this.sumaryWeek.Location = new System.Drawing.Point(3, 3);
+      this.sumaryWeek.Name = "sumaryWeek";
+      this.sumaryWeek.Size = new System.Drawing.Size(230, 352);
+      this.sumaryWeek.TabIndex = 0;
       // 
-      // lbTitleReportWeek
+      // lbTitleWeek
       // 
-      this.lbTitleReportWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbTitleWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbTitleReportWeek.AutoSize = true;
-      this.lbTitleReportWeek.BackColor = System.Drawing.Color.Black;
-      this.lbTitleReportWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbTitleReportWeek.ForeColor = System.Drawing.Color.White;
-      this.lbTitleReportWeek.Location = new System.Drawing.Point(0, 0);
-      this.lbTitleReportWeek.Margin = new System.Windows.Forms.Padding(0);
-      this.lbTitleReportWeek.Name = "lbTitleReportWeek";
-      this.lbTitleReportWeek.Size = new System.Drawing.Size(1417, 50);
-      this.lbTitleReportWeek.TabIndex = 2;
-      this.lbTitleReportWeek.Text = "label9";
-      this.lbTitleReportWeek.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbTitleWeek.AutoSize = true;
+      this.lbTitleWeek.BackColor = System.Drawing.Color.Black;
+      this.lbTitleWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbTitleWeek.ForeColor = System.Drawing.Color.White;
+      this.lbTitleWeek.Location = new System.Drawing.Point(0, 0);
+      this.lbTitleWeek.Margin = new System.Windows.Forms.Padding(0);
+      this.lbTitleWeek.Name = "lbTitleWeek";
+      this.lbTitleWeek.Size = new System.Drawing.Size(1417, 50);
+      this.lbTitleWeek.TabIndex = 2;
+      this.lbTitleWeek.Text = "label9";
+      this.lbTitleWeek.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // tabPage2
       // 
       this.tabPage2.Controls.Add(this.page1);
       this.tabPage2.Location = new System.Drawing.Point(4, 25);
+      this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
       this.tabPage2.Name = "tabPage2";
-      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
       this.tabPage2.Size = new System.Drawing.Size(1417, 767);
       this.tabPage2.TabIndex = 1;
       this.tabPage2.Text = "Tháng hiện tại";
@@ -485,14 +558,14 @@
       this.page1.Controls.Add(this.tableLayoutPanel2, 0, 1);
       this.page1.Controls.Add(this.lbTitleMonth, 0, 0);
       this.page1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.page1.Location = new System.Drawing.Point(3, 3);
+      this.page1.Location = new System.Drawing.Point(0, 0);
       this.page1.Margin = new System.Windows.Forms.Padding(0);
       this.page1.Name = "page1";
       this.page1.RowCount = 2;
       this.page1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
       this.page1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.page1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.page1.Size = new System.Drawing.Size(1411, 761);
+      this.page1.Size = new System.Drawing.Size(1417, 767);
       this.page1.TabIndex = 0;
       // 
       // tableLayoutPanel2
@@ -501,30 +574,89 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel2.BackColor = System.Drawing.Color.Silver;
-      this.tableLayoutPanel2.ColumnCount = 5;
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel2.ColumnCount = 6;
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+      this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel20, 5, 1);
+      this.tableLayoutPanel2.Controls.Add(this.chartTopSigmaMonth, 5, 0);
       this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 4, 1);
       this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 3, 1);
       this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 2, 1);
       this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 1, 1);
-      this.tableLayoutPanel2.Controls.Add(this.ucChartV1_avgStdevMonthCurrent, 4, 0);
-      this.tableLayoutPanel2.Controls.Add(this.ucChartV1_avgCpkMonthCurrent, 3, 0);
-      this.tableLayoutPanel2.Controls.Add(this.ucChartV1_avgSampleLossMonthCurrent, 2, 0);
-      this.tableLayoutPanel2.Controls.Add(this.ucChartPieMothCurrent, 0, 1);
-      this.tableLayoutPanel2.Controls.Add(this.ucChartV1_avgSampleErrorMonthCurrent, 1, 0);
-      this.tableLayoutPanel2.Controls.Add(this.ucSumaryMothCurrent, 0, 0);
+      this.tableLayoutPanel2.Controls.Add(this.chartTopStdevMonth, 4, 0);
+      this.tableLayoutPanel2.Controls.Add(this.chartTopCpkMonth, 3, 0);
+      this.tableLayoutPanel2.Controls.Add(this.chartTopLossMonth, 2, 0);
+      this.tableLayoutPanel2.Controls.Add(this.chartPieMoth, 0, 1);
+      this.tableLayoutPanel2.Controls.Add(this.chartTopErrorMonth, 1, 0);
+      this.tableLayoutPanel2.Controls.Add(this.sumaryMoth, 0, 0);
       this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 50);
       this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 2;
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(1411, 711);
+      this.tableLayoutPanel2.Size = new System.Drawing.Size(1417, 717);
       this.tableLayoutPanel2.TabIndex = 1;
+      // 
+      // tableLayoutPanel20
+      // 
+      this.tableLayoutPanel20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tableLayoutPanel20.ColumnCount = 1;
+      this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel20.Controls.Add(this.chartAvgSigmaMonth, 0, 0);
+      this.tableLayoutPanel20.Controls.Add(this.label15, 0, 1);
+      this.tableLayoutPanel20.Location = new System.Drawing.Point(1180, 358);
+      this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+      this.tableLayoutPanel20.RowCount = 2;
+      this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+      this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel20.Size = new System.Drawing.Size(237, 359);
+      this.tableLayoutPanel20.TabIndex = 16;
+      // 
+      // chartAvgSigmaMonth
+      // 
+      this.chartAvgSigmaMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.chartAvgSigmaMonth.Location = new System.Drawing.Point(3, 3);
+      this.chartAvgSigmaMonth.Name = "chartAvgSigmaMonth";
+      this.chartAvgSigmaMonth.Size = new System.Drawing.Size(231, 323);
+      this.chartAvgSigmaMonth.TabIndex = 6;
+      // 
+      // label15
+      // 
+      this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label15.AutoSize = true;
+      this.label15.BackColor = System.Drawing.Color.DarkSlateGray;
+      this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label15.ForeColor = System.Drawing.Color.White;
+      this.label15.Location = new System.Drawing.Point(3, 329);
+      this.label15.Name = "label15";
+      this.label15.Size = new System.Drawing.Size(231, 30);
+      this.label15.TabIndex = 7;
+      this.label15.Text = "Sigma";
+      this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // chartTopSigmaMonth
+      // 
+      this.chartTopSigmaMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.chartTopSigmaMonth.Location = new System.Drawing.Point(1184, 4);
+      this.chartTopSigmaMonth.Margin = new System.Windows.Forms.Padding(4);
+      this.chartTopSigmaMonth.Name = "chartTopSigmaMonth";
+      this.chartTopSigmaMonth.Size = new System.Drawing.Size(229, 350);
+      this.chartTopSigmaMonth.TabIndex = 15;
       // 
       // tableLayoutPanel6
       // 
@@ -533,27 +665,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel6.ColumnCount = 1;
       this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel6.Controls.Add(this.ucChartV2_avgStdevMonthCurrent, 0, 0);
+      this.tableLayoutPanel6.Controls.Add(this.chartAvgStdevMonth, 0, 0);
       this.tableLayoutPanel6.Controls.Add(this.label4, 0, 1);
-      this.tableLayoutPanel6.Location = new System.Drawing.Point(1128, 355);
+      this.tableLayoutPanel6.Location = new System.Drawing.Point(944, 358);
       this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel6.Name = "tableLayoutPanel6";
       this.tableLayoutPanel6.RowCount = 2;
       this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel6.Size = new System.Drawing.Size(283, 356);
+      this.tableLayoutPanel6.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel6.TabIndex = 14;
       // 
-      // ucChartV2_avgStdevMonthCurrent
+      // chartAvgStdevMonth
       // 
-      this.ucChartV2_avgStdevMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAvgStdevMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV2_avgStdevMonthCurrent.Location = new System.Drawing.Point(3, 3);
-      this.ucChartV2_avgStdevMonthCurrent.Name = "ucChartV2_avgStdevMonthCurrent";
-      this.ucChartV2_avgStdevMonthCurrent.Size = new System.Drawing.Size(277, 320);
-      this.ucChartV2_avgStdevMonthCurrent.TabIndex = 6;
+      this.chartAvgStdevMonth.Location = new System.Drawing.Point(3, 3);
+      this.chartAvgStdevMonth.Name = "chartAvgStdevMonth";
+      this.chartAvgStdevMonth.Size = new System.Drawing.Size(230, 323);
+      this.chartAvgStdevMonth.TabIndex = 6;
       // 
       // label4
       // 
@@ -564,9 +696,9 @@
       this.label4.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label4.ForeColor = System.Drawing.Color.White;
-      this.label4.Location = new System.Drawing.Point(3, 326);
+      this.label4.Location = new System.Drawing.Point(3, 329);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(277, 30);
+      this.label4.Size = new System.Drawing.Size(230, 30);
       this.label4.TabIndex = 7;
       this.label4.Text = "Stdev";
       this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -578,27 +710,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel5.ColumnCount = 1;
       this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel5.Controls.Add(this.ucChartV2_avgCpkMonthCurrent, 0, 0);
+      this.tableLayoutPanel5.Controls.Add(this.chartAvgCpkMonth, 0, 0);
       this.tableLayoutPanel5.Controls.Add(this.label3, 0, 1);
-      this.tableLayoutPanel5.Location = new System.Drawing.Point(846, 355);
+      this.tableLayoutPanel5.Location = new System.Drawing.Point(708, 358);
       this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel5.Name = "tableLayoutPanel5";
       this.tableLayoutPanel5.RowCount = 2;
       this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel5.Size = new System.Drawing.Size(282, 356);
+      this.tableLayoutPanel5.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel5.TabIndex = 13;
       // 
-      // ucChartV2_avgCpkMonthCurrent
+      // chartAvgCpkMonth
       // 
-      this.ucChartV2_avgCpkMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAvgCpkMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV2_avgCpkMonthCurrent.Location = new System.Drawing.Point(3, 3);
-      this.ucChartV2_avgCpkMonthCurrent.Name = "ucChartV2_avgCpkMonthCurrent";
-      this.ucChartV2_avgCpkMonthCurrent.Size = new System.Drawing.Size(276, 320);
-      this.ucChartV2_avgCpkMonthCurrent.TabIndex = 6;
+      this.chartAvgCpkMonth.Location = new System.Drawing.Point(3, 3);
+      this.chartAvgCpkMonth.Name = "chartAvgCpkMonth";
+      this.chartAvgCpkMonth.Size = new System.Drawing.Size(230, 323);
+      this.chartAvgCpkMonth.TabIndex = 6;
       // 
       // label3
       // 
@@ -609,9 +741,9 @@
       this.label3.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.ForeColor = System.Drawing.Color.White;
-      this.label3.Location = new System.Drawing.Point(3, 326);
+      this.label3.Location = new System.Drawing.Point(3, 329);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(276, 30);
+      this.label3.Size = new System.Drawing.Size(230, 30);
       this.label3.TabIndex = 7;
       this.label3.Text = "Cpk";
       this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -623,27 +755,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel3.ColumnCount = 1;
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel3.Controls.Add(this.ucChartV2_avgSampleLossMonthCurrent, 0, 0);
+      this.tableLayoutPanel3.Controls.Add(this.chartAvgLossMonth, 0, 0);
       this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(564, 355);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(472, 358);
       this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel3.Name = "tableLayoutPanel3";
       this.tableLayoutPanel3.RowCount = 2;
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(282, 356);
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel3.TabIndex = 12;
       // 
-      // ucChartV2_avgSampleLossMonthCurrent
+      // chartAvgLossMonth
       // 
-      this.ucChartV2_avgSampleLossMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAvgLossMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV2_avgSampleLossMonthCurrent.Location = new System.Drawing.Point(3, 3);
-      this.ucChartV2_avgSampleLossMonthCurrent.Name = "ucChartV2_avgSampleLossMonthCurrent";
-      this.ucChartV2_avgSampleLossMonthCurrent.Size = new System.Drawing.Size(276, 320);
-      this.ucChartV2_avgSampleLossMonthCurrent.TabIndex = 6;
+      this.chartAvgLossMonth.Location = new System.Drawing.Point(3, 3);
+      this.chartAvgLossMonth.Name = "chartAvgLossMonth";
+      this.chartAvgLossMonth.Size = new System.Drawing.Size(230, 323);
+      this.chartAvgLossMonth.TabIndex = 6;
       // 
       // label2
       // 
@@ -654,9 +786,9 @@
       this.label2.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.ForeColor = System.Drawing.Color.White;
-      this.label2.Location = new System.Drawing.Point(3, 326);
+      this.label2.Location = new System.Drawing.Point(3, 329);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(276, 30);
+      this.label2.Size = new System.Drawing.Size(230, 30);
       this.label2.TabIndex = 7;
       this.label2.Text = "% Hao hụt";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -669,15 +801,15 @@
       this.tableLayoutPanel4.ColumnCount = 1;
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.Controls.Add(this.label1, 0, 1);
-      this.tableLayoutPanel4.Controls.Add(this.ucChartV2_avgSampleErrorMonthCurrent, 0, 0);
-      this.tableLayoutPanel4.Location = new System.Drawing.Point(282, 355);
+      this.tableLayoutPanel4.Controls.Add(this.chartAvgErrorMonth, 0, 0);
+      this.tableLayoutPanel4.Location = new System.Drawing.Point(236, 358);
       this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel4.Name = "tableLayoutPanel4";
       this.tableLayoutPanel4.RowCount = 2;
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel4.Size = new System.Drawing.Size(282, 356);
+      this.tableLayoutPanel4.Size = new System.Drawing.Size(236, 359);
       this.tableLayoutPanel4.TabIndex = 11;
       // 
       // label1
@@ -689,85 +821,84 @@
       this.label1.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.ForeColor = System.Drawing.Color.White;
-      this.label1.Location = new System.Drawing.Point(3, 326);
+      this.label1.Location = new System.Drawing.Point(3, 329);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(276, 30);
+      this.label1.Size = new System.Drawing.Size(230, 30);
       this.label1.TabIndex = 7;
       this.label1.Text = "% Mẫu lỗi";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // ucChartV2_avgSampleErrorMonthCurrent
+      // chartAvgErrorMonth
       // 
-      this.ucChartV2_avgSampleErrorMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartAvgErrorMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV2_avgSampleErrorMonthCurrent.Location = new System.Drawing.Point(3, 2);
-      this.ucChartV2_avgSampleErrorMonthCurrent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.ucChartV2_avgSampleErrorMonthCurrent.Name = "ucChartV2_avgSampleErrorMonthCurrent";
-      this.ucChartV2_avgSampleErrorMonthCurrent.Size = new System.Drawing.Size(276, 322);
-      this.ucChartV2_avgSampleErrorMonthCurrent.TabIndex = 6;
+      this.chartAvgErrorMonth.Location = new System.Drawing.Point(3, 3);
+      this.chartAvgErrorMonth.Name = "chartAvgErrorMonth";
+      this.chartAvgErrorMonth.Size = new System.Drawing.Size(230, 323);
+      this.chartAvgErrorMonth.TabIndex = 6;
       // 
-      // ucChartV1_avgStdevMonthCurrent
+      // chartTopStdevMonth
       // 
-      this.ucChartV1_avgStdevMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopStdevMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV1_avgStdevMonthCurrent.Location = new System.Drawing.Point(1131, 3);
-      this.ucChartV1_avgStdevMonthCurrent.Name = "ucChartV1_avgStdevMonthCurrent";
-      this.ucChartV1_avgStdevMonthCurrent.Size = new System.Drawing.Size(277, 349);
-      this.ucChartV1_avgStdevMonthCurrent.TabIndex = 5;
+      this.chartTopStdevMonth.Location = new System.Drawing.Point(947, 3);
+      this.chartTopStdevMonth.Name = "chartTopStdevMonth";
+      this.chartTopStdevMonth.Size = new System.Drawing.Size(230, 352);
+      this.chartTopStdevMonth.TabIndex = 5;
       // 
-      // ucChartV1_avgCpkMonthCurrent
+      // chartTopCpkMonth
       // 
-      this.ucChartV1_avgCpkMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopCpkMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV1_avgCpkMonthCurrent.Location = new System.Drawing.Point(849, 3);
-      this.ucChartV1_avgCpkMonthCurrent.Name = "ucChartV1_avgCpkMonthCurrent";
-      this.ucChartV1_avgCpkMonthCurrent.Size = new System.Drawing.Size(276, 349);
-      this.ucChartV1_avgCpkMonthCurrent.TabIndex = 4;
+      this.chartTopCpkMonth.Location = new System.Drawing.Point(711, 3);
+      this.chartTopCpkMonth.Name = "chartTopCpkMonth";
+      this.chartTopCpkMonth.Size = new System.Drawing.Size(230, 352);
+      this.chartTopCpkMonth.TabIndex = 4;
       // 
-      // ucChartV1_avgSampleLossMonthCurrent
+      // chartTopLossMonth
       // 
-      this.ucChartV1_avgSampleLossMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopLossMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV1_avgSampleLossMonthCurrent.Location = new System.Drawing.Point(567, 3);
-      this.ucChartV1_avgSampleLossMonthCurrent.Name = "ucChartV1_avgSampleLossMonthCurrent";
-      this.ucChartV1_avgSampleLossMonthCurrent.Size = new System.Drawing.Size(276, 349);
-      this.ucChartV1_avgSampleLossMonthCurrent.TabIndex = 3;
+      this.chartTopLossMonth.Location = new System.Drawing.Point(475, 3);
+      this.chartTopLossMonth.Name = "chartTopLossMonth";
+      this.chartTopLossMonth.Size = new System.Drawing.Size(230, 352);
+      this.chartTopLossMonth.TabIndex = 3;
       // 
-      // ucChartPieMothCurrent
+      // chartPieMoth
       // 
-      this.ucChartPieMothCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartPieMoth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartPieMothCurrent.BackColor = System.Drawing.Color.White;
-      this.ucChartPieMothCurrent.Location = new System.Drawing.Point(3, 358);
-      this.ucChartPieMothCurrent.Name = "ucChartPieMothCurrent";
-      this.ucChartPieMothCurrent.Size = new System.Drawing.Size(276, 350);
-      this.ucChartPieMothCurrent.TabIndex = 1;
+      this.chartPieMoth.BackColor = System.Drawing.Color.White;
+      this.chartPieMoth.Location = new System.Drawing.Point(3, 361);
+      this.chartPieMoth.Name = "chartPieMoth";
+      this.chartPieMoth.Size = new System.Drawing.Size(230, 353);
+      this.chartPieMoth.TabIndex = 1;
       // 
-      // ucChartV1_avgSampleErrorMonthCurrent
+      // chartTopErrorMonth
       // 
-      this.ucChartV1_avgSampleErrorMonthCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.chartTopErrorMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucChartV1_avgSampleErrorMonthCurrent.Location = new System.Drawing.Point(285, 3);
-      this.ucChartV1_avgSampleErrorMonthCurrent.Name = "ucChartV1_avgSampleErrorMonthCurrent";
-      this.ucChartV1_avgSampleErrorMonthCurrent.Size = new System.Drawing.Size(276, 349);
-      this.ucChartV1_avgSampleErrorMonthCurrent.TabIndex = 2;
+      this.chartTopErrorMonth.Location = new System.Drawing.Point(239, 3);
+      this.chartTopErrorMonth.Name = "chartTopErrorMonth";
+      this.chartTopErrorMonth.Size = new System.Drawing.Size(230, 352);
+      this.chartTopErrorMonth.TabIndex = 2;
       // 
-      // ucSumaryMothCurrent
+      // sumaryMoth
       // 
-      this.ucSumaryMothCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.sumaryMoth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucSumaryMothCurrent.BackColor = System.Drawing.Color.White;
-      this.ucSumaryMothCurrent.Location = new System.Drawing.Point(3, 3);
-      this.ucSumaryMothCurrent.Name = "ucSumaryMothCurrent";
-      this.ucSumaryMothCurrent.Size = new System.Drawing.Size(276, 349);
-      this.ucSumaryMothCurrent.TabIndex = 0;
+      this.sumaryMoth.BackColor = System.Drawing.Color.White;
+      this.sumaryMoth.Location = new System.Drawing.Point(3, 3);
+      this.sumaryMoth.Name = "sumaryMoth";
+      this.sumaryMoth.Size = new System.Drawing.Size(230, 352);
+      this.sumaryMoth.TabIndex = 0;
       // 
       // lbTitleMonth
       // 
@@ -781,7 +912,7 @@
       this.lbTitleMonth.Location = new System.Drawing.Point(0, 0);
       this.lbTitleMonth.Margin = new System.Windows.Forms.Padding(0);
       this.lbTitleMonth.Name = "lbTitleMonth";
-      this.lbTitleMonth.Size = new System.Drawing.Size(1411, 50);
+      this.lbTitleMonth.Size = new System.Drawing.Size(1417, 50);
       this.lbTitleMonth.TabIndex = 3;
       this.lbTitleMonth.Text = "BÁO CÁO";
       this.lbTitleMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -790,8 +921,8 @@
       // 
       this.tabPage1.Controls.Add(this.tableLayoutPanel1);
       this.tabPage1.Location = new System.Drawing.Point(4, 25);
+      this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
       this.tabPage1.Name = "tabPage1";
-      this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
       this.tabPage1.Size = new System.Drawing.Size(1417, 767);
       this.tabPage1.TabIndex = 0;
       this.tabPage1.Text = "Home";
@@ -808,7 +939,7 @@
       this.tableLayoutPanel1.Controls.Add(this.lbTitleHome, 0, 0);
       this.tableLayoutPanel1.Controls.Add(this.tablelayoutFilter, 0, 2);
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
       this.tableLayoutPanel1.RowCount = 8;
@@ -820,7 +951,7 @@
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(1411, 761);
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(1417, 767);
       this.tableLayoutPanel1.TabIndex = 0;
       // 
       // tableLayoutPanel17
@@ -833,12 +964,12 @@
       this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.44385F));
       this.tableLayoutPanel17.Controls.Add(this.dataGridViewTableHome, 0, 0);
       this.tableLayoutPanel17.Controls.Add(this.ChartPieHome, 1, 0);
-      this.tableLayoutPanel17.Location = new System.Drawing.Point(0, 542);
+      this.tableLayoutPanel17.Location = new System.Drawing.Point(0, 546);
       this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel17.Name = "tableLayoutPanel17";
       this.tableLayoutPanel17.RowCount = 1;
       this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel17.Size = new System.Drawing.Size(1411, 219);
+      this.tableLayoutPanel17.Size = new System.Drawing.Size(1417, 221);
       this.tableLayoutPanel17.TabIndex = 1;
       // 
       // dataGridViewTableHome
@@ -850,14 +981,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dataGridViewTableHome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
       this.dataGridViewTableHome.BackgroundColor = System.Drawing.Color.White;
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dataGridViewTableHome.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dataGridViewTableHome.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
       this.dataGridViewTableHome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dataGridViewTableHome.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -874,20 +1005,20 @@
       this.dataGridViewTableHome.Margin = new System.Windows.Forms.Padding(0);
       this.dataGridViewTableHome.Name = "dataGridViewTableHome";
       this.dataGridViewTableHome.ReadOnly = true;
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dataGridViewTableHome.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+      dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dataGridViewTableHome.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
       this.dataGridViewTableHome.RowHeadersVisible = false;
-      dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-      this.dataGridViewTableHome.RowsDefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+      dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+      this.dataGridViewTableHome.RowsDefaultCellStyle = dataGridViewCellStyle6;
       this.dataGridViewTableHome.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-      this.dataGridViewTableHome.Size = new System.Drawing.Size(1122, 219);
+      this.dataGridViewTableHome.Size = new System.Drawing.Size(1127, 221);
       this.dataGridViewTableHome.TabIndex = 0;
       // 
       // Column1
@@ -960,10 +1091,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ChartPieHome.BackColor = System.Drawing.Color.White;
-      this.ChartPieHome.Location = new System.Drawing.Point(1122, 0);
+      this.ChartPieHome.Location = new System.Drawing.Point(1127, 0);
       this.ChartPieHome.Margin = new System.Windows.Forms.Padding(0);
       this.ChartPieHome.Name = "ChartPieHome";
-      this.ChartPieHome.Size = new System.Drawing.Size(289, 219);
+      this.ChartPieHome.Size = new System.Drawing.Size(290, 221);
       this.ChartPieHome.TabIndex = 1;
       // 
       // tableLayoutPanel7
@@ -972,22 +1103,70 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel7.BackColor = System.Drawing.Color.DarkGray;
-      this.tableLayoutPanel7.ColumnCount = 4;
-      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+      this.tableLayoutPanel7.ColumnCount = 5;
+      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel18, 4, 0);
       this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel14, 1, 0);
       this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel15, 2, 0);
       this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel16, 3, 0);
       this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel13, 0, 0);
-      this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 319);
+      this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 321);
       this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel7.Name = "tableLayoutPanel7";
       this.tableLayoutPanel7.RowCount = 1;
       this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel7.Size = new System.Drawing.Size(1411, 218);
+      this.tableLayoutPanel7.Size = new System.Drawing.Size(1417, 220);
       this.tableLayoutPanel7.TabIndex = 0;
+      // 
+      // tableLayoutPanel18
+      // 
+      this.tableLayoutPanel18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tableLayoutPanel18.ColumnCount = 1;
+      this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel18.Controls.Add(this.label14, 0, 1);
+      this.tableLayoutPanel18.Controls.Add(this.chartAvgSigmaHome, 0, 0);
+      this.tableLayoutPanel18.Location = new System.Drawing.Point(1132, 0);
+      this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+      this.tableLayoutPanel18.RowCount = 2;
+      this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+      this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel18.Size = new System.Drawing.Size(285, 220);
+      this.tableLayoutPanel18.TabIndex = 17;
+      // 
+      // label14
+      // 
+      this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label14.AutoSize = true;
+      this.label14.BackColor = System.Drawing.Color.DarkSlateGray;
+      this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label14.ForeColor = System.Drawing.Color.White;
+      this.label14.Location = new System.Drawing.Point(3, 190);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(279, 30);
+      this.label14.TabIndex = 7;
+      this.label14.Text = "Sigma";
+      this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // chartAvgSigmaHome
+      // 
+      this.chartAvgSigmaHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.chartAvgSigmaHome.Location = new System.Drawing.Point(4, 2);
+      this.chartAvgSigmaHome.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+      this.chartAvgSigmaHome.Name = "chartAvgSigmaHome";
+      this.chartAvgSigmaHome.Size = new System.Drawing.Size(277, 186);
+      this.chartAvgSigmaHome.TabIndex = 6;
       // 
       // tableLayoutPanel14
       // 
@@ -998,14 +1177,14 @@
       this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel14.Controls.Add(this.label10, 0, 1);
       this.tableLayoutPanel14.Controls.Add(this.chartavgLossHome, 0, 0);
-      this.tableLayoutPanel14.Location = new System.Drawing.Point(352, 0);
+      this.tableLayoutPanel14.Location = new System.Drawing.Point(283, 0);
       this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel14.Name = "tableLayoutPanel14";
       this.tableLayoutPanel14.RowCount = 2;
       this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel14.Size = new System.Drawing.Size(352, 218);
+      this.tableLayoutPanel14.Size = new System.Drawing.Size(283, 220);
       this.tableLayoutPanel14.TabIndex = 13;
       // 
       // label10
@@ -1017,9 +1196,9 @@
       this.label10.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label10.ForeColor = System.Drawing.Color.White;
-      this.label10.Location = new System.Drawing.Point(3, 188);
+      this.label10.Location = new System.Drawing.Point(3, 190);
       this.label10.Name = "label10";
-      this.label10.Size = new System.Drawing.Size(346, 30);
+      this.label10.Size = new System.Drawing.Size(277, 30);
       this.label10.TabIndex = 7;
       this.label10.Text = "% Hao hụt";
       this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1032,7 +1211,7 @@
       this.chartavgLossHome.Location = new System.Drawing.Point(4, 2);
       this.chartavgLossHome.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
       this.chartavgLossHome.Name = "chartavgLossHome";
-      this.chartavgLossHome.Size = new System.Drawing.Size(344, 184);
+      this.chartavgLossHome.Size = new System.Drawing.Size(275, 186);
       this.chartavgLossHome.TabIndex = 6;
       // 
       // tableLayoutPanel15
@@ -1044,14 +1223,14 @@
       this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel15.Controls.Add(this.label11, 0, 1);
       this.tableLayoutPanel15.Controls.Add(this.chartavgCpkHome, 0, 0);
-      this.tableLayoutPanel15.Location = new System.Drawing.Point(704, 0);
+      this.tableLayoutPanel15.Location = new System.Drawing.Point(566, 0);
       this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel15.Name = "tableLayoutPanel15";
       this.tableLayoutPanel15.RowCount = 2;
       this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel15.Size = new System.Drawing.Size(352, 218);
+      this.tableLayoutPanel15.Size = new System.Drawing.Size(283, 220);
       this.tableLayoutPanel15.TabIndex = 14;
       // 
       // label11
@@ -1063,11 +1242,11 @@
       this.label11.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label11.ForeColor = System.Drawing.Color.White;
-      this.label11.Location = new System.Drawing.Point(3, 188);
+      this.label11.Location = new System.Drawing.Point(3, 190);
       this.label11.Name = "label11";
-      this.label11.Size = new System.Drawing.Size(346, 30);
+      this.label11.Size = new System.Drawing.Size(277, 30);
       this.label11.TabIndex = 7;
-      this.label11.Text = "% Cpk";
+      this.label11.Text = "Cpk";
       this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // chartavgCpkHome
@@ -1078,7 +1257,7 @@
       this.chartavgCpkHome.Location = new System.Drawing.Point(4, 2);
       this.chartavgCpkHome.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
       this.chartavgCpkHome.Name = "chartavgCpkHome";
-      this.chartavgCpkHome.Size = new System.Drawing.Size(344, 184);
+      this.chartavgCpkHome.Size = new System.Drawing.Size(275, 186);
       this.chartavgCpkHome.TabIndex = 6;
       // 
       // tableLayoutPanel16
@@ -1090,14 +1269,14 @@
       this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel16.Controls.Add(this.label12, 0, 1);
       this.tableLayoutPanel16.Controls.Add(this.chartavgStdevHome, 0, 0);
-      this.tableLayoutPanel16.Location = new System.Drawing.Point(1056, 0);
+      this.tableLayoutPanel16.Location = new System.Drawing.Point(849, 0);
       this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel16.Name = "tableLayoutPanel16";
       this.tableLayoutPanel16.RowCount = 2;
       this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel16.Size = new System.Drawing.Size(355, 218);
+      this.tableLayoutPanel16.Size = new System.Drawing.Size(283, 220);
       this.tableLayoutPanel16.TabIndex = 15;
       // 
       // label12
@@ -1109,11 +1288,11 @@
       this.label12.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label12.ForeColor = System.Drawing.Color.White;
-      this.label12.Location = new System.Drawing.Point(3, 188);
+      this.label12.Location = new System.Drawing.Point(3, 190);
       this.label12.Name = "label12";
-      this.label12.Size = new System.Drawing.Size(349, 30);
+      this.label12.Size = new System.Drawing.Size(277, 30);
       this.label12.TabIndex = 7;
-      this.label12.Text = "% Stdev";
+      this.label12.Text = "Stdev";
       this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // chartavgStdevHome
@@ -1124,7 +1303,7 @@
       this.chartavgStdevHome.Location = new System.Drawing.Point(4, 2);
       this.chartavgStdevHome.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
       this.chartavgStdevHome.Name = "chartavgStdevHome";
-      this.chartavgStdevHome.Size = new System.Drawing.Size(347, 184);
+      this.chartavgStdevHome.Size = new System.Drawing.Size(275, 186);
       this.chartavgStdevHome.TabIndex = 6;
       // 
       // tableLayoutPanel13
@@ -1143,7 +1322,7 @@
       this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
       this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel13.Size = new System.Drawing.Size(352, 218);
+      this.tableLayoutPanel13.Size = new System.Drawing.Size(283, 220);
       this.tableLayoutPanel13.TabIndex = 16;
       // 
       // label9
@@ -1155,9 +1334,9 @@
       this.label9.BackColor = System.Drawing.Color.DarkSlateGray;
       this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label9.ForeColor = System.Drawing.Color.White;
-      this.label9.Location = new System.Drawing.Point(3, 188);
+      this.label9.Location = new System.Drawing.Point(3, 190);
       this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(346, 30);
+      this.label9.Size = new System.Drawing.Size(277, 30);
       this.label9.TabIndex = 7;
       this.label9.Text = "% Mẫu lỗi";
       this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1170,17 +1349,18 @@
       this.chartavgErrorHome.Location = new System.Drawing.Point(4, 2);
       this.chartavgErrorHome.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
       this.chartavgErrorHome.Name = "chartavgErrorHome";
-      this.chartavgErrorHome.Size = new System.Drawing.Size(344, 184);
+      this.chartavgErrorHome.Size = new System.Drawing.Size(275, 186);
       this.chartavgErrorHome.TabIndex = 6;
       // 
       // tableLayoutPanel19
       // 
-      this.tableLayoutPanel19.ColumnCount = 4;
-      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel19.ColumnCount = 5;
+      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+      this.tableLayoutPanel19.Controls.Add(this.chartSigmaHome, 4, 0);
       this.tableLayoutPanel19.Controls.Add(this.chartErrorHome, 0, 0);
       this.tableLayoutPanel19.Controls.Add(this.chartLossHome, 1, 0);
       this.tableLayoutPanel19.Controls.Add(this.chartCpkHome, 2, 0);
@@ -1191,8 +1371,19 @@
       this.tableLayoutPanel19.Name = "tableLayoutPanel19";
       this.tableLayoutPanel19.RowCount = 1;
       this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel19.Size = new System.Drawing.Size(1411, 218);
+      this.tableLayoutPanel19.Size = new System.Drawing.Size(1417, 220);
       this.tableLayoutPanel19.TabIndex = 3;
+      // 
+      // chartSigmaHome
+      // 
+      this.chartSigmaHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.chartSigmaHome.Location = new System.Drawing.Point(1136, 4);
+      this.chartSigmaHome.Margin = new System.Windows.Forms.Padding(4);
+      this.chartSigmaHome.Name = "chartSigmaHome";
+      this.chartSigmaHome.Size = new System.Drawing.Size(277, 212);
+      this.chartSigmaHome.TabIndex = 7;
       // 
       // chartErrorHome
       // 
@@ -1201,7 +1392,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.chartErrorHome.Location = new System.Drawing.Point(3, 3);
       this.chartErrorHome.Name = "chartErrorHome";
-      this.chartErrorHome.Size = new System.Drawing.Size(346, 212);
+      this.chartErrorHome.Size = new System.Drawing.Size(277, 214);
       this.chartErrorHome.TabIndex = 0;
       // 
       // chartLossHome
@@ -1209,9 +1400,9 @@
       this.chartLossHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.chartLossHome.Location = new System.Drawing.Point(355, 3);
+      this.chartLossHome.Location = new System.Drawing.Point(286, 3);
       this.chartLossHome.Name = "chartLossHome";
-      this.chartLossHome.Size = new System.Drawing.Size(346, 212);
+      this.chartLossHome.Size = new System.Drawing.Size(277, 214);
       this.chartLossHome.TabIndex = 1;
       // 
       // chartCpkHome
@@ -1219,9 +1410,9 @@
       this.chartCpkHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.chartCpkHome.Location = new System.Drawing.Point(707, 3);
+      this.chartCpkHome.Location = new System.Drawing.Point(569, 3);
       this.chartCpkHome.Name = "chartCpkHome";
-      this.chartCpkHome.Size = new System.Drawing.Size(346, 212);
+      this.chartCpkHome.Size = new System.Drawing.Size(277, 214);
       this.chartCpkHome.TabIndex = 6;
       // 
       // chartStdevHome
@@ -1229,9 +1420,9 @@
       this.chartStdevHome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.chartStdevHome.Location = new System.Drawing.Point(1059, 3);
+      this.chartStdevHome.Location = new System.Drawing.Point(852, 3);
       this.chartStdevHome.Name = "chartStdevHome";
-      this.chartStdevHome.Size = new System.Drawing.Size(349, 212);
+      this.chartStdevHome.Size = new System.Drawing.Size(277, 214);
       this.chartStdevHome.TabIndex = 1;
       // 
       // lbTitleHome
@@ -1247,7 +1438,7 @@
       this.lbTitleHome.Margin = new System.Windows.Forms.Padding(0);
       this.lbTitleHome.Name = "lbTitleHome";
       this.lbTitleHome.Padding = new System.Windows.Forms.Padding(10);
-      this.lbTitleHome.Size = new System.Drawing.Size(1411, 45);
+      this.lbTitleHome.Size = new System.Drawing.Size(1417, 45);
       this.lbTitleHome.TabIndex = 4;
       this.lbTitleHome.Text = "BÁO CÁO TỔNG HỢP THÁNG HIỆN TẠI";
       this.lbTitleHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1258,19 +1449,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tablelayoutFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(61)))), ((int)(((byte)(90)))));
-      this.tablelayoutFilter.ColumnCount = 14;
+      this.tablelayoutFilter.ColumnCount = 11;
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
-      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+      this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
       this.tablelayoutFilter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tablelayoutFilter.Controls.Add(this.cbbLine, 1, 0);
@@ -1278,17 +1466,15 @@
       this.tablelayoutFilter.Controls.Add(this.btnDay, 5, 0);
       this.tablelayoutFilter.Controls.Add(this.btnWeek, 4, 0);
       this.tablelayoutFilter.Controls.Add(this.btnMonth, 3, 0);
-      this.tablelayoutFilter.Controls.Add(this.btnShift, 6, 0);
-      this.tablelayoutFilter.Controls.Add(this.btnProduct, 7, 0);
-      this.tablelayoutFilter.Controls.Add(this.btnExportPdf, 10, 0);
-      this.tablelayoutFilter.Controls.Add(this.btnLoad, 9, 0);
-      this.tablelayoutFilter.Controls.Add(this.btnExxportPdfByWeek, 11, 0);
+      this.tablelayoutFilter.Controls.Add(this.btnExportPdf, 8, 0);
+      this.tablelayoutFilter.Controls.Add(this.btnLoad, 7, 0);
+      this.tablelayoutFilter.Controls.Add(this.btnExxportPdfByWeek, 9, 0);
       this.tablelayoutFilter.Location = new System.Drawing.Point(0, 48);
       this.tablelayoutFilter.Margin = new System.Windows.Forms.Padding(0);
       this.tablelayoutFilter.Name = "tablelayoutFilter";
       this.tablelayoutFilter.RowCount = 1;
       this.tablelayoutFilter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tablelayoutFilter.Size = new System.Drawing.Size(1411, 50);
+      this.tablelayoutFilter.Size = new System.Drawing.Size(1417, 50);
       this.tablelayoutFilter.TabIndex = 2;
       // 
       // cbbLine
@@ -1302,6 +1488,7 @@
       this.cbbLine.Name = "cbbLine";
       this.cbbLine.Size = new System.Drawing.Size(194, 32);
       this.cbbLine.TabIndex = 11;
+      this.cbbLine.SelectedIndexChanged += new System.EventHandler(this.cbbLine_SelectedIndexChanged);
       // 
       // label13
       // 
@@ -1340,6 +1527,7 @@
       this.btnDay.Text = "Ngày";
       this.btnDay.TextColor = System.Drawing.Color.White;
       this.btnDay.UseVisualStyleBackColor = false;
+      this.btnDay.Visible = false;
       this.btnDay.Click += new System.EventHandler(this.btnDay_Click);
       // 
       // btnWeek
@@ -1384,49 +1572,6 @@
       this.btnMonth.UseVisualStyleBackColor = false;
       this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
       // 
-      // btnShift
-      // 
-      this.btnShift.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnShift.BackColor = System.Drawing.Color.RoyalBlue;
-      this.btnShift.BackgroundColor = System.Drawing.Color.RoyalBlue;
-      this.btnShift.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnShift.BorderRadius = 8;
-      this.btnShift.BorderSize = 0;
-      this.btnShift.FlatAppearance.BorderSize = 0;
-      this.btnShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnShift.ForeColor = System.Drawing.Color.White;
-      this.btnShift.Location = new System.Drawing.Point(666, 5);
-      this.btnShift.Margin = new System.Windows.Forms.Padding(2);
-      this.btnShift.Name = "btnShift";
-      this.btnShift.Size = new System.Drawing.Size(116, 40);
-      this.btnShift.TabIndex = 5;
-      this.btnShift.Text = "Ca";
-      this.btnShift.TextColor = System.Drawing.Color.White;
-      this.btnShift.UseVisualStyleBackColor = false;
-      this.btnShift.Visible = false;
-      this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
-      // 
-      // btnProduct
-      // 
-      this.btnProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.btnProduct.BackColor = System.Drawing.Color.RoyalBlue;
-      this.btnProduct.BackgroundColor = System.Drawing.Color.RoyalBlue;
-      this.btnProduct.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnProduct.BorderRadius = 8;
-      this.btnProduct.BorderSize = 0;
-      this.btnProduct.FlatAppearance.BorderSize = 0;
-      this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnProduct.ForeColor = System.Drawing.Color.White;
-      this.btnProduct.Location = new System.Drawing.Point(786, 5);
-      this.btnProduct.Margin = new System.Windows.Forms.Padding(2);
-      this.btnProduct.Name = "btnProduct";
-      this.btnProduct.Size = new System.Drawing.Size(116, 40);
-      this.btnProduct.TabIndex = 4;
-      this.btnProduct.Text = "Sản phẩm";
-      this.btnProduct.TextColor = System.Drawing.Color.White;
-      this.btnProduct.UseVisualStyleBackColor = false;
-      this.btnProduct.Visible = false;
-      // 
       // btnExportPdf
       // 
       this.btnExportPdf.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1442,10 +1587,10 @@
       this.btnExportPdf.ForeColor = System.Drawing.Color.White;
       this.btnExportPdf.Image = ((System.Drawing.Image)(resources.GetObject("btnExportPdf.Image")));
       this.btnExportPdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnExportPdf.Location = new System.Drawing.Point(1046, 2);
+      this.btnExportPdf.Location = new System.Drawing.Point(826, 2);
       this.btnExportPdf.Margin = new System.Windows.Forms.Padding(2);
       this.btnExportPdf.Name = "btnExportPdf";
-      this.btnExportPdf.Size = new System.Drawing.Size(176, 46);
+      this.btnExportPdf.Size = new System.Drawing.Size(136, 46);
       this.btnExportPdf.TabIndex = 7;
       this.btnExportPdf.Text = "     Export Pdf";
       this.btnExportPdf.TextColor = System.Drawing.Color.White;
@@ -1466,12 +1611,12 @@
       this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnLoad.ForeColor = System.Drawing.Color.White;
       this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnLoad.Location = new System.Drawing.Point(926, 2);
+      this.btnLoad.Location = new System.Drawing.Point(686, 2);
       this.btnLoad.Margin = new System.Windows.Forms.Padding(2);
       this.btnLoad.Name = "btnLoad";
-      this.btnLoad.Size = new System.Drawing.Size(116, 46);
+      this.btnLoad.Size = new System.Drawing.Size(136, 46);
       this.btnLoad.TabIndex = 6;
-      this.btnLoad.Text = "Xem";
+      this.btnLoad.Text = "Mặc định tháng hiện tại";
       this.btnLoad.TextColor = System.Drawing.Color.White;
       this.btnLoad.UseVisualStyleBackColor = false;
       this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
@@ -1491,7 +1636,7 @@
       this.btnExxportPdfByWeek.ForeColor = System.Drawing.Color.White;
       this.btnExxportPdfByWeek.Image = ((System.Drawing.Image)(resources.GetObject("btnExxportPdfByWeek.Image")));
       this.btnExxportPdfByWeek.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnExxportPdfByWeek.Location = new System.Drawing.Point(1226, 2);
+      this.btnExxportPdfByWeek.Location = new System.Drawing.Point(966, 2);
       this.btnExxportPdfByWeek.Margin = new System.Windows.Forms.Padding(2);
       this.btnExxportPdfByWeek.Name = "btnExxportPdfByWeek";
       this.btnExxportPdfByWeek.Size = new System.Drawing.Size(196, 46);
@@ -1527,6 +1672,8 @@
       this.page2.ResumeLayout(false);
       this.page2.PerformLayout();
       this.tableLayoutPanel8.ResumeLayout(false);
+      this.tableLayoutPanel21.ResumeLayout(false);
+      this.tableLayoutPanel21.PerformLayout();
       this.tableLayoutPanel9.ResumeLayout(false);
       this.tableLayoutPanel9.PerformLayout();
       this.tableLayoutPanel10.ResumeLayout(false);
@@ -1539,6 +1686,8 @@
       this.page1.ResumeLayout(false);
       this.page1.PerformLayout();
       this.tableLayoutPanel2.ResumeLayout(false);
+      this.tableLayoutPanel20.ResumeLayout(false);
+      this.tableLayoutPanel20.PerformLayout();
       this.tableLayoutPanel6.ResumeLayout(false);
       this.tableLayoutPanel6.PerformLayout();
       this.tableLayoutPanel5.ResumeLayout(false);
@@ -1553,6 +1702,8 @@
       this.tableLayoutPanel17.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTableHome)).EndInit();
       this.tableLayoutPanel7.ResumeLayout(false);
+      this.tableLayoutPanel18.ResumeLayout(false);
+      this.tableLayoutPanel18.PerformLayout();
       this.tableLayoutPanel14.ResumeLayout(false);
       this.tableLayoutPanel14.PerformLayout();
       this.tableLayoutPanel15.ResumeLayout(false);
@@ -1575,45 +1726,45 @@
     private System.Windows.Forms.TableLayoutPanel page2;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-    private UcUI.UcChartV2 Chart2WeekCurrentStdev;
+    private UcUI.UcChartV2 chartAgvStdevWeek;
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-    private UcUI.UcChartV2 Chart2WeekCurrentCpk;
+    private UcUI.UcChartV2 chartAgvCpkWeek;
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-    private UcUI.UcChartV2 Chart2WeekCurrentLoss;
+    private UcUI.UcChartV2 chartAgvLossWeek;
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-    private UcUI.UcChartV2 Chart2WeekCurrentError;
+    private UcUI.UcChartV2 chartAgvErrorWeek;
     private System.Windows.Forms.Label label8;
-    private UcUI.UcChartV1 Chart1WeekCurrentStdev;
-    private UcUI.UcChartV1 Chart1WeekCurrentCpk;
-    private UcUI.UcChartV1 Chart1WeekCurrentLoss;
-    private UcUI.UcChartPie Chart2PieWeekCurrent;
-    private UcUI.UcChartV1 Chart1WeekCurrentError;
-    private UcUI.UcSumary SumaryWeekCurrent;
-    private System.Windows.Forms.Label lbTitleReportWeek;
+    private UcUI.UcChartV1 chartTopStdevWeek;
+    private UcUI.UcChartV1 chartTopCpkWeek;
+    private UcUI.UcChartV1 chartTopLossWeek;
+    private UcUI.UcChartPie chartPieWeek;
+    private UcUI.UcChartV1 chartTopErrorWeek;
+    private UcUI.UcSumary sumaryWeek;
+    private System.Windows.Forms.Label lbTitleWeek;
     private System.Windows.Forms.TabPage tabPage2;
     private System.Windows.Forms.TableLayoutPanel page1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-    private UcUI.UcChartV2 ucChartV2_avgStdevMonthCurrent;
+    private UcUI.UcChartV2 chartAvgStdevMonth;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-    private UcUI.UcChartV2 ucChartV2_avgCpkMonthCurrent;
+    private UcUI.UcChartV2 chartAvgCpkMonth;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-    private UcUI.UcChartV2 ucChartV2_avgSampleLossMonthCurrent;
+    private UcUI.UcChartV2 chartAvgLossMonth;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-    private UcUI.UcChartV2 ucChartV2_avgSampleErrorMonthCurrent;
+    private UcUI.UcChartV2 chartAvgErrorMonth;
     private System.Windows.Forms.Label label1;
-    private UcUI.UcChartV1 ucChartV1_avgStdevMonthCurrent;
-    private UcUI.UcChartV1 ucChartV1_avgCpkMonthCurrent;
-    private UcUI.UcChartV1 ucChartV1_avgSampleLossMonthCurrent;
-    private UcUI.UcChartPie ucChartPieMothCurrent;
-    private UcUI.UcChartV1 ucChartV1_avgSampleErrorMonthCurrent;
-    private UcUI.UcSumary ucSumaryMothCurrent;
+    private UcUI.UcChartV1 chartTopStdevMonth;
+    private UcUI.UcChartV1 chartTopCpkMonth;
+    private UcUI.UcChartV1 chartTopLossMonth;
+    private UcUI.UcChartPie chartPieMoth;
+    private UcUI.UcChartV1 chartTopErrorMonth;
+    private UcUI.UcSumary sumaryMoth;
     private System.Windows.Forms.Label lbTitleMonth;
     private System.Windows.Forms.TabPage tabPage1;
     private System.Windows.Forms.TabControl tabControl1;
@@ -1638,11 +1789,9 @@
     private System.Windows.Forms.DataGridView dataGridViewTableHome;
     private UcUI.UcChartPie ChartPieHome;
     private System.Windows.Forms.TableLayoutPanel tablelayoutFilter;
-    private CustomControls.RJControls.RJButton btnProduct;
     private CustomControls.RJControls.RJButton btnDay;
     private CustomControls.RJControls.RJButton btnWeek;
     private CustomControls.RJControls.RJButton btnMonth;
-    private CustomControls.RJControls.RJButton btnShift;
     private CustomControls.RJControls.RJButton btnExportPdf;
     private CustomControls.RJControls.RJButton btnLoad;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
@@ -1661,5 +1810,17 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
     private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+    private UcUI.UcChartV1 chartSigmaHome;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+    private System.Windows.Forms.Label label14;
+    private UcUI.UcChartV2 chartAvgSigmaHome;
+    private UcUI.UcChartV1 chartTopSigmaMonth;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+    private UcUI.UcChartV2 chartAvgSigmaMonth;
+    private System.Windows.Forms.Label label15;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
+    private UcUI.UcChartV2 chartAgvSigmaWeek;
+    private System.Windows.Forms.Label label16;
+    private UcUI.UcChartV1 chartTopSigmaWeek;
   }
 }

@@ -16,5 +16,13 @@ namespace SyngentaWeigherQC.Helper
         Directory.CreateDirectory(pathFolder);
       }
     }
+
+    public static bool FileExits(string pathFile)
+    {
+      return File.Exists(pathFile);
+    }
+
+
+
   }
 }

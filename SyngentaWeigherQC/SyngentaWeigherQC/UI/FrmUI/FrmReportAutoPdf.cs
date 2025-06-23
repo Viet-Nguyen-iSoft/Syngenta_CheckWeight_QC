@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
@@ -19,17 +20,19 @@ namespace SyngentaWeigherQC.UI.FrmUI
   public partial class FrmReportAutoPdf : Form
   {
     public List<DatalogWeight> _datalogWeights = new List<DatalogWeight>();
-    public string _pathReport = string.Empty;
+    public string[] _pathReport = new string[3];
 
     public FrmReportAutoPdf()
     {
       InitializeComponent();
     }
 
-    public FrmReportAutoPdf(List<DatalogWeight> datalogWeights, string pathReport, string titleReport) : this()
+    public FrmReportAutoPdf(List<DatalogWeight> datalogWeights, string[] pathReport, string titleReport) : this()
     {
       _datalogWeights = datalogWeights;
       _pathReport = pathReport;
+
+      lbTitleReport.Text = titleReport;
     }
 
     private void ReportAutoPdf_Load(object sender, EventArgs e)
@@ -90,7 +93,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
                   NameShiftLeader = lastRecord.ShiftLeader?.UserName,
                 };
 
-
                 ////ChartLine
                 var dataChartLine = AppCore.Ins.CvtDatalogWeightToChartLine(datalogWeight, product);
 
@@ -121,21 +123,21 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       finally
       {
-        //this.Close(); 
-        ExportToPdf(_pathReport);
+        if (_pathReport.Length > 0)
+        {
+          foreach (var item in _pathReport)
+          {
+            if (item != null)
+            {
+              ExportToPdf(item);
+            }
+          }
+        }
+        
+        this.Close();
       }
     }
 
-    private void timer_export_Tick(object sender, EventArgs e)
-    {
-      //ExportToPdf(_pathReport);
-      //ExportTabControlToPdf(tabControl1, _pathReport);
-    }
-
-    private void label9_Click(object sender, EventArgs e)
-    {
-      ExportToPdf(_pathReport);
-    }
 
     private void LoadDataShowUI(List<DatalogWeight> datalogWeights)
     {
@@ -162,11 +164,13 @@ namespace SyngentaWeigherQC.UI.FrmUI
       Dictionary<string, double> groupDataTopLoss = new Dictionary<string, double>();
       Dictionary<string, double> groupDataTopCpk = new Dictionary<string, double>();
       Dictionary<string, double> groupDataTopStdev = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataTopSigma = new Dictionary<string, double>();
 
       Dictionary<string, double> groupDataAverageError = new Dictionary<string, double>();
       Dictionary<string, double> groupDataAverageLoss = new Dictionary<string, double>();
       Dictionary<string, double> groupDataAverageCpk = new Dictionary<string, double>();
       Dictionary<string, double> groupDataAverageStdev = new Dictionary<string, double>();
+      Dictionary<string, double> groupDataAverageSigma = new Dictionary<string, double>();
 
       //Đi từng sản phẩm
       foreach (var item in consumptionV2s)
@@ -175,35 +179,41 @@ namespace SyngentaWeigherQC.UI.FrmUI
         double topLoss = item.DetailConsumptions.Max(x => x.Loss);
         double topCpk = item.DetailConsumptions.Max(x => x.Cpk);
         double topStdev = item.DetailConsumptions.Max(x => x.Stdev);
+        double topSigma = item.DetailConsumptions.Max(x => x.Sigma);
 
         groupDataTopError.Add(item.Production.Name, topError);
         groupDataTopLoss.Add(item.Production.Name, topLoss);
         groupDataTopCpk.Add(item.Production.Name, topCpk);
         groupDataTopStdev.Add(item.Production.Name, topStdev);
+        groupDataTopSigma.Add(item.Production.Name, topSigma);
 
         double averageError = item.DetailConsumptions.Average(x => x.Error);
         double averageLoss = item.DetailConsumptions.Average(x => x.Loss);
         double averageCpk = item.DetailConsumptions.Average(x => x.Cpk);
         double averageStdev = item.DetailConsumptions.Average(x => x.Stdev);
+        double averageSigma = item.DetailConsumptions.Average(x => x.Sigma);
 
         groupDataAverageError.Add(item.Production.Name, averageError);
         groupDataAverageLoss.Add(item.Production.Name, averageLoss);
         groupDataAverageCpk.Add(item.Production.Name, averageCpk);
         groupDataAverageStdev.Add(item.Production.Name, averageStdev);
+        groupDataAverageSigma.Add(item.Production.Name, averageSigma);
       }
 
       //Dãy trên
-      this.ucChartV1_avgSampleErrorMonthCurrent.SetDataChart(groupDataTopError);
-      this.ucChartV1_avgSampleLossMonthCurrent.SetDataChart(groupDataTopLoss);
-      this.ucChartV1_avgCpkMonthCurrent.SetDataChart(groupDataTopCpk);
-      this.ucChartV1_avgStdevMonthCurrent.SetDataChart(groupDataTopStdev);
+      this.chartTopError.SetDataChart(groupDataTopError);
+      this.chartTopLoss.SetDataChart(groupDataTopLoss);
+      this.chartTopCpk.SetDataChart(groupDataTopCpk);
+      this.chartTopStdev.SetDataChart(groupDataTopStdev);
+      this.chartTopSigma.SetDataChart(groupDataTopSigma);
 
 
       //Dãy dưới
-      this.ucChartV2_avgSampleErrorMonthCurrent.SetDataChart(groupDataAverageError);
-      this.ucChartV2_avgSampleLossMonthCurrent.SetDataChart(groupDataAverageLoss);
-      this.ucChartV2_avgCpkMonthCurrent.SetDataChart(groupDataAverageCpk);
-      this.ucChartV2_avgStdevMonthCurrent.SetDataChart(groupDataAverageStdev);
+      this.chartAvgError.SetDataChart(groupDataAverageError);
+      this.chartAvgLoss.SetDataChart(groupDataAverageLoss);
+      this.chartAvgCpk.SetDataChart(groupDataAverageCpk);
+      this.chartAvgStdev.SetDataChart(groupDataAverageStdev);
+      this.chartAvgSigma.SetDataChart(groupDataAverageSigma);
 
       //Chart Pie
       var totalSample = (int)consumptionV2s
@@ -216,20 +226,9 @@ namespace SyngentaWeigherQC.UI.FrmUI
                         .SelectMany(chart => chart.DetailConsumptions)
                         .Sum(detail => detail.TotalLower);
 
-      this.ucChartPieMothCurrent.SetDataChart(totalSample, totalLower, totalOver);
-
-
-      this.ucSumaryMothCurrent.SetData(consumptionV2s.Count(), totalSample, totalLower + totalOver, totalOver);
+      this.chartPie.SetDataChart(totalSample, totalLower, totalOver);
+      this.sumary.SetData(consumptionV2s.Count(), totalSample, totalLower + totalOver, totalOver);
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -271,134 +270,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
     }
 
 
-
-
-    private void SetTitleReport(eReportConsumption eReportConsumption)
-    {
-      if (this.InvokeRequired)
-      {
-        this.Invoke(new Action(() =>
-        {
-          SetTitleReport(eReportConsumption);
-        }));
-        return;
-      }
-
-      label9.Text = eReportConsumption == eReportConsumption.Month ?
-        "ĐANG XUẤT BÁO CÁO THEO THÁNG TỰ ĐỘNG. VUI LÒNG CHỜ ĐỢI TRONG GIÂY LÁT ..." :
-        "ĐANG XUẤT BÁO CÁO THEO TUẦN TỰ ĐỘNG. VUI LÒNG CHỜ ĐỢI TRONG GIÂY LÁT ...";
-    }
-
-
-
-    private List<DataReportByDate> dataReport = new List<DataReportByDate>();
-
-
-
-
-
-    private void SetDataProductDetail(List<DataReportByDate> reportDataWeek)
-    {
-      //if (this.InvokeRequired)
-      //{
-      //  this.Invoke(new Action(() =>
-      //  {
-      //    SetDataProductDetail(reportDataWeek);
-      //  }));
-      //  return;
-      //}
-
-      //if (reportDataWeek.Count <= 0) return;
-
-      //int cntTab = 0;
-      ////Đi qua các Data theo ngày
-      //foreach (var item in reportDataWeek)
-      //{
-      //  //Các sản phẩm ngày hôm đó
-      //  DateTime dt_Report = item.DateTime;
-      //  List<DataDateGroupByProduct> dataReportByDate = item.DataDateGroupByProducts.ToList();
-
-      //  if (dataReportByDate.Count > 0)
-      //  {
-      //    //Đi từng sản phẩm
-      //    foreach (var dataDateGroupByProduct in dataReportByDate)
-      //    {
-      //      List<DatalogWeight> datalogs = dataDateGroupByProduct.Datalogs.ToList();
-      //      List<Sample> samples = dataDateGroupByProduct.Samples.ToList();
-
-      //      if (datalogs.Count > 0)
-      //      {
-      //        DatalogWeight datalogLast = datalogs?.LastOrDefault();
-
-      //        Models.Production productions = AppCore.Ins._listAllProductsContainIsDelete?.Where(s => s.Id == datalogLast.ProductId).FirstOrDefault();
-      //        double maxProduct = productions.UpperLimitFinal;
-      //        double target = productions.StandardFinal;
-      //        double minProduct = productions.LowerLimitFinal;
-
-      //        string nameUser = AppCore.Ins._listShiftLeader?.Where(x => x.Id == datalogLast.UserId).Select(x => x.UserName).FirstOrDefault();
-      //        //Tạo class thông tin sp
-      //        ExcelClassInforProduct excelClassInforProduct = new ExcelClassInforProduct()
-      //        {
-      //          NameLine = AppCore.Ins._stationCurrent.Name,
-      //          ModeTare = (datalogLast.IsTareWithLabel == eModeTare.TareWithLabel) ? "Tare có nhãn" : "Tare không nhãn",
-      //          ProductName = productions.Name,
-      //          Standard = target,
-      //          Upper = maxProduct,
-      //          Lower = minProduct,
-      //          NameShiftLeader = nameUser,
-      //        };
-
-
-
-      //        //Tách thành các Shift
-      //        List<StatisticalData> statisticalDatas = new List<StatisticalData>();
-
-      //        var listDatalogByShift = datalogs.GroupBy(x => x.ShiftId).OrderBy(x => x.Key).ToList();
-      //        foreach (var data in listDatalogByShift)
-      //        {
-      //          List<int> listValueDatalogId = data.Select(d => d.Id).ToList();
-      //          List<Sample> samplesChid = AppCore.Ins.GetDataSampleByListIdDatalog(samples, listValueDatalogId);
-
-
-      //          //SetDataTable(item.ToList(), samplesChid, productions);
-
-      //          StatisticalData statisticalData1 = DataProcessing(data.ToList(), samplesChid);
-      //          if (statisticalData1 != null) statisticalDatas.Add(statisticalData1);
-
-      //          //DataAnalysis(datalogsCurrentBtn);
-      //        }
-
-      //        ChartLineData chartLineData = ProcessingDataChartLine(datalogs, samples, productions);
-      //        double averageTotal_Product = statisticalDatas.Select(x => x.Average).Average();
-
-      //        //Tạo Tab
-      //        string titleReport = $"BÁO CÁO SẢN PHẨM: {productions.Name} - NGÀY: {dt_Report.ToString("dd/MM/yyyy")}";
-
-      //        TabPage newTabPage = new TabPage();
-      //        newTabPage.Text = $"SP {++cntTab} trong tuần hiện tại";
-
-      //        UcReport ucReport = new UcReport();
-      //        ucReport.Name = $"SP{cntTab}";
-      //        ucReport.Dock = DockStyle.Fill;
-
-      //        ucReport.SetDataInfor(excelClassInforProduct, titleReport);
-
-      //        ucReport.StatisticalProductUI(statisticalDatas);
-      //        ucReport.SetDataTable(datalogs, samples);
-      //        ucReport.SetChartHistogram(samples, productions);
-      //        ucReport.SetChartLine(chartLineData);
-      //        ucReport.SetResultFinal(averageTotal_Product >= target);
-
-      //        newTabPage.Controls.Add(ucReport);
-      //        tabControl1.TabPages.Add(newTabPage);
-      //      }
-      //    }
-      //  }
-
-      //}
-
-    }
-
     private void UpdateUIChartPie(UcChartPie ucChartPie, DataChartReport dataChartReport)
     {
       int total = 0;
@@ -412,90 +283,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
       ucChartPie.SetDataChart(total, lower, over);
     }
-
-    //private void ExportToPdf(string pathReport)
-    //{
-    //  try
-    //  {
-    //    // Kích thước của trang PDF (kích thước A4 nằm ngang)
-    //    float pageWidth = PageSize.A4.Rotate().Width;
-    //    float pageHeight = PageSize.A4.Rotate().Height;
-
-    //    int numberTag = tabControl1.TabCount;
-    //    // Tạo một tài liệu PDF
-    //    using (Document document = new Document(new Rectangle(pageWidth, pageHeight)))
-    //    {
-    //      // Tạo một PdfWriter để ghi tài liệu vào một tệp
-    //      using (FileStream fileStream = new FileStream(pathReport, FileMode.Create))
-    //      {
-    //        using (PdfWriter writer = PdfWriter.GetInstance(document, fileStream))
-    //        {
-    //          // Mở Document để bắt đầu ghi
-    //          document.Open();
-    //          for (int tageStart = 0; tageStart < numberTag; tageStart++)
-    //          {
-    //            tabControl1.SelectedIndex = tageStart;
-    //            // Chụp ảnh của TableLayoutPanel
-    //            //UcReport userControl = (UserControl)tabControl1.TabIndex[2];
-    //            TabPage tabPage = tabControl1.TabPages[tageStart];
-    //            Bitmap bitmapN = RenderControlToBitmap(tabPage);
-
-    //            // Tạo đối tượng Image từ Bitmap
-    //            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(bitmapN, System.Drawing.Imaging.ImageFormat.Bmp);
-    //            image.ScaleAbsolute(PageSize.A4.Height, PageSize.A4.Width);
-    //            image.SetAbsolutePosition(0, 0);
-
-    //            // Vẽ ảnh lên trang PDF
-    //            document.NewPage();
-    //            document.Add(image);
-    //          }
-
-    //          document.Close();
-    //        }
-    //      }
-    //    }
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    LoggerHelper.LogErrorToFileLog(ex);
-    //  }
-
-    //}
-
-    //public void ExportTabControlToPdf(TabControl tabControl, string pdfPath)
-    //{
-    //  PdfDocument pdf = new PdfDocument();
-
-    //  // Lưu tab hiện tại để phục hồi sau khi chụp xong
-    //  int originalIndex = tabControl.SelectedIndex;
-
-    //  for (int i = 0; i < tabControl.TabPages.Count; i++)
-    //  {
-    //    tabControl.SelectedIndex = i;
-    //    Application.DoEvents(); // Bắt buộc phải cập nhật UI
-
-    //    Bitmap bmp = new Bitmap(tabControl.TabPages[i].Width, tabControl.TabPages[i].Height);
-    //    tabControl.TabPages[i].DrawToBitmap(bmp, new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height));
-
-    //    PdfPage page = pdf.AddPage();
-    //    page.Width = XUnit.FromPoint(bmp.Width);
-    //    page.Height = XUnit.FromPoint(bmp.Height);
-
-    //    using (XGraphics gfx = XGraphics.FromPdfPage(page))
-    //    {
-    //      using (XImage image = XImage.FromGdiPlusImage(bmp))
-    //      {
-    //        gfx.DrawImage(image, 0, 0);
-    //      }
-    //    }
-    //  }
-
-    //  // Khôi phục lại tab ban đầu
-    //  tabControl.SelectedIndex = originalIndex;
-
-    //  pdf.Save(pdfPath);
-    //  MessageBox.Show("Xuất PDF thành công!");
-    //}
 
     private void ExportToPdf(string pathReport)
     {
@@ -531,6 +318,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       // Lưu tài liệu PDF vào đường dẫn
       document.Save(pathReport);
     }
+
     private Bitmap CaptureTabPage(TabPage tabPage)
     {
       // Chụp hình ảnh của TabPage và chuyển thành Bitmap
@@ -538,8 +326,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       tabPage.DrawToBitmap(bitmap, new Rectangle(0, 0, tabPage.Width, tabPage.Height));
       return bitmap;
     }
-
-
 
     private void SetTitleChart()
     {
@@ -554,21 +340,21 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
       //Month
       //Set Title Chart 
-      this.ucChartV1_avgSampleErrorMonthCurrent.SetTilte = "Top trung bình % mẫu lỗi";
-      this.ucChartV1_avgSampleLossMonthCurrent.SetTilte = "Top trung bình % hao hụt";
-      this.ucChartV1_avgCpkMonthCurrent.SetTilte = "Top trung bình Cpk";
-      this.ucChartV1_avgStdevMonthCurrent.SetTilte = "Top trung bình Stdev";
+      this.chartTopError.SetTilte = "Top trung bình % mẫu lỗi";
+      this.chartTopLoss.SetTilte = "Top trung bình % hao hụt";
+      this.chartTopCpk.SetTilte = "Top trung bình Cpk";
+      this.chartTopStdev.SetTilte = "Top trung bình Stdev";
 
-      this.ucChartV1_avgSampleErrorMonthCurrent.IsVisible(false);
-      this.ucChartV1_avgSampleLossMonthCurrent.IsVisible(false);
-      this.ucChartV1_avgCpkMonthCurrent.IsVisible(false);
-      this.ucChartV1_avgStdevMonthCurrent.IsVisible(false);
+      this.chartTopError.IsVisible(false);
+      this.chartTopLoss.IsVisible(false);
+      this.chartTopCpk.IsVisible(false);
+      this.chartTopStdev.IsVisible(false);
 
       //Set Title Chart 
-      this.ucChartV2_avgSampleErrorMonthCurrent.SetTilte = "Biểu đồ trung bình % mẫu lỗi";
-      this.ucChartV2_avgSampleLossMonthCurrent.SetTilte = "Biểu đồ trung bình % hao hụt";
-      this.ucChartV2_avgCpkMonthCurrent.SetTilte = "Biểu đồ trung bình Cpk";
-      this.ucChartV2_avgStdevMonthCurrent.SetTilte = "Biểu đồ trung bình Stdev";
+      this.chartAvgError.SetTilte = "Biểu đồ trung bình % mẫu lỗi";
+      this.chartAvgLoss.SetTilte = "Biểu đồ trung bình % hao hụt";
+      this.chartAvgCpk.SetTilte = "Biểu đồ trung bình Cpk";
+      this.chartAvgStdev.SetTilte = "Biểu đồ trung bình Stdev";
     }
 
 
@@ -623,18 +409,18 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
 
       //Dãy trên
-      this.ucChartV1_avgSampleErrorMonthCurrent.SetDataChart(null);
-      this.ucChartV1_avgSampleLossMonthCurrent.SetDataChart(null);
-      this.ucChartV1_avgCpkMonthCurrent.SetDataChart(null);
-      this.ucChartV1_avgStdevMonthCurrent.SetDataChart(null);
+      this.chartTopError.SetDataChart(null);
+      this.chartTopLoss.SetDataChart(null);
+      this.chartTopCpk.SetDataChart(null);
+      this.chartTopStdev.SetDataChart(null);
 
       //Dãy dưới
-      this.ucChartV2_avgSampleErrorMonthCurrent.SetDataChart(null, $"Tháng 0");
-      this.ucChartV2_avgSampleLossMonthCurrent.SetDataChart(null, $"Tháng 0");
-      this.ucChartV2_avgCpkMonthCurrent.SetDataChart(null, $"Tháng 0");
-      this.ucChartV2_avgStdevMonthCurrent.SetDataChart(null, $"Tháng 0");
+      this.chartAvgError.SetDataChart(null, $"Tháng 0");
+      this.chartAvgLoss.SetDataChart(null, $"Tháng 0");
+      this.chartAvgCpk.SetDataChart(null, $"Tháng 0");
+      this.chartAvgStdev.SetDataChart(null, $"Tháng 0");
 
-      UpdateUIChartPie(ucChartPieMothCurrent, null);
+      UpdateUIChartPie(chartPie, null);
     }
 
 

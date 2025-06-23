@@ -1,4 +1,5 @@
 ﻿using Irony.Parsing;
+using SyngentaWeigherQC.Helper;
 using SyngentaWeigherQC.Models;
 using SyngentaWeigherQC.Responsitory;
 using System;
@@ -193,6 +194,22 @@ namespace SyngentaWeigherQC.Control
         var repo = new ResponsitoryDatalogWeight(context);
         return await repo.GetProductByDate(LineId, from, to, shiftId);
       }
+    }
+
+    public async Task<List<DatalogWeight>> LoadDataMonth(int year, int month, int lineId)
+    {
+      var rangeDate = DatetimeHelper.RangeDateByMonth(year, month);
+      return await AppCore.Ins.LoadAllDatalogWeight(lineId, rangeDate.StartDate, rangeDate.EndDate);
+    }
+    public async Task<List<DatalogWeight>> LoadDataByRange(DateTime start, DateTime end, int lineId)
+    {
+      return await AppCore.Ins.LoadAllDatalogWeight(lineId, start, end);
+    }
+
+    public async Task<List<DatalogWeight>> LoadDataWeek(int year, int week, int lineId)
+    {
+      var rangeDate = DatetimeHelper.RangeDateByWeek(year, week);
+      return await AppCore.Ins.LoadAllDatalogWeight(lineId, rangeDate.StartDate, rangeDate.EndDate);
     }
 
 

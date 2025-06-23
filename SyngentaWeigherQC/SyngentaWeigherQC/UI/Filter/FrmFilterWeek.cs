@@ -1,4 +1,6 @@
 ﻿using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
+using SyngentaWeigherQC.UI.FrmUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,12 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SyngentaWeigherQC.eNum.enumSoftware;
+using static SyngentaWeigherQC.UI.FrmUI.FrmFilterMonth;
 
 namespace SyngentaWeigherQC.UI.Filter
 {
   public partial class FrmFilterWeek : Form
   {
-    public delegate void SendWeekChoose(List<DateTime> listDate);
+    public delegate void SendWeekChoose(int week);
     public event SendWeekChoose OnSendWeekChoose;
 
     public FrmFilterWeek()
@@ -22,14 +26,11 @@ namespace SyngentaWeigherQC.UI.Filter
       InitializeComponent();
     }
 
-    private Dictionary<int, List<DateTime>> weekInYears = new Dictionary<int, List<DateTime>>();
     private void FrmFilterWeek_Load(object sender, EventArgs e)
     {
-      weekInYears = AppCore.Ins.GetDaysInWeeks(DateTime.Now.Year);
+      Dictionary<int, List<DateTime>>  weekInYears = DatetimeHelper.GetDaysInWeeks(DateTime.Now.Year);
       CreateAllCheckBox(weekInYears);
     }
-
-    public CheckBox checkbox { get; private set; }
     private void CreateAllCheckBox(Dictionary<int, List<DateTime>> listWeek)
     {
       for (int i = 0; i < listWeek.Count; i++)
@@ -39,7 +40,7 @@ namespace SyngentaWeigherQC.UI.Filter
         string dayStart = dataDates.FirstOrDefault().ToString("dd/MM/yyyy");
         string dayEnd = dataDates.LastOrDefault().ToString("dd/MM/yyyy");
 
-        checkbox = new CheckBox();
+        CheckBox checkbox = new CheckBox();
         checkbox.Text = $"Tuần {(i+1).ToString("00")}: Từ {dayStart} đến {dayEnd}";
         checkbox.ForeColor = Color.Black;
         checkbox.Font = new Font(Font.FontFamily, 16);
@@ -63,36 +64,41 @@ namespace SyngentaWeigherQC.UI.Filter
       return week;
     }
 
-    private List<int> week = new List<int>();
+    private int week = 0;
     private void AllCheckBox_CheckedChanged(object sender, EventArgs e)
     {
-      week = new List<int>();
-      int cnt = 1;
-      foreach (System.Windows.Forms.Control control in flowLayoutPanel1.Controls)
+      CheckBox changedCheckBox = sender as CheckBox;
+
+      if (changedCheckBox.Checked)
       {
-        if (control is CheckBox checkBox)
+        foreach (var control in flowLayoutPanel1.Controls)
         {
-          if (checkBox.Checked)
+          if (control is CheckBox cb && cb != changedCheckBox)
           {
-            week.Add(cnt);
+            cb.Checked = false;
           }
-          cnt++;
         }
+
+        week = (int)changedCheckBox.Tag;
+      }
+      else
+      {
+        week = 0;
       }
     }
 
 
-    
-
     private void btnOK_Click(object sender, EventArgs e)
     {
-      List<DateTime> listDateTime = new List<DateTime>();
-      foreach (var item in week)
+      if (week > 0)
       {
-        listDateTime.AddRange(weekInYears[item]);
+        OnSendWeekChoose?.Invoke(week);
+        this.Close();
       }
-      OnSendWeekChoose?.Invoke(listDateTime);
-      this.Close();
+      else
+      {
+        new FrmNotification().ShowMessage("Vui lòng chọn tuần cần xem !", eMsgType.Warning);
+      }
     }
   }
 }

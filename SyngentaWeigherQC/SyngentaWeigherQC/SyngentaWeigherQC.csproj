@@ -298,6 +298,7 @@
     <Compile Include="Communication\CommonTCPServer.cs" />
     <Compile Include="Control\AppCoreBackEnd.cs" />
     <Compile Include="Control\AppCoreUI.cs" />
+    <Compile Include="Control\AutoReport.cs" />
     <Compile Include="Control\CommunicationDB.cs" />
     <Compile Include="Control\CommunicationTcp.cs" />
     <Compile Include="Control\ConvertClass.cs" />

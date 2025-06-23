@@ -14,8 +14,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using System.Windows.Forms;
-using static SyngentaWeigherQC.Control.AppCore;
 using static SyngentaWeigherQC.eNum.enumSoftware;
 using Color = System.Drawing.Color;
 using DateTime = System.DateTime;
@@ -53,9 +51,6 @@ namespace SyngentaWeigherQC.Control
 
     public delegate void SendValueDatalogWeight(InforLine inforLine, DatalogWeight datalogWeight);
     public event SendValueDatalogWeight OnSendValueDatalogWeight;
-
-    public delegate void SendValueTare(double value);
-    public event SendValueTare OnSendValueTare;
 
     public delegate void SendValueReweight(double value);
     public event SendValueReweight OnSendValueReweight;
@@ -120,7 +115,7 @@ namespace SyngentaWeigherQC.Control
     {
       try
       {
-        var lineForStationCurrent = _listInforLine?.Where(x=>x.IsEnable).ToList();
+        var lineForStationCurrent = _listInforLine?.Where(x => x.IsEnable).ToList();
 
         foreach (var item in lineForStationCurrent)
         {
@@ -471,6 +466,9 @@ namespace SyngentaWeigherQC.Control
         double Cpk_L = Math.Round((average - lower) / (3 * stdev), 3);
         double Cpk = Math.Min(Cpk_H, Cpk_L);
 
+        //Sigma
+        double sigma = Cpk < 0 ? 0 : 3 * Cpk > 6 ? 6 : 3 * Cpk;
+
         //Error
         double rateError = (totalSamples != 0) ? ((double)((numbersOver + numbersLower) * 100) / (double)(totalSamples)) : 0;
         rateError = Math.Round(rateError, 2);
@@ -482,6 +480,7 @@ namespace SyngentaWeigherQC.Control
         detailConsumption.Loss = rateLoss;
         detailConsumption.Cpk = Cpk;
         detailConsumption.Stdev = stdev;
+        detailConsumption.Sigma = sigma;
 
         detailConsumption.TotalSample = totalSamples;
         detailConsumption.TotalLower = numbersLower;
@@ -582,9 +581,9 @@ namespace SyngentaWeigherQC.Control
 
 
 
-    
 
-    
+
+
 
     public bool _isPermitDev = false;
     private void InformationDeviceDev()
@@ -739,7 +738,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-  
+
 
     public int _timeTimeoutCurrent = 0;
     private void _timerCheckTimeout_Elapsed(object sender, ElapsedEventArgs e)
@@ -777,41 +776,7 @@ namespace SyngentaWeigherQC.Control
       }
     }
 
-    public async void ReportAutoDailys(DateTime dateTime)
-    {
-      if (AppCore.Ins._listInforLine.Count > 0)
-      {
-        var dt_report = DatetimeHelper.GetRangeDateCurrent(dateTime);
-        var lines = AppCore.Ins._listInforLine?.Where(x => x.IsEnable == true).ToList();
-        foreach (var line in lines)
-        {
-          var datalogs = await AppCore.Ins.LoadAllDatalogWeight(line.Id, dt_report.StartDate, dt_report.EndDate);
-          List<DataReportExcel> dataReportExcels = AppCore.Ins.GenerateDataReport(datalogs);
-
-          if (dataReportExcels != null)
-          {
-            if (dataReportExcels.Count > 0)
-            {
-              string[] pathReport = new string[3];
-
-              //Yêu càu tạo các Folder Tháng trong Ngày
-              //Tháng nào ?
-              int month = dateTime.Month;
-
-              HelperFolder_File.CreateFolderIfExits(line.PathReportLocal + $"\\Dailys\\Month{month}");
-              HelperFolder_File.CreateFolderIfExits(line.PathReportOneDrive + $"\\Dailys\\Month{month}");
-
-              pathReport[0] = line.PathReportLocal + $"\\Dailys\\Month{month}";
-              pathReport[1] = line.PathReportOneDrive + $"\\Dailys\\Month{month}";
-              foreach (var item in dataReportExcels)
-              {
-                ExcelHelper.ReportExcel(item, pathReport);
-              }
-            }
-          }
-        }
-      }
-    }
+  
 
 
     private bool isStartApp = true;
@@ -835,6 +800,29 @@ namespace SyngentaWeigherQC.Control
 
             //Report Auto Dailys
             ReportAutoDailys(DateTime.Now.AddDays(-1));
+
+            //Report Tháng
+            DateTime dt_current = DateTime.Now;
+            int year = dt_current.Year;
+            int month = dt_current.Month;
+            if (month == 1)
+            {
+              year -= 1;
+              month = 12;
+            }
+            else
+            {
+              month -= 1;
+            }
+            ReportAutoMonthly(year, month);
+
+            //Báo cáo Tuần
+            CultureInfo cul = CultureInfo.CurrentCulture;
+            int week = cul.Calendar.GetWeekOfYear(dt_current, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+            if (week > 1) week -= 1;
+            AppCore.Ins.ReportAutoWeekly(year, week);
+
+
 
             dayLast = dayCurrent;
           }
@@ -1243,51 +1231,9 @@ namespace SyngentaWeigherQC.Control
     }
 
 
-    public List<DateTime> GetAllDaysInMonth(int year, int month)
-    {
-      List<DateTime> listOfDaysInMonth = new List<DateTime>();
-      int daysInMonth = DateTime.DaysInMonth(year, month);
-      for (int day = 1; day <= daysInMonth; day++)
-      {
-        listOfDaysInMonth.Add(new DateTime(year, month, day));
-      }
-      return listOfDaysInMonth;
-    }
 
-    public Dictionary<int, List<DateTime>> GetDaysInWeeks(int year)
-    {
-      Dictionary<int, List<DateTime>> daysInWeeks = new Dictionary<int, List<DateTime>>();
 
-      // Tính ngày đầu tiên của năm
-      DateTime firstDayOfYear = new DateTime(year, 1, 1);
-      // Tính ngày cuối cùng của năm
-      DateTime lastDayOfYear = new DateTime(year, 12, 31);
 
-      int week = 1; // Khởi tạo số tuần ban đầu
-      List<DateTime> daysInWeek = new List<DateTime>(); // Danh sách ngày trong tuần
-                                                        // Lặp qua từ ngày đầu tiên đến ngày cuối cùng của năm
-      for (DateTime date = firstDayOfYear; date <= lastDayOfYear; date = date.AddDays(1))
-      {
-        // Kiểm tra nếu ngày hiện tại là ngày đầu tiên của một tuần mới
-        if (date.DayOfWeek == DayOfWeek.Monday)
-        {
-          if (daysInWeek.Count > 0)
-          {
-            daysInWeeks.Add(week, daysInWeek); // Thêm danh sách ngày trong tuần vào Dictionary
-            week++; // Tăng số tuần lên 1
-            daysInWeek = new List<DateTime>(); // Tạo danh sách mới cho tuần tiếp theo
-          }
-        }
-        daysInWeek.Add(date); // Thêm ngày vào danh sách của tuần
-      }
-
-      // Thêm danh sách ngày trong tuần cuối cùng của năm
-      if (daysInWeek.Count > 0)
-      {
-        daysInWeeks.Add(week, daysInWeek);
-      }
-      return daysInWeeks;
-    }
 
 
 

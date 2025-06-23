@@ -35,6 +35,7 @@
       this.lblShift3_TotalUpperLimit = new System.Windows.Forms.Label();
       this.lblShift3_TotalLowerLimit = new System.Windows.Forms.Label();
       this.lblShift3_TotalSamples = new System.Windows.Forms.Label();
+      this.lblShift3_PassFail = new System.Windows.Forms.Label();
       this.lblShift2_Loss = new System.Windows.Forms.Label();
       this.lblShift2_PercentFail = new System.Windows.Forms.Label();
       this.lblShift2_TotalUpperLimit = new System.Windows.Forms.Label();
@@ -42,11 +43,14 @@
       this.lblShift2_TotalSamples = new System.Windows.Forms.Label();
       this.label22 = new System.Windows.Forms.Label();
       this.label23 = new System.Windows.Forms.Label();
+      this.lblShift2_PassFail = new System.Windows.Forms.Label();
       this.label24 = new System.Windows.Forms.Label();
       this.label25 = new System.Windows.Forms.Label();
+      this.label21 = new System.Windows.Forms.Label();
       this.label26 = new System.Windows.Forms.Label();
       this.lblShift1_TotalSamples = new System.Windows.Forms.Label();
       this.lblShift1_TotalLowerLimit = new System.Windows.Forms.Label();
+      this.lblShift1_PassFail = new System.Windows.Forms.Label();
       this.lblShift1_TotalUpperLimit = new System.Windows.Forms.Label();
       this.lblShift1_PercentFail = new System.Windows.Forms.Label();
       this.lblShift1_Loss = new System.Windows.Forms.Label();
@@ -76,34 +80,30 @@
       this.lblPasFail = new System.Windows.Forms.Label();
       this.label13 = new System.Windows.Forms.Label();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-      this.lblShift3_Standard = new System.Windows.Forms.Label();
-      this.lblShift3_TB = new System.Windows.Forms.Label();
-      this.lblShift3_Stdev = new System.Windows.Forms.Label();
-      this.lblShift3 = new System.Windows.Forms.Label();
-      this.lblShift2_Standard = new System.Windows.Forms.Label();
-      this.lblShift3_PassFail = new System.Windows.Forms.Label();
-      this.lblShift2_TB = new System.Windows.Forms.Label();
-      this.lblShift2_Stdev = new System.Windows.Forms.Label();
-      this.lblShift2 = new System.Windows.Forms.Label();
-      this.lblShift1_Standard = new System.Windows.Forms.Label();
-      this.label17 = new System.Windows.Forms.Label();
-      this.label18 = new System.Windows.Forms.Label();
-      this.lblShift2_PassFail = new System.Windows.Forms.Label();
-      this.label19 = new System.Windows.Forms.Label();
-      this.label21 = new System.Windows.Forms.Label();
-      this.Standard = new System.Windows.Forms.Label();
-      this.lblShift1 = new System.Windows.Forms.Label();
-      this.lblShift1_Stdev = new System.Windows.Forms.Label();
-      this.lblShift1_TB = new System.Windows.Forms.Label();
-      this.lblShift1_PassFail = new System.Windows.Forms.Label();
-      this.label9 = new System.Windows.Forms.Label();
-      this.label10 = new System.Windows.Forms.Label();
-      this.lbCpkShift1 = new System.Windows.Forms.Label();
-      this.lbSigmaShift1 = new System.Windows.Forms.Label();
-      this.lbCpkShift2 = new System.Windows.Forms.Label();
-      this.lbSigmaShift2 = new System.Windows.Forms.Label();
-      this.lbCpkShift3 = new System.Windows.Forms.Label();
       this.lbSigmaShift3 = new System.Windows.Forms.Label();
+      this.lbCpkShift3 = new System.Windows.Forms.Label();
+      this.lbSigmaShift2 = new System.Windows.Forms.Label();
+      this.lbCpkShift2 = new System.Windows.Forms.Label();
+      this.lbSigmaShift1 = new System.Windows.Forms.Label();
+      this.lbCpkShift1 = new System.Windows.Forms.Label();
+      this.label10 = new System.Windows.Forms.Label();
+      this.label9 = new System.Windows.Forms.Label();
+      this.lblShift3 = new System.Windows.Forms.Label();
+      this.lblShift2 = new System.Windows.Forms.Label();
+      this.label17 = new System.Windows.Forms.Label();
+      this.lblShift1 = new System.Windows.Forms.Label();
+      this.label19 = new System.Windows.Forms.Label();
+      this.lblShift1_TB = new System.Windows.Forms.Label();
+      this.lblShift2_TB = new System.Windows.Forms.Label();
+      this.lblShift3_TB = new System.Windows.Forms.Label();
+      this.label18 = new System.Windows.Forms.Label();
+      this.lblShift1_Stdev = new System.Windows.Forms.Label();
+      this.lblShift2_Stdev = new System.Windows.Forms.Label();
+      this.lblShift3_Stdev = new System.Windows.Forms.Label();
+      this.Standard = new System.Windows.Forms.Label();
+      this.lblShift1_Standard = new System.Windows.Forms.Label();
+      this.lblShift2_Standard = new System.Windows.Forms.Label();
+      this.lblShift3_Standard = new System.Windows.Forms.Label();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel6.SuspendLayout();
       this.panel1.SuspendLayout();
@@ -254,6 +254,22 @@
       this.lblShift3_TotalSamples.TabIndex = 32;
       this.lblShift3_TotalSamples.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
+      // lblShift3_PassFail
+      // 
+      this.lblShift3_PassFail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift3_PassFail.BackColor = System.Drawing.Color.White;
+      this.lblShift3_PassFail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift3_PassFail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift3_PassFail.ForeColor = System.Drawing.Color.White;
+      this.lblShift3_PassFail.Location = new System.Drawing.Point(0, 96);
+      this.lblShift3_PassFail.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift3_PassFail.Name = "lblShift3_PassFail";
+      this.lblShift3_PassFail.Size = new System.Drawing.Size(110, 32);
+      this.lblShift3_PassFail.TabIndex = 31;
+      this.lblShift3_PassFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
       // lblShift2_Loss
       // 
       this.lblShift2_Loss.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -342,7 +358,7 @@
       this.label22.Name = "label22";
       this.label22.Size = new System.Drawing.Size(110, 32);
       this.label22.TabIndex = 14;
-      this.label22.Text = "Tổng mẫu kiểm tra";
+      this.label22.Text = "Tổng mẫu";
       this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label23
@@ -360,6 +376,22 @@
       this.label23.TabIndex = 15;
       this.label23.Text = "Lỗi trọng lượng thấp";
       this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift2_PassFail
+      // 
+      this.lblShift2_PassFail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift2_PassFail.BackColor = System.Drawing.Color.White;
+      this.lblShift2_PassFail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift2_PassFail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift2_PassFail.ForeColor = System.Drawing.Color.White;
+      this.lblShift2_PassFail.Location = new System.Drawing.Point(0, 64);
+      this.lblShift2_PassFail.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift2_PassFail.Name = "lblShift2_PassFail";
+      this.lblShift2_PassFail.Size = new System.Drawing.Size(110, 32);
+      this.lblShift2_PassFail.TabIndex = 25;
+      this.lblShift2_PassFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label24
       // 
@@ -392,6 +424,22 @@
       this.label25.TabIndex = 17;
       this.label25.Text = "Tỹ lệ lỗi (%)";
       this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label21
+      // 
+      this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label21.BackColor = System.Drawing.Color.LightCyan;
+      this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label21.Location = new System.Drawing.Point(0, 0);
+      this.label21.Margin = new System.Windows.Forms.Padding(0);
+      this.label21.Name = "label21";
+      this.label21.Size = new System.Drawing.Size(110, 32);
+      this.label21.TabIndex = 13;
+      this.label21.Text = "Kết quả";
+      this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label26
       // 
@@ -438,6 +486,22 @@
       this.lblShift1_TotalLowerLimit.Size = new System.Drawing.Size(110, 32);
       this.lblShift1_TotalLowerLimit.TabIndex = 21;
       this.lblShift1_TotalLowerLimit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift1_PassFail
+      // 
+      this.lblShift1_PassFail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift1_PassFail.BackColor = System.Drawing.Color.White;
+      this.lblShift1_PassFail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift1_PassFail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift1_PassFail.ForeColor = System.Drawing.Color.White;
+      this.lblShift1_PassFail.Location = new System.Drawing.Point(0, 32);
+      this.lblShift1_PassFail.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift1_PassFail.Name = "lblShift1_PassFail";
+      this.lblShift1_PassFail.Size = new System.Drawing.Size(110, 32);
+      this.lblShift1_PassFail.TabIndex = 19;
+      this.lblShift1_PassFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // lblShift1_TotalUpperLimit
       // 
@@ -830,17 +894,15 @@
       // 
       // lblPasFail
       // 
-      this.lblPasFail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
       this.lblPasFail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
       this.lblPasFail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblPasFail.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblPasFail.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lblPasFail.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblPasFail.ForeColor = System.Drawing.Color.White;
-      this.lblPasFail.Location = new System.Drawing.Point(0, 80);
+      this.lblPasFail.Location = new System.Drawing.Point(0, 96);
       this.lblPasFail.Margin = new System.Windows.Forms.Padding(0);
       this.lblPasFail.Name = "lblPasFail";
-      this.lblPasFail.Size = new System.Drawing.Size(661, 180);
+      this.lblPasFail.Size = new System.Drawing.Size(661, 164);
       this.lblPasFail.TabIndex = 26;
       this.lblPasFail.Text = "TRỌNG LƯỢNG";
       this.lblPasFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -854,7 +916,7 @@
       this.label13.Location = new System.Drawing.Point(0, 0);
       this.label13.Margin = new System.Windows.Forms.Padding(0);
       this.label13.Name = "label13";
-      this.label13.Size = new System.Drawing.Size(661, 80);
+      this.label13.Size = new System.Drawing.Size(661, 96);
       this.label13.TabIndex = 25;
       this.label13.Text = "KIỂM TRA TRỌNG LƯỢNG";
       this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -904,329 +966,95 @@
       this.tableLayoutPanel2.Size = new System.Drawing.Size(663, 128);
       this.tableLayoutPanel2.TabIndex = 4;
       // 
-      // lblShift3_Standard
+      // lbSigmaShift3
       // 
-      this.lblShift3_Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbSigmaShift3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift3_Standard.BackColor = System.Drawing.Color.White;
-      this.lblShift3_Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift3_Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift3_Standard.Location = new System.Drawing.Point(220, 96);
-      this.lblShift3_Standard.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift3_Standard.Name = "lblShift3_Standard";
-      this.lblShift3_Standard.Size = new System.Drawing.Size(110, 32);
-      this.lblShift3_Standard.TabIndex = 28;
-      this.lblShift3_Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbSigmaShift3.BackColor = System.Drawing.Color.White;
+      this.lbSigmaShift3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lbSigmaShift3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbSigmaShift3.Location = new System.Drawing.Point(550, 96);
+      this.lbSigmaShift3.Margin = new System.Windows.Forms.Padding(0);
+      this.lbSigmaShift3.Name = "lbSigmaShift3";
+      this.lbSigmaShift3.Size = new System.Drawing.Size(113, 32);
+      this.lbSigmaShift3.TabIndex = 36;
+      this.lbSigmaShift3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lblShift3_TB
+      // lbCpkShift3
       // 
-      this.lblShift3_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbCpkShift3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift3_TB.BackColor = System.Drawing.Color.White;
-      this.lblShift3_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift3_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift3_TB.Location = new System.Drawing.Point(110, 96);
-      this.lblShift3_TB.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift3_TB.Name = "lblShift3_TB";
-      this.lblShift3_TB.Size = new System.Drawing.Size(110, 32);
-      this.lblShift3_TB.TabIndex = 27;
-      this.lblShift3_TB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbCpkShift3.BackColor = System.Drawing.Color.White;
+      this.lbCpkShift3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lbCpkShift3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbCpkShift3.Location = new System.Drawing.Point(440, 96);
+      this.lbCpkShift3.Margin = new System.Windows.Forms.Padding(0);
+      this.lbCpkShift3.Name = "lbCpkShift3";
+      this.lbCpkShift3.Size = new System.Drawing.Size(110, 32);
+      this.lbCpkShift3.TabIndex = 35;
+      this.lbCpkShift3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lblShift3_Stdev
+      // lbSigmaShift2
       // 
-      this.lblShift3_Stdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbSigmaShift2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift3_Stdev.BackColor = System.Drawing.Color.White;
-      this.lblShift3_Stdev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift3_Stdev.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift3_Stdev.Location = new System.Drawing.Point(330, 96);
-      this.lblShift3_Stdev.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift3_Stdev.Name = "lblShift3_Stdev";
-      this.lblShift3_Stdev.Size = new System.Drawing.Size(110, 32);
-      this.lblShift3_Stdev.TabIndex = 26;
-      this.lblShift3_Stdev.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbSigmaShift2.BackColor = System.Drawing.Color.White;
+      this.lbSigmaShift2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lbSigmaShift2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbSigmaShift2.Location = new System.Drawing.Point(550, 64);
+      this.lbSigmaShift2.Margin = new System.Windows.Forms.Padding(0);
+      this.lbSigmaShift2.Name = "lbSigmaShift2";
+      this.lbSigmaShift2.Size = new System.Drawing.Size(113, 32);
+      this.lbSigmaShift2.TabIndex = 34;
+      this.lbSigmaShift2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lblShift3
+      // lbCpkShift2
       // 
-      this.lblShift3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbCpkShift2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift3.BackColor = System.Drawing.Color.White;
-      this.lblShift3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift3.Location = new System.Drawing.Point(0, 96);
-      this.lblShift3.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift3.Name = "lblShift3";
-      this.lblShift3.Size = new System.Drawing.Size(110, 32);
-      this.lblShift3.TabIndex = 25;
-      this.lblShift3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbCpkShift2.BackColor = System.Drawing.Color.White;
+      this.lbCpkShift2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lbCpkShift2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbCpkShift2.Location = new System.Drawing.Point(440, 64);
+      this.lbCpkShift2.Margin = new System.Windows.Forms.Padding(0);
+      this.lbCpkShift2.Name = "lbCpkShift2";
+      this.lbCpkShift2.Size = new System.Drawing.Size(110, 32);
+      this.lbCpkShift2.TabIndex = 33;
+      this.lbCpkShift2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lblShift2_Standard
+      // lbSigmaShift1
       // 
-      this.lblShift2_Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbSigmaShift1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift2_Standard.BackColor = System.Drawing.Color.White;
-      this.lblShift2_Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift2_Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift2_Standard.Location = new System.Drawing.Point(220, 64);
-      this.lblShift2_Standard.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift2_Standard.Name = "lblShift2_Standard";
-      this.lblShift2_Standard.Size = new System.Drawing.Size(110, 32);
-      this.lblShift2_Standard.TabIndex = 24;
-      this.lblShift2_Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbSigmaShift1.BackColor = System.Drawing.Color.White;
+      this.lbSigmaShift1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lbSigmaShift1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbSigmaShift1.Location = new System.Drawing.Point(550, 32);
+      this.lbSigmaShift1.Margin = new System.Windows.Forms.Padding(0);
+      this.lbSigmaShift1.Name = "lbSigmaShift1";
+      this.lbSigmaShift1.Size = new System.Drawing.Size(113, 32);
+      this.lbSigmaShift1.TabIndex = 32;
+      this.lbSigmaShift1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lblShift3_PassFail
+      // lbCpkShift1
       // 
-      this.lblShift3_PassFail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lbCpkShift1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift3_PassFail.BackColor = System.Drawing.Color.White;
-      this.lblShift3_PassFail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift3_PassFail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift3_PassFail.ForeColor = System.Drawing.Color.White;
-      this.lblShift3_PassFail.Location = new System.Drawing.Point(0, 96);
-      this.lblShift3_PassFail.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift3_PassFail.Name = "lblShift3_PassFail";
-      this.lblShift3_PassFail.Size = new System.Drawing.Size(110, 32);
-      this.lblShift3_PassFail.TabIndex = 31;
-      this.lblShift3_PassFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift2_TB
-      // 
-      this.lblShift2_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift2_TB.BackColor = System.Drawing.Color.White;
-      this.lblShift2_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift2_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift2_TB.Location = new System.Drawing.Point(110, 64);
-      this.lblShift2_TB.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift2_TB.Name = "lblShift2_TB";
-      this.lblShift2_TB.Size = new System.Drawing.Size(110, 32);
-      this.lblShift2_TB.TabIndex = 23;
-      this.lblShift2_TB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift2_Stdev
-      // 
-      this.lblShift2_Stdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift2_Stdev.BackColor = System.Drawing.Color.White;
-      this.lblShift2_Stdev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift2_Stdev.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift2_Stdev.Location = new System.Drawing.Point(330, 64);
-      this.lblShift2_Stdev.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift2_Stdev.Name = "lblShift2_Stdev";
-      this.lblShift2_Stdev.Size = new System.Drawing.Size(110, 32);
-      this.lblShift2_Stdev.TabIndex = 22;
-      this.lblShift2_Stdev.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift2
-      // 
-      this.lblShift2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift2.BackColor = System.Drawing.Color.White;
-      this.lblShift2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift2.Location = new System.Drawing.Point(0, 64);
-      this.lblShift2.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift2.Name = "lblShift2";
-      this.lblShift2.Size = new System.Drawing.Size(110, 32);
-      this.lblShift2.TabIndex = 21;
-      this.lblShift2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift1_Standard
-      // 
-      this.lblShift1_Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift1_Standard.BackColor = System.Drawing.Color.White;
-      this.lblShift1_Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift1_Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift1_Standard.Location = new System.Drawing.Point(220, 32);
-      this.lblShift1_Standard.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift1_Standard.Name = "lblShift1_Standard";
-      this.lblShift1_Standard.Size = new System.Drawing.Size(110, 32);
-      this.lblShift1_Standard.TabIndex = 20;
-      this.lblShift1_Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // label17
-      // 
-      this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label17.BackColor = System.Drawing.Color.LightCyan;
-      this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label17.Location = new System.Drawing.Point(0, 0);
-      this.label17.Margin = new System.Windows.Forms.Padding(0);
-      this.label17.Name = "label17";
-      this.label17.Size = new System.Drawing.Size(110, 32);
-      this.label17.TabIndex = 13;
-      this.label17.Text = "Ca";
-      this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // label18
-      // 
-      this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label18.BackColor = System.Drawing.Color.LightCyan;
-      this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label18.Location = new System.Drawing.Point(330, 0);
-      this.label18.Margin = new System.Windows.Forms.Padding(0);
-      this.label18.Name = "label18";
-      this.label18.Size = new System.Drawing.Size(110, 32);
-      this.label18.TabIndex = 14;
-      this.label18.Text = "STDEV";
-      this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift2_PassFail
-      // 
-      this.lblShift2_PassFail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift2_PassFail.BackColor = System.Drawing.Color.White;
-      this.lblShift2_PassFail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift2_PassFail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift2_PassFail.ForeColor = System.Drawing.Color.White;
-      this.lblShift2_PassFail.Location = new System.Drawing.Point(0, 64);
-      this.lblShift2_PassFail.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift2_PassFail.Name = "lblShift2_PassFail";
-      this.lblShift2_PassFail.Size = new System.Drawing.Size(110, 32);
-      this.lblShift2_PassFail.TabIndex = 25;
-      this.lblShift2_PassFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // label19
-      // 
-      this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label19.BackColor = System.Drawing.Color.LightCyan;
-      this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label19.Location = new System.Drawing.Point(110, 0);
-      this.label19.Margin = new System.Windows.Forms.Padding(0);
-      this.label19.Name = "label19";
-      this.label19.Size = new System.Drawing.Size(110, 32);
-      this.label19.TabIndex = 15;
-      this.label19.Text = "TB(Ca)";
-      this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // label21
-      // 
-      this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label21.BackColor = System.Drawing.Color.LightCyan;
-      this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label21.Location = new System.Drawing.Point(0, 0);
-      this.label21.Margin = new System.Windows.Forms.Padding(0);
-      this.label21.Name = "label21";
-      this.label21.Size = new System.Drawing.Size(110, 32);
-      this.label21.TabIndex = 13;
-      this.label21.Text = "Kết quả";
-      this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // Standard
-      // 
-      this.Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.Standard.BackColor = System.Drawing.Color.LightCyan;
-      this.Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.Standard.Location = new System.Drawing.Point(220, 0);
-      this.Standard.Margin = new System.Windows.Forms.Padding(0);
-      this.Standard.Name = "Standard";
-      this.Standard.Size = new System.Drawing.Size(110, 32);
-      this.Standard.TabIndex = 16;
-      this.Standard.Text = "Tiêu chuẩn";
-      this.Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift1
-      // 
-      this.lblShift1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift1.BackColor = System.Drawing.Color.White;
-      this.lblShift1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift1.Location = new System.Drawing.Point(0, 32);
-      this.lblShift1.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift1.Name = "lblShift1";
-      this.lblShift1.Size = new System.Drawing.Size(110, 32);
-      this.lblShift1.TabIndex = 17;
-      this.lblShift1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift1_Stdev
-      // 
-      this.lblShift1_Stdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift1_Stdev.BackColor = System.Drawing.Color.White;
-      this.lblShift1_Stdev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift1_Stdev.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift1_Stdev.Location = new System.Drawing.Point(330, 32);
-      this.lblShift1_Stdev.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift1_Stdev.Name = "lblShift1_Stdev";
-      this.lblShift1_Stdev.Size = new System.Drawing.Size(110, 32);
-      this.lblShift1_Stdev.TabIndex = 18;
-      this.lblShift1_Stdev.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift1_TB
-      // 
-      this.lblShift1_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift1_TB.BackColor = System.Drawing.Color.White;
-      this.lblShift1_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift1_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift1_TB.Location = new System.Drawing.Point(110, 32);
-      this.lblShift1_TB.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift1_TB.Name = "lblShift1_TB";
-      this.lblShift1_TB.Size = new System.Drawing.Size(110, 32);
-      this.lblShift1_TB.TabIndex = 19;
-      this.lblShift1_TB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // lblShift1_PassFail
-      // 
-      this.lblShift1_PassFail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.lblShift1_PassFail.BackColor = System.Drawing.Color.White;
-      this.lblShift1_PassFail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lblShift1_PassFail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblShift1_PassFail.ForeColor = System.Drawing.Color.White;
-      this.lblShift1_PassFail.Location = new System.Drawing.Point(0, 32);
-      this.lblShift1_PassFail.Margin = new System.Windows.Forms.Padding(0);
-      this.lblShift1_PassFail.Name = "lblShift1_PassFail";
-      this.lblShift1_PassFail.Size = new System.Drawing.Size(110, 32);
-      this.lblShift1_PassFail.TabIndex = 19;
-      this.lblShift1_PassFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // label9
-      // 
-      this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.label9.BackColor = System.Drawing.Color.LightCyan;
-      this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label9.Location = new System.Drawing.Point(440, 0);
-      this.label9.Margin = new System.Windows.Forms.Padding(0);
-      this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(110, 32);
-      this.label9.TabIndex = 29;
-      this.label9.Text = "Cpk";
-      this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbCpkShift1.BackColor = System.Drawing.Color.White;
+      this.lbCpkShift1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lbCpkShift1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbCpkShift1.Location = new System.Drawing.Point(440, 32);
+      this.lbCpkShift1.Margin = new System.Windows.Forms.Padding(0);
+      this.lbCpkShift1.Name = "lbCpkShift1";
+      this.lbCpkShift1.Size = new System.Drawing.Size(110, 32);
+      this.lbCpkShift1.TabIndex = 31;
+      this.lbCpkShift1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label10
       // 
@@ -1244,95 +1072,265 @@
       this.label10.Text = "Sigma";
       this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lbCpkShift1
+      // label9
       // 
-      this.lbCpkShift1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbCpkShift1.BackColor = System.Drawing.Color.White;
-      this.lbCpkShift1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lbCpkShift1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbCpkShift1.Location = new System.Drawing.Point(440, 32);
-      this.lbCpkShift1.Margin = new System.Windows.Forms.Padding(0);
-      this.lbCpkShift1.Name = "lbCpkShift1";
-      this.lbCpkShift1.Size = new System.Drawing.Size(110, 32);
-      this.lbCpkShift1.TabIndex = 31;
-      this.lbCpkShift1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.label9.BackColor = System.Drawing.Color.LightCyan;
+      this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label9.Location = new System.Drawing.Point(440, 0);
+      this.label9.Margin = new System.Windows.Forms.Padding(0);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(110, 32);
+      this.label9.TabIndex = 29;
+      this.label9.Text = "Cpk";
+      this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lbSigmaShift1
+      // lblShift3
       // 
-      this.lbSigmaShift1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lblShift3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbSigmaShift1.BackColor = System.Drawing.Color.White;
-      this.lbSigmaShift1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lbSigmaShift1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbSigmaShift1.Location = new System.Drawing.Point(550, 32);
-      this.lbSigmaShift1.Margin = new System.Windows.Forms.Padding(0);
-      this.lbSigmaShift1.Name = "lbSigmaShift1";
-      this.lbSigmaShift1.Size = new System.Drawing.Size(113, 32);
-      this.lbSigmaShift1.TabIndex = 32;
-      this.lbSigmaShift1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lblShift3.BackColor = System.Drawing.Color.White;
+      this.lblShift3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift3.Location = new System.Drawing.Point(0, 96);
+      this.lblShift3.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift3.Name = "lblShift3";
+      this.lblShift3.Size = new System.Drawing.Size(110, 32);
+      this.lblShift3.TabIndex = 25;
+      this.lblShift3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lbCpkShift2
+      // lblShift2
       // 
-      this.lbCpkShift2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lblShift2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbCpkShift2.BackColor = System.Drawing.Color.White;
-      this.lbCpkShift2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lbCpkShift2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbCpkShift2.Location = new System.Drawing.Point(440, 64);
-      this.lbCpkShift2.Margin = new System.Windows.Forms.Padding(0);
-      this.lbCpkShift2.Name = "lbCpkShift2";
-      this.lbCpkShift2.Size = new System.Drawing.Size(110, 32);
-      this.lbCpkShift2.TabIndex = 33;
-      this.lbCpkShift2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lblShift2.BackColor = System.Drawing.Color.White;
+      this.lblShift2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift2.Location = new System.Drawing.Point(0, 64);
+      this.lblShift2.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift2.Name = "lblShift2";
+      this.lblShift2.Size = new System.Drawing.Size(110, 32);
+      this.lblShift2.TabIndex = 21;
+      this.lblShift2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lbSigmaShift2
+      // label17
       // 
-      this.lbSigmaShift2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbSigmaShift2.BackColor = System.Drawing.Color.White;
-      this.lbSigmaShift2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lbSigmaShift2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbSigmaShift2.Location = new System.Drawing.Point(550, 64);
-      this.lbSigmaShift2.Margin = new System.Windows.Forms.Padding(0);
-      this.lbSigmaShift2.Name = "lbSigmaShift2";
-      this.lbSigmaShift2.Size = new System.Drawing.Size(113, 32);
-      this.lbSigmaShift2.TabIndex = 34;
-      this.lbSigmaShift2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.label17.BackColor = System.Drawing.Color.LightCyan;
+      this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label17.Location = new System.Drawing.Point(0, 0);
+      this.label17.Margin = new System.Windows.Forms.Padding(0);
+      this.label17.Name = "label17";
+      this.label17.Size = new System.Drawing.Size(110, 32);
+      this.label17.TabIndex = 13;
+      this.label17.Text = "Ca";
+      this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lbCpkShift3
+      // lblShift1
       // 
-      this.lbCpkShift3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.lblShift1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbCpkShift3.BackColor = System.Drawing.Color.White;
-      this.lbCpkShift3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lbCpkShift3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbCpkShift3.Location = new System.Drawing.Point(440, 96);
-      this.lbCpkShift3.Margin = new System.Windows.Forms.Padding(0);
-      this.lbCpkShift3.Name = "lbCpkShift3";
-      this.lbCpkShift3.Size = new System.Drawing.Size(110, 32);
-      this.lbCpkShift3.TabIndex = 35;
-      this.lbCpkShift3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lblShift1.BackColor = System.Drawing.Color.White;
+      this.lblShift1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift1.Location = new System.Drawing.Point(0, 32);
+      this.lblShift1.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift1.Name = "lblShift1";
+      this.lblShift1.Size = new System.Drawing.Size(110, 32);
+      this.lblShift1.TabIndex = 17;
+      this.lblShift1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // lbSigmaShift3
+      // label19
       // 
-      this.lbSigmaShift3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.lbSigmaShift3.BackColor = System.Drawing.Color.White;
-      this.lbSigmaShift3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.lbSigmaShift3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbSigmaShift3.Location = new System.Drawing.Point(550, 96);
-      this.lbSigmaShift3.Margin = new System.Windows.Forms.Padding(0);
-      this.lbSigmaShift3.Name = "lbSigmaShift3";
-      this.lbSigmaShift3.Size = new System.Drawing.Size(113, 32);
-      this.lbSigmaShift3.TabIndex = 36;
-      this.lbSigmaShift3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.label19.BackColor = System.Drawing.Color.LightCyan;
+      this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label19.Location = new System.Drawing.Point(110, 0);
+      this.label19.Margin = new System.Windows.Forms.Padding(0);
+      this.label19.Name = "label19";
+      this.label19.Size = new System.Drawing.Size(110, 32);
+      this.label19.TabIndex = 15;
+      this.label19.Text = "TB(Ca)";
+      this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift1_TB
+      // 
+      this.lblShift1_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift1_TB.BackColor = System.Drawing.Color.White;
+      this.lblShift1_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift1_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift1_TB.Location = new System.Drawing.Point(110, 32);
+      this.lblShift1_TB.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift1_TB.Name = "lblShift1_TB";
+      this.lblShift1_TB.Size = new System.Drawing.Size(110, 32);
+      this.lblShift1_TB.TabIndex = 19;
+      this.lblShift1_TB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift2_TB
+      // 
+      this.lblShift2_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift2_TB.BackColor = System.Drawing.Color.White;
+      this.lblShift2_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift2_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift2_TB.Location = new System.Drawing.Point(110, 64);
+      this.lblShift2_TB.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift2_TB.Name = "lblShift2_TB";
+      this.lblShift2_TB.Size = new System.Drawing.Size(110, 32);
+      this.lblShift2_TB.TabIndex = 23;
+      this.lblShift2_TB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift3_TB
+      // 
+      this.lblShift3_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift3_TB.BackColor = System.Drawing.Color.White;
+      this.lblShift3_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift3_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift3_TB.Location = new System.Drawing.Point(110, 96);
+      this.lblShift3_TB.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift3_TB.Name = "lblShift3_TB";
+      this.lblShift3_TB.Size = new System.Drawing.Size(110, 32);
+      this.lblShift3_TB.TabIndex = 27;
+      this.lblShift3_TB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label18
+      // 
+      this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label18.BackColor = System.Drawing.Color.LightCyan;
+      this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label18.Location = new System.Drawing.Point(330, 0);
+      this.label18.Margin = new System.Windows.Forms.Padding(0);
+      this.label18.Name = "label18";
+      this.label18.Size = new System.Drawing.Size(110, 32);
+      this.label18.TabIndex = 14;
+      this.label18.Text = "STDEV";
+      this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift1_Stdev
+      // 
+      this.lblShift1_Stdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift1_Stdev.BackColor = System.Drawing.Color.White;
+      this.lblShift1_Stdev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift1_Stdev.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift1_Stdev.Location = new System.Drawing.Point(330, 32);
+      this.lblShift1_Stdev.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift1_Stdev.Name = "lblShift1_Stdev";
+      this.lblShift1_Stdev.Size = new System.Drawing.Size(110, 32);
+      this.lblShift1_Stdev.TabIndex = 18;
+      this.lblShift1_Stdev.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift2_Stdev
+      // 
+      this.lblShift2_Stdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift2_Stdev.BackColor = System.Drawing.Color.White;
+      this.lblShift2_Stdev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift2_Stdev.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift2_Stdev.Location = new System.Drawing.Point(330, 64);
+      this.lblShift2_Stdev.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift2_Stdev.Name = "lblShift2_Stdev";
+      this.lblShift2_Stdev.Size = new System.Drawing.Size(110, 32);
+      this.lblShift2_Stdev.TabIndex = 22;
+      this.lblShift2_Stdev.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift3_Stdev
+      // 
+      this.lblShift3_Stdev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift3_Stdev.BackColor = System.Drawing.Color.White;
+      this.lblShift3_Stdev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift3_Stdev.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift3_Stdev.Location = new System.Drawing.Point(330, 96);
+      this.lblShift3_Stdev.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift3_Stdev.Name = "lblShift3_Stdev";
+      this.lblShift3_Stdev.Size = new System.Drawing.Size(110, 32);
+      this.lblShift3_Stdev.TabIndex = 26;
+      this.lblShift3_Stdev.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // Standard
+      // 
+      this.Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.Standard.BackColor = System.Drawing.Color.LightCyan;
+      this.Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Standard.Location = new System.Drawing.Point(220, 0);
+      this.Standard.Margin = new System.Windows.Forms.Padding(0);
+      this.Standard.Name = "Standard";
+      this.Standard.Size = new System.Drawing.Size(110, 32);
+      this.Standard.TabIndex = 16;
+      this.Standard.Text = "Tiêu chuẩn";
+      this.Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift1_Standard
+      // 
+      this.lblShift1_Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift1_Standard.BackColor = System.Drawing.Color.White;
+      this.lblShift1_Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift1_Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift1_Standard.Location = new System.Drawing.Point(220, 32);
+      this.lblShift1_Standard.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift1_Standard.Name = "lblShift1_Standard";
+      this.lblShift1_Standard.Size = new System.Drawing.Size(110, 32);
+      this.lblShift1_Standard.TabIndex = 20;
+      this.lblShift1_Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift2_Standard
+      // 
+      this.lblShift2_Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift2_Standard.BackColor = System.Drawing.Color.White;
+      this.lblShift2_Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift2_Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift2_Standard.Location = new System.Drawing.Point(220, 64);
+      this.lblShift2_Standard.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift2_Standard.Name = "lblShift2_Standard";
+      this.lblShift2_Standard.Size = new System.Drawing.Size(110, 32);
+      this.lblShift2_Standard.TabIndex = 24;
+      this.lblShift2_Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // lblShift3_Standard
+      // 
+      this.lblShift3_Standard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblShift3_Standard.BackColor = System.Drawing.Color.White;
+      this.lblShift3_Standard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.lblShift3_Standard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblShift3_Standard.Location = new System.Drawing.Point(220, 96);
+      this.lblShift3_Standard.Margin = new System.Windows.Forms.Padding(0);
+      this.lblShift3_Standard.Name = "lblShift3_Standard";
+      this.lblShift3_Standard.Size = new System.Drawing.Size(110, 32);
+      this.lblShift3_Standard.TabIndex = 28;
+      this.lblShift3_Standard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // UcTemplateExcel
       // 

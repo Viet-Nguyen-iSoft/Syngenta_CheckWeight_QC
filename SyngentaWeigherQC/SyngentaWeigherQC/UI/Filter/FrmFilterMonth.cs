@@ -1,4 +1,6 @@
-﻿using SyngentaWeigherQC.Control;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using SyngentaWeigherQC.Control;
+using SyngentaWeigherQC.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,85 +16,69 @@ namespace SyngentaWeigherQC.UI.FrmUI
 {
   public partial class FrmFilterMonth : Form
   {
-    public delegate void SendMonthChoose(List<DateTime> listDate);
+    public delegate void SendMonthChoose(int month);
     public event SendMonthChoose OnSendMonthChoose;
 
     public FrmFilterMonth()
     {
       InitializeComponent();
     }
+    private int monthChoose = 0;
 
-
-    private Dictionary<int, List<DateTime>> listMonths = new Dictionary<int, List<DateTime>>();
     private void FrmYear_Load(object sender, EventArgs e)
     {
-      listMonths = GetDaysInMonths(DateTime.Now.Year);
-      CreateAllCheckBox(listMonths);
+      CreateAllCheckBox();
     }
 
-    public CheckBox checkBox { get; private set; }
-    private void CreateAllCheckBox(Dictionary<int, List<DateTime>> listMonths)
+    private void CreateAllCheckBox()
     {
-      for(int i = 0;i < listMonths.Count; i++)
+      for(int i =1;i <= 12; i++)
       {
-        checkBox = new CheckBox();
-        checkBox.Text = $"Tháng: {(i+1).ToString("00")}";
+        CheckBox checkBox = new CheckBox();
+        checkBox.Text = $"Tháng: {(i).ToString("00")}";
         checkBox.ForeColor = Color.Black;
         checkBox.Font = new Font(Font.FontFamily, 16);
         checkBox.AutoSize = true;
-        checkBox.Tag = i + 1;
+        checkBox.Tag = i;
         checkBox.CheckedChanged += AllCheckBox_CheckedChanged;
         flowLayoutPanel1.Controls.Add(checkBox);
       }
     }
 
-    private List<int> months = new List<int>();
+    
     private void AllCheckBox_CheckedChanged(object sender, EventArgs e)
     {
-      months = new List<int>();
-      int cnt = 1;
-      foreach (System.Windows.Forms.Control control in flowLayoutPanel1.Controls)
+      CheckBox changedCheckBox = sender as CheckBox;
+
+      if (changedCheckBox.Checked)
       {
-        if (control is CheckBox checkBox)
+        foreach (var control in flowLayoutPanel1.Controls)
         {
-          if (checkBox.Checked)
+          if (control is CheckBox cb && cb != changedCheckBox)
           {
-            months.Add(cnt);
+            cb.Checked = false;
           }
-          cnt++;
         }
+
+        monthChoose = (int)changedCheckBox.Tag;
       }
-    }
-
-
-    private Dictionary<int, List<DateTime>> GetDaysInMonths(int year)
-    {
-      Dictionary<int, List<DateTime>> daysInMonths = new Dictionary<int, List<DateTime>>();
-
-      for (int month = 1; month <= 12; month++)
+      else
       {
-        int daysInMonth = DateTime.DaysInMonth(year, month);
-        List<DateTime> days = new List<DateTime>();
-        for (int day = 1; day <= daysInMonth; day++)
-        {
-          DateTime date = new DateTime(year, month, day);
-          days.Add(date);
-        }
-        daysInMonths.Add(month, days);
-      }
-      return daysInMonths;
+        monthChoose = 0;
+      }  
     }
-
 
     private void btnOK_Click(object sender, EventArgs e)
     {
-      List<DateTime> days = new List<DateTime>();
-      foreach (var item in months)
+      if (monthChoose>0 && monthChoose<=12)
       {
-        days.AddRange(AppCore.Ins.GetAllDaysInMonth(DateTime.Now.Year, item));
+        OnSendMonthChoose?.Invoke(monthChoose);
+        this.Close();
       }
-      OnSendMonthChoose?.Invoke(days);
-      this.Close();
+      else
+      {
+        new FrmNotification().ShowMessage("Vui lòng chọn tháng cần xem !", eMsgType.Warning);
+      }  
     }
 
 

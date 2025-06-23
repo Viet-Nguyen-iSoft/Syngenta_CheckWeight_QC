@@ -18,6 +18,7 @@ namespace SyngentaWeigherQC.Models.NewFolder1
     public double Loss { get; set; }
     public double Cpk { get; set; }
     public double Stdev { get; set; }
+    public double Sigma { get; set; }
 
     public double TotalSample { get; set; }
     public double TotalOver { get; set; }

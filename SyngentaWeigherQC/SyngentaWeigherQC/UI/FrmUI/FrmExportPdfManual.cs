@@ -1,16 +1,12 @@
-﻿using DocumentFormat.OpenXml.VariantTypes;
-using SyngentaWeigherQC.Control;
+﻿using SyngentaWeigherQC.Control;
 using SyngentaWeigherQC.Helper;
+using SyngentaWeigherQC.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SyngentaWeigherQC.eNum.enumSoftware;
 
 namespace SyngentaWeigherQC.UI.FrmUI
 {
@@ -26,8 +22,34 @@ namespace SyngentaWeigherQC.UI.FrmUI
     private int weekCurrent = 0;
     private int monthCurrent = 0;
     private int yearCurrent = 0;
+    private int lineId = 0;
     private List<DateTime> listDateInMonth = new List<DateTime>();
     private List<DateTime> listDateInWeek = new List<DateTime>();
+
+    private void FrmExportPdfManual_Load(object sender, EventArgs e)
+    {
+      CbbLines = AppCore.Ins._listInforLine?.Where(x => x.IsEnable == true).ToList();
+
+      var lineChoose = cbbLine.SelectedItem as InforLine;
+      lineId = (lineChoose != null) ? lineChoose.Id : 0;
+    }
+
+    private void cbbLine_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      var lineChoose = cbbLine.SelectedItem as InforLine;
+      lineId = (lineChoose != null) ? lineChoose.Id : 0;
+    }
+
+    public List<InforLine> CbbLines
+    {
+      set
+      {
+        this.cbbLine.DataSource = value;
+        this.cbbLine.DisplayMember = "Name";
+      }
+    }
+
+
     private void LoadDataDefault()
     {
       //Set value Current
@@ -35,11 +57,11 @@ namespace SyngentaWeigherQC.UI.FrmUI
       yearCurrent = dt.Year;
       monthCurrent = dt.Month;
 
-      weekInYears = AppCore.Ins.GetDaysInWeeks(yearCurrent);
+      weekInYears = DatetimeHelper.GetDaysInWeeks(yearCurrent);
 
 
       //Year
-      for (int i = 2020; i <= 2120; i++) 
+      for (int i = 2020; i <= 2120; i++)
       {
         this.cbbYearMonth.Items.Add(i);
         this.cbbYearWeek.Items.Add(i);
@@ -50,10 +72,10 @@ namespace SyngentaWeigherQC.UI.FrmUI
       {
         this.cbbMonth.Items.Add(i);
       }
-      
+
       foreach (var item in weekInYears.Keys.ToList())
       {
-        this.cbbWeek.Items.Add(item);     
+        this.cbbWeek.Items.Add(item);
       }
 
       this.cbbYearMonth.SelectedItem = yearCurrent;
@@ -64,7 +86,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.cbbWeek.SelectedItem = weekCurrent;
 
       //Tháng
-      listDateInMonth =  AppCore.Ins.GetAllDaysInMonth(yearCurrent, monthCurrent);
+      listDateInMonth = DatetimeHelper.GetAllDaysInMonth(yearCurrent, monthCurrent);
       dtpFromMonth.Value = listDateInMonth.FirstOrDefault();
       dtpToMonth.Value = listDateInMonth.LastOrDefault();
 
@@ -83,7 +105,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     private void CbbWeek_SelectedIndexChanged(object sender, EventArgs e)
     {
-      weekInYears = AppCore.Ins.GetDaysInWeeks(yearCurrent);
+      weekInYears = DatetimeHelper.GetDaysInWeeks(yearCurrent);
       int.TryParse(this.cbbWeek.Text, out weekCurrent);
       //Tuần
       listDateInWeek = weekInYears.Where(x => x.Key == weekCurrent).FirstOrDefault().Value;
@@ -96,7 +118,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
       int.TryParse(this.cbbMonth.Text, out monthCurrent);
 
       //Tháng
-      listDateInMonth = AppCore.Ins.GetAllDaysInMonth(yearCurrent, monthCurrent);
+      listDateInMonth = DatetimeHelper.GetAllDaysInMonth(yearCurrent, monthCurrent);
       dtpFromMonth.Value = listDateInMonth.FirstOrDefault();
       dtpToMonth.Value = listDateInMonth.LastOrDefault();
     }
@@ -107,37 +129,69 @@ namespace SyngentaWeigherQC.UI.FrmUI
       return calendar.GetWeekOfYear(time, System.Globalization.CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
     }
 
-
-
-    private void FrmExportPdfManual_Load(object sender, EventArgs e)
-    {
-
-    }
-
-    private void btnExportMonth_Click(object sender, EventArgs e)
+    private async void btnExportMonth_Click(object sender, EventArgs e)
     {
       try
       {
-        //string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
-        //string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
-        //string nameStation = AppCore.Ins._stationCurrent.Name;
-        //FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(yearCurrent, monthCurrent, weekCurrent, pathLocal, pathOneDrive, nameStation, isExportWeek:false);
-        //frmReportAutoPdfMonth.ShowDialog();
+        var datalogWeights = await AppCore.Ins.LoadDataMonth(yearCurrent, monthCurrent, lineId);
+
+
+        if (datalogWeights?.Count() <= 0)
+        {
+          new FrmNotification().ShowMessage("Không có dữ liệu xuất Report !", eMsgType.Warning);
+          return;
+        }
+
+        string titleReport = $"BÁO CÁO THÁNG {monthCurrent}";
+
+        string[] pathReport = new string[3];
+        using (var saveFD = new SaveFileDialog())
+        {
+          saveFD.Filter = "Excel|*.xlsx|All files|*.*";
+          saveFD.Title = "Save report to excel file";
+          saveFD.FileName = $"{titleReport}.pdf";
+
+          DialogResult dialogResult = saveFD.ShowDialog();
+          if (dialogResult == DialogResult.OK) pathReport[0] = saveFD.FileName; //lay duong dan luu file
+          else return; //huy report neu chon cancel
+        }
+
+        FrmReportAutoPdf frmReportAutoPdf = new FrmReportAutoPdf(datalogWeights, pathReport, titleReport);
+        frmReportAutoPdf.ShowDialog();
       }
       catch (Exception ex)
       {
         LoggerHelper.LogErrorToFileLog(ex);
       }
     }
-    private void btnExportWeek_Click(object sender, EventArgs e)
+    private async void btnExportWeek_Click(object sender, EventArgs e)
     {
       try
       {
-        //string pathLocal = AppCore.Ins._stationCurrent.PathReportLocal;
-        //string pathOneDrive = AppCore.Ins._stationCurrent.PathReportOneDrive;
-        //string nameStation = AppCore.Ins._stationCurrent.Name;
-        //FrmReportAutoPdf frmReportAutoPdfMonth = new FrmReportAutoPdf(yearCurrent, monthCurrent, weekCurrent, pathLocal, pathOneDrive, nameStation, isExportMonth:false);
-        //frmReportAutoPdfMonth.ShowDialog();
+        var datalogWeights = await AppCore.Ins.LoadDataWeek(yearCurrent, weekCurrent, lineId);
+
+        if (datalogWeights?.Count() <= 0)
+        {
+          new FrmNotification().ShowMessage("Không có dữ liệu xuất Report !", eMsgType.Warning);
+          return;
+        }
+
+        string titleReport = $"BÁO CÁO TUẦN {monthCurrent}";
+
+        string[] pathReport = new string[3];
+        using (var saveFD = new SaveFileDialog())
+        {
+          saveFD.Filter = "Excel|*.xlsx|All files|*.*";
+          saveFD.Title = "Save report to excel file";
+          saveFD.FileName = $"{titleReport}.pdf";
+
+          DialogResult dialogResult = saveFD.ShowDialog();
+          if (dialogResult == DialogResult.OK) pathReport[0] = saveFD.FileName;
+          else return;
+        }
+
+        FrmReportAutoPdf frmReportAutoPdf = new FrmReportAutoPdf(datalogWeights, pathReport, titleReport);
+        frmReportAutoPdf.ShowDialog();
       }
       catch (Exception ex)
       {
@@ -145,7 +199,6 @@ namespace SyngentaWeigherQC.UI.FrmUI
       }
     }
 
-   
-    
+
   }
 }

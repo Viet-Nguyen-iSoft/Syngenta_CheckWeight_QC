@@ -48,6 +48,8 @@
       this.label10 = new System.Windows.Forms.Label();
       this.btnExportWeek = new CustomControls.RJControls.RJButton();
       this.btnExportMonth = new CustomControls.RJControls.RJButton();
+      this.cbbLine = new System.Windows.Forms.ComboBox();
+      this.label11 = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // label1
@@ -322,11 +324,37 @@
       this.btnExportMonth.UseVisualStyleBackColor = false;
       this.btnExportMonth.Click += new System.EventHandler(this.btnExportMonth_Click);
       // 
+      // cbbLine
+      // 
+      this.cbbLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.cbbLine.FormattingEnabled = true;
+      this.cbbLine.Location = new System.Drawing.Point(283, 13);
+      this.cbbLine.Name = "cbbLine";
+      this.cbbLine.Size = new System.Drawing.Size(191, 32);
+      this.cbbLine.TabIndex = 25;
+      this.cbbLine.SelectedIndexChanged += new System.EventHandler(this.cbbLine_SelectedIndexChanged);
+      // 
+      // label11
+      // 
+      this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.label11.AutoSize = true;
+      this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label11.Location = new System.Drawing.Point(220, 17);
+      this.label11.Name = "label11";
+      this.label11.Size = new System.Drawing.Size(56, 24);
+      this.label11.TabIndex = 26;
+      this.label11.Text = "Line:";
+      this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
       // FrmExportPdfManual
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1064, 295);
+      this.Controls.Add(this.label11);
+      this.Controls.Add(this.cbbLine);
       this.Controls.Add(this.btnExportWeek);
       this.Controls.Add(this.cbbYearWeek);
       this.Controls.Add(this.cbbWeek);
@@ -381,5 +409,7 @@
     private System.Windows.Forms.DateTimePicker dtpToWeek;
     private System.Windows.Forms.Label label10;
     private CustomControls.RJControls.RJButton btnExportWeek;
+    private System.Windows.Forms.ComboBox cbbLine;
+    private System.Windows.Forms.Label label11;
   }
 }

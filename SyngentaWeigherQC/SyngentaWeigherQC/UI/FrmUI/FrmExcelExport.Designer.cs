@@ -144,7 +144,7 @@
       this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
       this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dataGridView1.EnableHeadersVisualStyles = false;
-      this.dataGridView1.Location = new System.Drawing.Point(3, 760);
+      this.dataGridView1.Location = new System.Drawing.Point(3, 758);
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.ReadOnly = true;
       dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -162,7 +162,7 @@
       this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
       this.dataGridView1.RowTemplate.Height = 40;
       this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-      this.dataGridView1.Size = new System.Drawing.Size(1781, 192);
+      this.dataGridView1.Size = new System.Drawing.Size(1781, 194);
       this.dataGridView1.TabIndex = 10;
       // 
       // Column1
@@ -355,9 +355,9 @@
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.Location = new System.Drawing.Point(1134, 0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(56, 45);
+      this.label2.Size = new System.Drawing.Size(41, 45);
       this.label2.TabIndex = 1;
-      this.label2.Text = "Shift:";
+      this.label2.Text = "Ca:";
       this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // btnExport
@@ -390,7 +390,7 @@
             "Giãn ca 1",
             "Giãn ca 3",
             "Hành chính"});
-      this.cbShift.Location = new System.Drawing.Point(1196, 6);
+      this.cbShift.Location = new System.Drawing.Point(1181, 6);
       this.cbShift.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
       this.cbShift.Name = "cbShift";
       this.cbShift.Size = new System.Drawing.Size(179, 32);
@@ -406,7 +406,7 @@
       this.btnPreview.Name = "btnPreview";
       this.btnPreview.Size = new System.Drawing.Size(124, 39);
       this.btnPreview.TabIndex = 6;
-      this.btnPreview.Text = "Preview";
+      this.btnPreview.Text = "Xem";
       this.btnPreview.UseVisualStyleBackColor = true;
       this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
       // 
@@ -459,8 +459,10 @@
       this.flowLayoutPanelProduct.Location = new System.Drawing.Point(1, 51);
       this.flowLayoutPanelProduct.Margin = new System.Windows.Forms.Padding(1);
       this.flowLayoutPanelProduct.Name = "flowLayoutPanelProduct";
-      this.flowLayoutPanelProduct.Size = new System.Drawing.Size(1785, 66);
+      this.flowLayoutPanelProduct.Size = new System.Drawing.Size(1785, 61);
       this.flowLayoutPanelProduct.TabIndex = 1;
+      this.flowLayoutPanelProduct.Visible = false;
+      this.flowLayoutPanelProduct.WrapContents = false;
       // 
       // tableLayoutPanel3
       // 
@@ -472,12 +474,12 @@
       this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanel3.Controls.Add(this.ucChartHistogram1, 0, 0);
       this.tableLayoutPanel3.Controls.Add(this.ucChartLine1, 1, 0);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 458);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 453);
       this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel3.Name = "tableLayoutPanel3";
       this.tableLayoutPanel3.RowCount = 1;
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(1787, 299);
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(1787, 302);
       this.tableLayoutPanel3.TabIndex = 3;
       // 
       // progressBar1
@@ -487,7 +489,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
       this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-      this.progressBar1.Location = new System.Drawing.Point(3, 121);
+      this.progressBar1.Location = new System.Drawing.Point(3, 116);
       this.progressBar1.Name = "progressBar1";
       this.progressBar1.Size = new System.Drawing.Size(1781, 9);
       this.progressBar1.TabIndex = 9;
@@ -499,7 +501,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucChartHistogram1.Location = new System.Drawing.Point(3, 3);
       this.ucChartHistogram1.Name = "ucChartHistogram1";
-      this.ucChartHistogram1.Size = new System.Drawing.Size(887, 293);
+      this.ucChartHistogram1.Size = new System.Drawing.Size(887, 296);
       this.ucChartHistogram1.TabIndex = 0;
       // 
       // ucChartLine1
@@ -509,7 +511,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.ucChartLine1.Location = new System.Drawing.Point(896, 3);
       this.ucChartLine1.Name = "ucChartLine1";
-      this.ucChartLine1.Size = new System.Drawing.Size(888, 293);
+      this.ucChartLine1.Size = new System.Drawing.Size(888, 296);
       this.ucChartLine1.TabIndex = 1;
       // 
       // ucTemplateExcel1
@@ -517,7 +519,7 @@
       this.ucTemplateExcel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.ucTemplateExcel1.Location = new System.Drawing.Point(0, 133);
+      this.ucTemplateExcel1.Location = new System.Drawing.Point(0, 128);
       this.ucTemplateExcel1.Margin = new System.Windows.Forms.Padding(0);
       this.ucTemplateExcel1.Name = "ucTemplateExcel1";
       this.ucTemplateExcel1.Size = new System.Drawing.Size(1787, 325);
