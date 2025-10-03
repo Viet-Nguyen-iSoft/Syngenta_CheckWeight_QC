@@ -55,7 +55,7 @@ namespace SyngentaWeigherQC.UI.FrmUI
 
     public List<DatalogWeight> _listDatalogByLine { get; set; } = new List<DatalogWeight>();
     public List<DatalogWeight> _listDatalogShiftCurrrent { get; set; } = new List<DatalogWeight>();
-    //public List<TableDatalogDTO> _listDatatableByLine { get; set; } = new List<TableDatalogDTO>();
+
 
     private int _indexColData = 0;
 
@@ -659,91 +659,75 @@ namespace SyngentaWeigherQC.UI.FrmUI
       this.panelWeigher1.SetSatutusConnectSerialWeigher(eStatusConnectWeight);
     }
 
-    private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-    {
-      //int colmnIndex = e.ColumnIndex;
-      //int rowIndex = e.RowIndex;
-
-      //if (rowIndex == -1) return;
-      //if (colmnIndex >= 3 && colmnIndex <= 17)
-      //{
-      //  //Value Sample cân lại
-      //  object cellValueSample = dataGridView1.Rows[e.RowIndex].Cells["Column19"].Value;
-      //  if (cellValueSample != null)
-      //  {
-      //    int id = Convert.ToInt16(cellValueSample);
-      //    var sample = listSamplesCurentDB?.Where(x => x.DatalogId == id).ToList();
-      //    if (sample != null)
-      //    {
-      //      var sampleDetail = sample.Where(x => x.LocalId == colmnIndex - 2).FirstOrDefault();
-      //      if (sampleDetail != null)
-      //      {
-      //        if (sampleDetail.isEdited)
-      //        {
-      //          FrmSeeHistoricalReweigher frmSeeHistoricalReweigher = new FrmSeeHistoricalReweigher(sampleDetail);
-      //          frmSeeHistoricalReweigher.ShowDialog();
-      //        }
-      //      }
-      //    }
-      //  }
-      //}
-    }
-
-
-
-
     private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-      int colmnIndex = e.ColumnIndex;
-      int rowIndex = e.RowIndex;
-
-      if (rowIndex == -1) return;
-
-      if (colmnIndex >= 3 && colmnIndex < 13)
+      try
       {
-        var tag = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag as DatalogWeight;
-        if (tag == null) return;
-        var id = tag.Id;
-        var value = tag.Value;
+        this.dataGridView1.CellDoubleClick -= DataGridView1_CellDoubleClick;
 
-        DatalogWeight datalogWeight = _listDatalogShiftCurrrent?.FirstOrDefault(x => x.Id == id);
-        if (datalogWeight != null)
+        int colmnIndex = e.ColumnIndex;
+        int rowIndex = e.RowIndex;
+
+        if (rowIndex == -1) return;
+
+        if (colmnIndex >= 3 && colmnIndex < 13)
         {
-          AppCore.Ins.eStatusModeWeight = eStatusModeWeight.Reweight;
+          var tag = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag as DatalogWeight;
+          if (tag == null) return;
+          var id = tag.Id;
+          var value = tag.Value;
 
-          FrmSampleRework frmSampleRework = new FrmSampleRework(datalogWeight);
-          frmSampleRework.OnSendReWeigherDone += FrmSampleRework_OnSendReWeigherDone;
-          frmSampleRework.ShowDialog();
-          frmSampleRework.OnSendReWeigherDone -= FrmSampleRework_OnSendReWeigherDone;
+          DatalogWeight datalogWeight = _listDatalogShiftCurrrent?.FirstOrDefault(x => x.Id == id);
+          if (datalogWeight != null)
+          {
+            AppCore.Ins.eStatusModeWeight = eStatusModeWeight.Reweight;
 
-          AppCore.Ins.eStatusModeWeight = eStatusModeWeight.WeightForLine;
+            FrmSampleRework frmSampleRework = new FrmSampleRework(datalogWeight);
+            frmSampleRework.OnSendReWeigherDone += FrmSampleRework_OnSendReWeigherDone;
+            frmSampleRework.ShowDialog();
+            frmSampleRework.OnSendReWeigherDone -= FrmSampleRework_OnSendReWeigherDone;
+
+            AppCore.Ins.eStatusModeWeight = eStatusModeWeight.WeightForLine;
+          }
         }
       }
+      catch (Exception ex)
+      {
+        LoggerHelper.LogErrorToFileLog(ex);
+      }
+      finally
+      {
+        this.dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+      }
+      
     }
 
     private async void FrmSampleRework_OnSendReWeigherDone(DatalogWeight datalogWeight)
     {
+      LoadSumaryByShift(_listDatalogByLine);
+      LoadUiWhenAddData(_listDatalogShiftCurrrent);
+
       await AppCore.Ins.Update(datalogWeight);
+      //return;
+
+      //var itemFullShift = _listDatalogByLine.FirstOrDefault(d => d.Id == datalogWeight.Id);
+      //if (itemFullShift!=null)
+      //{
+      //  itemFullShift.Value = datalogWeight.Value;
+      //  itemFullShift.IsChange = datalogWeight.IsChange;
+      //}
 
 
-      var itemFullShift = _listDatalogByLine.FirstOrDefault(d => d.Id == datalogWeight.Id);
-      if (itemFullShift!=null)
-      {
-        itemFullShift.Value = datalogWeight.Value;
-        itemFullShift.IsChange = datalogWeight.IsChange;
-      }
+      //var item = _listDatalogShiftCurrrent.FirstOrDefault(d => d.Id == datalogWeight.Id);
+      //if (item != null)
+      //{
+      //  item.Value = datalogWeight.Value;
+      //  item.IsChange = datalogWeight.IsChange;
 
-
-      var item = _listDatalogShiftCurrrent.FirstOrDefault(d => d.Id == datalogWeight.Id);
-      if (item != null)
-      {
-        item.Value = datalogWeight.Value;
-        item.IsChange = datalogWeight.IsChange;
-
-        //Thống kê 3 ca
-        LoadSumaryByShift(_listDatalogByLine);
-        LoadUiWhenAddData(_listDatalogShiftCurrrent);
-      }
+      //  //Thống kê 3 ca
+      //  LoadSumaryByShift(_listDatalogByLine);
+      //  LoadUiWhenAddData(_listDatalogShiftCurrrent);
+      //}
     }
 
     #region Custom Get Set Data

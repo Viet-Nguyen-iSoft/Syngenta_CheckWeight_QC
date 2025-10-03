@@ -22,7 +22,7 @@ namespace SynCheckWeigherLoggerApp.DashboardViews
     {
       _datalogWeight = datalogWeight;
 
-      ShowDisplay(lblOldSampleValue, datalogWeight.ValuePrevious);
+      ShowDisplay(lblOldSampleValue, _datalogWeight.ValuePrevious);
 
       AppCore.Ins.OnSendValueReweight += Ins_OnSendDataReWeigher;
     }
@@ -46,7 +46,7 @@ namespace SynCheckWeigherLoggerApp.DashboardViews
       timer.Stop();
 
       OnSendReWeigherDone?.Invoke(_datalogWeight);
-
+      AppCore.Ins.OnSendValueReweight -= Ins_OnSendDataReWeigher;
       CloseForm();
     }
 
