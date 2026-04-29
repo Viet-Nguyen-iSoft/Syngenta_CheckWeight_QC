@@ -733,3 +733,21 @@ Parameter name: path
    at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 415
    at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 393 
 2025/04/21 21:15:17: Content: Start App 
+2026/04/29 22:29:26: Content: System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.Directory.CreateDirectory(String path)
+   at SyngentaWeigherQC.Control.AppCore.CheckCreateFolderIfExits(String pathFolder) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 415
+   at SyngentaWeigherQC.Control.AppCore.CreateFolderReport() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\AppCoreBackEnd.cs:line 393 
+2026/04/29 22:29:26: Content: Start App 
+2026/04/29 22:29:27: Content: Kết nối InitTcpConnectivity: System.TimeoutException: Timeout connecting to 127.0.0.1:8080
+   at SyngentaWeigherQC.Communication.CommonTCPClient.Connect() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Communication\CommonTCPClient.cs:line 29
+   at SyngentaWeigherQC.Control.AppCore.InitTcpConnectivity() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\CommunicationTcp.cs:line 44 
+2026/04/29 22:29:28: Content: Kết nối InitTcpConnectivity: System.TimeoutException: Timeout connecting to 127.0.0.1:8080
+   at SyngentaWeigherQC.Communication.CommonTCPClient.Connect() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Communication\CommonTCPClient.cs:line 29
+   at SyngentaWeigherQC.Control.AppCore._timerCheckTimerCheckConnect_Elapsed(Object sender, ElapsedEventArgs e) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\CommunicationTcp.cs:line 92 
+2026/04/29 22:29:29: Content: Kết nối InitTcpConnectivity: System.TimeoutException: Timeout connecting to 127.0.0.1:8080
+   at SyngentaWeigherQC.Communication.CommonTCPClient.Connect() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Communication\CommonTCPClient.cs:line 29
+   at SyngentaWeigherQC.Control.AppCore._timerCheckTimerCheckConnect_Elapsed(Object sender, ElapsedEventArgs e) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\CommunicationTcp.cs:line 92 
+2026/04/29 22:29:31: Content: Kết nối InitTcpConnectivity: System.TimeoutException: Timeout connecting to 127.0.0.1:8080
+   at SyngentaWeigherQC.Communication.CommonTCPClient.Connect() in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Communication\CommonTCPClient.cs:line 29
+   at SyngentaWeigherQC.Control.AppCore._timerCheckTimerCheckConnect_Elapsed(Object sender, ElapsedEventArgs e) in C:\Users\Administrator\Desktop\Project\Syngenta\Syngenta_CheckWeight_QC\SyngentaWeigherQC\SyngentaWeigherQC\Control\CommunicationTcp.cs:line 92 
