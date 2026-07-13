@@ -15,8 +15,15 @@ namespace SyngentaWeigherQC.Models
     public int Port = 5433;
     public string User = "postgres";
     public string Passwords = "058200005781";
-    public string DbDatalog = "DB_Syngenta_CheckWeight_V2";
+    public string DbDatalog = "DB_CheckWeightQc";
     public bool IsPostgres = true;
+
+    //public string Server = "localhost";
+    //public int Port = 5433;
+    //public string User = "postgres";
+    //public string Passwords = "058200005781";
+    //public string DbDatalog = "DB_Syngenta_CheckWeight_V2";
+    //public bool IsPostgres = true;
 
     //public string Server = "localhost";
     //public int Port = 5432;
